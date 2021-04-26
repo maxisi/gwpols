@@ -172,6 +172,8 @@ It is important to understand the priors implied by the choice of parametrizatio
 
 \section{General relativity}
 
+\subsection{Polarizations}
+
 In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations.
 Their local effect can be encoded in a driving matrix $h_{ij}$ corresponding to the transverse-traceless part of the metric perturbation.
 In a frame with $z$-axis along the direction of propagation, we can write this as
@@ -182,40 +184,38 @@ h_\times  & - h_+ & 0  \\
 0 & 0 & 0
 \end{pmatrix} ,
 \eeq
-where the plus ($h_+$) and cross ($h_\times$) polarizations are implicit functions of the retarded time $t - R/c$ to be specified by the source dynamics and the distance $R$ to the source.
-
-Equation \eqref{eq:hij} presumes a specific choice of frame orientation.
-As mentioned above, $h_{ij}$ only takes this simple form if our $z$ axis is parallel to the (spatial) wave vector $\vec{k}$.
-However, there is no restriction regarding the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$; this is usually specified by an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator).
-Although a choice of $\psi$ is required to prescribe $h_+$ and $h_\times$ in \eq{hij}, the form of this equation is invariant under changes in $\psi$.
-To see this clearly, re-express \eq{hij} as 
-\beq
-h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}\,\,
-\eeq
-and construct the polarization tensors $e^{+/\times}_{ij}$ from two orthonormal vectors $\{\hat{x},\hat{y}\}$ perpendicular to $\hat{z}$,
+where the plus ($+$) and cross ($\times$) polarizations are implicit functions of the retarded time, $t - R/c$, to be specified by the source dynamics and the distance $R$ to the source.
+It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, with respect to the polarization tensors
 \beq
 e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
 \eeq
 \beq
-e^\times_{ij} \equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, .
+e^\times_{ij} \equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
 \eeq
-By considering the behavior of $\hat{x}$ and $\hat{y}$ under rotations around $\hat{z}$, it is straightforward to show that the effect of rotating the polarization frame by some angle $\Delta\Psi$ amounts to redefining
+where $\hat{x}$ and $\hat{y}$ are orthonormal vectors that, with $\hat{z}$ form a right-handed Cartesian basis; this is the \emph{wave frame}.
+
+Equation \eqref{eq:hij} presumes a specific choice of frame orientation that defines the basis in which the $h_{ij}$ components are written.
+Although $\hat{k}$ must be parallel to the (spatial) wave vector $\vec{k}$ for \eq{hij} to hold, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
+This is usually specified by an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator).
+With some trigonometry, it is straightforward to show that a rotation by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
 \beq \label{eq:htransf}
 h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, ,
 \eeq
 \beq
-h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, ,
+h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, .
 \eeq
-in \eq{hij}.
 Therefore, $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $s=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
+In fact, we coud easily rewrite \eq{hij} in terms of the corresponding right and left handed polarizations, $h_{R/L} = h_+ \pm i h_\times$, which are invariant under $\psi$ rotations (concretely, eigenvectors of the helicity operator with eigenvalues $\pm 2$).
+%Although a choice of $\psi$ is required to prescribe $h_+$ and $h_\times$ in \eq{hij}, the form of this equation is invariant under changes in $\psi$.
 
 In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the projection
-\beq
+\beq \label{eq:h}
 h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, 
 \eeq
 with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ representing the geometry of the measurement.
-For a differential-arm detector with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.
-The antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
+For a differential-arm detector with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
+\footnote{These expressions are valid in the local Lorentz frame of the detector, so we can raise and lower indices with the flat metric.}
+In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
 Under rotations of the wave frame, they transform through an expression complementary to \eq{htransf},
 \beq \label{eq:Ftransf}
 h_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi + F_\times \sin 2\Delta\psi \, ,
@@ -223,30 +223,49 @@ h_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi + F_\times \sin 2\Delta\psi \, ,
 \beq
 F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi - F_+ \sin 2\Delta\psi \, ,
 \eeq
-ensuring that the observable $h(t)$ is independent of the arbitrary angle $\psi$.
+ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary angle $\psi$.
 
 \subsection{Templated analyses}
 
-In modeling waveforms, it is useful to tie the polarization frame to the geometry of the source.
+In modeling GW waveforms, it is useful to tie the polarization frame to the geometry of the source.
+This is because, although we are free to set our coordinates arbitrarily, we need to make a choice in order to write out explicit expressions for $h_+$ and $h_\times$.
+Standardizing this choice reduces ambiguity, and can simplify expressions.
+
 For a compact binary, it is conventional to compute the polarizations in a frame such that $\hat{x}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes).
 If the spins of the objects are a aligned and the source does not precess, one can use the Einstein field equation to show that, in that frame, $h_+$ and $h_\times$ take the form
-\beq
-h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\theta}) \cos \Phi(t; \vec{\theta}) \, , 
+\beq \label{eq:cbc_p}
+h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\lambda}) \cos \Phi(t; \vec{\lambda}) \, , 
 \eeq
-\beq
-h_+ = 2 \cos \iota\, A(t; R, \vec{\theta}) \sin \Phi(t; \vec{\theta})\, ,
+\beq \label{eq:cbc_c}
+h_\times = 2 \cos \iota\, A(t; R, \vec{\lambda}) \sin \Phi(t; \vec{\lambda})\, ,
 \eeq
-where $A(t; \vec{\theta}) \equiv R  A(t; R, \vec{\theta})$ and $\Phi(t; \vec{\theta})$ are amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\theta}$, which include the component masses, spin vectors.
-The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
-Importantly, for nonprecessing sources the plus and cross polarizations identical up to the inclination factors and a $\pi/2$ phase shift.
+where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$, in this case encoding the characteristic chirping signal.
+The set of parameters $\vec{\lambda}$ include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
+% The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
 
-Having specified $h_+$ and $h_\times$ in this frame determines the values in any other frame via \eq{htransf}.
-Since the waveform model will be prescribed in the specific frame above, we have to measure the polarization angle $\psi$, and we can think of it as a property of the source, rather than an arbitrary frame.
+Equations \eqref{eq:cbc_p} and \eqref{eq:cbc_c} describe an elliptically polarized wave.
+This is a consequence of the geometry of our assumed source, which is symmetric under reflections around the orbital plane.
+The ellipticity is simply the ratio of plus and cross amplitudes in this frame \mi{check sign}
+\beq
+\epsilon = \frac{2 \cos\iota}{1 + \cos^2\iota}\, .
+\eeq
+This reveals that our decision to tie the polarization frame to the line of nodes was a good one: because this preserves the symmetries of the source, it also happens to be aligned with the principal directions of the polarization ellipse.
+
+Having specified $h_+$ and $h_\times$ in this standard source-based frame, we need to determine how that frame itself is oriented with respect to the detectors in order to evaluate \eq{h}.
+This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common reference frame.
+In celestial coordinates, which are suitable for networks of GW detectors on Earth, we can \emph{define} $\psi = 0$ to mean that the line of nodes lies along the celestial North.
+We may then obtain expressions $h_+$ and $h_\times$ for any other $\psi$ via \eq{htransf}.
+In this convention, $\psi$ is identical to the source \emph{position angle}, so we can think of it as a property of the source, rather than an arbitrary parameter orienting our frame.
 However, it is useful to keep in mind that this is a conceptual shortcut.
+
+\mi{identify 3 different angles: $\psi$, $\Psi$, $\theta$}
 
 \subsection{Untemplated analyses}
 
-If we do not have a model for the source, we can simply parametrize.
+In certain analyses, it is not possible or useful to explicitly tie the polarization frame to properties of the source.
+This is usually the case in unmodeled analyses, which are note tailored to any specific source.
+\mi{also true for ringdowns, if we don't have a model for the amplitudes}
+In that case, the model for $h_+$ and $h_\times$ can be defined in any arbitrary frame.
 
 \section{Nontensor polarizations}
 
