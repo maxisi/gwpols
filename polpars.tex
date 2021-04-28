@@ -185,7 +185,7 @@ h_\times  & - h_+ & 0  \\
 \end{pmatrix} ,
 \eeq
 where the plus ($+$) and cross ($\times$) polarizations are implicit functions of the retarded time, $t - R/c$, to be specified by the source dynamics and the distance $R$ to the source.
-It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, with respect to the polarization tensors
+It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, making use of the polarization tensors
 \beq
 e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
 \eeq
@@ -204,7 +204,7 @@ h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, ,
 \beq
 h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, .
 \eeq
-Therefore, $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $s=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
+This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $s=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
 In fact, we coud easily rewrite \eq{hij} in terms of the corresponding right and left handed polarizations, $h_{R/L} = h_+ \pm i h_\times$, which are invariant under $\psi$ rotations (concretely, eigenvectors of the helicity operator with eigenvalues $\pm 2$).
 %Although a choice of $\psi$ is required to prescribe $h_+$ and $h_\times$ in \eq{hij}, the form of this equation is invariant under changes in $\psi$.
 
@@ -227,9 +227,10 @@ ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary an
 
 \subsection{Templated analyses}
 
-In modeling GW waveforms, it is useful to tie the polarization frame to the geometry of the source.
-This is because, although we are free to set our coordinates arbitrarily, we need to make a choice in order to write out explicit expressions for $h_+$ and $h_\times$.
-Standardizing this choice reduces ambiguity, and can simplify expressions.
+Although the orientation of $\hat{x}$ is arbitrary, this does not imply that all possibilities are equally convenient. 
+In fact, in modeling GW waveforms, it is useful to tie the polarization frame to the geometry of the source.
+This is because we need to make a definite choice of frame orientation in order to write out explicit expressions for $h_+$ and $h_\times$, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
+Furthermore, standardizing the choice reduces ambiguity when communicating results.
 
 For a compact binary, it is conventional to compute the polarizations in a frame such that $\hat{x}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes).
 If the spins of the objects are a aligned and the source does not precess, one can use the Einstein field equation to show that, in that frame, $h_+$ and $h_\times$ take the form
@@ -239,8 +240,9 @@ h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\lambda}) \cos \Phi(t; \vec{\la
 \beq \label{eq:cbc_c}
 h_\times = 2 \cos \iota\, A(t; R, \vec{\lambda}) \sin \Phi(t; \vec{\lambda})\, ,
 \eeq
-where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$, in this case encoding the characteristic chirping signal.
-The set of parameters $\vec{\lambda}$ include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
+where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$.
+These parameters include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
+In this case, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda}$ functions encode the characteristic ``chirping'' of compact-binary inspiral, but this fact is irrelevant for our purposes.
 % The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
 
 Equations \eqref{eq:cbc_p} and \eqref{eq:cbc_c} describe an elliptically polarized wave.
