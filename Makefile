@@ -14,7 +14,8 @@ TEXFILES = $(NAME).tex
 # make is make all by default (first rule in Makefile)
 all: $(NAME).pdf
 
-LATEXMK = latexmk -pdf -pdflatex="pdflatex -shell-escape -interaction=nonstopmode"
+LATEXMK = latexmk -pdf -pdflatex
+# LATEXMK = latexmk -pdf -pdflatex="pdflatex -shell-escape -interaction=nonstopmode"
 
 view: $(NAME).pdf
 	open $(NAME).pdf

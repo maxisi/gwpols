@@ -22,7 +22,7 @@
 % Add 'draft' option to mark overfull boxes with black boxes
 % Add 'showpacs' option to make PACS codes appear
 % Add 'showkeys' option to make keywords appear
-\documentclass[aps,prd,twocolumn,superscriptaddress,preprintnumbers,floatfix,nofootinbib]{revtex4-2}
+\documentclass[aps,prd,twocolumn,superscriptaddress,preprintnumbers,floatfix,nofootinbib]{revtex4}
 %\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-1}
 %\documentclass[aps,prl,reprint,groupedaddress]{revtex4-1}
 
@@ -234,24 +234,37 @@ Furthermore, standardizing the choice reduces ambiguity when communicating resul
 
 For a compact binary, it is conventional to compute the polarizations in a frame such that $\hat{x}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes).
 If the spins of the objects are a aligned and the source does not precess, one can use the Einstein field equation to show that, in that frame, $h_+$ and $h_\times$ take the form
-\beq \label{eq:cbc_p}
+\begin{subequations}
+\beq
 h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\lambda}) \cos \Phi(t; \vec{\lambda}) \, , 
+\label{eq:cbc_p} 
 \eeq
-\beq \label{eq:cbc_c}
+\beq
 h_\times = 2 \cos \iota\, A(t; R, \vec{\lambda}) \sin \Phi(t; \vec{\lambda})\, ,
+\label{eq:cbc_c}
 \eeq
+\end{subequations}
 where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$.
 These parameters include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
-In this case, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda}$ functions encode the characteristic ``chirping'' of compact-binary inspiral, but this fact is irrelevant for our purposes.
+In this case, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ functions encode the characteristic ``chirping'' of compact-binary inspiral, but this fact is irrelevant for our purposes.
 % The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
 
 Equations \eqref{eq:cbc_p} and \eqref{eq:cbc_c} describe an elliptically polarized wave.
-This is a consequence of the geometry of our assumed source, which is symmetric under reflections around the orbital plane.
-The ellipticity is simply the ratio of plus and cross amplitudes in this frame \mi{check sign}
+This is a consequence of the geometry of our assumed source, which is symmetric under reflections over the orbital plane.
+In full analogy to electromagnetic waves, a GW is elliptically polarized if there exists \emph{some} choice of $\hat{x}$ such that the two polarizations can be written as
+\beq
+h_+ = A(t) \cos \Phi(t) \, ,
+\eeq
+\beq
+h_\times = \epsilon A(t) \sin \Phi(t)\, ,
+\eeq
+for some constant ellipticity $-1 \leq \epsilon \leq 1$, and arbitrary amplitude and phasing functions $A(t)$ and $\Phi(t)$.
+In the case of the inspiral signal above, it is immediately clear that Eq.~\eqref{eq:cbc_p} .The ellipticity is simply the ratio of plus and cross amplitudes in this frame \mi{check sign}
 \beq
 \epsilon = \frac{2 \cos\iota}{1 + \cos^2\iota}\, .
 \eeq
 This reveals that our decision to tie the polarization frame to the line of nodes was a good one: because this preserves the symmetries of the source, it also happens to be aligned with the principal directions of the polarization ellipse.
+Crucially, this does not mean that an elliptical wave will take this form for \emph{any} choice of $\hat{h}$; in fact, it will not unless $\epsilon=\pm1$
 
 Having specified $h_+$ and $h_\times$ in this standard source-based frame, we need to determine how that frame itself is oriented with respect to the detectors in order to evaluate \eq{h}.
 This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common reference frame.
