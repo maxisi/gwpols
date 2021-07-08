@@ -175,7 +175,7 @@ It is important to understand the priors implied by the choice of parametrizatio
 \subsection{Polarizations}
 
 In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations.
-Their local effect can be encoded in a driving matrix $h_{ij}$ corresponding to the transverse-traceless part of the metric perturbation.
+Their local effect can be encoded in a driving matrix $h_{ij}$ encoding the transverse-traceless part of the metric perturbation.
 In a frame with $z$-axis along the direction of propagation, we can write this as
 \beq \label{eq:hij}
 (h_{ij}) = \begin{pmatrix}
@@ -196,7 +196,7 @@ where $\hat{x}$ and $\hat{y}$ are orthonormal vectors that, with $\hat{z}$ form 
 
 Equation \eqref{eq:hij} presumes a specific choice of frame orientation that defines the basis in which the $h_{ij}$ components are written.
 Although $\hat{k}$ must be parallel to the (spatial) wave vector $\vec{k}$ for \eq{hij} to hold, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
-This is usually specified by an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator).
+This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator).
 With some trigonometry, it is straightforward to show that a rotation by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
 \beq \label{eq:htransf}
 h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, ,
@@ -218,7 +218,7 @@ For a differential-arm detector with arms pointing along unit vectors $\hat{X}$ 
 In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
 Under rotations of the wave frame, they transform through an expression complementary to \eq{htransf},
 \beq \label{eq:Ftransf}
-h_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi + F_\times \sin 2\Delta\psi \, ,
+F_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi + F_\times \sin 2\Delta\psi \, ,
 \eeq
 \beq
 F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi - F_+ \sin 2\Delta\psi \, ,
@@ -228,13 +228,13 @@ ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary an
 \subsection{Templated analyses}
 
 Although the orientation of $\hat{x}$ is arbitrary, this does not imply that all possibilities are equally convenient. 
-In fact, in modeling GW waveforms, it is useful to tie the polarization frame to the geometry of the source.
-This is because we need to make a definite choice of frame orientation in order to write out explicit expressions for $h_+$ and $h_\times$, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
-Furthermore, standardizing the choice reduces ambiguity when communicating results.
+In fact, when modeling GW waveforms, it is useful to tie the polarization frame to the geometry of the source.
+This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we are required to make \emph{some} definite choice of frame orientation and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
+Furthermore, standardizing the choice reduces ambiguity when reporting $h_{+/\times}$.
 
 For a compact binary, it is conventional to compute the polarizations in a frame such that $\hat{x}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes).
-If the spins of the objects are a aligned and the source does not precess, one can use the Einstein field equation to show that, in that frame, $h_+$ and $h_\times$ take the form
-\begin{subequations}
+If the spins of the objects are a aligned and the source does not precess, one can show that, in that frame, $h_+$ and $h_\times$ for the dominant ($\ell=|m|=2$) moment of the radiation take the form
+\begin{subequations} \label{eq:cbc}
 \beq
 h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\lambda}) \cos \Phi(t; \vec{\lambda}) \, , 
 \label{eq:cbc_p} 
@@ -246,28 +246,31 @@ h_\times = 2 \cos \iota\, A(t; R, \vec{\lambda}) \sin \Phi(t; \vec{\lambda})\, ,
 \end{subequations}
 where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$.
 These parameters include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
-In this case, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ functions encode the characteristic ``chirping'' of compact-binary inspiral, but this fact is irrelevant for our purposes.
+In the case of an inspiraling compact binary, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ functions encode a characteristic ``chirping'' signal, but this fact is irrelevant to discussions about polarization structure.
 % The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
 
-Equations \eqref{eq:cbc_p} and \eqref{eq:cbc_c} describe an elliptically polarized wave.
+Equations \eqref{eq:cbc} describe an elliptically polarized wave.
 This is a consequence of the geometry of our assumed source, which is symmetric under reflections over the orbital plane.
-In full analogy to electromagnetic waves, a GW is elliptically polarized if there exists \emph{some} choice of $\hat{x}$ such that the two polarizations can be written as
+In full analogy to electromagnetic waves, a GW is elliptically polarized if there exists \emph{some} wave-frame orientation in which the two polarizations can be written as
+\begin{subequations} \label{eq:ellip_frame}
 \beq
 h_+ = A(t) \cos \Phi(t) \, ,
 \eeq
 \beq
 h_\times = \epsilon A(t) \sin \Phi(t)\, ,
 \eeq
+\end{subequations}
 for some constant ellipticity $-1 \leq \epsilon \leq 1$, and arbitrary amplitude and phasing functions $A(t)$ and $\Phi(t)$.
-In the case of the inspiral signal above, it is immediately clear that Eq.~\eqref{eq:cbc_p} .The ellipticity is simply the ratio of plus and cross amplitudes in this frame \mi{check sign}
+In the case of an inspiral signal, our choice of $\hat{x}$ in Eq.~\eqref{eq:cbc} makes it immediately clear that this is an elliptically polarized wave with ellipticity
 \beq
-\epsilon = \frac{2 \cos\iota}{1 + \cos^2\iota}\, .
+\epsilon = \frac{2 \cos\iota}{1 + \cos^2\iota}\, ,
 \eeq
-This reveals that our decision to tie the polarization frame to the line of nodes was a good one: because this preserves the symmetries of the source, it also happens to be aligned with the principal directions of the polarization ellipse.
-Crucially, this does not mean that an elliptical wave will take this form for \emph{any} choice of $\hat{h}$; in fact, it will not unless $\epsilon=\pm1$
+that is, just the ratio of plus and cross amplitudes in this frame.
+This fact reveals that our decision to tie the polarization frame to the line of nodes was a good one: because this choice of wave-frame orientation preserves the symmetries of the source, it also happens to be aligned with the principal directions of the polarization ellipse.
+Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} for \emph{any} arbitrary choice of $\hat{x}$---only signals with $\epsilon=\pm1$ will take the form of Eq.~\eqref{eq:ellip_frame} irrespective of the wave frame orientation.
 
-Having specified $h_+$ and $h_\times$ in this standard source-based frame, we need to determine how that frame itself is oriented with respect to the detectors in order to evaluate \eq{h}.
-This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common reference frame.
+Having specified $h_+$ and $h_\times$ in the standard source-based frame of Eq.~\eqref{eq:ellip_frame}, we need to determine how that frame itself is oriented with respect to the detectors in order to evaluate \eq{h}.
+This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common basis.
 In celestial coordinates, which are suitable for networks of GW detectors on Earth, we can \emph{define} $\psi = 0$ to mean that the line of nodes lies along the celestial North.
 We may then obtain expressions $h_+$ and $h_\times$ for any other $\psi$ via \eq{htransf}.
 In this convention, $\psi$ is identical to the source \emph{position angle}, so we can think of it as a property of the source, rather than an arbitrary parameter orienting our frame.
