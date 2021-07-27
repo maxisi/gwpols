@@ -175,7 +175,7 @@ It is important to understand the priors implied by the choice of parametrizatio
 \subsection{Polarizations}
 \label{sec:pol}
 
-In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations.
+In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations (e.g., \cite{Thorne:1987af}).
 Their local effect can be encoded in a driving matrix $h_{ij}$ representing the transverse-traceless part of the metric perturbation.
 In a frame with $z$-axis along the direction of propagation, we can write this as
 \beq \label{eq:hij}
@@ -185,7 +185,7 @@ h_\times  & - h_+ & 0  \\
 0 & 0 & 0
 \end{pmatrix} ,
 \eeq
-where the plus ($+$) and cross ($\times$) polarizations are implicit functions of the retarded time, $t - R/c$, to be specified by the source dynamics and the distance $R$ to the source.
+where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, are implicit functions of the retarded time, $t - R/c$, to be specified by the source dynamics and the distance $R$ to the source.
 It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, making use of the polarization tensors
 \beq
 e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
@@ -194,11 +194,11 @@ e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
 e^\times_{ij} \equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
 \eeq
 where $\hat{x}$ and $\hat{y}$ are orthonormal vectors that, with $\hat{z}$, form a right-handed Cartesian basis.
-We call this the \emph{wave frame}.
+We will call this the \emph{wave frame}.
 
 Equation \eqref{eq:hij} presumes a specific choice of frame orientation that defines the basis in which the $h_{ij}$ components are written.
-Although $\hat{k}$ must be parallel to the (spatial) wave vector $\vec{k}$ for \eq{hij} to hold, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
-This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator).
+Although \eq{hij} presumes $\hat{k}$ is parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
+This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
 With some trigonometry, it is straightforward to show that a rotation by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
 \beq \label{eq:htransf}
 h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, ,
@@ -232,7 +232,7 @@ ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary an
 
 \begin{figure}
 \includegraphics[width=0.6\columnwidth]{ellipse}
-\caption{Polarization ellipse. At any given time, the phasor of an elliptically polarized signal lies on an ellipse with some amplitude $A(t)$ and ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi \equiv \Phi(t=0)$, determines the initial location of the phasor within the ellipse. (Adapted from \cite{Isi:2021iql}.)}
+\caption{Polarization ellipse. At any given time, the phasor of an elliptically polarized signal lies on an ellipse with some instantaneous amplitude $A(t)$ and time-independent ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi \equiv \Phi(t=0)$, determines the initial location of the phasor within the ellipse. (Adapted from \cite{Isi:2021iql}.)}
 \label{fig:ellipse}
 \end{figure}
 
@@ -275,22 +275,22 @@ h_\times = \epsilon A(t) \sin \Phi(t)\, ,
 for some time-independent ellipticity $-1 \leq \epsilon \leq 1$, and arbitrary amplitude and phasing functions $A(t)$ and $\Phi(t)$.
 Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} unless $\hat{x}$ is chosen appropriately; only signals with $\epsilon=\pm1$ will take  this simplified form irrespective of the wave frame orientation.
 
-When working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a natural orientation of the wave frame, unique up to $\pi$ rotations.
-If we adopt $\theta\hspace{-4pt} \mod{\pi /2} =0$ as a convention (or, equivalently, $\theta=\pi$), then the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation.
-However, the two angles are conceptually distinct in general.
+When working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
+If we adopt $\theta =0$ as a convention (or, equivalently, $\theta=\pi$), then we \emph{define} our wave frame to lie along the principal axes of the polarization ellipse and, thus, the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation.
+However, the two angles $\theta$ and $\psi$ are conceptually distinct (in particular, $\theta$ is defined only for elliptically polarized waves, whereas $\psi$ is always defined).
 
 
 \subsubsection*{Nonprecessing compact binaries}
 
-The above discussion shows that, although the orientation of $\hat{x}$ is arbitrary, not all allowed possibilities are equally convenient. 
-In fact, when modeling GW waveforms, it is useful to tie the polarization frame to the geometry of the source.
+The above discussion shows that, although the orientation of $\hat{x}$ is arbitrary, not all allowed possibilities are equally convenient in general. 
+In fact, when modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
 This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we are required to make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
-For example, that was the case in going from Eq.~\eqref{eq:ellip} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to construct our wave frame so that it always lies along the principal directions of the polarization ellipse (i.e., $\theta=0$).
-This is the case for a nonprecessing compact binary coalescence (CBC).
+For example, that was the case in going from Eq.~\eqref{eq:ellip} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
+This is the case for nonprecessing compact binary coalescences (CBCs).
 % Furthermore, standardizing the choice reduces ambiguity when reporting $h_{+/\times}$.
 
-For a compact binary, it is conventional to compute the polarizations in a frame such that $\hat{x}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes).
-If the spins of the objects are aligned and the source does not precess, one can show that, in that frame, $h_+$ and $h_\times$ for the dominant ($\ell=|m|=2$) moment of the radiation take the form
+For a compact binary, it is conventional to compute the polarizations in a frame such that $\hat{y}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes), $\hat{z}$ is parallel to the wave vector as required by \eq{hij}, and $\hat{x}$ completes the triad \cite{LALSuite:source}.
+If the spins of the objects are aligned and the source does not precess, one can show that, in that frame, $h_+$ and $h_\times$ for the dominant ($\ell=|m|=2$) moment of the radiation take the form (e.g., \cite{Poisson2014})
 \begin{subequations} \label{eq:cbc}
 \beq
 h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\lambda}) \cos \Phi(t; \vec{\lambda}) \, , 
@@ -313,38 +313,45 @@ In the case of an inspiraling compact binary, the $A(t; R, \vec{\lambda})$ and $
 \end{figure}
 
 By comparison with Eq.~\eqref{eq:ellip_frame}, it is clear that Eq.~\eqref{eq:cbc} describe an elliptically polarized wave in a frame aligned with the polarization ellipse.
-This is a consequence of the geometry of our assumed source, which is symmetric under reflections over the orbital plane.
+This is a consequence of the geometry of our assumed source, which is symmetric under reflections over the orbital plane: by choosing $\hat{y}$ to lie along the line of nodes, we also aligned our wave frame with the GW polarization ellipse.
 Since our frame is already aligned  with the ellipse, we may just read off the ellipticity from Eq.~\eqref{eq:cbc} as
 \beq \label{eq:ellip_cosi}
 \epsilon = \frac{2 \cos\iota}{1 + \cos^2\iota}\, ,
-\eeq?
+\eeq
 which is just the ratio of cross to plus amplitudes in this frame, and varies between $-1 \leq \epsilon \leq 1$ as required (Fig.~\ref{fig:ellip_cosi}).
 This fact reveals that our decision to tie the polarization frame to the line of nodes was a good one: because this choice of wave-frame orientation preserves the symmetries of the source, it also happens to be aligned with the principal directions of the polarization ellipse.
 
 Having specified $h_+$ and $h_\times$ in the standard source-based frame of Eq.~\eqref{eq:ellip_frame}, we need to determine how that frame itself is oriented with respect to the detectors in order to evaluate \eq{h}.
-This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common basis.
-In celestial coordinates, which are suitable for networks of ground-based GW detectors, we can \emph{define} $\psi = 0$ to mean that the line of nodes lies along the celestial North.
-We may then obtain expressions $h_+$ and $h_\times$ for any other $\psi$ via \eq{htransf}.
+This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common basis, usually equatorial celestial coordinates for ground-based detectors.
+If we use the standard convention for compact binaries described above (i.e., $\hat{y}$ along the line of nodes), then $\psi = 0$ must mean that the line of nodes points towards the celestial South \cite{LALSuite:source} (equivalently, the projection of orbital angular momentum is parallel to the celestial equator), see  Fig.~\ref{fig:waveframe}.
+Knowing this, we can obtain expressions for $h_+$ and $h_\times$ in the celestial frame by measuring the angle from the line of ascending nodes to the celestial south and using \eq{htransf} with $\Delta\psi = \psi - 0 =\psi$.
 
-In this convention, $\psi$ is identical to the source \emph{position angle} $\Psi$, as would be defined in regular astronomy.
+In this convention, $\psi$ is identical to the \emph{position angle} of the source's orbital angular momentum $\Psi$; more generally, $\Psi = \psi \red{+} \Omega \red{-} \pi/2$ in terms of the longitude of the ascending node $\Omega$ with $\hat{x}$ as the origin of longitude ($\Omega = \pi/2$ in the default LIGO-Virgo convention) \cite{LALSuite:source}.
 In fact, for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of our polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
 We can then think of this angle as a property of the source to be measured from our data, rather than an arbitrary parameter orienting our frame.
-Although this equivocation ($\psi = \Psi = \theta$) vastly simplifies analysis, it is useful to keep in mind that the three angles are conceptually distinct.
+Although this equivocation vastly simplifies analysis, it is useful to keep in mind that the three angles are conceptually distinct.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{waveframe}
+\caption{Waveframe for a nonprecessing CBC source.}
+\label{fig:waveframe}
+\end{figure}
+
 
 If the component spins are not (anti)aligned with the orbital angular momentum, the spins and the orbital plane will both precess.
 As a consequence, the system will not be reflection symmetric and the GW signal will not be elliptically polarized overall.
-In that case, it is still conventional to tie $\hat{x}$ to the source.
+In that case, it is still conventional to tie $\hat{x}$ to the source, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
 
 \subsection{Generic signals}
 
 Although not all sources can be expected to be elliptically polarized, any signal can be modeled as a superposition of elliptically polarized components.
 For example, this is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number elliptically-polarized sine-Gaussians.%
-\footnote{\textsc{BayesWave} can currently operate in two configurations: one which assumes the overall signal is elliptically polarized, and another in which it does not.}
+\footnote{\textsc{BayesWave} can currently operate in two configurations: one which assumes the overall signal is elliptically polarized, and another which does not.}
 It is also the case, in ringdown studies that fit the later portion of a compact binary signal as a superposition of elliptically polarized damped sinusoids \cite{Isi:2021iql}.
 
 In analyses like these, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with (or information about the likely source is purposely disregarded).
 In that case, the model for $h_+$ and $h_\times$ can be defined in any arbitrary wave frame.
-A common choice is to simply set $\psi = 0$ in the standard coordinates described in Sec.~\ref{sec:pol}, i.e., \red{with $\hat{x}$ pointing towards the celestial North}.
+A common choice is to simply set $\psi = 0$ in the standard coordinates described in Sec.~\ref{sec:pol}, i.e., \red{with $\hat{y}$ pointing towards the celestial South} (Fig.~\ref{fig:waveframe}).
 Having done so, all information regarding polarization orientation will be encoded in the $\theta$ parameter of Fig.~\ref{fig:ellipse}, with one value per elliptical mode in the decomposition.
 
 Generalizing Eq.~\eqref{eq:ellip}, the decomposition of a signal into an elliptical basis will look like
@@ -383,7 +390,7 @@ Different theories may also allow vector modes, x and y (also known as $v_1$ and
 
 Equation \eqref{eq:polarizations} presumes a specific choice of frame orientation.
 For $h_{ij}$ to take this simple form, it is necessary for the $z$ axis to be parallel to the (spatial) wave vector $\vec{k}$.
-However, there is no restriction regarding the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$; this is usually specified by an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator).
+However, there is no restriction regarding the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$; this is usually specified by an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
 The tensor, vector and scalar components of $h_{ij}$ are constructed to be invariant under $\psi$ rotations, with spin-weights $s=2$, $s=1$ and $s=0$ respectively.
 This means that, after redefinitions
 \beq
