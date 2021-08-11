@@ -342,14 +342,17 @@ If the component spins are not (anti)aligned with the orbital angular momentum, 
 As a consequence, the system will not be reflection symmetric and the GW signal will not be elliptically polarized overall.
 In that case, it is still conventional to tie $\hat{x}$ to the source, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
 
+In summary, we can identify three conceptually distinct Cartesian frames: a wave frame that determines the principal directions along which we \emph{define} the effect of a plus vs cross wave; for an elliptical wave, an intrinsic polarization frame, representing the principal directions of the polarization ellipse; and a source frame, aligned with the symmetries of the source, or otherwise anchored to some defining feature of it; all of these can be specified in some astronomical frame, like ecliptic celestial coordinates.
+For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always aligned with the polarization frame.
+
 \subsection{Generic signals}
 
 Although not all sources can be expected to be elliptically polarized, any signal can be modeled as a superposition of elliptically polarized components.
-For example, this is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number elliptically-polarized sine-Gaussians.%
+For example, that is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number of elliptically-polarized sine-Gaussians.%
 \footnote{\textsc{BayesWave} can currently operate in two configurations: one which assumes the overall signal is elliptically polarized, and another which does not.}
 It is also the case, in ringdown studies that fit the later portion of a compact binary signal as a superposition of elliptically polarized damped sinusoids \cite{Isi:2021iql}.
 
-In analyses like these, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with (or information about the likely source is purposely disregarded).
+In analyses like these, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with (or they purposely disregard source orientation information).
 In that case, the model for $h_+$ and $h_\times$ can be defined in any arbitrary wave frame.
 A common choice is to simply set $\psi = 0$ in the standard coordinates described in Sec.~\ref{sec:pol}, i.e., \red{with $\hat{y}$ pointing towards the celestial South} (Fig.~\ref{fig:waveframe}).
 Having done so, all information regarding polarization orientation will be encoded in the $\theta$ parameter of Fig.~\ref{fig:ellipse}, with one value per elliptical mode in the decomposition.
@@ -357,54 +360,116 @@ Having done so, all information regarding polarization orientation will be encod
 Generalizing Eq.~\eqref{eq:ellip}, the decomposition of a signal into an elliptical basis will look like
 \begin{subequations} \label{eq:ellip_sum}
 \begin{equation} \label{eq:ellip_sum_p}
-h_+ = \sum A(t; \lambda_i) \left[\cos \Phi(t; \lambda_i) \cos \theta_i - \epsilon_i \sin \Phi(t;\lambda_i) \sin\theta_i \right] ,
+h_+ = \sum A_i(t) \left[\cos \Phi_i(t) \cos \theta_i - \epsilon_i \sin \Phi_i(t) \sin\theta_i \right] ,
 \end{equation}
 \begin{equation} \label{eq:ellip_sum_c}
-h_\times = \sum A(t;\lambda_i) \left[ \cos \Phi(t; \lambda_i) \sin \theta_i + \epsilon_i \sin \Phi(t; \lambda_i) \cos\theta_i \right] ,
+h_\times = \sum A_i(t) \left[ \cos \Phi_i(t) \sin \theta_i + \epsilon_i \sin \Phi_i(t) \cos\theta_i \right] ,
 \end{equation}
 \end{subequations}
+with $i$ indexing the elliptically polarized components.
+The $A_i(t)$ and $\Phi_i(t)$ control the evolution of the polarization ellipses over time, including initial amplitude and phase $A_i \equiv A_i(t=0)$ and $\phi_i \equiv \Phi_i(t=0)$.
+For example, in the case of ringdown templates, $A_i(t) = A_i \exp(-\gamma_i t)$ and $\Phi_i(t) = \omega_i t + \phi_i$ for some set of complex-valued frequencies $\tilde{\omega}_i = \omega_i - i\gamma_i$ to be inferred from the data together with polarization parameters $\{ A_i, \epsilon_i, \theta_i, \phi_i\}$.
 
+With the polarization functions parametrized as in Eq.~\eqref{eq:ellip_sum}, the detector output will be
+\beq
+h = F_+(\alpha, \delta; \psi=0) h_+ + F_\times(\alpha, \delta; \psi=0) h_\times, 
+\eeq
+where the source sky location is parametrized by its right ascension $\alpha$ and declination $\delta$.
+The (arbitrary) choice to set $\psi=0$ in the antenna pattern evaluation is legitimate because that degree of freedom is fully degenerate with the $\theta_i$ via Eq.~\eqref{eq:Ftransf}, as detailed in Appendix A of \cite{Isi:2017equ}.
+Concretely, a change from $\psi = 0$ to $\psi= \Delta\psi$ can be written
+\begin{align}
+h = &\left[ F_+(\psi=0) \cos 2\Delta\psi + F_\times(\psi=0) \sin 2\Delta\psi \right] h_+ +\nonumber\\
+&\left[F_\times(\psi=0) \cos 2\Delta\psi - F_+(\psi=0)\sin 2\Delta\psi\right] h_\times, 
+\end{align}
+
+\begin{align}
+h = & \left[h_+ \cos 2\Delta\psi - h_\times \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
+&\left[h_\times \cos 2\Delta\psi + h_+ \sin 2\Delta\psi\right] F_\times(\psi=0), 
+\end{align}
+
+\begin{widetext}
+\begin{align}
+h = & \left[A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \cos 2\Delta\psi - A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
+&\left[A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \cos 2\Delta\psi + A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \sin 2\Delta\psi\right] F_\times(\psi=0), 
+\end{align}
+\end{widetext}
+
+\begin{widetext}
+\begin{align}
+h = & A(t) \left[\cos \Phi(t) \left[ \cos 2\Delta\psi\cos \theta - \sin \theta \sin 2\Delta\psi  \right] -  \epsilon  \sin \Phi(t)\left[ \cos 2\Delta\psi \sin\theta+ \cos\theta   \sin 2\Delta\psi\right] \right] F_+(\psi=0) +\nonumber\\
+&\left[A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \cos 2\Delta\psi + A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \sin 2\Delta\psi\right] F_\times(\psi=0), 
+\end{align}
+\end{widetext}
 
 In both cases, the elliptical decomposition is convenient because we do not expect the spectral content of the two polarizations to be totally independent.
 This is true because (1) the same physical processes that generate plus also generate cross, and (2) even if, in principle, there could exist a source for which plus and cross were totally morphologically independent in \emph{some} frame (i.e., for some unknown choice of $\psi$ specific to each source) the plus and cross polarizations measured by generic observers would be linear combinations of the two independent components and, therefore, would look spectrally similar.
 
 \section{Nontensor polarizations}
 
-\newcommand{\hx}{h_{\rm x}}
-\newcommand{\hy}{h_{\rm y}}
-\newcommand{\hb}{h_{\rm b}}
-\newcommand{\hlon}{h_{\rm l}}
+\newcommand{\xsym}{\ensuremath{\rm x}}
+\newcommand{\ysym}{{\rm y}}
+\newcommand{\bsym}{{\rm b}}
+\newcommand{\lsym}{{\rm l}}
+\newcommand{\hx}{h_{\xsym}}
+\newcommand{\hy}{h_{\ysym}}
+\newcommand{\hb}{h_{\bsym}}
+\newcommand{\hlon}{h_{\lsym}}
 
-In GR, there exist two propagating degrees of freedom, corresponding to two independent GW polarizations.
-Their local effect can be encoded in a spatial driving matrix $h_{ij}$ that, in a frame with $z$-axis along the direction of propagation, we can write as
-\beq \label{eq:polarizations}
+Metric theories beyond GR may allow up to six independent polarizations, including the two tensor $+$ and $\times$ modes expected in GR.
+The discussion above generalizes easily to include those additional modes, starting with an enhanced version of the driving matrix in Eq.~\eqref{eq:hij},
+\beq \label{eq:hij_ngr}
 (h_{ij}) = \begin{pmatrix}
 \hb + h_+ & h_\times  & \hx  \\
 h_\times  & \hb - h_+ & \hy  \\
 \hx    & \hy    & \hlon
 \end{pmatrix} ,
 \eeq
-with $h_p$, for $p$ in $\{+,\, \times,\, {\rm x},\, {\rm y},\, {\rm b},\, {\rm l}\}$, unspecified functions of time representing the six possible polarization degrees of freedom.
-In GR, only the two tensor polarizations, plus ($+$) and cross ($\times$), are allowed, so that $\hx=\hy=\hb=\hlon=0$.
-Different theories may also allow vector modes, x and y (also known as $v_1$ and $v_2$), or scalar modes, breathing (b) and longitudinal (l).
+where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) modes.%
+\footnote{There are other possible normalizations in use in the literature, e.g., $\hlon \to \sqrt{2} \hlon$.}
+Equivalently, as above, we can write this as a weighted sum over polarization tensors,
+\beq
+h_{ij} = \sum_p h_p\, e^p_{ij} \, ,
+\eeq
+for $p$ in $\{+,\times, \xsym, \ysym, \bsym, \lsym\}$, and polarization tensors $e^p_{ij}$ defined implicitly by comparison with Eq.~\eqref{eq:hij_ngr}.
+Generally, the $h_p$ are functions of time, as for plus and cross above.
 
-Equation \eqref{eq:polarizations} presumes a specific choice of frame orientation.
-For $h_{ij}$ to take this simple form, it is necessary for the $z$ axis to be parallel to the (spatial) wave vector $\vec{k}$.
-However, there is no restriction regarding the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$; this is usually specified by an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
-The tensor, vector and scalar components of $h_{ij}$ are constructed to be invariant under $\psi$ rotations, with spin-weights $s=2$, $s=1$ and $s=0$ respectively.
-This means that, after redefinitions
+The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR modes exhibit under rotations.
+A rotation by $\Delta \psi$ around the line of propagation transforms the two vector amplitudes by
+\begin{subequations} \label{eq:htransf_v}
 \beq
-h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi 
+\hx \rightarrow \hx' = \hx \cos \Delta \psi - \hy \sin \Delta\psi \, ,
 \eeq
 \beq
-h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi 
+\hy \rightarrow \hy' = \hx \cos \Delta \psi + \hy \sin \Delta\psi \, ,
+\eeq
+\end{subequations}
+reflecting the fact that these are the components of a spin-weight $s=1$ field (hence ``vector'').
+On the other hand, the two scalar modes are invariant under rotations around $z$,
+\begin{subequations} \label{eq:htransf_s}
+\beq
+\hb \rightarrow \hb' = \hb\, ,
 \eeq
 \beq
-\hx \rightarrow \hy' = \hx \cos \Delta \psi - \hy \sin \Delta\psi 
+\hlon \rightarrow \hlon' = \hlon\, ,
 \eeq
+\end{subequations}
+revealing that these behave as spin-weight $s=0$ fields (hence ``scalar'').
+
+With similar assumptions as in the GR case, the detector output can be written as a sum over polarizations weighted by antenna patterns,
+\beq \label{eq:h_ngr}
+h(t) = \sum_p F_p(\alpha, \delta; \psi)\, h_p(t)\, ,
+\eeq
+with $F_p \equiv D^{ij} e^p_{ij}$ as before. 
+
+As it turns out, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
+In terms of the breathing and longitudinal modes above, this is
 \beq
-\hy \rightarrow \hx' = \hy \cos \Delta \psi + \hx \sin \Delta\psi 
+h_{\rm s} \equiv \hb - 2\hlon\, ,
 \eeq
+which is the only scalar mode measurable by existing detectors.
+Equivalently, the antenna patterns for the breathing and longitudinal modes are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
+Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the specific morphology of the $\hb(t)$ and $\hlon(t)$ functions.
+For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing mode---so that the sum is over only five polarizations instead of six.
 
 \section{Conclusion}
 
