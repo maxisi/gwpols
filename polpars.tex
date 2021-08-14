@@ -279,6 +279,70 @@ When working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_fram
 If we adopt $\theta =0$ as a convention (or, equivalently, $\theta=\pi$), then we \emph{define} our wave frame to lie along the principal axes of the polarization ellipse and, thus, the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation.
 However, the two angles $\theta$ and $\psi$ are conceptually distinct (in particular, $\theta$ is defined only for elliptically polarized waves, whereas $\psi$ is always defined).
 
+% where the source sky location is parametrized by its right ascension $\alpha$ and declination $\delta$.
+
+As for any GW, the detector output for an elliptically polarized wave will be given by \eq{h}.
+In this case, however, \eq{Ftransf} implies that $\psi$ and $\theta$ are degenerate, as detailed in Appendix A of \cite{Isi:2017equ}.
+Concretely, for a fixed sky location, a change from $\psi \to \psi' = \psi + \Delta\psi$ in the antenna patterns can be absorbed by a change in $\theta$ because the expression
+\beq
+h = F_+(\psi + \Delta \psi) h_+ + F_\times(\psi + \Delta \psi) h_\times 
+\eeq
+can be expanded by means of \eq{Ftransf} to read
+\begin{align}
+h = &\left[ F_+(\psi) \cos 2\Delta\psi + F_\times(\psi) \sin 2\Delta\psi \right] h_+\, + \\
+ &\left[F_\times(\psi) \cos 2\Delta\psi - F_+(\psi)\sin 2\Delta\psi\right] h_\times \, .
+\end{align}
+Plugging in the expressions for an elliptical wave in \eq{ellip} and taking advantage of trigonometric identities, this can be rearranged into
+\begin{widetext}
+\begin{align}
+h = & A(t) \left[\cos \Phi(t) \cos(\theta + 2\Delta\psi) -  \epsilon \sin \Phi(t)\sin(\theta + 2\Delta\psi) \right] F_+(\psi) +\nonumber\\
+&A(t) \left[\cos \Phi(t) \sin(\theta + 2\Delta\psi) + \epsilon \sin \Phi(t) \cos(\theta + 2\Delta\psi) \right] F_\times(\psi), 
+\end{align}
+\end{widetext}
+which is the same result we would have obtained by replacing $\theta \to \theta' = \theta + 2 \Delta\psi$ in \eq{ellip}.
+This implies that, analyses that allow $\theta$ to vary freely should avoid degeneracies by fixing $\psi$ to an arbitrary a priori value, and viceversa.
+
+
+% \begin{alignat}{2}
+% h &= &&\left. F_+(\psi + \Delta \psi) h_+ + F_\times(\psi + \Delta \psi) h_\times\right.  \\
+%   &= &&\left[ F_+(\psi) \cos 2\Delta\psi + F_\times(\psi) \sin 2\Delta\psi \right] h_+\, + \\
+% & &&\left[F_\times(\psi) \cos 2\Delta\psi - F_+(\psi)\sin 2\Delta\psi\right] h_\times, 
+% \end{alignat}
+The (arbitrary) choice to set $\psi=0$ in the antenna pattern evaluation is legitimate because that degree of freedom is fully degenerate with the $\theta_i$ via Eq.~\eqref{eq:Ftransf}, as detailed in Appendix A of \cite{Isi:2017equ}.
+Concretely, a change from $\psi = 0$ to $\psi= \Delta\psi$ can be written as
+\begin{align}
+h = &\left[ F_+(\psi=0) \cos 2\Delta\psi + F_\times(\psi=0) \sin 2\Delta\psi \right] h_+\, +\nonumber\\
+&\left[F_\times(\psi=0) \cos 2\Delta\psi - F_+(\psi=0)\sin 2\Delta\psi\right] h_\times, 
+\end{align}
+suppressing the sky location dependence for simplicity.
+For a given m
+
+\begin{align}
+h = & \left[h_+ \cos 2\Delta\psi - h_\times \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
+&\left[h_\times \cos 2\Delta\psi + h_+ \sin 2\Delta\psi\right] F_\times(\psi=0), 
+\end{align}
+
+% \begin{widetext}
+% \begin{align}
+% h = & \left[A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \cos 2\Delta\psi - A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
+% &\left[A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \cos 2\Delta\psi + A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \sin 2\Delta\psi\right] F_\times(\psi=0), 
+% \end{align}
+% \end{widetext}
+
+\begin{widetext}
+\begin{align}
+h = & A(t) \left[\cos \Phi(t) \left[ \cos 2\Delta\psi\cos \theta - \sin \theta \sin 2\Delta\psi  \right] -  \epsilon  \sin \Phi(t)\left[ \cos 2\Delta\psi \sin\theta+ \cos\theta \sin 2\Delta\psi\right] \right] F_+(\psi=0) +\nonumber\\
+&A(t) \left[\cos \Phi(t) \left[\sin \theta \cos 2\Delta\psi + \cos \theta \sin 2\Delta\psi \right] + \epsilon \sin \Phi(t) \left[\cos\theta \cos 2\Delta\psi - \sin\theta \sin 2\Delta\psi \right] \right] F_\times(\psi=0), 
+\end{align}
+% \end{widetext}
+
+% \begin{widetext}
+\begin{align}
+h = & A(t) \left[\cos \Phi(t) \cos(\theta + 2\Delta\psi) -  \epsilon \sin \Phi(t)\sin(\theta + 2\Delta\psi) \right] F_+(\psi=0) +\nonumber\\
+&A(t) \left[\cos \Phi(t) \sin(\theta + 2\Delta\psi) + \epsilon \sin \Phi(t) \cos(\theta + 2\Delta\psi) \right] F_\times(\psi=0), 
+\end{align}
+\end{widetext}
+
 
 \subsubsection*{Nonprecessing compact binaries}
 
@@ -369,37 +433,6 @@ h_\times = \sum A_i(t) \left[ \cos \Phi_i(t) \sin \theta_i + \epsilon_i \sin \Ph
 with $i$ indexing the elliptically polarized components.
 The $A_i(t)$ and $\Phi_i(t)$ control the evolution of the polarization ellipses over time, including initial amplitude and phase $A_i \equiv A_i(t=0)$ and $\phi_i \equiv \Phi_i(t=0)$.
 For example, in the case of ringdown templates, $A_i(t) = A_i \exp(-\gamma_i t)$ and $\Phi_i(t) = \omega_i t + \phi_i$ for some set of complex-valued frequencies $\tilde{\omega}_i = \omega_i - i\gamma_i$ to be inferred from the data together with polarization parameters $\{ A_i, \epsilon_i, \theta_i, \phi_i\}$.
-
-With the polarization functions parametrized as in Eq.~\eqref{eq:ellip_sum}, the detector output will be
-\beq
-h = F_+(\alpha, \delta; \psi=0) h_+ + F_\times(\alpha, \delta; \psi=0) h_\times, 
-\eeq
-where the source sky location is parametrized by its right ascension $\alpha$ and declination $\delta$.
-The (arbitrary) choice to set $\psi=0$ in the antenna pattern evaluation is legitimate because that degree of freedom is fully degenerate with the $\theta_i$ via Eq.~\eqref{eq:Ftransf}, as detailed in Appendix A of \cite{Isi:2017equ}.
-Concretely, a change from $\psi = 0$ to $\psi= \Delta\psi$ can be written
-\begin{align}
-h = &\left[ F_+(\psi=0) \cos 2\Delta\psi + F_\times(\psi=0) \sin 2\Delta\psi \right] h_+ +\nonumber\\
-&\left[F_\times(\psi=0) \cos 2\Delta\psi - F_+(\psi=0)\sin 2\Delta\psi\right] h_\times, 
-\end{align}
-
-\begin{align}
-h = & \left[h_+ \cos 2\Delta\psi - h_\times \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
-&\left[h_\times \cos 2\Delta\psi + h_+ \sin 2\Delta\psi\right] F_\times(\psi=0), 
-\end{align}
-
-\begin{widetext}
-\begin{align}
-h = & \left[A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \cos 2\Delta\psi - A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
-&\left[A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \cos 2\Delta\psi + A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \sin 2\Delta\psi\right] F_\times(\psi=0), 
-\end{align}
-\end{widetext}
-
-\begin{widetext}
-\begin{align}
-h = & A(t) \left[\cos \Phi(t) \left[ \cos 2\Delta\psi\cos \theta - \sin \theta \sin 2\Delta\psi  \right] -  \epsilon  \sin \Phi(t)\left[ \cos 2\Delta\psi \sin\theta+ \cos\theta   \sin 2\Delta\psi\right] \right] F_+(\psi=0) +\nonumber\\
-&\left[A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right]  \cos 2\Delta\psi + A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] \sin 2\Delta\psi\right] F_\times(\psi=0), 
-\end{align}
-\end{widetext}
 
 In both cases, the elliptical decomposition is convenient because we do not expect the spectral content of the two polarizations to be totally independent.
 This is true because (1) the same physical processes that generate plus also generate cross, and (2) even if, in principle, there could exist a source for which plus and cross were totally morphologically independent in \emph{some} frame (i.e., for some unknown choice of $\psi$ specific to each source) the plus and cross polarizations measured by generic observers would be linear combinations of the two independent components and, therefore, would look spectrally similar.
