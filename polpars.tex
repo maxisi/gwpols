@@ -170,9 +170,9 @@ It is useful to parametrize gravitational-wave (GW) polarizations in different w
 Here I outline some useful alternatives and show how they are related.
 It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
 
-\section{General relativity}
+\section{Polarization angles}
 
-\subsection{Polarizations}
+\subsection{Wave-frame and the angle $\psi$}
 \label{sec:pol}
 
 In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations (e.g., \cite{Thorne:1987af}).
@@ -227,7 +227,7 @@ F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi - F_+ \sin 2\Delta\p
 \eeq
 ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary angle $\psi$.
 
-\subsection{Elliptically polarized signals}
+\subsection{Elliptical waves and the angle $\theta$}
 \label{sec:ellip}
 
 \begin{figure}
@@ -236,7 +236,7 @@ ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary an
 \label{fig:ellipse}
 \end{figure}
 
-In full analogy to electromagnetic waves, a GW is elliptically polarized if the phasor describing the signal lies always on an ellipse in the $h_+$ vs $h_\times$ plane (Fig.~\ref{fig:ellipse}).
+In full analogy to electromagnetic waves, a GW is elliptically polarized if the phasor describing the signal lies always on an ellipse in the $h_+$ vs $h_\times$ plane (Fig.~\ref{fig:ellipse}), where $h_+$ and $h_\times$ play the role of linear polarizations.
 That means that, regardless of wave-frame orientation (equivalently, choice of $\psi$), the signal can always be put in the form
 \begin{subequations} \label{eq:ellip}
 \begin{equation} \label{eq:ellip_p}
@@ -247,6 +247,7 @@ h_\times = A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\the
 \end{equation}
 \end{subequations}
 where $A(t)$ and $\Phi(t)$ are some amplitude and phase functions, and where the ellipticity $-1 \leq \epsilon \leq 1$ and angle $0 \leq \theta \leq \pi$ control the shape and orientation of the polarization ellipse.
+The linear polarizations are recovered for $\epsilon = 0$, with $\theta=0, \pi$ yielding a fully plus-polarized wave and $\theta=\pm \pi/2$ a fully cross-polarized wave.
 
 % \begin{equation} \label{eq:h_ellip_lmn_plus}
 % h_+ = h_c\, \cos \theta - \epsilon h_s\, \sin\theta\, ,
@@ -262,7 +263,8 @@ where $A(t)$ and $\Phi(t)$ are some amplitude and phase functions, and where the
 % h_s \equiv A(t)\, \sin \Phi(t) \, .
 % \end{equation}
 
-The expression for an elliptical wave simplifies if we orient $\hat{x}$ such that the plus and cross axes are aligned with the principal components of the ellipse, so that $\theta = 0$.
+Equations \eqref{eq:ellip} presume some specific choice of $\psi$ that defines the meaning of plus vs cross by orienting $\hat{x}$, as explained in the previous section.
+The expression for an elliptical wave simplifies if we choose that angle such that the plus and cross axes are aligned with the principal components of the ellipse, so that $\theta = 0$.
 With such a choice of wave frame (equivalently, choice of $\psi$), the above becomes just
 \begin{subequations} \label{eq:ellip_frame}
 \beq
@@ -272,7 +274,7 @@ h_+ = A(t) \cos \Phi(t) \, ,
 h_\times = \epsilon A(t) \sin \Phi(t)\, ,
 \eeq
 \end{subequations}
-for some time-independent ellipticity $-1 \leq \epsilon \leq 1$, and arbitrary amplitude and phasing functions $A(t)$ and $\Phi(t)$.
+for some arbitrary amplitude and phasing functions $A(t)$ and $\Phi(t)$.
 Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} unless $\hat{x}$ is chosen appropriately; only signals with $\epsilon=\pm1$ will take  this simplified form irrespective of the wave frame orientation.
 
 When working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
@@ -300,7 +302,7 @@ h = & A(t) \left[\cos \Phi(t) \cos(\theta + 2\Delta\psi) -  \epsilon \sin \Phi(t
 \end{align}
 \end{widetext}
 which is the same result we would have obtained by replacing $\theta \to \theta' = \theta + 2 \Delta\psi$ in \eq{ellip}.
-This implies that, analyses that allow $\theta$ to vary freely should avoid degeneracies by fixing $\psi$ to an arbitrary a priori value, and viceversa.
+This implies that elliptical-wave analyses that allow $\theta$ to vary freely should avoid degeneracies by fixing $\psi$ to an arbitrary a priori value (typically $\psi=0$), or viceversa.
 
 
 % \begin{alignat}{2}
@@ -308,19 +310,18 @@ This implies that, analyses that allow $\theta$ to vary freely should avoid dege
 %   &= &&\left[ F_+(\psi) \cos 2\Delta\psi + F_\times(\psi) \sin 2\Delta\psi \right] h_+\, + \\
 % & &&\left[F_\times(\psi) \cos 2\Delta\psi - F_+(\psi)\sin 2\Delta\psi\right] h_\times, 
 % \end{alignat}
-The (arbitrary) choice to set $\psi=0$ in the antenna pattern evaluation is legitimate because that degree of freedom is fully degenerate with the $\theta_i$ via Eq.~\eqref{eq:Ftransf}, as detailed in Appendix A of \cite{Isi:2017equ}.
-Concretely, a change from $\psi = 0$ to $\psi= \Delta\psi$ can be written as
-\begin{align}
-h = &\left[ F_+(\psi=0) \cos 2\Delta\psi + F_\times(\psi=0) \sin 2\Delta\psi \right] h_+\, +\nonumber\\
-&\left[F_\times(\psi=0) \cos 2\Delta\psi - F_+(\psi=0)\sin 2\Delta\psi\right] h_\times, 
-\end{align}
-suppressing the sky location dependence for simplicity.
-For a given m
+% The (arbitrary) choice to set $\psi=0$ in the antenna pattern evaluation is legitimate because that degree of freedom is fully degenerate with the $\theta_i$ via Eq.~\eqref{eq:Ftransf}, as detailed in Appendix A of \cite{Isi:2017equ}.
+% Concretely, a change from $\psi = 0$ to $\psi= \Delta\psi$ can be written as
+% \begin{align}
+% h = &\left[ F_+(\psi=0) \cos 2\Delta\psi + F_\times(\psi=0) \sin 2\Delta\psi \right] h_+\, +\nonumber\\
+% &\left[F_\times(\psi=0) \cos 2\Delta\psi - F_+(\psi=0)\sin 2\Delta\psi\right] h_\times, 
+% \end{align}
+% suppressing the sky location dependence for simplicity.
 
-\begin{align}
-h = & \left[h_+ \cos 2\Delta\psi - h_\times \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
-&\left[h_\times \cos 2\Delta\psi + h_+ \sin 2\Delta\psi\right] F_\times(\psi=0), 
-\end{align}
+% \begin{align}
+% h = & \left[h_+ \cos 2\Delta\psi - h_\times \sin 2\Delta\psi \right] F_+(\psi=0) +\nonumber\\
+% &\left[h_\times \cos 2\Delta\psi + h_+ \sin 2\Delta\psi\right] F_\times(\psi=0), 
+% \end{align}
 
 % \begin{widetext}
 % \begin{align}
@@ -329,27 +330,26 @@ h = & \left[h_+ \cos 2\Delta\psi - h_\times \sin 2\Delta\psi \right] F_+(\psi=0)
 % \end{align}
 % \end{widetext}
 
-\begin{widetext}
-\begin{align}
-h = & A(t) \left[\cos \Phi(t) \left[ \cos 2\Delta\psi\cos \theta - \sin \theta \sin 2\Delta\psi  \right] -  \epsilon  \sin \Phi(t)\left[ \cos 2\Delta\psi \sin\theta+ \cos\theta \sin 2\Delta\psi\right] \right] F_+(\psi=0) +\nonumber\\
-&A(t) \left[\cos \Phi(t) \left[\sin \theta \cos 2\Delta\psi + \cos \theta \sin 2\Delta\psi \right] + \epsilon \sin \Phi(t) \left[\cos\theta \cos 2\Delta\psi - \sin\theta \sin 2\Delta\psi \right] \right] F_\times(\psi=0), 
-\end{align}
-% \end{widetext}
-
 % \begin{widetext}
-\begin{align}
-h = & A(t) \left[\cos \Phi(t) \cos(\theta + 2\Delta\psi) -  \epsilon \sin \Phi(t)\sin(\theta + 2\Delta\psi) \right] F_+(\psi=0) +\nonumber\\
-&A(t) \left[\cos \Phi(t) \sin(\theta + 2\Delta\psi) + \epsilon \sin \Phi(t) \cos(\theta + 2\Delta\psi) \right] F_\times(\psi=0), 
-\end{align}
-\end{widetext}
+% \begin{align}
+% h = & A(t) \left[\cos \Phi(t) \left[ \cos 2\Delta\psi\cos \theta - \sin \theta \sin 2\Delta\psi  \right] -  \epsilon  \sin \Phi(t)\left[ \cos 2\Delta\psi \sin\theta+ \cos\theta \sin 2\Delta\psi\right] \right] F_+(\psi=0) +\nonumber\\
+% &A(t) \left[\cos \Phi(t) \left[\sin \theta \cos 2\Delta\psi + \cos \theta \sin 2\Delta\psi \right] + \epsilon \sin \Phi(t) \left[\cos\theta \cos 2\Delta\psi - \sin\theta \sin 2\Delta\psi \right] \right] F_\times(\psi=0), 
+% \end{align}
+% % \end{widetext}
+% 
+% % \begin{widetext}
+% \begin{align}
+% h = & A(t) \left[\cos \Phi(t) \cos(\theta + 2\Delta\psi) -  \epsilon \sin \Phi(t)\sin(\theta + 2\Delta\psi) \right] F_+(\psi=0) +\nonumber\\
+% &A(t) \left[\cos \Phi(t) \sin(\theta + 2\Delta\psi) + \epsilon \sin \Phi(t) \cos(\theta + 2\Delta\psi) \right] F_\times(\psi=0), 
+% \end{align}
+% \end{widetext}
+% 
 
+\subsection{Compact binaries and the angle $\Psi$}
 
-\subsubsection*{Nonprecessing compact binaries}
-
-The above discussion shows that, although the orientation of $\hat{x}$ is arbitrary, not all allowed possibilities are equally convenient in general. 
-In fact, when modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
-This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we are required to make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
-For example, that was the case in going from Eq.~\eqref{eq:ellip} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
+When modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
+This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we must make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
+That was the case in going from Eq.~\eqref{eq:ellip} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
 This is the case for nonprecessing compact binary coalescences (CBCs).
 % Furthermore, standardizing the choice reduces ambiguity when reporting $h_{+/\times}$.
 
@@ -367,7 +367,7 @@ h_\times = 2 \cos \iota\, A(t; R, \vec{\lambda}) \sin \Phi(t; \vec{\lambda})\, ,
 \end{subequations}
 where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$.
 These quantities include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
-In the case of an inspiraling compact binary, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ functions encode a characteristic ``chirping'' signal, but this fact is irrelevant to discussions about polarization structure.
+In the case of an inspiraling compact binary, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ functions encode a characteristic ``chirping'' signal, but this fact is irrelevant to discussions of polarization structure.
 % The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
 
 \begin{figure}
@@ -401,15 +401,16 @@ Although this equivocation vastly simplifies analysis, it is useful to keep in m
 \label{fig:waveframe}
 \end{figure}
 
-
 If the component spins are not (anti)aligned with the orbital angular momentum, the spins and the orbital plane will both precess.
 As a consequence, the system will not be reflection symmetric and the GW signal will not be elliptically polarized overall.
 In that case, it is still conventional to tie $\hat{x}$ to the source, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
 
 In summary, we can identify three conceptually distinct Cartesian frames: a wave frame that determines the principal directions along which we \emph{define} the effect of a plus vs cross wave; for an elliptical wave, an intrinsic polarization frame, representing the principal directions of the polarization ellipse; and a source frame, aligned with the symmetries of the source, or otherwise anchored to some defining feature of it; all of these can be specified in some astronomical frame, like ecliptic celestial coordinates.
-For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always aligned with the polarization frame.
+For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always align with the polarization frame.
 
-\subsection{Generic signals}
+\section{Modeling generic signals}
+
+\subsection{Elliptical decomposition}
 
 Although not all sources can be expected to be elliptically polarized, any signal can be modeled as a superposition of elliptically polarized components.
 For example, that is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number of elliptically-polarized sine-Gaussians.%
@@ -436,6 +437,14 @@ For example, in the case of ringdown templates, $A_i(t) = A_i \exp(-\gamma_i t)$
 
 In both cases, the elliptical decomposition is convenient because we do not expect the spectral content of the two polarizations to be totally independent.
 This is true because (1) the same physical processes that generate plus also generate cross, and (2) even if, in principle, there could exist a source for which plus and cross were totally morphologically independent in \emph{some} frame (i.e., for some unknown choice of $\psi$ specific to each source) the plus and cross polarizations measured by generic observers would be linear combinations of the two independent components and, therefore, would look spectrally similar.
+
+\subsection{Relation to spherical harmonics}
+
+Alternatively, we can write
+\begin{align}
+h_+ - i h_\times = \sum_\ell \sum_{m>0} &\left[ H_{\ell+m}(t)\, {}_{-2}Y_{\ell +m} (\iota, \varphi) + \right. \nonumber \\
+&\left. H_{\ell-m}(t)\, {}_{-2}Y_{\ell -m} (\iota, \varphi) \right]
+\end{align}
 
 \section{Nontensor polarizations}
 
