@@ -522,9 +522,11 @@ For the special case of the dominant $\ell=|m|=2$ mode, this reduces to the expr
 
 \section{Coordinate transformations}
 
-Although visually useful, the elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ is not always ideal for sampling purposes due to degeneracies intrinsic to those parameters.
+Although visually useful, the manifestly-elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ is not always ideal for sampling purposes due to degeneracies intrinsic to those parameters.
 For instance, the angles $\theta$ and $\phi$ become totally degenerate when $\epsilon = \pm 1$; there is also a degeneracy due to $\theta \to \theta + \pi$ and $\epsilon \to - \epsilon$.
 We will focus on a single elliptical component as a standin for any individual term in the sum of Eq.~\eqref{eq:ellip_sum}.
+We assume the amplitude could potentially subsume any (slow) time dependence present implied by $A(t)$ in Eq.~\eqref{eq:ellip}.
+
 
 \subsection{Circular components}
 
@@ -578,7 +580,7 @@ This was done, e.g., for one of the ringdown analyses in \cite{LIGOScientific:20
 
 \subsection{Linear components}
 
-Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity and parametrizing as
+Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity and parametrize it as
 \begin{subequations} \label{eq:Aphi}
 \begin{equation}
 h_+ = A_+ \cos (\omega t - \phi_+)\, ,
@@ -587,8 +589,8 @@ h_+ = A_+ \cos (\omega t - \phi_+)\, ,
 h_\times = A_\times \cos (\omega t - \phi_\times) \, ,
 \end{equation}
 \end{subequations}
-where $A_{+/\times}$ could potentially subsume any (slow) time dependence present implied by $A(t)$ in Eq.~\eqref{eq:ellip}, and $\phi_{+\times}$ are initial phases for each polarization.
-This mimics the parametrization adopted by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}.
+where $A_{+/\times}$ and $\phi_{+\times}$ are initial amplitudes and phases for each polarization.
+Structurally, this mimics the parametrization adopted by \textsc{BayesWave} \cite{Cornish:2020dwh}, with the replacement $A_{+/\times} \to A_{+/\times} \exp\left(-t^2/\tau^2\right)$ and $\phi_{+/\times} \to -\phi_{+/\times}$ for some characteristic time $\tau$ for each wavelet.
 
 \newcommand{\xp}{x_{+}}
 \newcommand{\xc}{x_{\times}}
@@ -604,8 +606,8 @@ This mimics the parametrization adopted by \textsc{BayesWave} \cite{Cornish:2014
 % \newcommand{\yc}{A_{\times,s}}
 % \newcommand{\ypc}{A_{+/\times,s}}
 
-The above equations also represent an elliptically polarized mode.
-The transformation into the circular-basis parameters from the previous section is given by
+The above equations also represent an elliptically polarized mode, albeit in a different parametrization than Eq.~\eqref{eq:ellip}.
+To see this, first note that we can map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section through the transformation
 \begin{equation} \label{eq:Aphi_to_Cphi}
 \begin{cases}
 A_R = \frac{1}{2}\sqrt{A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)} \\
@@ -624,9 +626,10 @@ where, to simplify the notation, we have defined the cosine and sine quadratures
 \end{equation}
 \end{subequations}
 Together with Eq.~\eqref{eq:Cphi_to_Aellip}, this allows us to compute $\{A, \epsilon, \theta, \phi\}$ as a function of $\{A_+, A_\times, \phi_+, \phi_\times\}$.
-This transformation is clearly less straightforward than those for circular components in the previous section, with amplitude and phase parameters mixing into each other.
-This is because this coordinate transformation encode the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
+This transformation is clearly less straightforward than those for the circular components in the previous section, with amplitude and phase parameters mixing into each other.
+This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
 
+\mi{I'm not sure this discussion actually helps build any intuition}
 To build some intuition for the above transformation, begin with Eq.~\eqref{eq:Cphi} and rearrange it using basic trigonometric identities to obtain
 \begin{widetext}
 \begin{align} \label{eq:Cphi_interm}
@@ -661,16 +664,41 @@ A_{+/\times} = \sqrt{\xpc^2 + \ypc^2} \, ,
 \end{equation}
 \end{subequations}
 
-The Jacobian to between the linear and elliptical bases can be shown to be
-\begin{subequations}
+\begin{figure}
+\includegraphics[width=\columnwidth]{jac_Aellip_Aphi}
+\caption{Contour levels for the Jacobian relating the $\{A, \epsilon, \theta, \phi\}$ and $\{A_+, A_\times, \phi_+, \phi_\times\}$ parametrizations, Eq.~\eqref{eq:jac_Aphi}, as a function of the wave ellipticity $\epsilon$ and ellipse-orientation angle $\theta$ for a fixed value of $A$.}
+\label{fig:jac_Aphi}
+\end{figure}
+
+The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple when expressed in terms of the first set of parameters,
+\begin{subequations} \label{eq:jac_Aphi}
 \begin{align}
 J_2 &\equiv \left| \frac{\partial(A, \epsilon, \theta, \phi)}{\partial(A_+, A_\times, \phi_+, \phi_\times)}\right| \nonumber \\
 &= 2 A_+ A_\times/ \left[ \sqrt{A_+^4 + A_\times^4 + 2 A_+^2 A_\times^2 \cos 2(\phi_\times - \phi_+)} \right. \nonumber \\
 & \times \left( \sqrt{A_+^2 + A_\times^2 -2 A_+ A_\times \sin(\phi_\times-\phi_+)} \right. \nonumber \\
 &\left.\left. +  \sqrt{A_+^2 + A_\times^2 +2 A_+ A_\times \sin(\phi_\times-\phi_+)}\right)\right]\\
-&= \frac{1}{2 A} \sqrt{\left(\frac{1 + \epsilon^2}{1 - \epsilon^2}\right)^2 - \cos^2 2\theta}
+&= \frac{1}{2 A} \sqrt{\left(\frac{1 + \epsilon^2}{1 - \epsilon^2}\right)^2 - \cos^2 2\theta} \, .
 \end{align}
 \end{subequations}
+The $J_2 \propto 1/A$ dependence of this Jacobian implies that an analysis with uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities will implicitly favor high signal amplitudes.
+Additionally, Fig.~\ref{fig:jac_Aphi} shows the dependence of this Jacobian as a function of $\epsilon$ and $\theta$ for a fixed (nonzero) value of $A$.
+The Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that purely circular polarizations will be heavily disfavored if we apply uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities.
+
+\begin{figure*}
+\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_A}
+\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_epsilon}\\
+\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_theta}
+\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_phi}
+\caption{Marginal distributions imposed on the polarization ellipse parameters $\{A, \epsilon, \theta, \phi\}$ of Fig.~\ref{fig:ellipse} by drawing uniformly in the linear polarization parameters $\{A_+, A_\times, \phi_+, \phi_\times\}$ parameters of Eq.~\eqref{eq:Aphi} from $0\leq A_{+/\times} \leq 1$ and $0 \leq \phi_{+/\times} \leq 2\pi$, and constraining to $A \leq 1$.
+The resulting distribution is favors large amplitudes (top left), favors linear polarizations (top right), and is anisotropic (bottom row).
+}
+\label{fig:jac_Aphi_pars}
+\end{figure*}
+
+That is indeed the behavior we find in Fig.~\ref{fig:jac_Aphi_pars} when sampling uniformly from $0\leq A_{+/\times} \leq 1$ and $0 \leq \phi_{+/\times} \leq 2\pi$, with an additional constraint that $A \leq 1$ for the resulting overall signal amplitude.
+Enforcing this extra condition ensures that isotropy is preserved for the cosine and sine quadratures of the $+$ and $\times$ polarizations (we return to this below).
+
+The strong preference for 
 
 \subsection{Linear polarization quadratures}
 

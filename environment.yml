@@ -1,0 +1,23 @@
+name: polpars
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - arviz
+  - astropy
+  - corner
+  - h5py
+  - ipython
+  - jupyterlab
+  - lalsuite
+  - matplotlib
+  - numpy
+  - pandas
+  - pip
+  - pystan=2.19
+  - python=3.8
+  - scipy
+  - seaborn
+  - numexpr
+  - parse
+  - dask
