@@ -522,9 +522,19 @@ For the special case of the dominant $\ell=|m|=2$ mode, this reduces to the expr
 
 \section{Coordinate transformations}
 
-Although visually useful, the manifestly-elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ is not always ideal for sampling purposes due to degeneracies intrinsic to those parameters.
-For instance, the angles $\theta$ and $\phi$ become totally degenerate when $\epsilon = \pm 1$; there is also a degeneracy due to $\theta \to \theta + \pi$ and $\epsilon \to - \epsilon$.
-We will focus on a single elliptical component as a standin for any individual term in the sum of Eq.~\eqref{eq:ellip_sum}.
+Although conceptually insightful, the manifestly-elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ contains multiple degeneracies that make it less than ideal for sampling purposes.
+For instance, the angles $\theta$ and $\phi$ become totally degenerate when $\epsilon = \pm 1$; another degeneracy appears as $\theta \to \theta + \pi$ and $\epsilon \to - \epsilon$.
+To circumvent this, we may switch to a more suitable parametrization in the sampling process, and then translate the result back into $\{A, \epsilon, \theta, \phi\}$ for interpretation.
+In that case, we can still specify a prior in terms of the elliptical quantities by making use of a Jacobian.
+Concretely, if we parametrize our analysis in terms of some alternative set of parameters $\vec{\xi}$, we can impose some prior distribution $p({A, \epsilon, \theta, \phi})$, defined in the space of elliptical quantities, by choosing a corresponding prior for the $\vec{\xi}$ quantities such that
+\begin{equation}
+p \left( \vec{\xi} \right) = p \left( A, \epsilon, \theta, \phi \right) \left| \frac{\partial \{A, \epsilon, \theta, \phi\}}{\partial \vec{\xi}} \right| ,
+\end{equation}
+where the last factor $J \equiv | \partial (A, \epsilon, \theta, \phi)/\partial \vec{\xi} |$ is the determinant of the Jacobian matrix.
+
+
+In this section, we will consider three different parametrizations of an elliptical wave, and present the Jacobians relating them to the $\{A, \epsilon, \theta, \phi\}$ parametrization.
+We will focus on a single elliptical component as a standin for any individual term in the sum of Eq.~\eqref{eq:ellip_sum}, so that the results are trivially generalizable to decompositions of GWs with arbitrary polarizations.
 We assume the amplitude could potentially subsume any (slow) time dependence present implied by $A(t)$ in Eq.~\eqref{eq:ellip}.
 
 

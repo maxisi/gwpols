@@ -1,23 +1,76 @@
-\documentclass[tikz]{standalone}
-\usepackage{tikz}
+\documentclass[tikz,dvipsnames]{standalone}
+%\usepackage{tikz}
+\usepackage{tkz-euclide}
 \usetikzlibrary{angles,quotes}
+
 \begin{document}
+
+\def \Apx{4}
+\def \Apy{1}
+\def \Acx{2}
+\def \Acy{3}
+
+\def \xshift{0}
+\def \yshift{-4}
+
+% \def \pcolor{Orange}
+% \def \ccolor{RoyalBlue}
+% \def \rcolor{PineGreen}
+
+\def \pcolor{red}
+\def \ccolor{NavyBlue}
+\def \rcolor{PineGreen}
+
 \begin{tikzpicture}%[> = stealth]
 \coordinate (o) at (0,0);
-\coordinate (c) at (2,4);
-\coordinate (p) at (4,2);
-
 \coordinate (x) at (2,0);
 \coordinate (y) at (0,2);
 
-%\draw[gray,step=1cm] (0,0) grid +(9cm,6cm);
-\draw[blue] pic[draw,angle radius=1.8cm,"$-\phi_\times$" shift={(8mm,8mm)}] {angle=x--o--c};
-\draw[red] pic[draw,angle radius=1cm,"$-\phi_+$" shift={(7mm,1mm)}] {angle=x--o--p};
+\coordinate (p) at (\Apx, \Apy);
+\coordinate (c) at (\Acy, \Acy);
+\coordinate (ic) at (-\Acy, \Acx);
+\coordinate (r) at (\Apx - \Acy, \Apy + \Acx);
+\coordinate (l) at (\Apx + \Acy, \Apy - \Acx);
 
-\draw[ultra thick,red, ->]  (o) -- node[below right] {\Large $\vec{A}_+$} (p);
-\draw[ultra thick,blue,->]  (o) -- node[above left] {\Large $\vec{A}_\times$} (c);
+\coordinate (o2) at (\xshift,\yshift);
+\coordinate (x2) at (2+\xshift,\yshift);
+\coordinate (y2) at (\xshift,2+\yshift);
+
+\coordinate (p2) at (\Apx+\xshift, \Apy+\yshift);
+\coordinate (c2) at (\Acy+\xshift, \Acy+\yshift);
+\coordinate (ic2) at (-\Acy+\xshift, \Acx+\yshift);
+\coordinate (r2) at (\Apx - \Acy+\xshift, \Apy + \Acx+\yshift);
+\coordinate (l2) at (\Apx + \Acy+\xshift, \Apy - \Acx+\yshift);
+
+%%%%%
+
+\tkzMarkRightAngle[draw=\ccolor!50,fill=\ccolor!25](c,o,ic)
 
 \draw[thin,black, ->]  (o) -- node[below] {$x$} (x);
 \draw[thin,black,->]   (o) -- node[left] {$y$} (y);
+
+%\draw[gray,step=1cm] (0,0) grid +(9cm,6cm);
+\draw[\ccolor] pic[draw,angle radius=1.8cm,"$-\phi_\times$" shift={(8mm,8mm)}] {angle=x--o--c};
+\draw[\pcolor] pic[draw,angle radius=1cm,"$-\phi_+$" shift={(8mm,1mm)}] {angle=x--o--p};
+
+\draw[ultra thick,\pcolor, ->]  (o) -- node[below right] {\Large $\vec{A}_+$} (p);
+\draw[ultra thick,\ccolor,->]  (o) -- node[above left] {\Large $\vec{A}_\times$} (c);
+\draw[ultra thick,\ccolor!50,->]  (o) -- node[below left] {\Large $i\vec{A}_\times$} (ic);
+
+%%%%%%%%
+
+\draw[thin,black, ->]  (o2) -- node[below] {$x$} (x2);
+\draw[thin,black,->]   (o2) -- node[left] {$y$} (y2);
+
+\draw[\rcolor] pic[draw,angle radius=0.7cm,"$\phi_\times -\phi_+ +\pi/2$" shift={(-16mm,0mm)},fill=\rcolor!50] {angle=r2--p2--o2};
+
+\draw[ultra thick,\ccolor!50,->]  (o2) -- node[below left] {} (ic2);
+%\draw[ultra thick,\ccolor!50,->]  (p2) -- node[above right] {\Large $i\vec{A}_\times$} (r2);
+\draw[ultra thick,\pcolor, ->]  (o2) -- node[below right] {\Large $\vec{A}_+$} (p2);
+
+\draw[ultra thick,\rcolor,->]  (o2) -- node[label={[shift={(-0.4,0.3)}]{\Large $\vec{A}_R$}}] {} (r2);
+\draw[thick,dashed,gray,-]  (p2) -- node[above right] {} (r2);
+\draw[thick,dashed,gray,-]  (ic2) -- node[above right] {} (r2);
+
 \end{tikzpicture}
 \end{document}
