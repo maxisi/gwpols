@@ -639,46 +639,58 @@ Together with Eq.~\eqref{eq:Cphi_to_Aellip}, this allows us to compute $\{A, \ep
 This transformation is clearly less straightforward than those for the circular components in the previous section, with amplitude and phase parameters mixing into each other.
 This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
 
-\mi{I'm not sure this discussion actually helps build any intuition}
-To build some intuition for the above transformation, begin with Eq.~\eqref{eq:Cphi} and rearrange it using basic trigonometric identities to obtain
-\begin{widetext}
-\begin{align} \label{eq:Cphi_interm}
-h_+ - ih_\times &= A_{R}\, e^{-i \left(\omega t - \phi_R \right) } + A_{L}\, e^{i \left(\omega t + \phi_L \right) } \nonumber \\
-&= \left[A_R \cos(\omega t - \phi_R) + A_L \cos(\omega t - \phi_L)\right] - i\left[ A_R \sin (\omega t - \phi_R) - A_L \sin(\omega t - \phi_L)\right]  \nonumber \\
-&= \left[\cos\omega t \left( A_R \cos \phi_R + A_L \cos \phi_L \right) + \sin \omega t \left(A_R \sin \phi_R - A_L \sin \phi_L \right) \right] \nonumber \\
-&\phantom{=} - i \left[\cos\omega t \left(-A_R \sin\phi_R - A_L \sin\phi_L\right) + \sin \omega t \left( A_R \cos\phi_R - A_L \cos\phi_L\right)\right] .
-%&= \left(\xp \cos\omega t + \yp \sin\omega t\right) - i \left(\xc \cos\omega t + \yc \sin\omega t\right)
-\end{align}
-\end{widetext}
-Now note that Eq.~\eqref{eq:Aphi} and the definitions in Eq.~\eqref{eq:xy} imply
-\begin{align}
-h_+ - i h_\times &= \left(\xp \cos\omega t + \yp \sin\omega t\right) \nonumber\\
-&\phantom{=}- i \left(\xc \cos\omega t + \yc \sin\omega t\right) .
-\end{align}
-By direct comparison with Eq.~\eqref{eq:Cphi_interm}, we must then have
-\begin{equation}
-\begin{cases}
-\xp = A_R \cos\phi_R + A_L \cos \phi_L \\
-\yp = A_R \sin\phi_R - A_L \sin \phi_L \\
-\xc = -A_R \sin\phi_R - A_L \sin \phi_L \\
-\yc = A_R \cos\phi_R - A_L \cos \phi_L \\
-\end{cases},
-\end{equation}
-from which Eq.~\eqref{eq:Aphi_to_Cphi} follows after some manipulation taking advantage of the inverse of Eq.~\eqref{eq:xy}, namely
-\begin{subequations}
-\begin{equation}
-A_{+/\times} = \sqrt{\xpc^2 + \ypc^2} \, ,
-\end{equation}
-\begin{equation}
-\phi_{+/\times} = \mathrm{atan2}\left(\ypc, \xpc\right) .
-\end{equation}
-\end{subequations}
-
 \begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aellip_Aphi}
-\caption{Contour levels for the Jacobian relating the $\{A, \epsilon, \theta, \phi\}$ and $\{A_+, A_\times, \phi_+, \phi_\times\}$ parametrizations, Eq.~\eqref{eq:jac_Aphi}, as a function of the wave ellipticity $\epsilon$ and ellipse-orientation angle $\theta$ for a fixed value of $A$.}
-\label{fig:jac_Aphi}
+\includegraphics[width=0.8\columnwidth]{diagram_apac}
+\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed polarization case.
+\emph{Top:} Following Eq.~\eqref{eq:Aphi}, at time $t=0$, the plus and cross phasors, $\vec{A}_{+/\times} = A_{+/\times} \exp(-i \phi_{+/\times})$, subtend angles $-\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, - \ypc \right)$, in terms of the quantities defined in Eq.~\eqref{eq:xy}; the phasor $i\vec{A}_\times$ lies at a right angle from $\vec{A}_\times$, so that it subtends an angle $\pi/2 - \phi_\times$ with respect to the $x$-axis.
+\emph{Bottom:} the right-handed phasor, $\vec{A}_R = \vec{A}_+ + i \vec{A}_\times$, has components $\left(\xp + \yc, -\yc - \xc\right)$ and, therefore, $\phi_R = \mathrm{atan2}( -\yc - \xc, \xp + \yc)$; since the acute angle between $\vec{A}_+$ and $i\vec{A}_\times$ is $\pi - (\pi /2 - \phi_\times) - \phi_+ = \phi_\times - \phi_+ + \pi/2$, the law of cosine implies $A_R^2 = A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)$.
+This explains Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed case (the left-handed one is analogous).
+}
+\label{fig:diag_apac}
 \end{figure}
+
+We can gain some intuition for Eq.~\eqref{eq:Aphi_to_Cphi} by considering the relationship between the phasors associated with either the linear or circular polarizations (Fig.~\ref{fig:diag_apac}).
+At any given time, interpret Eq.~\eqref{eq:Aphi} as the real parts of two complex numbers with magnitudes $A_{+/\times}$ and arguments $\omega t - \phi_{+/\times}$.
+Geometrically, this corresponds to vectors $\vec{A}_{+/\times}$ of magnitude $A_{+/\times}$, subtending angles $\omega t - \phi_{+/\times}$ with respect to the real axis.
+At time $t=0$, then, the two linear polarizations lie at angles $-\phi_{+/\times}$ away from the real axis; equivalently, in terms of the Cartesian components of Eq.~\eqref{eq:xy}, $\vec{A}_{+/\times} = \left(\xpc, - \ypc \right)$.
+The initial state of the right- or left-handed circular polarizations can be similarly represented by phasors $\vec{A}_{R/L}$, related to the linear basis by the definition $h_{R/L} = h_+ \pm i h_\times$ (and hence $\vec{A}_R = \vec{A}_+ \pm i \vec{A}_\times$).
+Using the fact that multiplication by $i$ is equivalent to a rotation by $\pi/2$ in the complex plane, it is straightforward to show that $\vec{A}_{R/L} = \left(\xp \pm \yc, -\yc \mp \xc\right)$, with the top (bottom) signs for R (L).
+Equation~\eqref{eq:Aphi_to_Cphi} then follows trivially from the law of cosines, as illustrated in Fig.~\ref{fig:diag_apac}.
+
+% \mi{I'm not sure this discussion actually helps build any intuition}
+% To build some intuition for the above transformation, begin with Eq.~\eqref{eq:Cphi} and rearrange it using basic trigonometric identities to obtain
+% \begin{widetext}
+% \begin{align} \label{eq:Cphi_interm}
+% h_+ - ih_\times &= A_{R}\, e^{-i \left(\omega t - \phi_R \right) } + A_{L}\, e^{i \left(\omega t + \phi_L \right) } \nonumber \\
+% &= \left[A_R \cos(\omega t - \phi_R) + A_L \cos(\omega t - \phi_L)\right] - i\left[ A_R \sin (\omega t - \phi_R) - A_L \sin(\omega t - \phi_L)\right]  \nonumber \\
+% &= \left[\cos\omega t \left( A_R \cos \phi_R + A_L \cos \phi_L \right) + \sin \omega t \left(A_R \sin \phi_R - A_L \sin \phi_L \right) \right] \nonumber \\
+% &\phantom{=} - i \left[\cos\omega t \left(-A_R \sin\phi_R - A_L \sin\phi_L\right) + \sin \omega t \left( A_R \cos\phi_R - A_L \cos\phi_L\right)\right] .
+% %&= \left(\xp \cos\omega t + \yp \sin\omega t\right) - i \left(\xc \cos\omega t + \yc \sin\omega t\right)
+% \end{align}
+% \end{widetext}
+% Now note that Eq.~\eqref{eq:Aphi} and the definitions in Eq.~\eqref{eq:xy} imply
+% \begin{align}
+% h_+ - i h_\times &= \left(\xp \cos\omega t + \yp \sin\omega t\right) \nonumber\\
+% &\phantom{=}- i \left(\xc \cos\omega t + \yc \sin\omega t\right) .
+% \end{align}
+% By direct comparison with Eq.~\eqref{eq:Cphi_interm}, we must then have
+% \begin{equation}
+% \begin{cases}
+% \xp = A_R \cos\phi_R + A_L \cos \phi_L \\
+% \yp = A_R \sin\phi_R - A_L \sin \phi_L \\
+% \xc = -A_R \sin\phi_R - A_L \sin \phi_L \\
+% \yc = A_R \cos\phi_R - A_L \cos \phi_L \\
+% \end{cases},
+% \end{equation}
+% from which Eq.~\eqref{eq:Aphi_to_Cphi} follows after some manipulation taking advantage of the inverse of Eq.~\eqref{eq:xy}, namely
+% \begin{subequations}
+% \begin{equation}
+% A_{+/\times} = \sqrt{\xpc^2 + \ypc^2} \, ,
+% \end{equation}
+% \begin{equation}
+% \phi_{+/\times} = \mathrm{atan2}\left(\ypc, \xpc\right) .
+% \end{equation}
+% \end{subequations}
 
 The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple when expressed in terms of the first set of parameters,
 \begin{subequations} \label{eq:jac_Aphi}
@@ -693,6 +705,12 @@ J_2 &\equiv \left| \frac{\partial(A, \epsilon, \theta, \phi)}{\partial(A_+, A_\t
 The $J_2 \propto 1/A$ dependence of this Jacobian implies that an analysis with uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities will implicitly favor high signal amplitudes.
 Additionally, Fig.~\ref{fig:jac_Aphi} shows the dependence of this Jacobian as a function of $\epsilon$ and $\theta$ for a fixed (nonzero) value of $A$.
 The Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that purely circular polarizations will be heavily disfavored if we apply uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{jac_Aellip_Aphi}
+\caption{Contour levels for the Jacobian relating the $\{A, \epsilon, \theta, \phi\}$ and $\{A_+, A_\times, \phi_+, \phi_\times\}$ parametrizations, Eq.~\eqref{eq:jac_Aphi}, as a function of the wave ellipticity $\epsilon$ and ellipse-orientation angle $\theta$ for a fixed value of $A$.}
+\label{fig:jac_Aphi}
+\end{figure}
 
 \begin{figure*}
 \includegraphics[width=\columnwidth]{jac_Aellip_Aphi_A}
