@@ -1,5 +1,6 @@
 polpars.pdf
 polparsNotes.bib
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -276,3 +277,6 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+*.DS_Store
+*.ipynb_checkpoints
