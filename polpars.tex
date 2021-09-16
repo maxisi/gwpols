@@ -170,14 +170,11 @@ It is useful to parametrize gravitational-wave (GW) polarizations in different w
 Here I outline some useful alternatives and show how they are related.
 It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
 
-\section{Polarization angles}
-
-\subsection{Wave-frame and the angle $\psi$}
-\label{sec:pol}
+\section{Polarization primer}
 
 In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations (e.g., \cite{Thorne:1987af}).
-Their local effect can be encoded in a driving matrix $h_{ij}$ representing the transverse-traceless part of the metric perturbation.
-In a frame with $z$-axis along the direction of propagation, we can write this as
+Their local effect can be encoded in a driving matrix $h_{ij}$ representing the transverse-traceless part of the metric perturbation, also known as the \emph{gravitational-wave field}.
+In a Cartesian frame with $z$-axis along the direction of propagation, we can write this as
 \beq \label{eq:hij}
 (h_{ij}) = \begin{pmatrix}
 h_+ & h_\times  & 0 \\
@@ -185,16 +182,102 @@ h_\times  & - h_+ & 0  \\
 0 & 0 & 0
 \end{pmatrix} ,
 \eeq
-where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, are implicit functions of the retarded time, $t - R/c$, to be specified by the source dynamics and the distance $R$ to the source.
-It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, making use of the polarization tensors
+where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source.
+It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, making use of the polarization basis tensors
 \beq
 e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
 \eeq
 \beq
 e^\times_{ij} \equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
 \eeq
-where $\hat{x}$ and $\hat{y}$ are orthonormal vectors that, with $\hat{z}$, form a right-handed Cartesian basis.
-We will call this the \emph{wave frame}.
+where $\hat{x}$ and $\hat{y}$ are orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
+Implicitly, therefore, these polarization tensors are a function of the wave propagation direction (or, equivalently, the source location).
+% Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
+
+With absolute generality, the local value of the GW field in Eq.~\eqref{eq:hij} at any given point can be represented as a decomposition over polarization modes in a plane-wave expansion,
+\begin{align} \label{eq:planewave}
+h_{ij}(t,\vec{x}) = \sum_p \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})\, \times\nonumber \\
+e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \infd \hat{k} \, ,
+\end{align}
+where the sum is over polarization states $p$ in $\{+,\times\}$ defined with respect to the propagation direction $\hat{k}$, which ranges over the sphere $\mathcal{S}^2$.
+Since $h_{ij}$ is real valued, the polarization Fourier amplitudes for any given propagation direction, $\tilde{h}_p(\omega, \hat{k}) \equiv \int h_p(t, \hat{k}) \infd \omega$, must  satisfy the complex-conjugate symmetry $\tilde{h}_p(-\omega, \hat{k}) e^p_{ij} \equiv \left[\tilde{h}_p(\omega, \hat{k}) e^p_{ij}\right]^*$, revealing redundancy in this description.
+We can exploit that to write Eq.~\eqref{eq:planewave} more concisely.
+
+First, instead of the ``linear'' plus and cross polarizations above, we could equivalently work with the circular right-handed (R) and left-handed (L) modes.
+%, which are eigenstates of the helicity operator.
+These are constructed from the basis tensors
+\beq
+e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right) ,
+\eeq
+with the plus (minus) sign corresponding to R (L).
+To understand their physical significance, consider an individual Fourier mode of frequency $\omega>0$ propagating in the positive-$z$ direction,
+\beq
+h_{ij}(t,z; \omega) = \Re \left\{ H_{ij} \exp[ i \omega (z/c - \omega t)]\right\},
+\eeq
+for some time and location independent amplitude tensor $H_{ij}$.
+At the spatial origin ($z=0$), a purely R-polarized, unit-amplitude mode of this kind will be given by
+\begin{align}
+h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
+%&= \frac{1}{\sqrt{2}} \Re \left[\left(e^+_{ij} + i e^\times_{ij}\right) \exp(-i\omega t) \right] \nonumber\\
+&= \frac{1}{\sqrt{2}} \left( e^+_{ij} \cos \omega t + e^\times_{ij} \sin \omega t \right) ,
+\end{align}
+up to an overall phase offset.
+This means that, for a purely R-polarized wave, the cross polarization will lag behind the plus polarization by $\pi/2$ radians in phase.
+Consequently, a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that rotates counter-clockwise when looking towards the source, i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
+The opposite will be true for purely L-polarized waves, which will result in a clockwise-rotating ellipse.%
+\footnote{If we let $\omega < 0$ then the roles of R and L would flip, indicating these states are invariant under parity-time transformations.}
+This is known as the source ``source based'' handedness convention.
+
+Second, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, $h_+ - i h_\times$.
+If this quantity, the \emph{complex strain}, is purely real (imaginary) the wave is purely plus (cross) polarized.
+In those same terms, a unit amplitude circularly-polarized mode can be expressed simply as $h_+ - i h_\times = \exp(\pm i \omega t)$, with the plus (minus) sign in the exponent corresponding to L (R).
+
+Using this fact, an economic way to express the information in Eq.~\eqref{eq:planewave} for a fixed direction of propagation and at the spatial origin ($\vec{x}=0$) is to write the time-domain complex strain as the following integral:
+\begin{align} \label{eq:hcomp_ft}
+h_+ - i h_\times = \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
+\end{align}
+where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t) \infd t$.
+Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes clearly need not satisfy $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$.
+In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_ft} must encode contributions from the R-polarized (L-polarized) portion of the waveform $\tilde{H}_R$ ($\tilde{H}_L$), so that we can rewrite Eq.~\eqref{eq:hcomp_ft} as
+\begin{align}
+h_+ - i h_\times = \int_{0}^{\infty}\left[ \tilde{H}_R(\omega)\, e^{-i \omega t} + \tilde{H}_L(\omega)\, e^{i \omega t}\right] \infd \omega .
+\end{align}
+If $\tilde{H}_R(\omega) = \tilde{H}_L(\omega)^*$, then it is indeed the case that $\tilde{H}(-\omega) = \tilde{H}(\omega)^*$ and we must have a purely plus-polarized wave.
+
+What's the relation to the planewave decomposition?
+For a single wave direction, polarization and at the origin, the plane-wave says
+\begin{align}
+h_{ij}(t) &= \int_{-\infty}^{+\infty} \left[\tilde{h}_R(\omega) e^R_{ij} + \tilde{h}_L(\omega) e^L_{ij}\right] e^{-i\omega t} \infd \omega \nonumber\\ 
+&= \frac{1}{\sqrt{2}}\int\left[\tilde{h}_R (e^+_{ij} + i e^\times_{ij}) + \tilde{h}_L (e^+_{ij} - i e^\times_{ij})\right] e^{-i\omega t} \infd \omega \nonumber \\
+&= \frac{1}{\sqrt{2}}\int\left[(\tilde{h}_R + \tilde{h}_L) e^+_{ij} + i(\tilde{h}_R-\tilde{h}_L) e^\times_{ij}\right] e^{-i\omega t} \infd \omega \nonumber \\
+&=\int\left[\tilde{h}_+  e^+_{ij} + \tilde{h}_\times e^\times_{ij}\right] e^{-i\omega t} \infd \omega
+\end{align}
+so we must have
+\begin{align}
+\tilde{h}_+ = \frac{1}{\sqrt{2}} \left(\tilde{h}_R + \tilde{h}_L \right)
+\end{align}
+\begin{align}
+\tilde{h}_\times = \frac{i}{\sqrt{2}} \left(\tilde{h}_R - \tilde{h}_L \right)
+\end{align}
+The plus and cross components are trivially orthogonal, so having $h_{ij}$ be real must require
+\begin{align}
+\tilde{h}_R(\omega) + \tilde{h}_L(\omega) = \tilde{h}_R(-\omega)^* + \tilde{h}_L(-\omega)^*
+\end{align}
+\begin{align}
+\tilde{h}_R(\omega) - \tilde{h}_L(\omega) = -\tilde{h}_R(-\omega)^* + \tilde{h}_L(-\omega)^*
+\end{align}
+summing the two, this implies
+\begin{align}
+\tilde{h}_R(\omega) = \tilde{h}_L(-\omega)^*
+\end{align}
+The circular modes have the advantage of being parity invariant, whereas the linear modes are more natural for describing measurements.
+We can work in any intermediate basis (Poincar\'e sphere).
+\mi{introduce Jones vectors}
+
+\section{Polarization angles}
+
+\subsection{Wave-frame and the angle $\psi$}
+\label{sec:pol}
 
 Equation \eqref{eq:hij} presumes a specific choice of frame orientation that defines the basis in which the $h_{ij}$ components are written.
 Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
@@ -206,8 +289,9 @@ h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, ,
 \beq
 h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, .
 \eeq
-This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $s=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
-In fact, we coud easily rewrite \eq{hij} in terms of the corresponding right and left handed polarizations, $h_{R/L} = h_+ \pm i h_\times$, which are invariant under $\psi$ rotations (concretely, eigenvectors of the helicity operator with eigenvalues $\pm 2$).
+This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
+
+% In fact, we could easily rewrite \eq{hij} in terms of the corresponding right and left handed polarizations, $h_{R/L} = h_+ \pm i h_\times$, which are invariant under $\psi$ rotations (concretely, eigenvectors of the helicity operator with eigenvalues $\pm 2$).
 %Although a choice of $\psi$ is required to prescribe $h_+$ and $h_\times$ in \eq{hij}, the form of this equation is invariant under changes in $\psi$.
 
 In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the projection
@@ -650,9 +734,12 @@ This explains Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed case (the left-ha
 \end{figure}
 
 We can gain some intuition for Eq.~\eqref{eq:Aphi_to_Cphi} by considering the relationship between the phasors associated with either the linear or circular polarizations (Fig.~\ref{fig:diag_apac}).
-At any given time, interpret Eq.~\eqref{eq:Aphi} as the real parts of two complex numbers with magnitudes $A_{+/\times}$ and arguments $\omega t - \phi_{+/\times}$.
-Geometrically, this corresponds to vectors $\vec{A}_{+/\times}$ of magnitude $A_{+/\times}$, subtending angles $\omega t - \phi_{+/\times}$ with respect to the real axis.
-At time $t=0$, then, the two linear polarizations lie at angles $-\phi_{+/\times}$ away from the real axis; equivalently, in terms of the Cartesian components of Eq.~\eqref{eq:xy}, $\vec{A}_{+/\times} = \left(\xpc, - \ypc \right)$.
+At any given time, interpret Eq.~\eqref{eq:Aphi} as the real parts of two complex numbers, such that
+\beq
+h_{+/\times} = \Re \left\{ A_{+/\times} \exp[-i\left(\omega t - \phi_{+/\times}\right)] \right\} .
+\eeq 
+Geometrically, this corresponds to vectors $\vec{A}_{+/\times}$ of magnitude $A_{+/\times}$, subtending angles $\phi_{+/\times} - \omega t$ with respect to the real axis.
+At time $t=0$, then, the two linear polarizations lie at angles $\phi_{+/\times}$ away from the real axis; equivalently, in terms of the Cartesian components of Eq.~\eqref{eq:xy}, $\vec{A}_{+/\times} = \left(\xpc, - \ypc \right)$.
 The initial state of the right- or left-handed circular polarizations can be similarly represented by phasors $\vec{A}_{R/L}$, related to the linear basis by the definition $h_{R/L} = h_+ \pm i h_\times$ (and hence $\vec{A}_R = \vec{A}_+ \pm i \vec{A}_\times$).
 Using the fact that multiplication by $i$ is equivalent to a rotation by $\pi/2$ in the complex plane, it is straightforward to show that $\vec{A}_{R/L} = \left(\xp \pm \yc, -\yc \mp \xc\right)$, with the top (bottom) signs for R (L).
 Equation~\eqref{eq:Aphi_to_Cphi} then follows trivially from the law of cosines, as illustrated in Fig.~\ref{fig:diag_apac}.
@@ -740,6 +827,7 @@ h_\times = A_{\times,c} \cos \omega t + A_{\times,s} \sin \omega t
 \end{equation}
 
 \section{Nontensor polarizations}
+\label{sec:nongr}
 
 \newcommand{\xsym}{\ensuremath{\rm x}}
 \newcommand{\ysym}{{\rm y}}
