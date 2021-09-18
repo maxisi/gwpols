@@ -190,22 +190,26 @@ e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
 \beq
 e^\times_{ij} \equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
 \eeq
-where $\hat{x}$ and $\hat{y}$ are orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
+where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
 Implicitly, therefore, these polarization tensors are a function of the wave propagation direction (or, equivalently, the source location).
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
 
-With absolute generality, the local value of the GW field in Eq.~\eqref{eq:hij} at any given point can be represented as a decomposition over polarization modes in a plane-wave expansion,
+With absolute generality, the local value of the GW field in Eq.~\eqref{eq:hij} at any given point can be written as a decomposition over polarization modes in a plane-wave expansion,
 \begin{align} \label{eq:planewave}
 h_{ij}(t,\vec{x}) = \sum_p \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})\, \times\nonumber \\
 e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \infd \hat{k} \, ,
 \end{align}
 where the sum is over polarization states $p$ in $\{+,\times\}$ defined with respect to the propagation direction $\hat{k}$, which ranges over the sphere $\mathcal{S}^2$.
-Since $h_{ij}$ is real valued, the polarization Fourier amplitudes for any given propagation direction, $\tilde{h}_p(\omega, \hat{k}) \equiv \int h_p(t, \hat{k}) \infd \omega$, must  satisfy the complex-conjugate symmetry $\tilde{h}_p(-\omega, \hat{k}) e^p_{ij} \equiv \left[\tilde{h}_p(\omega, \hat{k}) e^p_{ij}\right]^*$, revealing redundancy in this description.
-We can exploit that to write Eq.~\eqref{eq:planewave} more concisely.
+Since $h_{ij}$ is real valued, the polarization Fourier amplitudes for any given propagation direction, $\tilde{h}_p(\omega, \hat{k}) \equiv \int h_p(t, \hat{k}) \infd \omega$, must  satisfy the complex-conjugate symmetry $\sum_p \tilde{h}_p(-\omega, \hat{k}) e^p_{ij} \equiv \left[\sum_p \tilde{h}_p(\omega, \hat{k}) e^p_{ij}\right]^*$; for the linear polarizations, this reduces to
+\beq \label{eq:sym_linear}
+\tilde{h}_{+/\times}(\omega) = \tilde{h}_{+/\times}^*(-\omega)\, ,
+\eeq
+because the linear basis tensors are real valued.
+The existence of this symmetry reveals a redundancy in this description, which we can exploit to write Eq.~\eqref{eq:planewave} more concisely.
 
 First, instead of the ``linear'' plus and cross polarizations above, we could equivalently work with the circular right-handed (R) and left-handed (L) modes.
 %, which are eigenstates of the helicity operator.
-These are constructed from the basis tensors
+These are defined by the complex-valued basis tensors
 \beq
 e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right) ,
 \eeq
@@ -222,72 +226,69 @@ h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
 &= \frac{1}{\sqrt{2}} \left( e^+_{ij} \cos \omega t + e^\times_{ij} \sin \omega t \right) ,
 \end{align}
 up to an overall phase offset.
-This means that, for a purely R-polarized wave, the cross polarization will lag behind the plus polarization by $\pi/2$ radians in phase.
-Consequently, a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that rotates counter-clockwise when looking towards the source, i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
+This means that, for a purely R-polarized wave, the cross polarization will \emph{lag behind} the plus polarization by $\pi/2$ radians in phase.
+Consequently, it can be shown that a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that rotates counter-clockwise when looking towards the source, i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
 The opposite will be true for purely L-polarized waves, which will result in a clockwise-rotating ellipse.%
 \footnote{If we let $\omega < 0$ then the roles of R and L would flip, indicating these states are invariant under parity-time transformations.}
-This is known as the source ``source based'' handedness convention.
+This is known as the ``source based'' handedness convention.
 
 Second, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, $h_+ - i h_\times$.
-If this quantity, the \emph{complex strain}, is purely real (imaginary) the wave is purely plus (cross) polarized.
+If this quantity, the \emph{complex strain}, is purely real (imaginary) then the wave is purely plus (cross) polarized.
 In those same terms, a unit amplitude circularly-polarized mode can be expressed simply as $h_+ - i h_\times = \exp(\pm i \omega t)$, with the plus (minus) sign in the exponent corresponding to L (R).
 
-Using this fact, an economic way to express the information in Eq.~\eqref{eq:planewave} for a fixed direction of propagation and at the spatial origin ($\vec{x}=0$) is to write the time-domain complex strain as the following integral:
-\begin{align} \label{eq:hcomp_ft}
+Using this fact, an economic way to express the information in Eq.~\eqref{eq:planewave} for any given direction of propagation $\hat{k}$ is to write the time-domain complex strain at the spatial origin ($\vec{x}=0$) as an integral of the form
+\begin{align} \label{eq:hcomp_fd}
 h_+ - i h_\times = \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
 \end{align}
-where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t) \infd t$.
-Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes clearly need not satisfy $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$.
-In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_ft} must encode contributions from the R-polarized (L-polarized) portion of the waveform $\tilde{H}_R$ ($\tilde{H}_L$), so that we can rewrite Eq.~\eqref{eq:hcomp_ft} as
-\begin{align}
-h_+ - i h_\times = \int_{0}^{\infty}\left[ \tilde{H}_R(\omega)\, e^{-i \omega t} + \tilde{H}_L(\omega)\, e^{i \omega t}\right] \infd \omega .
+where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t) \infd t$, and we are assuming an implicit dependence on $\hat{k}$.
+Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes clearly need not satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$ unless the wave is purely plus-polarized.
+In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_fd} must encode contributions from the R-polarized (L-polarized) portion of the waveform.
+We can make this explicit by rewriting Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
+\begin{align} \label{eq:hcomp_fd_rl}
+h_+ - i h_\times &=\int_{0}^{\infty} \left[ \tilde{H}(\omega)e^{-i\omega t}
++ \tilde{H}(-\omega)e^{i\omega t} \right]\infd \omega \nonumber\\
+&= \sqrt{2} \hspace{-2.5pt} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega ,
 \end{align}
-If $\tilde{H}_R(\omega) = \tilde{H}_L(\omega)^*$, then it is indeed the case that $\tilde{H}(-\omega) = \tilde{H}(\omega)^*$ and we must have a purely plus-polarized wave.
+in terms of the Fourier amplitudes, $\tilde{h}_{R/L}$.
+As we show in App.~\ref{app:circ}, these are the same amplitudes that would appear in Eq.~\eqref{eq:planewave} were we to sum $p$ over $\{R, L\}$ instead of $\{+,\times\}$; they are related to the linear Fourier amplitudes by
+\begin{align}
+\tilde{h}_{R/L} = \frac{1}{\sqrt{2}} \left(\tilde{h}_+ \mp i\tilde{h}_\times \right) ,
+\end{align}
+with the minus (plus) sign for R (L).
+Based on this, it is easy to show that Eq.~\eqref{eq:sym_linear} implies
+\beq \label{eq:sym_circular}
+\tilde{h}_R(\omega) = \tilde{h}_L^*(-\omega) \,,
+\eeq
+and, therefore, we could have also inserted $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R(\omega)$ in Eq.~\eqref{eq:hcomp_fd}.
 
-What's the relation to the planewave decomposition?
-For a single wave direction, polarization and at the origin, the plane-wave says
-\begin{align}
-h_{ij}(t) &= \int_{-\infty}^{+\infty} \left[\tilde{h}_R(\omega) e^R_{ij} + \tilde{h}_L(\omega) e^L_{ij}\right] e^{-i\omega t} \infd \omega \nonumber\\ 
-&= \frac{1}{\sqrt{2}}\int\left[\tilde{h}_R (e^+_{ij} + i e^\times_{ij}) + \tilde{h}_L (e^+_{ij} - i e^\times_{ij})\right] e^{-i\omega t} \infd \omega \nonumber \\
-&= \frac{1}{\sqrt{2}}\int\left[(\tilde{h}_R + \tilde{h}_L) e^+_{ij} + i(\tilde{h}_R-\tilde{h}_L) e^\times_{ij}\right] e^{-i\omega t} \infd \omega \nonumber \\
-&=\int\left[\tilde{h}_+  e^+_{ij} + \tilde{h}_\times e^\times_{ij}\right] e^{-i\omega t} \infd \omega \nonumber \\
-&=\left[\int\tilde{h}_+e^{-i\omega t} \infd \omega\right]  e^+_{ij} + \left[\int \tilde{h}_\times e^{-i\omega t} \infd \omega\right] e^\times_{ij}
-\end{align}
-Therefore
-\begin{widetext}
-\begin{align}
-h_+ - i h_\times &= \int\tilde{h}_+e^{-i\omega t} \infd \omega -i \int \tilde{h}_\times e^{-i\omega t} \infd \omega \nonumber \\
-&= \int \frac{1}{\sqrt{2}} \left(\tilde{h}_R + \tilde{h}_L \right)e^{-i\omega t} \infd \omega -i \int \frac{i}{\sqrt{2}} \left(\tilde{h}_R - \tilde{h}_L \right) e^{-i\omega t} \infd \omega \nonumber\\
-&= \frac{1}{\sqrt{2}} \int_{-\infty}^{\infty} \left(2 \tilde{h}_R \right)e^{-i\omega t} \infd \omega  \nonumber \\
-&= \sqrt{2}\int_{0}^{\infty} \tilde{h}_R(\omega) e^{-i\omega t} \infd \omega +
-\sqrt{2}\int_{0}^{\infty} \tilde{h}_R(-\omega) e^{i\omega t} \infd \omega \\
-&= \sqrt{2}\int_{0}^{\infty} \tilde{h}_R(\omega) e^{-i\omega t} \infd \omega +
-\sqrt{2}\int_{0}^{\infty} \tilde{h}_L(\omega)^* e^{i\omega t} \infd \omega
-\end{align}
-\end{widetext}
-so $H(\omega)= \sqrt{2} h_R(\omega)$ and $H_L = \sqrt{2} h_L^*$.
+\begin{figure}
+\includegraphics[width=0.6\columnwidth]{ellipse}
+\caption{Polarization ellipse. At any given time, the phasor of an elliptically polarized signal lies on an ellipse with some instantaneous amplitude $A(t)$ and time-independent ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi \equiv \Phi(t=0)$, determines the initial location of the phasor within the ellipse. (Adapted from \cite{Isi:2021iql}.)}
+\label{fig:ellipse}
+\end{figure}
 
-We also must have
+The second line in Eq.~\eqref{eq:hcomp_fd_rl} lends itself to a straightforward physical interpretation.
+Each Fourier mode of frequency $\omega>0$ is made up of counterrotating circularly-polarized contributions (R vs L) that add up to a single elliptically polarized mode.
+To see this, rewrite the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as
 \begin{align}
-\tilde{h}_+ = \frac{1}{\sqrt{2}} \left(\tilde{h}_R + \tilde{h}_L \right)
+\sqrt{2} \left(\tilde{h}_R\, e^{-i \omega t} + \tilde{h}_L^*\, e^{i \omega t}\right) =\nonumber\\
+\frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right],
 \end{align}
-\begin{align}
-\tilde{h}_\times = \frac{i}{\sqrt{2}} \left(\tilde{h}_R - \tilde{h}_L \right)
-\end{align}
-The plus and cross components are trivially orthogonal, so having $h_{ij}$ be real must require
-\begin{align}
-\tilde{h}_R(\omega) + \tilde{h}_L(\omega) = \tilde{h}_R(-\omega)^* + \tilde{h}_L(-\omega)^*
-\end{align}
-\begin{align}
-\tilde{h}_R(\omega) - \tilde{h}_L(\omega) = -\tilde{h}_R(-\omega)^* + \tilde{h}_L(-\omega)^*
-\end{align}
-summing the two, this implies
-\begin{align}
-\tilde{h}_R(\omega) = \tilde{h}_L(-\omega)^*
-\end{align}
-
-The equation above implies
-
+where
+$A \equiv |\tilde{h}_R| + |\tilde{h}_L|$ is the overall signal amplitude, $\epsilon = (|\tilde{h}_R| - |\tilde{h}_L|)/(|\tilde{h}_R| + |\tilde{h}_L|)$ is the ellipticity, and $\phi_{R/L} = \mathrm{arg}(\tilde{h}_{R/L})$ are the Fourier phases.
+\mi{need factors of $\sqrt{2}$ or similar---track down from FFT definition in  Eq.~\eqref{eq:hcomp_fd}}
+If this was the only Fourier mode to contribute to the signal, then it is easy to show that this would correspond to linear components
+\begin{subequations}
+\beq
+h_+ = A \left[\cos \theta \cos(\omega t - \phi) - \epsilon \sin \theta \sin(\omega t - \phi)\right] ,
+\eeq
+\beq
+h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin(\omega t - \phi)\right] ,
+\eeq
+\end{subequations}
+with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$. 
+In the $h_+{-}h_\times$ plane, this defines an ellipse with semimajor axis $A$, semiminor axis $\epsilon A$, oriented as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
+This expression encapsulates all possible morphologies of a monochrome GW---as special cases, $\epsilon = \pm 1$ encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$).
 
 The circular modes have the advantage of being parity invariant, whereas the linear modes are more natural for describing measurements.
 We can work in any intermediate basis (Poincar\'e sphere).
@@ -332,12 +333,6 @@ ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary an
 
 \subsection{Elliptical waves and the angle $\theta$}
 \label{sec:ellip}
-
-\begin{figure}
-\includegraphics[width=0.6\columnwidth]{ellipse}
-\caption{Polarization ellipse. At any given time, the phasor of an elliptically polarized signal lies on an ellipse with some instantaneous amplitude $A(t)$ and time-independent ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi \equiv \Phi(t=0)$, determines the initial location of the phasor within the ellipse. (Adapted from \cite{Isi:2021iql}.)}
-\label{fig:ellipse}
-\end{figure}
 
 In full analogy to electromagnetic waves, a GW is elliptically polarized if the phasor describing the signal lies always on an ellipse in the $h_+$ vs $h_\times$ plane (Fig.~\ref{fig:ellipse}), where $h_+$ and $h_\times$ play the role of linear polarizations.
 That means that, regardless of wave-frame orientation (equivalently, choice of $\psi$), the signal can always be put in the form
@@ -929,6 +924,56 @@ for Research in Astronomy, Inc., for NASA, under contract NAS5-26555.
 % DCC
 This paper carries LIGO document number \dcc{}.
 \end{acknowledgments}
+
+\appendix
+
+\section{Circular Fourier amplitudes}
+\label{app:circ}
+
+What's the relation to the planewave decomposition?
+For a single wave direction, polarization and at the origin, the plane-wave says
+\begin{align}
+h_{ij}(t) &= \int_{-\infty}^{+\infty} \left[\tilde{h}_R(\omega) e^R_{ij} + \tilde{h}_L(\omega) e^L_{ij}\right] e^{-i\omega t} \infd \omega \nonumber\\ 
+&= \frac{1}{\sqrt{2}}\int\left[\tilde{h}_R (e^+_{ij} + i e^\times_{ij}) + \tilde{h}_L (e^+_{ij} - i e^\times_{ij})\right] e^{-i\omega t} \infd \omega \nonumber \\
+&= \frac{1}{\sqrt{2}}\int\left[(\tilde{h}_R + \tilde{h}_L) e^+_{ij} + i(\tilde{h}_R-\tilde{h}_L) e^\times_{ij}\right] e^{-i\omega t} \infd \omega \nonumber \\
+&=\int\left[\tilde{h}_+  e^+_{ij} + \tilde{h}_\times e^\times_{ij}\right] e^{-i\omega t} \infd \omega \nonumber \\
+&=\left[\int\tilde{h}_+e^{-i\omega t} \infd \omega\right]  e^+_{ij} + \left[\int \tilde{h}_\times e^{-i\omega t} \infd \omega\right] e^\times_{ij}
+\end{align}
+Therefore
+\begin{widetext}
+\begin{align}
+h_+ - i h_\times &= \int\tilde{h}_+e^{-i\omega t} \infd \omega -i \int \tilde{h}_\times e^{-i\omega t} \infd \omega \nonumber \\
+&= \int \frac{1}{\sqrt{2}} \left(\tilde{h}_R + \tilde{h}_L \right)e^{-i\omega t} \infd \omega -i \int \frac{i}{\sqrt{2}} \left(\tilde{h}_R - \tilde{h}_L \right) e^{-i\omega t} \infd \omega \nonumber\\
+&= \frac{1}{\sqrt{2}} \int_{-\infty}^{\infty} \left(2 \tilde{h}_R \right)e^{-i\omega t} \infd \omega  \nonumber \\
+&= \sqrt{2}\int_{0}^{\infty} \tilde{h}_R(\omega) e^{-i\omega t} \infd \omega +
+\sqrt{2}\int_{0}^{\infty} \tilde{h}_R(-\omega) e^{i\omega t} \infd \omega \\
+&= \sqrt{2}\int_{0}^{\infty} \tilde{h}_R(\omega) e^{-i\omega t} \infd \omega +
+\sqrt{2}\int_{0}^{\infty} \tilde{h}_L(\omega)^* e^{i\omega t} \infd \omega
+\end{align}
+\end{widetext}
+so $H(\omega)= \sqrt{2} h_R(\omega)$ and $H_L = \sqrt{2} h_L^*$.
+
+We also must have
+\begin{align}
+\tilde{h}_+ = \frac{1}{\sqrt{2}} \left(\tilde{h}_R + \tilde{h}_L \right)
+\end{align}
+\begin{align}
+\tilde{h}_\times = \frac{i}{\sqrt{2}} \left(\tilde{h}_R - \tilde{h}_L \right)
+\end{align}
+The plus and cross components are trivially orthogonal, so having $h_{ij}$ be real must require
+\begin{align}
+\tilde{h}_R(\omega) + \tilde{h}_L(\omega) = \tilde{h}_R(-\omega)^* + \tilde{h}_L(-\omega)^*
+\end{align}
+\begin{align}
+\tilde{h}_R(\omega) - \tilde{h}_L(\omega) = -\tilde{h}_R(-\omega)^* + \tilde{h}_L(-\omega)^*
+\end{align}
+summing the two, this implies
+\begin{align}
+\tilde{h}_R(\omega) = \tilde{h}_L(-\omega)^*
+\end{align}
+
+The equation above implies
+
 
 \bibliography{refs}
 
