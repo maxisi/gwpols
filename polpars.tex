@@ -191,16 +191,16 @@ e^+_{ij} \equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,
 e^\times_{ij} \equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
 \eeq
 where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
-Implicitly, therefore, these polarization tensors are a function of the wave propagation direction (or, equivalently, the source location).
+Implicitly, these polarization tensors are a function of the wave propagation direction (or, equivalently, the source location).
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
 
-With absolute generality, the local value of the GW field in Eq.~\eqref{eq:hij} at any given point can be written as a decomposition over polarization modes in a plane-wave expansion,
+With absolute generality, the local value of the GW field in Eq.~\eqref{eq:hij} at any given point can be written as a decomposition over polarization modes $p$ in a plane-wave expansion,
 \begin{align} \label{eq:planewave}
 h_{ij}(t,\vec{x}) = \sum_p \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})\, \times\nonumber \\
 e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \infd \hat{k} \, ,
 \end{align}
 where the sum is over polarization states $p$ in $\{+,\times\}$ defined with respect to the propagation direction $\hat{k}$, which ranges over the sphere $\mathcal{S}^2$.
-Since $h_{ij}$ is real valued, the polarization Fourier amplitudes for any given propagation direction, $\tilde{h}_p(\omega, \hat{k}) \equiv \int h_p(t, \hat{k}) \infd \omega$, must  satisfy the complex-conjugate symmetry $\sum_p \tilde{h}_p(-\omega, \hat{k}) e^p_{ij} \equiv \left[\sum_p \tilde{h}_p(\omega, \hat{k}) e^p_{ij}\right]^*$; for the linear polarizations, this reduces to
+Since $h_{ij}$ is real valued, the polarization Fourier amplitudes for any given propagation direction, $\tilde{h}_p(\omega, \hat{k}) \equiv (2\pi)^{-1} \int h_p(t, \hat{k})\, \infd t$, must  satisfy the complex-conjugate symmetry $\sum_p \tilde{h}_p(-\omega, \hat{k}) e^p_{ij} \equiv \left[\sum_p \tilde{h}_p(\omega, \hat{k}) e^p_{ij}\right]^*$; for the linear polarizations, this reduces to
 \beq \label{eq:sym_linear}
 \tilde{h}_{+/\times}(\omega) = \tilde{h}_{+/\times}^*(-\omega)\, ,
 \eeq
@@ -216,9 +216,9 @@ e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right
 with the plus (minus) sign corresponding to R (L).
 To understand their physical significance, consider an individual Fourier mode of frequency $\omega>0$ propagating in the positive-$z$ direction,
 \beq
-h_{ij}(t,z; \omega) = \Re \left\{ H_{ij} \exp[ i \omega (z/c - \omega t)]\right\},
+h_{ij}(t,z; \omega) = \Re \left\{ \tilde{H}_{ij} \exp[ i \omega (z/c - \omega t)]\right\},
 \eeq
-for some time and location independent amplitude tensor $H_{ij}$.
+for some time and location independent (and complex-valued) amplitude tensor $\tilde{H}_{ij}$.
 At the spatial origin ($z=0$), a purely R-polarized, unit-amplitude mode of this kind will be given by
 \begin{align}
 h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
@@ -236,11 +236,11 @@ Second, it is convenient to encode the two linear GW polarizations as quadrature
 If this quantity, the \emph{complex strain}, is purely real (imaginary) then the wave is purely plus (cross) polarized.
 In those same terms, a unit amplitude circularly-polarized mode can be expressed simply as $h_+ - i h_\times = \exp(\pm i \omega t)$, with the plus (minus) sign in the exponent corresponding to L (R).
 
-Using this fact, an economic way to express the information in Eq.~\eqref{eq:planewave} for any given direction of propagation $\hat{k}$ is to write the time-domain complex strain at the spatial origin ($\vec{x}=0$) as an integral of the form
+Using this fact, an economic way of expressing the information in Eq.~\eqref{eq:planewave} for any given direction of propagation $\hat{k}$ is to write the time-domain complex strain at the spatial origin ($\vec{x}=0$) as an integral of the form
 \begin{align} \label{eq:hcomp_fd}
 h_+ - i h_\times = \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
 \end{align}
-where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t) \infd t$, and we are assuming an implicit dependence on $\hat{k}$.
+where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv (2\pi)^{-1} \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t$, and we are assuming an implicit dependence on $\hat{k}$.
 Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes clearly need not satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$ unless the wave is purely plus-polarized.
 In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_fd} must encode contributions from the R-polarized (L-polarized) portion of the waveform.
 We can make this explicit by rewriting Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
