@@ -22,3 +22,6 @@ dependencies:
   - dask
   - imageio
   - pyspherical
+  - mayavi
+  - ipywidgets
+  - ipyevents
