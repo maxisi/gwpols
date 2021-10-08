@@ -14,10 +14,11 @@ dependencies:
   - numpy
   - pandas
   - pip
-  - pystan=2.19
   - python=3.8
   - scipy
   - seaborn
   - numexpr
   - parse
   - dask
+  - imageio
+  - pyspherical
