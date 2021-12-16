@@ -13,7 +13,8 @@ dependencies:
   - matplotlib
   - numpy
   - pandas
-  - pip
+  - pip:
+    - pyspherical
   - python=3.8
   - scipy
   - seaborn
@@ -21,7 +22,6 @@ dependencies:
   - parse
   - dask
   - imageio
-  - pyspherical
   - mayavi
   - ipywidgets
   - ipyevents
