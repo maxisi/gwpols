@@ -170,6 +170,14 @@ It is useful to parametrize gravitational-wave (GW) polarizations in different w
 Here I outline some useful alternatives and show how they are related.
 It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
 
+The goal of this note is twofold.
+First, pedagogical, in reviewing different polarization conventions and their relation.
+Second, technical, in providing explicit expressions for Jacobians relating different polarization parametrizations, ready for implementation in parameter estimation codes or similar applications.
+
+This note is geared towards observers, or theorists interested in drawing connections to observation.
+As such, it aims for concreteness, rather than comprehensiveness; it does not cover formal aspects of the frameworks connecting to the mathematical structure of general relativity and multipole expansions therein.
+References are provided when such links are possible.
+
 \section{Polarization primer}
 
 \subsection{Linear polarizations}
@@ -186,6 +194,14 @@ h_\times  & - h_+ & 0  \\
 \eeq
 where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source.
 
+\begin{figure}
+\includegraphics[width=0.4\columnwidth]{pol_ring_plus}
+\includegraphics[width=0.4\columnwidth]{pol_ring_cross}
+\caption{Effect of plus (left) and cross (right) polarizations on a freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is shown in gray for reference.
+}
+\label{fig:rings}
+\end{figure}
+
 It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, making use of the polarization basis tensors given by
 \begin{subequations} \label{eq:lin}
 \begin{align}
@@ -195,9 +211,22 @@ e^\times_{ij} &\equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
 \end{subequations}
 where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
 Since this frame is constructed to have $\hat{z}$ aligned with the wavevector $\vec{k}$ (i.e., $\hat{z} = \hat{k} \equiv \vec{k}/|k|$), the polarization tensors are implicit functions of the wave propagation direction $\hat{k}$, or, equivalently, the source location $\hat{n} = -\hat{k}$.
-For a given $\hat{k}$, it is straightforward to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
+For a given $\hat{k}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
+
 We will refer to plus and cross as the \emph{linear} polarization basis.
+Their physical interpretation is best illustrated by their instantaneous effect on a freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
+Other polarization bases are possible, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
+
+\begin{figure*}
+\includegraphics[width=0.8\textwidth]{pol_diagram_circ}
+\caption{A right-handed, circularly polarized GW as a function of time (left to right) over a period. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which rotates counterclockwise with time; each individual particle is pushed in a circle around its original location, i.e., the location it would have had in absence of the wave (small empty circles).
+\emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time; the plus polarization is $\pi/2$ radians ahead of the cross polarization.
+\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
+Reversing the direction of time by reading this diagram right-to-left gives the effect of a left-handed circularly polarized wave.
+}
+\label{fig:pol_diagram_circ}
+\end{figure*}
 
 Equation \eqref{eq:hij} presumes a specific choice of wave frame orientation that defines the basis in which the $h_{ij}$ components are written.
 Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
@@ -212,23 +241,13 @@ h_\times &\rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\
 This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary rotation.
 (We return to this point in Sec.~\ref{sec:pol}.)
 
-\begin{figure*}
-\includegraphics[width=0.8\textwidth]{pol_diagram_circ}
-\caption{A right-handed, circularly polarized GW as a function of time (left to right) over a period. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which rotates counterclockwise with time; each individual particle is pushed in a circle around its original location, i.e., the location it would have had in absence of the wave (small empty circles).
-\emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time; the plus polarization is $\pi/2$ radians ahead of the cross polarization.
-\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
-Reversing the direction of time by reading this diagram right-to-left gives the effect of a left-handed circularly polarized wave.
-}
-\label{fig:pol_diagram_circ}
-\end{figure*}
-
 After fixing the frame orientation, any plane GW may be expressed in terms of the Fourier components of its polarization amplitudes as
 \begin{align}
 \label{eq:planewave}
 h_{ij}(t,\vec{x}) &= \int_{-\infty}^{+\infty} \tilde{h}_{ij}(\omega, \hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \nonumber \\
 &= \sum_{p=+,\times} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega
 \end{align}
-where the sum is over linear polarization states defined in some wave frame attached to the propagation direction $\hat{k}$,%
+where the sum is over linear polarization states ($+,\times$) defined in some wave frame attached to the propagation direction $\hat{k}$,%
 \footnote{More broadly, the strain value at any point in spacetime may be expressed with full generality as a superposition of these planewaves
 % $h_{ij}(t,\vec{x}) = \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})
 % \exp\left[{i\omega \left(\hat{k}\cdot\vec{x}/c-t\right)}\right] \infd \omega \infd \hat{k}$
@@ -323,7 +342,7 @@ where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \e
 Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes will clearly not generally satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
 
 In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_fd} must encode contributions from the R-polarized (L-polarized) portion of the waveform.
-This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it is the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega)$ and so, rewriting Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
+This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it must be the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega)$ and so, rewriting Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies, we have that
 \begin{align} \label{eq:hcomp_fd_rl}
 h_+ - i h_\times = \sqrt{2} \hspace{-2.5pt} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega ,
 \end{align}
@@ -347,7 +366,7 @@ To make this explicit, rewrite the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as
 \end{align}
 where
 $A \equiv \sqrt{2} \left(|\tilde{h}_R| + |\tilde{h}_L| \right) \geq 0$ is the overall amplitude of the Fourier mode, $-1 \leq \epsilon = (|\tilde{h}_R| - |\tilde{h}_L|)/(|\tilde{h}_R| + |\tilde{h}_L|) \leq 1$ is its ellipticity, and $\phi_{R/L} = \mathrm{arg}(\tilde{h}_{R/L})$ are the right- and left-handed Fourier phases.
-With some trigonometry, it is easy to show that this corresponds to linear polarization functions given by
+With some trigonometry, it is easy to show that this corresponds to linear polarization quadratures given by
 \begin{subequations} \label{eq:hcomp_ellip}
 \beq
 h_+ = A \left[\cos \theta \cos(\omega t - \phi) - \epsilon \sin \theta \sin(\omega t - \phi)\right] ,
@@ -372,7 +391,8 @@ For example, that is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014
 It is also the case, in ringdown studies that fit the later portion of a compact binary signal as a superposition of elliptically polarized damped sinusoids \cite{Isi:2021iql}.
 
 \begin{figure*}
-\includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
+% \includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
+\includegraphics[width=\columnwidth]{pol_diagram_ellip}
 \caption{An elliptically polarized GW as a function of time (left to right) over a period, described by Eq.~\eqref{eq:hcomp_ellip} with $\epsilon=1/2$, $\theta=\pi/2$, $\phi=0$ and arbitrary amplitude. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which in this case rotates counterclockwise with time, albeit nonrigidly; each individual particle is pushed in an ellipse with the same ellipticity as the wave itself, and oriented at an angle $\theta + \varphi$ from the $x$-axis, where $\varphi$ is the polar coordinate locating the particle around the ring.
 \emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time.
 \emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
