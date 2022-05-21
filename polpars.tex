@@ -182,9 +182,9 @@ References are provided when such links are possible.
 
 \subsection{Linear polarizations}
 
-In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations (e.g., \cite{Thorne:1987af}).
-Their local effect can be encoded in a driving matrix $h_{ij}$ representing the transverse-traceless part of the metric perturbation, also known as the \emph{gravitational-wave field}.
-In a Cartesian frame with $z$-axis along the direction of propagation, we can write this as
+In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations (e.g., \cite{Thorne:1987af,Poisson2014,BT}).
+At any given time, their local effect can be encoded in a driving matrix $h_{ij}$ representing the transverse-traceless part of the metric perturbation, also known as the \emph{gravitational-wave field}.
+In a Cartesian frame with $z$-axis along the direction of propagation, we can write this matrix as
 \beq \label{eq:hij}
 (h_{ij}) = \begin{pmatrix}
 h_+ & h_\times  & 0 \\
@@ -197,12 +197,12 @@ where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$
 \begin{figure}
 \includegraphics[width=0.4\columnwidth]{pol_ring_plus}
 \includegraphics[width=0.4\columnwidth]{pol_ring_cross}
-\caption{Effect of plus (left) and cross (right) polarizations on a freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is shown in gray for reference.
+\caption{Effect of plus (left) and cross (right) polarizations on a small, freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is also shown for reference (thin dotted line).
 }
 \label{fig:rings}
 \end{figure}
 
-It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, making use of the polarization basis tensors given by
+It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, in terms of the $e^{+/\times}_{ij}$ polarization basis tensors given by
 \begin{subequations} \label{eq:lin}
 \begin{align}
 e^+_{ij} &\equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,\\
@@ -216,7 +216,7 @@ For a given $\hat{k}$, it is easy to check that these tensors are orthogonal suc
 
 We will refer to plus and cross as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
-Other polarization bases are possible, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
+Other polarization bases can be constructed, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
 
 \begin{figure*}
 \includegraphics[width=0.8\textwidth]{pol_diagram_circ}
@@ -319,16 +319,18 @@ As is straightforward to show, the circular and linear polarization Fourier ampl
 \tilde{h}_{R/L} = \frac{1}{\sqrt{2}} \left(\tilde{h}_+ \mp i\tilde{h}_\times \right) ,
 \end{align}
 with the minus (plus) sign for R (L).
-Based on this, it is easy to show that Eq.~\eqref{eq:sym_linear} implies
+Based on this, the complex-conjugate condition of Eq.~\eqref{eq:sym_linear} implies that
 \beq \label{eq:sym_circular}
 \tilde{h}_R(\omega) = \tilde{h}_L^*(-\omega) \, ,
 \eeq
-which again manifests the redundancy in Eq.~\eqref{eq:planewave_circ}.
-It also reveals that R and L switch roles for $\omega \to - \omega$, as we anticipated below Eq.~\eqref{eq:circ_example}, indicating these states are invariant under parity-time transformations.
+which again manifests the redundancy in Eq.~\eqref{eq:planewave_circ}, as in Eq.~\eqref{eq:planewave}.
+It also reveals that R and L switch roles for $\omega \to - \omega$, as we anticipated below Eq.~\eqref{eq:circ_example}, indicating these states are invariant under parity-time reversals.
 
 
-\subsection{Elliptical polarizations and complex strain}
+\subsection{Elliptical decomposition}
 \label{sec:ellip}
+
+\subsubsection{Complex strain}
 
 Next, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, $h_+ - i h_\times$, in the time domain.
 If this quantity, the \emph{complex strain}, is purely real (imaginary), then the wave is purely plus (cross) polarized.
@@ -338,15 +340,15 @@ Using this fact, an economic way of expressing the information in Eq.~\eqref{eq:
 \begin{align} \label{eq:hcomp_fd}
 h_+ - i h_\times = \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
 \end{align}
-where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv (2\pi)^{-1} \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t$, following our convention in Eq.~\eqref{eq:ft}.
+where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv (2\pi)^{-1} \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t$, following our Fourier transform convention in Eq.~\eqref{eq:ft}.
 Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes will clearly not generally satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
 
 In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_fd} must encode contributions from the R-polarized (L-polarized) portion of the waveform.
-This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it must be the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega)$ and so, rewriting Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies, we have that
+This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it must be the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega) = \sqrt{2} \tilde{h}_L^*(-\omega)$, the last equality being due to Eq.~\eqref{eq:sym_circular}.
+We can leverage this to rewrite Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
 \begin{align} \label{eq:hcomp_fd_rl}
-h_+ - i h_\times = \sqrt{2} \hspace{-2.5pt} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega ,
+h_+ - i h_\times = \sqrt{2} \hspace{-2.5pt} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega .
 \end{align}
-as a consequence of Eq.~\eqref{eq:sym_circular}.
 This expression carries the same information as Eq.~\eqref{eq:planewave} without any redundancies.
 
 \begin{figure}
@@ -358,6 +360,8 @@ This expression carries the same information as Eq.~\eqref{eq:planewave} without
 Equation \eqref{eq:hcomp_fd_rl} lends itself to a straightforward physical interpretation.
 Any plane GW, with arbitrary time evolution and polarization state (including unpolarized states), can be expressed as a superposition of fully-polarized Fourier modes;
 each such mode of frequency $|\omega|$ is made up of two counterrotating circularly-polarized contributions (R vs L, the two summands) that add up to a single elliptically polarized mode.
+
+\subsubsection{Elliptical modes}
 
 To make this explicit, rewrite the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as
 \begin{align}
