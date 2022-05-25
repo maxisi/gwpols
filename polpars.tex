@@ -218,34 +218,33 @@ We will refer to plus and cross as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
 Other polarization bases can be constructed, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
 
-\begin{figure*}
-\includegraphics[width=0.8\textwidth]{pol_diagram_circ}
-\caption{A right-handed, circularly polarized GW as a function of time (left to right) over a period. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which rotates counterclockwise with time; each individual particle is pushed in a circle around its original location, i.e., the location it would have had in absence of the wave (small empty circles).
-\emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time; the plus polarization is $\pi/2$ radians ahead of the cross polarization.
-\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
-Reversing the direction of time by reading this diagram right-to-left gives the effect of a left-handed circularly polarized wave.
-}
-\label{fig:pol_diagram_circ}
-\end{figure*}
+In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the projection
+\beq \label{eq:h}
+h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, 
+\eeq
+with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ that represents the geometry of the measurement.
+For a differential-arm detector with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
+\footnote{These expressions are valid in the local Lorentz frame of the detector, so we can raise and lower indices with the flat metric.}
+In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
 
-Equation \eqref{eq:hij} presumes a specific choice of wave frame orientation that defines the basis in which the $h_{ij}$ components are written.
-Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
-%This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
-With some trigonometry, it is straightforward to show that a rotation of the frame by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
-\begin{subequations} \label{eq:htransf}
-\begin{align}
-h_+ &\rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, , \\
-h_\times &\rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, .
-\end{align}
-\end{subequations}
-This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary rotation.
-(We return to this point in Sec.~\ref{sec:pol}.)
+% Equation \eqref{eq:hij} presumes a specific choice of wave frame orientation that defines the basis in which the $h_{ij}$ components are written.
+% Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
+% %This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
+% With some trigonometry, it is straightforward to show that a rotation of the frame by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
+% \begin{subequations} \label{eq:htransf}
+% \begin{align}
+% h_+ &\rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, , \\
+% h_\times &\rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, .
+% \end{align}
+% \end{subequations}
+% This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary rotation.
+% (We return to this point in Sec.~\ref{sec:pol}.)
 
 After fixing the frame orientation, any plane GW may be expressed in terms of the Fourier components of its polarization amplitudes as
 \begin{align}
 \label{eq:planewave}
-h_{ij}(t,\vec{x}) &= \int_{-\infty}^{+\infty} \tilde{h}_{ij}(\omega, \hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \nonumber \\
-&= \sum_{p=+,\times} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega
+h_{ij}(t,\vec{x}) &= \frac{1}{2\pi}\int_{-\infty}^{+\infty} \tilde{h}_{ij}(\omega, \hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \\
+&= \frac{1}{2\pi} \sum_{p=+,\times} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \nonumber
 \end{align}
 where the sum is over linear polarization states ($+,\times$) defined in some wave frame attached to the propagation direction $\hat{k}$,%
 \footnote{More broadly, the strain value at any point in spacetime may be expressed with full generality as a superposition of these planewaves
@@ -255,7 +254,7 @@ by integrating over all directions of propagation.}
 and we obtained the second line through the fact that the $e^{+/\times}_{ij}$ are real valued.
 We have also implicitly defined the complex-valued Fourier polarization functions $\tilde{h}_p(\omega)$ to correspond to the time-domain polarizations at the spatial origin, $h_p(t) \equiv h_p(t, \vec{x}=0)$, by
 \beq \label{eq:ft}
-\tilde{h}_p(\omega) \equiv \frac{1}{2\pi} \int_{-\infty}^{+\infty} h_p(t)\, e^{i\omega t} \infd t \, ,
+\tilde{h}_p(\omega) \equiv \int_{-\infty}^{+\infty} h_p(t)\, e^{i\omega t} \infd t \, ,
 \eeq
 establishing our convention for the Fourier transform.
 
@@ -267,6 +266,16 @@ For the linear polarizations, this reduces to
 because the linear basis tensors are themselves real valued.
 The existence of this symmetry reveals a redundancy in the description that we can exploit to write Eq.~\eqref{eq:planewave} more concisely.
 
+\begin{figure*}
+\includegraphics[width=0.8\textwidth]{pol_diagram_circ}
+\caption{A right-handed, circularly polarized GW as a function of time (left to right) over a period. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which rotates counterclockwise with time; each individual particle is pushed in a circle around its original location, i.e., the location it would have had in absence of the wave (small empty circles).
+\emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time; the plus polarization is $\pi/2$ radians ahead of the cross polarization.
+\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
+Reversing the direction of time by reading this diagram right-to-left gives the effect of a left-handed circularly polarized wave.
+}
+\label{fig:pol_diagram_circ}
+\end{figure*}
+
 \subsection{Circular polarizations}
 
 First, instead of the linear plus and cross polarizations above, we could equivalently work with the associated \emph{circular} right-handed (R) and left-handed (L) modes.
@@ -277,17 +286,6 @@ e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right
 \eeq
 with the plus (minus) sign corresponding to R (L).
 These tensors are also orthogonal and normalized similarly to $e^{+/\times}_{ij}$ such that $(e^{p'ij})^* e^p_{ij} = 2 \delta^{pp'}$.
-Unlike the linear modes of Eq.~\eqref{eq:lin}, however, the tensors of Eq.~\eqref{eq:circ} do not mix under rotations around the direction of propagation:
-the circular polarizations are eigenstates of the helicity operator with weight $\pm 2$, corresponding to the two helicities of a spin-2 massless particle (see, e.g., \cite{Hinterbichler2011});
-the equivalent transformation to Eq.~\eqref{eq:htransf} is
-\begin{subequations} \label{eq:htransf}
-\begin{align}
-h_R &\rightarrow h_R' = h_R \exp(- i2  \Delta \psi) \, ,\\
-h_L &\rightarrow h_L' = h_L \exp(+ i2  \Delta \psi)\, ,
-\end{align}
-\end{subequations}
-meaning that a rotation around $\hat{z}$ is equivalent to simple change in overall phase.
-
 
 To understand the physical significance of the circular polarizations,
 % consider an individual Fourier mode of frequency $\omega>0$ propagating in the positive-$z$ direction,
@@ -311,10 +309,10 @@ The opposite will be true for purely L-polarized waves, which will result in a c
 This is known as the ``source based'' handedness convention.
 
 The orthogonality and completeness of the tensors in Eq.~\eqref{eq:circ} mean that we can rewrite Eq.~\eqref{eq:planewave} in terms of the circular polarizations without loss of generality as the sum
-\begin{align} \label{eq:planewave_circ}
+\beq \label{eq:planewave_circ}
 h_{ij}(t,\vec{x}) 
-&= \sum_{p=R,L} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \, ,
-\end{align}
+= \frac{1}{2\pi} \sum_{p=R,L} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \, ,
+\eeq
 where $\tilde{h}_{R/L}$ and $e^{R/L}_{ij}$ have replaced their $+/\times$ counterparts.
 As is straightforward to show, the circular and linear polarization Fourier amplitudes are related by
 \begin{align} \label{eq:circ_amps}
@@ -342,17 +340,18 @@ In those same terms, a circularly-polarized mode can be expressed simply as $h_+
 
 Using this fact, an economic way of expressing the information in Eq.~\eqref{eq:planewave} for any given direction of propagation $\hat{k}$ is to write the time-domain complex strain at the spatial origin ($\vec{x}=0$) as a Fourier integral of the form
 \begin{align} \label{eq:hcomp_fd}
-h_+ - i h_\times = \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
+h_+ - i h_\times = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
 \end{align}
-where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv (2\pi)^{-1} \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t$, following our Fourier transform convention in Eq.~\eqref{eq:ft}.
-Unlike in Eq.~\eqref{eq:planewave}, these Fourier amplitudes will clearly not generally satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
+where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t$, following our Fourier transform convention in Eq.~\eqref{eq:ft}.
+Unlike in Eq.~\eqref{eq:planewave}, it is clear that these Fourier amplitudes will not always satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
 
 In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_fd} must encode contributions from the R-polarized (L-polarized) portion of the waveform.
 This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it must be the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega) = \sqrt{2} \tilde{h}_L^*(-\omega)$, the last equality being due to Eq.~\eqref{eq:sym_circular}.
 We can leverage this to rewrite Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
 \begin{align} \label{eq:hcomp_fd_rl}
-h_+ - i h_\times = \sqrt{2} \hspace{-2.5pt} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega .
+h_+ - i h_\times = \frac{1}{\sqrt{2\pi^2}} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega \, ,
 \end{align}
+where the prefactor arises from our normalizations of the Fourier transform and the circular polarization tensors.
 This expression carries the same information as Eq.~\eqref{eq:planewave} without any redundancies.
 
 \begin{figure}
@@ -368,7 +367,8 @@ each such mode of frequency $|\omega|$ is made up of two counterrotating circula
 \subsubsection{Elliptical modes}
 
 Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space.
-To make this explicit for the Fourier modes above, rewrite the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as
+To make this explicit for the Fourier modes above, rewrite the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as%
+\footnote{We factor $1/(2\pi)$ out of the integrand so that, mirrowing Eq.~\eqref{eq:ft}, the amplitude $A$ in this context is an amplitude spectral density with respect to the frequency $f \equiv \omega/(2\pi)$.}
 \begin{align}
 \sqrt{2} \left(\tilde{h}_R\, e^{-i \omega t} + \tilde{h}_L^*\, e^{i \omega t}\right) =\nonumber\\
 \frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right],
@@ -387,12 +387,15 @@ h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin
 with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$. 
 In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
 
-Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized GW---as special cases, $\epsilon = \pm 1$ encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
-an example with $\epsilon=1/2$ and $\theta = \pi/2$ is further illustrated in Fig.~\ref{fig:pol_diagram_ellip} (compare to Fig.~\ref{fig:pol_diagram_circ}, where $\epsilon=1$).
+Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized GW.
+Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
+As special cases, $\epsilon = +1$ ($\epsilon = -1$) encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
+an example in between, with $\epsilon=1/2$ and $\theta = \pi/2$, is illustrated in Fig.~\ref{fig:pol_diagram_ellip} (compare to Fig.~\ref{fig:pol_diagram_circ}, where $\epsilon=1$).
+
 
 Any fully-polarized state can be represented by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
 Additionally, for a monochromatic mode, the time dependence of the phasor can be factored out so that the whole state is encoded in a \emph{Jones vector} $\vec{A}$ like
-\beq
+\beq \label{eq:jones}
 \begin{pmatrix}
 h_+\\
 h_\times
@@ -404,10 +407,9 @@ h_\times
 \Re \left[ \vec{A}\, e^{-i\omega t}\right] ,
 \eeq
 just as is standard for electromagnetic waves.
-We will make use of Jones vectors in computing Jacobians below.
 For example, in that notation, $\vec{A}=\left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, while $\vec{A} = \left(1,i\right)/\sqrt{2}$ encodes a circular R mode.
-%This is, of course, nothing more than another representation for the spectral mode amplitudes in Eq.
-These Jones vectors are expressed in terms of their linear $+/\times$ projections, but they could be equally expressed in any other basis composed of two antipodal vectors defined on the (unit radius) Poincar\'{e} sphere of polarization states.
+We will briefly make use of Jones vectors in computations below.
+In \eq{jones}, the Jones vector is expressed in terms of its linear $+/\times$ projections, but they could be equally expressed in any other basis composed of two antipodal vectors defined on the (unit radius) Poincar\'{e} sphere of polarization states.
 In this language, reexpressing Eq.~\eqref{eq:planewave} as Eq.~\eqref{eq:planewave_circ} amounted to a Poincar\'{e} rotation of our basis vectors.
 
 In full analogy with electromagnetic theory, the Poincar\'{e} sphere can be defined in terms of \emph{Stokes parameters} characterizing the distribution of power in the signal accross different polarization states \cite{Anile1974}.
@@ -427,11 +429,21 @@ V \equiv |\tilde{h}_R|^2 - |\tilde{h}_L|^2 \eeq
 \end{subequations}
 The Poincar\'{e} sphere is then the sphere of radius $I$ centered on $\left(Q=0, U=0, V=0\right)$.
 For a fully polarized state, the Stokes parameters are equivalent to the polarization quantitites $\left\{A, \epsilon, \theta, \phi\right\}$ defining the ellipse in Fig.~\ref{fig:ellipse}, although the latter are amplitude quantities rather than intensity.
-However, Stokes parameters have the advantage of being easily generalizable to unpolarized waves, which can be achieved by replacing the polarization amplitudes by their expected values (or time averages) in Eq.~\eqref{eq:stokes}; in that case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
+Stokes parameters have the advantage of being easily generalizable to unpolarized waves, which can be achieved by replacing the polarization amplitudes by their root-mean square expectation values in Eq.~\eqref{eq:stokes}; in that case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
 The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx}.
 Since we will be dealing mainly with coherent signals, we will not make further reference to Stokes parameters below.
 
-We arrived at the generic form of a fully polarized mode in Eq.~\eqref{eq:hcomp_ellip} in the context of a fully generic Fourier decomposition of a plane wave, Eq.~\eqref{eq:hcomp_fd_rl}, where this arises naturally.
+\begin{figure*}
+\includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
+%\includegraphics[width=\columnwidth]{pol_diagram_ellip}
+\caption{An elliptically polarized GW as a function of time (left to right) over a period, described by Eq.~\eqref{eq:hcomp_ellip} with $\epsilon=1/2$, $\theta=\pi/2$, $\phi=0$ and arbitrary amplitude. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which in this case rotates counterclockwise with time, albeit nonrigidly; each individual particle is pushed in an ellipse with the same ellipticity as the wave itself, and oriented at an angle $\theta + \varphi$ from the $x$-axis, where $\varphi$ is the polar coordinate locating the particle around the ring.
+\emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time.
+\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
+}
+\label{fig:pol_diagram_ellip}
+\end{figure*}
+
+We arrived at the generic form of a fully polarized mode in Eq.~\eqref{eq:hcomp_ellip} through the generic Fourier decomposition of a plane wave in Eq.~\eqref{eq:hcomp_fd_rl}, wherein elliptical modes appear naturally.
 Yet, a similar argument applies to any high-frequency coherent wave (i.e., any wave that can be written as a slow varying amplitude modulating a fast phase), or sums thereof.
 In that case, the polarization parameters $\{A, \epsilon, \theta, \phi\}$ can be defined instantaneously using the stationary phase approximation or similar.
 In this way, a large variety of signal morphologies can be described as the superposition of elliptically polarized modes, potentially with time-varying polarization parameters, e.g.,
@@ -447,27 +459,28 @@ In this way, a large variety of signal morphologies can be described as the supe
 % \end{subequations}
 \begin{subequations} \label{eq:ellip_sum}
 \begin{equation} \label{eq:ellip_sum_p}
-h_+ = \sum A_n(t) \hspace{-1pt} \left[\cos \Phi_n(t) \cos \theta_n - \epsilon_n \sin \Phi_n(t) \sin\theta_n \right] ,
+h_+ = \sum \hspace{-1pt} A_i(t) \hspace{-1pt} \left[\cos \Phi_i(t) \cos \theta_i - \epsilon_i \sin \Phi_i(t) \sin\theta_i \right]
 \end{equation}
 \begin{equation} \label{eq:ellip_sum_c}
-h_\times = \sum A_n(t) \hspace{-2pt} \left[ \cos \Phi_n(t) \sin \theta_n + \epsilon_n \sin \Phi_n(t) \cos\theta_n \right] ,
+h_\times = \sum \hspace{-1pt} A_i(t) \hspace{-1pt} \left[ \cos \Phi_i(t) \sin \theta_i + \epsilon_i \sin \Phi_i(t) \cos\theta_i \right] 
 \end{equation}
 \end{subequations}
-generalizing Eq.~\eqref{eq:hcomp_ellip} with a sum over some number of modes indexed by $n$ and (slowly) time varying amplitudes $A_n(t)$ and (quickly) time varying phases $\Phi_n(t)$, with some prescribed functional form.%
-\footnote{The parameters $\epsilon_n$ and $\theta_n$ could also be made to vary adiabatically but that is usually not done in practice.}
+generalizing Eq.~\eqref{eq:hcomp_ellip} with a sum over some number of modes indexed by $i$, with (slowly) time varying amplitudes $A_i(t)$ and (quickly) time varying phases $\Phi_i(t)$, each with some prescribed functional form.%
+\footnote{The parameters $\epsilon_i$ and $\theta_i$ could also be made to vary adiabatically but that is usually not done in practice.}
+The $A_i(t)$ and $\Phi_i(t)$ control the evolution of the polarization ellipses over time, including initial amplitude $A_i \equiv A_i(t=0)$ and phase $\phi_i \equiv \Phi_i(t=0)$.
+
+
+The form of Eq.~\eqref{eq:ellip_sum} is flexible enough that it can be used in practice to model arbitrary signals in real detector data.
 For example, that is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number of elliptically-polarized sine-Gaussians.%
 \footnote{\textsc{BayesWave} can currently operate in two configurations: one which assumes the overall signal is elliptically polarized, and another which does not.}
 It is also the case, in ringdown studies that fit the final portion of a compact binary signal as a superposition of elliptically polarized damped sinusoids \cite{Isi:2021iql}.
+%
+For such applications, each phasing function will usually correspond to some given frequency $\omega_i$ as in a Fourier expansion, so that $\Phi_i(t) = \omega_i t + \phi_i$; meanwhile, the $A_i(t)$ functions encode amplitude envelopes evolving slowly over some timescale $\tau_i \equiv 1/\gamma_i$.
+For example, in the case of ringdown templates, $A_i(t) = A_i \exp(-\gamma_i t)$ and $\Phi_i(t) = \omega_i t + \phi_i$, for some set of complex-valued frequencies $\tilde{\omega}_i = \omega_i - i\gamma_i$ to be inferred from the data together with polarization parameters $\{ A_i, \epsilon_i, \theta_i, \phi_i\}$.
+Equations \eqref{eq:ellip_sum} can be equivalently written in the frequency domain, as done for the sine-Gaussian basis in \cite{Cornish:2014kda,Cornish:2020dwh}.
 
-\begin{figure*}
-\includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
-%\includegraphics[width=\columnwidth]{pol_diagram_ellip}
-\caption{An elliptically polarized GW as a function of time (left to right) over a period, described by Eq.~\eqref{eq:hcomp_ellip} with $\epsilon=1/2$, $\theta=\pi/2$, $\phi=0$ and arbitrary amplitude. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which in this case rotates counterclockwise with time, albeit nonrigidly; each individual particle is pushed in an ellipse with the same ellipticity as the wave itself, and oriented at an angle $\theta + \varphi$ from the $x$-axis, where $\varphi$ is the polar coordinate locating the particle around the ring.
-\emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time.
-\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
-}
-\label{fig:pol_diagram_ellip}
-\end{figure*}
+The most salient example of a signal that intrisically follows \eq{hcomp_ellip} is that of a compact binary coalescence (CBC).
+In fact, as we will see below, the simplest of those signals (viz., nonprecessing inspiral dominated by the quadrupolar angular harmonic) can be described by a single mode like the summand of \eq{hcomp_ellip}, with fixed ellipticity and polarization angle.
 
 
 \subsubsection{Relation to spherical harmonics}
@@ -483,7 +496,7 @@ h_+ - i h_\times = \sum_{\ell \geq 2} \sum_{-\ell \leq m \leq \ell} H_{\ell m}(t
 \end{align}
 for a source seen with inclination $\iota$ and azimuthal angle $\varphi$, with intrinsic time-dependence encoded in the $H_{\ell m}$ functions.
 The different $H_{\ell m}$'s are often associated with specific signal frequencies \cite{Thorne:1980ru}---for example, the dominant $\ell= |m|=2$ mode in a compact binary inspiral will evolve at twice the orbital frequency $\omega_\mathrm{orb}$ or, more generally, $\omega_{\ell m} = m \omega_\mathrm{orb}$, with parity implying $\omega_{\ell m}= - \omega_{\ell - m}$.
-If that is the case, then Eq.~\eqref{eq:spherical} is equivalent to the elliptical decomposition of Eq.~\eqref{eq:ellip_sum}.
+If that is the case, then Eq.~\eqref{eq:spherical} is equivalent to the elliptical decomposition of Eq.~\eqref{eq:ellip_sum}, as we proceed to show.
 
 For concreteness, represent the $H_{\ell m}$ schematically as simple oscillatory components $H_{\ell m} (t) = C_{\ell m}' \exp\left(-i \omega_{\ell m} t\right)$, where $C_{\ell m}'$ is some complex-valued amplitude, that could be varying slowly with time (slower than $\omega_{\ell m}$).
 We can then refactor Eq.~\eqref{eq:spherical} so that we only sum over nonnegative values of $m$,
@@ -498,31 +511,15 @@ h_+ - i h_\times &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}
 \end{widetext}
 where, in the last line, we have absorbed the angular factors into $C_{\ell m} \equiv C_{\ell m}' {}_{-2}Y_{\ell m} (\iota, \varphi)$.
 
-The first (second) term in the summand corresponds to a purely right-handed (left-handed) circularly-polarized contribution.
-It is easy to see this by letting $C_{\ell m} \equiv A_{\ell m} \exp(i \phi_{\ell m})$ and noting that, if $h_+ - i h_\times = C_{\ell m} e^{-i\omega_{\ell m} t}$, then
-\begin{subequations}
-\begin{equation}
-h_+ = \Re \left[ C_{\ell m} e^{-(i\omega_{\ell m} t )} \right] =
-A_{\ell m} \cos (\omega_{\ell m} t - \phi_{\ell m}) ,
-\end{equation}
-\begin{equation}
-h_\times = -\Im \left[ C_{\ell m} e^{-(i\omega_{\ell m} t )} \right] =
-A_{\ell m} \sin (\omega_{\ell m} t - \phi_{\ell m}) ,
-\end{equation}
-\end{subequations}
-which matches Eq.~\eqref{eq:ellip} for $A = A_{\ell m}$ and $\epsilon = 1$, i.e., a right-handed circular mode.
-Similarly, if $h_+ - i h_\times = C_{\ell -m} e^{i\omega_{\ell m} t}$, the wave would be left-handed circular, with $A = A_{\ell -m}$ and $\epsilon = -1$.
-
-Each summand in the decomposition of Eq.~\eqref{eq:spherical_modes} is then itself the sum of a pair of right- and left-handed circular modes, with (a priori) independent amplitudes.
-Therefore, the overall contribution is that of a single, elliptically polarized mode for each pair of allowed $(\ell, m)$ indices.
-The amplitude and ellipticity of each mode are determined by both the intrinsic amplitudes $C_{\ell \pm m}'$ and the viewing angle through the ${}_{-2} Y_{\ell m}$ factors.
+The summand in the last line of \eq{spherical_modes} takes the form of the integrand in \eq{hcomp_fd_rl}, and its interpretation is the same: each $(\ell$, $|m|)$ contributes a single, elliptically polarized mode to the waveform.
+The amplitude and ellipticity of each mode are determined by both (1) the intrinsic amplitudes $C_{\ell \pm m}'$, and (2) the viewing angle $(\iota, \varphi)$, through the ${}_{-2} Y_{\ell m}$ factors.
 
 A special case of Eq.~\eqref{eq:spherical_modes} is that of a nonprecesing compact binary inspiral.
 In that case, equatorial-reflection symmetry implies that $C_{\ell -m}' = (-1)^\ell C_{\ell m}'^*$, where the star indicates complex conjugation.
 The strain can then be written
 \begin{equation}
-h_+ - i h_\times = A'_{\ell m} \left[ Y^+_{\ell m} \cos \Phi_{\ell m}(t) - 
-i Y^\times_{\ell m} \sin \Phi_{\ell m}(t) \right] , 
+h_+ - i h_\times = A'_{\ell m} \hspace{-2pt} \left[ Y^+_{\ell m} \cos \Phi_{\ell m}(t) - 
+i Y^\times_{\ell m} \sin \Phi_{\ell m}(t) \right] 
 \end{equation}
 where we have let $C_{\ell m}' \equiv A_{\ell m}' \exp(i \phi_{\ell m}')$, $\Phi_{\ell m}(t) \equiv \omega_{\ell m} t - \phi_{\ell m}'$, and
 \begin{equation}
@@ -540,7 +537,9 @@ For the special case of the dominant $\ell=|m|=2$ mode, this reduces to the expr
 
 Equation \eqref{eq:hij} presumes a specific choice of frame orientation that defines the basis in which the $h_{ij}$ components are written.
 Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
-This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
+This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient absolute reference.
+For instance, in the LIGO convention, this angle is defined with respect to celestial coordinates such that $\psi=0$ means that the waveframe $\hat{x}$ is parallel to the celestial equator \cite{LALSuite:wave}.
+
 With some trigonometry, it is straightforward to show that a rotation by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
 \beq \label{eq:htransf}
 h_+ \rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, ,
@@ -550,58 +549,52 @@ h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\p
 \eeq
 This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
 
-% In fact, we could easily rewrite \eq{hij} in terms of the corresponding right and left handed polarizations, $h_{R/L} = h_+ \pm i h_\times$, which are invariant under $\psi$ rotations (concretely, eigenvectors of the helicity operator with eigenvalues $\pm 2$).
-%Although a choice of $\psi$ is required to prescribe $h_+$ and $h_\times$ in \eq{hij}, the form of this equation is invariant under changes in $\psi$.
-
-In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the projection
-\beq \label{eq:h}
-h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, 
-\eeq
-with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ that represents the geometry of the measurement.
-For a differential-arm detector with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
-\footnote{These expressions are valid in the local Lorentz frame of the detector, so we can raise and lower indices with the flat metric.}
-In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
-Under rotations of the wave frame, they transform through an expression complementary to \eq{htransf},
-\beq \label{eq:Ftransf}
+Under rotations of the wave frame, the antenna patterns of \eq{h} transform through an expression complementary to \eq{htransf},
+\begin{subequations} \label{eq:Ftransf}
+\beq
 F_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi + F_\times \sin 2\Delta\psi \, ,
 \eeq
 \beq
 F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi - F_+ \sin 2\Delta\psi \, ,
 \eeq
+\end{subequations}
 ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary angle $\psi$.
+More generally, any scalar like $D^{ij} e^{p}_{ij}$ will necessarily be frame invariant.%
+\footnote{This extends to gauge transformations: the spacetime tensors $D_{ab}$ and $h_{ab}$ are gauge dependent, but their innerproduct is not.}
+
+Unlike the linear modes of Eq.~\eqref{eq:lin}, the tensors of Eq.~\eqref{eq:circ} do not mix under rotations around the direction of propagation:
+the circular polarizations are eigenstates of the helicity operator with weight $\pm 2$, corresponding to the two helicities of a spin-2 massless particle (see, e.g., \cite{Hinterbichler2011}).
+The equivalent transformation to Eq.~\eqref{eq:htransf} is
+\begin{subequations} \label{eq:htransf_circ}
+\begin{align}
+h_R &\rightarrow h_R' = h_R \exp(- i2  \Delta \psi) \, ,\\
+h_L &\rightarrow h_L' = h_L \exp(+ i2  \Delta \psi)\, ,
+\end{align}
+\end{subequations}
+meaning that a rotation around $\hat{z}$ is equivalent to simple change in overall phase.
+As such, a change in $\psi$ can be absorbed by a redefinition of the Fourier phases in \eq{hcomp_fd_rl}, multiplying the integral through by $exp(-i2\Delta\psi)$.
+
+The definition of the angle $\psi$ (with respect to, say, the celestial equator) is not intrinsically related to any feature of the signal: it simply defines an arbitrary frame in which to prescribe the $h_+$ and $h_\times$ polarization functions in \eq{hij}, or equivalently, the frame in which to measure the phases of the circularly polarized Fourier components.
+%, the form of this equation is invariant under changes in $\psi$.
+
 
 \subsection{Elliptical waves and the angle $\theta$}
 \label{sec:ellip}
 
-In full analogy to electromagnetic waves, a GW is elliptically polarized if the phasor describing the signal lies always on an ellipse in the $h_+$ vs $h_\times$ plane (Fig.~\ref{fig:ellipse}), where $h_+$ and $h_\times$ play the role of linear polarizations.
-That means that, regardless of wave-frame orientation (equivalently, choice of $\psi$), the signal can always be put in the form
+Another notion of ``polarization angle'' arises naturally in the description of elliptically polarized signals.
+These are generally given by a single component of Eq.~\eqref{eq:ellip_sum}, namely
 \begin{subequations} \label{eq:ellip}
 \begin{equation} \label{eq:ellip_p}
 h_+ = A(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin\theta \right] ,
 \end{equation}
 \begin{equation} \label{eq:ellip_c}
-h_\times = A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right] ,
+h_\times = A(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right] .
 \end{equation}
 \end{subequations}
-where $A(t)$ and $\Phi(t)$ are some amplitude and phase functions, and where the ellipticity $-1 \leq \epsilon \leq 1$ and angle $0 \leq \theta \leq \pi$ control the shape and orientation of the polarization ellipse.
-The linear polarizations are recovered for $\epsilon = 0$, with $\theta=0, \pi$ yielding a fully plus-polarized wave and $\theta=\pm \pi/2$ a fully cross-polarized wave.
-
-% \begin{equation} \label{eq:h_ellip_lmn_plus}
-% h_+ = h_c\, \cos \theta - \epsilon h_s\, \sin\theta\, ,
-% \end{equation}
-% \begin{equation} \label{eq:h_ellip_lmn_cross}
-% h_\times = h_c\, \sin \theta + \epsilon h_s\, \cos\theta\, ,
-% \end{equation}
-% for cosine and sine quadratures
-% \begin{equation}  \label{eq:h_ellip_lmn_sin}
-% h_c \equiv A(t)\, \cos \Phi(t) \, ,
-% \end{equation}
-% \begin{equation} \label{eq:h_ellip_lmn_cos}
-% h_s \equiv A(t)\, \sin \Phi(t) \, .
-% \end{equation}
-
-Equations \eqref{eq:ellip} presume some specific choice of $\psi$ that defines the meaning of plus vs cross by orienting $\hat{x}$, as explained in the previous section.
+% where $A(t)$ and $\Phi(t)$ are some amplitude and phase functions, and where the ellipticity $-1 \leq \epsilon \leq 1$ and angle $0 \leq \theta \leq \pi$ control the shape and orientation of the polarization ellipse.
+These equations presume some specific choice of $\psi$ that defines the meaning of plus vs cross by orienting $\hat{x}$, as explained in the previous section.
 The expression for an elliptical wave simplifies if we choose that angle such that the plus and cross axes are aligned with the principal components of the ellipse, so that $\theta = 0$.
+
 With such a choice of wave frame (equivalently, choice of $\psi$), the above becomes just
 \begin{subequations} \label{eq:ellip_frame}
 \beq
@@ -612,9 +605,9 @@ h_\times = \epsilon A(t) \sin \Phi(t)\, ,
 \eeq
 \end{subequations}
 for some arbitrary amplitude and phasing functions $A(t)$ and $\Phi(t)$.
-Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} unless $\hat{x}$ is chosen appropriately; only signals with $\epsilon=\pm1$ will take  this simplified form irrespective of the wave frame orientation.
+Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} unless $\hat{x}$ is chosen appropriately; only signals with $\epsilon=\pm1$ will take  this simplified form irrespective of the wave frame orientation (again showing that these are eigenstates of the helicity operator).
 
-When working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
+Therefore, when working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
 If we adopt $\theta =0$ as a convention (or, equivalently, $\theta=\pi$), then we \emph{define} our wave frame to lie along the principal axes of the polarization ellipse and, thus, the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation.
 However, the two angles $\theta$ and $\psi$ are conceptually distinct (in particular, $\theta$ is defined only for elliptically polarized waves, whereas $\psi$ is always defined).
 
@@ -622,7 +615,7 @@ However, the two angles $\theta$ and $\psi$ are conceptually distinct (in partic
 
 As for any GW, the detector output for an elliptically polarized wave will be given by \eq{h}.
 In this case, however, \eq{Ftransf} implies that $\psi$ and $\theta$ are degenerate, as detailed in Appendix A of \cite{Isi:2017equ}.
-Concretely, for a fixed sky location, a change from $\psi \to \psi' = \psi + \Delta\psi$ in the antenna patterns can be absorbed by a change in $\theta$ because the expression
+Concretely, for a fixed sky location (i.e., propagation direction), a change from $\psi \to \psi' = \psi + \Delta\psi$ in the antenna patterns can be absorbed by a change in $\theta$ because the expression
 \beq
 h = F_+(\psi + \Delta \psi) h_+ + F_\times(\psi + \Delta \psi) h_\times 
 \eeq
@@ -639,7 +632,17 @@ h = & A(t) \left[\cos \Phi(t) \cos(\theta + 2\Delta\psi) -  \epsilon \sin \Phi(t
 \end{align}
 \end{widetext}
 which is the same result we would have obtained by replacing $\theta \to \theta' = \theta + 2 \Delta\psi$ in \eq{ellip}.
+We could have equivalently (and more quickly) derived this by noting that $\theta$ is related to the phases of the circularly-polarized components of the signal by $\theta = \left(\phi_L - \phi_R\right)/2$, as in \eq{hcomp_ellip}; the transformation rule for $\theta$ then follows from \eq{htransf_circ}, which implies $\phi_{R/L} \to \phi'_{R/L} \mp \Delta\psi$, with the negative (positive) sign for R (L).
+
 This implies that elliptical-wave analyses that allow $\theta$ to vary freely should avoid degeneracies by fixing $\psi$ to an arbitrary a priori value (typically $\psi=0$), or viceversa.
+Choosing this value to be $\psi=0$, this projection would be
+\begin{equation}
+h = F_+(\psi=0) h_+ + F_\times(\psi=0) h_\times \, ,
+\end{equation}
+for $h_{+/\times}$ as in Eq.~\eqref{eq:ellip_sum}.
+The antenna patterns $F_{+/\times}$ are evaluated for some sky location and arrival time, which can be measured from the data.
+On the other hand, the angle $\psi$ is fixed; allowing it to vary would amount to shifting all $\theta_i$ values by $2\psi$, per Eq.~\eqref{eq:theta_psi}.
+
 
 
 % \begin{alignat}{2}
@@ -745,9 +748,7 @@ In that case, it is still conventional to tie $\hat{x}$ to the source, referring
 In summary, we can identify three conceptually distinct Cartesian frames: a wave frame that determines the principal directions along which we \emph{define} the effect of a plus vs cross wave; for an elliptical wave, an intrinsic polarization frame, representing the principal directions of the polarization ellipse; and a source frame, aligned with the symmetries of the source, or otherwise anchored to some defining feature of it; all of these can be specified in some astronomical frame, like ecliptic celestial coordinates.
 For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always align with the polarization frame.
 
-\section{Modeling generic signals}
-
-\subsection{Elliptical decomposition}
+\subsection{Modeling generic signals}
 
 Although not all sources can be expected to be elliptically polarized, any signal can be modeled as a superposition of elliptically polarized components.
 For example, that is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number of elliptically-polarized sine-Gaussians.%
@@ -777,21 +778,6 @@ Equations \eqref{eq:ellip_sum} can be equivalently written in the frequency doma
 The elliptical decomposition of Eq.~\eqref{eq:ellip_sum} allows us to flexibly model a GW signal without assuming full independence of the two GW polarizations.
 This is justified because, as argued in \cite{Chatziioannou:2021mij}, we expect both polarizations to be generated by the same physical processes, so that their spectral properties should not be totally independent.
 Moreover, even if there was a choice of waveframe in which the two linear polarizations looked completely dissimilar, the polarizations will look spectrally similar to generic observers whose frame is randomly oriented.
-
-As discussed at the end of Sec.~\ref{sec:ellip}, since the model of Eq.~\eqref{eq:ellip_sum} allows the angles $\theta_i$ to vary, we should fix $\psi$ to some arbitrary value when evaluating the strain projection at any given detector.
-Choosing this value to be $\psi=0$, this projection would be
-\begin{equation}
-h = F_+(\psi=0) h_+ + F_\times(\psi=0) h_\times \, ,
-\end{equation}
-for $h_{+/\times}$ as in Eq.~\eqref{eq:ellip_sum}.
-The antenna patterns $F_{+/\times}$ are evaluated for some sky location and arrival time, which can be measured from the data.
-On the other hand, the angle $\psi$ is fixed; allowing it to vary would amount to shifting all $\theta_i$ values by $2\psi$, per Eq.~\eqref{eq:theta_psi}.
-
-% Alternatively, we could have decomposed the signal in terms of left and right handed components
-% \begin{equation}
-% h_+ - i h_\times = \sum C_R \exp(-i \Phi(t)) + C_L \exp(i \Phi(t))
-% \end{equation}
-
 
 
 \section{Coordinate transformations}
