@@ -222,8 +222,8 @@ In the small-antenna limit, the signal induced by a passing GW on a given detect
 \beq \label{eq:h}
 h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, 
 \eeq
-with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ that represents the geometry of the measurement.
-For a differential-arm detector with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
+with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ that encodes the geometry of the measurement.
+For a differential-arm detector like LIGO with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
 \footnote{These expressions are valid in the local Lorentz frame of the detector, so we can raise and lower indices with the flat metric.}
 In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
 
@@ -300,7 +300,7 @@ h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
 &= \frac{1}{\sqrt{2}} \left( e^+_{ij} \cos \omega t + e^\times_{ij} \sin \omega t \right) ,
 \end{align}
 using the definition from Eq.~\eqref{eq:circ}.
-In the 2D Cartesian space defined by the linear polarization amplitudes, i.e. $\left(h_+, h_\times\right)$, this defines a circle, around which the \emph{phasor} encoding the state of the wave rotates counterclockwise.
+In the 2D Cartesian space defined by the linear polarization amplitudes, i.e. $\left(h_+, h_\times\right)$, this defines a circle, around which the \emph{phasor} encoding the state of the wave rotates counterclockwise (for $\omega > 0$).
 This means that, at any given time, the wave will have a unit total amplitude (i.e., $h^2_+ + h^2_\times=1$) and the cross polarization will \emph{lag behind} the plus polarization by $\pi/2$ radians in phase.
 %
 Consequently, a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that is seen to rotate counter-clockwise when looking towards the source (Fig.~\ref{fig:pol_diagram_circ}), i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
@@ -324,7 +324,7 @@ Based on this, the complex-conjugate condition of Eq.~\eqref{eq:sym_linear} impl
 \tilde{h}_R(\omega) = \tilde{h}_L^*(-\omega) \, ,
 \eeq
 which again manifests the redundancy in Eq.~\eqref{eq:planewave_circ}, as in Eq.~\eqref{eq:planewave}.
-It also reveals that R and L switch roles for $\omega \to - \omega$, as we anticipated below Eq.~\eqref{eq:circ_example}, indicating these states are invariant under parity-time reversals.
+It also reveals that R and L switch roles for $\omega \to - \omega$, as we anticipated below Eq.~\eqref{eq:circ_example}, indicating that these states are invariant under parity-time reversals.
 
 
 \subsection{Elliptical decomposition}
@@ -333,21 +333,24 @@ It also reveals that R and L switch roles for $\omega \to - \omega$, as we antic
 \subsubsection{Complex strain}
 
 Next, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, $h_+ - i h_\times$, in the time domain.
-This complex number is an alternative representation of the $\left(h_+, h_\times\right)$ phasor introduced in the previous section (cf., bottom panel of Fig.~\ref{fig:pol_diagram_circ}).
+This complex number is an alternative representation of the $\left(h_+, h_\times\right)$ phasor introduced in the previous section (see bottom panel of Fig.~\ref{fig:pol_diagram_circ}).
 If this quantity, the \emph{complex strain}, is purely real (imaginary), then the wave is purely plus (cross) polarized.
 In those same terms, a circularly-polarized mode can be expressed simply as $h_+ - i h_\times = \exp(\mp i \omega t)$, with the minus (plus) sign in the exponent corresponding to R (L) for $\omega > 0$.%
-\footnote{The choice of sign in the definition of the complex strain as $h_+ - ih_\times$ follows the convention of the Fourier transform in Eq.~\eqref{eq:ft} in order to make it so that $\exp(-i|\omega| t)$ encodes a right-handed mode as defined in the source-based convention.}
+\footnote{The choice of sign in the definition of the complex strain as $h_+ - ih_\times$ matches the convention of the Fourier transform in Eq.~\eqref{eq:ft} in order to make it so that $\exp(-i|\omega| t)$ encodes a right-handed mode as defined in the source-based convention.}
 
 Using this fact, an economic way of expressing the information in Eq.~\eqref{eq:planewave} for any given direction of propagation $\hat{k}$ is to write the time-domain complex strain at the spatial origin ($\vec{x}=0$) as a Fourier integral of the form
 \begin{align} \label{eq:hcomp_fd}
 h_+ - i h_\times = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
 \end{align}
-where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t$, following our Fourier transform convention in Eq.~\eqref{eq:ft}.
-Unlike in Eq.~\eqref{eq:planewave}, it is clear that these Fourier amplitudes will not always satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
+where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t = \tilde{h}_+(\omega) - i \tilde{h}_\times(\omega)$, following our Fourier transform convention in Eq.~\eqref{eq:ft}.
+Unlike in Eq.~\eqref{eq:planewave}, it is clear that these Fourier amplitudes will not generally satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
 
 In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the positive (negative) frequency Fourier amplitudes in Eq.~\eqref{eq:hcomp_fd} must encode contributions from the R-polarized (L-polarized) portion of the waveform.
 This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it must be the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega) = \sqrt{2} \tilde{h}_L^*(-\omega)$, the last equality being due to Eq.~\eqref{eq:sym_circular}.
 We can leverage this to rewrite Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
+% \begin{align} \label{eq:hcomp_fd_rl}
+% h_+ - i h_\times = \sqrt{2} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(f)\, e^{-i \omega t} + \tilde{h}_L^*(f)\, e^{i \omega t}\right] \infd f ,
+% \end{align}
 \begin{align} \label{eq:hcomp_fd_rl}
 h_+ - i h_\times = \frac{1}{\sqrt{2\pi^2}} \int_{0}^{\infty} \hspace{-2.5pt} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega \, ,
 \end{align}
@@ -362,19 +365,31 @@ This expression carries the same information as Eq.~\eqref{eq:planewave} without
 
 Equation \eqref{eq:hcomp_fd_rl} lends itself to a straightforward physical interpretation.
 Any plane GW, with arbitrary time evolution and polarization state (including unpolarized states), can be expressed as a superposition of fully-polarized Fourier modes;
-each such mode of frequency $|\omega|$ is made up of two counterrotating circularly-polarized contributions (R vs L, the two summands) that add up to a single elliptically polarized mode.
+each such monochromatic mode of frequency $|\omega|$ is made up of two counterrotating circularly-polarized contributions (R and L, the two summands) that add up to a single elliptically polarized mode.
 
 \subsubsection{Elliptical modes}
 
 Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space.
-To make this explicit for the Fourier modes above, rewrite the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as%
-\footnote{We factor $1/(2\pi)$ out of the integrand so that, mirrowing Eq.~\eqref{eq:ft}, the amplitude $A$ in this context is an amplitude spectral density with respect to the frequency $f \equiv \omega/(2\pi)$.}
+We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega')\, C_{R/L} $,%
+\footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega') C_{R/L}/2 = \delta(f - f') C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
+isolating a single Fourier mode of frequency $\omega' >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
+The result of the Fourier integral is then (relabeling $\omega' \to \omega$ after integration)
 \begin{align}
-\sqrt{2} \left(\tilde{h}_R\, e^{-i \omega t} + \tilde{h}_L^*\, e^{i \omega t}\right) =\nonumber\\
-\frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right],
+h_+ - i h_\times =\frac{1}{\sqrt{2}} \left( C_R\, e^{-i \omega t} + C^*_L\, e^{i\omega t}\right)\, ,
 \end{align}
-where
-$A \equiv \sqrt{2} \left(|\tilde{h}_R| + |\tilde{h}_L| \right) \geq 0$ is the overall amplitude of the Fourier mode, $-1 \leq \epsilon = (|\tilde{h}_R| - |\tilde{h}_L|)/(|\tilde{h}_R| + |\tilde{h}_L|) \leq 1$ is its ellipticity, and $\phi_{R/L} = \mathrm{arg}(\tilde{h}_{R/L})$ are the right- and left-handed Fourier phases.
+which can, without loss of generality, be refactored into
+\begin{align}
+h_+ - i h_\times = \frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right] .
+\end{align}
+% 
+% refactor the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as%
+% \footnote{We factor $\sqrt{2}$ into the integrand so that, mirroring Eq.~\eqref{eq:ft}, the amplitude $A$ in this context is an amplitude spectral density with respect to the frequency $f \equiv \omega/(2\pi)$.}
+% \begin{align}
+% \sqrt{2} \left(\tilde{h}_R\, e^{-i \omega t} + \tilde{h}_L^*\, e^{i \omega t}\right) =\nonumber\\
+% \frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right],
+% \end{align}
+In this expression, 
+$A \equiv (|{C}_R| + |{C}_L| )/ \sqrt{2} \geq 0$ is the peak amplitude of the mode, $-1 \leq \epsilon = (|{C}_R| - |{C}_L|)/(|{C}_R| + |{C}_L|) \leq 1$ is its ellipticity (i.e., the ratio of semiminor to semimajor axes), and $\phi_{R/L} = \mathrm{arg}({C}_{R/L})$ are the right- and left-handed Fourier phases.
 With some trigonometry, it is easy to show that this corresponds to linear polarization quadratures given by
 \begin{subequations} \label{eq:hcomp_ellip}
 \beq
@@ -386,33 +401,53 @@ h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin
 \end{subequations}
 with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$. 
 In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
+The total power in this mode is given by the square of the \emph{intensity amplitude}, $\hat{A} \equiv \sqrt{C_R^2 + C_L^2} = A \sqrt{1 + \epsilon^2}$.
 
-Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized GW.
-Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
+Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.\footnote{We use ``elliptical'' generically to also encompass circular and linear polarizations, and hence we use ``elliptical'' and ``fully polarized'' interchangeably.}
 As special cases, $\epsilon = +1$ ($\epsilon = -1$) encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
 an example in between, with $\epsilon=1/2$ and $\theta = \pi/2$, is illustrated in Fig.~\ref{fig:pol_diagram_ellip} (compare to Fig.~\ref{fig:pol_diagram_circ}, where $\epsilon=1$).
+Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode of this kind, with ellipticity determined by the relative magnitudes of $\tilde{h}_{R/L}(\omega)$.
 
-
-Any fully-polarized state can be represented by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
-Additionally, for a monochromatic mode, the time dependence of the phasor can be factored out so that the whole state is encoded in a \emph{Jones vector} $\vec{A}$ like
+The mathematical treatment of polarized GW states is entirely analogous to the electromagnetic case.
+To start, any of these states can be represented graphically by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
+For monochromatic modes (i.e., of a definite $\omega$), the same information can also be encoded algebraically in a complex valued \emph{Jones vector} $\vec{C}$ like 
+% Any fully-polarized state can be represented by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
+% Additionally, for a monochromatic mode, the time dependence of the phasor can be factored out so that the whole state is encoded in a \emph{Jones vector} $\vec{A}$ like
 \beq \label{eq:jones}
 \begin{pmatrix}
 h_+\\
 h_\times
-\end{pmatrix} = 
+\end{pmatrix} \equiv
 \Re \left[ \begin{pmatrix}
-\tilde{h}_+\\
-\tilde{h}_\times
+C_+\\
+C_\times
 \end{pmatrix} e^{-i\omega t}\right] \equiv
 \Re \left[ \vec{A}\, e^{-i\omega t}\right] ,
 \eeq
 just as is standard for electromagnetic waves.
-For example, in that notation, $\vec{A}=\left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, while $\vec{A} = \left(1,i\right)/\sqrt{2}$ encodes a circular R mode.
+For example, in that notation, $\vec{C}=\left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, while $\vec{C} = \left(1,i\right)/\sqrt{2}$ encodes a circular R mode.
 We will briefly make use of Jones vectors in computations below.
-In \eq{jones}, the Jones vector is expressed in terms of its linear $+/\times$ projections, but they could be equally expressed in any other basis composed of two antipodal vectors defined on the (unit radius) Poincar\'{e} sphere of polarization states.
+
+We can obtain another useful parametrization for fully polarized states by replacing the ellipticity parameter $\epsilon$ in \eq{hcomp_ellip} with an angle $\chi \equiv \arctan \epsilon$, which is also illustrated in Fig.~\ref{fig:ellipse}.
+In terms of this quantity and the intensity amplitude $\hat{A}=A\sqrt{1+\epsilon^2}=A \sec\chi$, the elliptical mode of \eq{hcomp_ellip} becomes
+\begin{subequations} \label{eq:hcomp_ellip_chi}
+\beq
+h_+ = \hat{A} \left[\cos\chi \cos \theta \cos(\omega t - \phi) - \sin\chi \sin \theta \sin(\omega t - \phi)\right] ,
+\eeq
+\beq
+h_\times = \hat{A} \left[\cos\chi \sin \theta \cos(\omega t - \phi) + \sin\chi \cos \theta \sin(\omega t - \phi)\right] ,
+\eeq
+\end{subequations}
+Now, $\chi = 0$ gives a linearly polarized state, while $\chi=\pm \pi/4$ gives a R/L circularly polarized state.
+Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$, since \eq{hcomp_ellip_chi} is invariant under $\{\theta \to \theta + \pi, \chi \to \chi + \pi\}$.
+
+We now have two angles that fully define the shape of the polarization ellipse, $\chi$ and $\theta$.
+If we interpret $-\pi/2 \leq 2\chi \leq \pi/2$ and $0 \leq 2\theta \leq 2\pi$ respectively as latitude and longitude coordinates, then the space of all unique polarization states can be arranged into a sphere such that linear polarization states of different orientations live on the equator ($\chi = 0$), and circular states on the poles ($2\chi = \pm \pi/2$).
+Any two antipodal states in this so-called \emph{Poincar\'e sphere} can function as a polarization basis.
 In this language, reexpressing Eq.~\eqref{eq:planewave} as Eq.~\eqref{eq:planewave_circ} amounted to a Poincar\'{e} rotation of our basis vectors.
 
-In full analogy with electromagnetic theory, the Poincar\'{e} sphere can be defined in terms of \emph{Stokes parameters} characterizing the distribution of power in the signal accross different polarization states \cite{Anile1974}.
+
+If we scale the radius of the Poincar\'{e} sphere to be the signal intensity $I \equiv \hat{A}^2$, then it can be defined in terms of Cartesian coordinates corresponding to the\emph{Stokes parameters} characterizing the distribution of power in the signal accross different polarization states \cite{Anile1974}.
 For a fully polarized monochromatic mode, these are given by
 \begin{subequations} \label{eq:stokes}
 \beq
@@ -428,7 +463,7 @@ U \equiv \tilde{h}_+ \tilde{h}_\times + \tilde{h}_+^* \tilde{h}_\times \,  ,
 V \equiv |\tilde{h}_R|^2 - |\tilde{h}_L|^2 \eeq
 \end{subequations}
 The Poincar\'{e} sphere is then the sphere of radius $I$ centered on $\left(Q=0, U=0, V=0\right)$.
-For a fully polarized state, the Stokes parameters are equivalent to the polarization quantitites $\left\{A, \epsilon, \theta, \phi\right\}$ defining the ellipse in Fig.~\ref{fig:ellipse}, although the latter are amplitude quantities rather than intensity.
+For a fully polarized state, the Stokes parameters are equivalent to the polarization quantitites $\left\{A, \epsilon, \theta, \phi\right\}$ or $\{\hat{A}, \chi, \theta, \phi\}$ defining the ellipse in Fig.~\ref{fig:ellipse}, although the latter are amplitude quantities rather than intensity.
 Stokes parameters have the advantage of being easily generalizable to unpolarized waves, which can be achieved by replacing the polarization amplitudes by their root-mean square expectation values in Eq.~\eqref{eq:stokes}; in that case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
 The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx}.
 Since we will be dealing mainly with coherent signals, we will not make further reference to Stokes parameters below.
@@ -442,6 +477,9 @@ Since we will be dealing mainly with coherent signals, we will not make further 
 }
 \label{fig:pol_diagram_ellip}
 \end{figure*}
+
+Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
+\subsubsection{Modelling arbitrary signals}
 
 We arrived at the generic form of a fully polarized mode in Eq.~\eqref{eq:hcomp_ellip} through the generic Fourier decomposition of a plane wave in Eq.~\eqref{eq:hcomp_fd_rl}, wherein elliptical modes appear naturally.
 Yet, a similar argument applies to any high-frequency coherent wave (i.e., any wave that can be written as a slow varying amplitude modulating a fast phase), or sums thereof.
