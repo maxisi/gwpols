@@ -52,6 +52,7 @@
 \usepackage{csquotes}
 \usepackage{array}
 \usepackage{booktabs}
+\usepackage[T1]{fontenc}
 
 \newcommand{\ts}{\textsuperscript}
 
@@ -456,6 +457,7 @@ We now have two angles that fully define the shape of the polarization ellipse, 
 If we interpret $-\pi/2 \leq 2\chi \leq \pi/2$ and $0 \leq 2\theta \leq 2\pi$ respectively as latitude and longitude coordinates, then the space of all unique polarization states can be arranged into a sphere such that linear polarization states of different orientations live on the equator ($\chi = 0$), and circular states live on the poles ($2\chi = \pm \pi/2$) \cite{poincare,goldstein}.
 Any two antipodal states in this so-called \emph{Poincar\'e sphere} can function as a polarization basis.
 In this language, reexpressing Eq.~\eqref{eq:planewave} as Eq.~\eqref{eq:planewave_circ} amounted to effecting a Poincar\'{e} rotation of our basis vectors.
+The polarization ellipse (Fig.~\ref{fig:ellipse}) can be recovered from the Poncar\'e sphere by a stereographic projection.
 
 If we scale the radius of the Poincar\'{e} sphere to be the signal intensity $I \equiv \hat{A}^2$, then it can be defined in terms of Cartesian coordinates corresponding to the three other \emph{Stokes parameters} that characterize the distribution of power in the signal accross different polarization states \cite{Anile1974}.
 For a fully polarized monochromatic mode, in addition to $I$ itself, these are given by
@@ -498,13 +500,14 @@ h_+ = \mathcal{A}(t) \left[\cos \Phi(t) \cos \theta - \epsilon \sin \Phi(t) \sin
 h_\times = \mathcal{A}(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t) \cos\theta \right] ,
 \end{equation}
 \end{subequations}
-enhancing Eq.~\eqref{eq:hcomp_ellip} with a (slowly) time varying amplitude $\mathcal{A}(t)$ and a (quickly) time varying phase $\Phi(t)$.%
+enhancing Eq.~\eqref{eq:hcomp_ellip} with a (slowly) time varying amplitude $\mathcal{A}(t)$ and a (quickly) time varying phase $\Phi(t)$, which need no longer grow linearly with time.
+Following this expression, the aspect ratio and orientation of the polarization ellipse remains constant,%
 \footnote{The shape of the ellipse could also be made to vary adiabatically via $\epsilon$ and $\theta$ but that is seldomly done in real-world applications.}
-Following this expression, the aspect ratio and orientation of the polarization ellipse remains constant, while its size may increase or decrease according to $\mathcal{A}(t)$.
+while its size may increase or decrease according to $\mathcal{A}(t)$.
 The initial state of the signal is defined by the initial amplitude $A = \mathcal{A}(t=0)$ and phase $\phi = \Phi(t=0)$.
 
 Most signals, unfortunately, are neither monochromatic nor fully polarized.
-Nevertheless, a large variety of morphologies can be captured with a finite superposition of elliptically polarized modes, potentially with time-varying polarization parameters.
+Nevertheless, a large variety of morphologies can be captured with a finite superposition of elliptically polarized modes, potentially with time-varying polarization parameters as above.
 This should be apparent from the fact that an (uncountably) \emph{infinite} set of elliptical modes can describe \emph{any} GW signal, as we showed in \eq{hcomp_fd_rl}.
 For many practical applications, it is advantageous to decompose signals into 
 sums of fully-polarized modes in the shape of \eq{ellip_gen},
@@ -538,7 +541,7 @@ For example, in the case of ringdown templates, $\mathcal{A}_i(t) = A_i \exp(-\g
 Equations \eqref{eq:ellip_sum} can be equivalently written in the frequency domain, as done for the sine-Gaussian basis in \cite{Cornish:2014kda,Cornish:2020dwh}.
 
 Besides the modeling of generic signals, \eq{ellip_sum} serves as the exact representation of several classes of astrophysically-relevant signals.
-The most salient example of this, as we will see below, is that of a compact binary coalescences (CBCs); in particular, a nonprecessing, quasicircular CBC dominated by the quadrupolar angular harmonic of the radiation can be described by a single, fully polarized component, as in \eq{ellip_gen}.
+The most salient example of this, as we will see below, is that of compact binary coalescences (CBCs); in particular, a nonprecessing, quasicircular CBC dominated by the quadrupolar angular harmonic of the radiation can be described by a single, fully polarized component, as in \eq{ellip_gen}.
 
 % In fact, as we will see below, the simplest of those signals (viz., nonprecessing inspiral dominated by the quadrupolar angular harmonic) can be described by a single mode like the summand of \eq{hcomp_ellip}, with fixed ellipticity and polarization angle.
 
@@ -546,7 +549,7 @@ The most salient example of this, as we will see below, is that of a compact bin
 \subsection{Relation to spherical harmonics}
 \label{sec:harmonics}
 
-When modeling specific sources (e.g., in a numerical-relativity simulation), it is common to decompose the outgoing strain in terms of spin-weighted spherical harmonics ${}_{-2} Y_{\ell m}$ in the frame of the source so that, for a detector infinitely far away, we can write
+When modeling specific sources (e.g., in a numerical-relativity simulation), it is common to decompose the outgoing strain in terms of spin-weighted spherical harmonics ${}_{-2} Y_{\ell m}$ in the frame of the source (e.g., \cite{Kidder:2007rt}), so that, for a detector infinitely far away, we can write
 % \begin{align}
 % h_+ - i h_\times = \sum_\ell \sum_{m>0} &\left[ H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi) + \right. \nonumber \\
 % &\left. H_{\ell-m}(t)\, {}_{-2}Y_{\ell -m} (\iota, \varphi) \right]
@@ -555,8 +558,8 @@ When modeling specific sources (e.g., in a numerical-relativity simulation), it 
 h_+ - i h_\times = \sum_{\ell \geq 2} \sum_{-\ell \leq m \leq \ell} H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi)\, ,
 \end{align}
 for a source seen with inclination $\iota$ and azimuthal angle $\varphi$, with intrinsic time-dependence encoded in the $H_{\ell m}$ functions as determined by Einstein's equations.
-The different $H_{\ell m}$'s are generated by the time evolution of specific current and mass moment of the source, and, therefore, are often associated with specific signal frequencies \cite{Thorne:1980ru}---for example, the dominant $\ell= |m|=2$ mode in a compact binary inspiral will evolve at twice the orbital frequency $\omega_\mathrm{orb}$ or, for other harmonics, $\omega_{\ell m} = m\, \omega_\mathrm{orb}$, with parity invariance requiring $\omega_{\ell m}= - \omega_{\ell - m}$.
-If that is the case, then Eq.~\eqref{eq:spherical} is equivalent to the elliptical decomposition of Eq.~\eqref{eq:ellip_sum}, as we proceed to show.
+The different $H_{\ell m}$'s are generated by the time evolution of specific current and mass moments of the source, and, therefore, are often associated with specific signal frequencies \cite{Thorne:1980ru}---for example, the dominant $\ell= |m|=2$ mode in a nonprecessing compact binary inspiral will evolve with a signal freqyency $\omega_{22}$ which is twice the orbital frequency $\omega_\mathrm{orb}$ or, more generally for other harmonics, $\omega_{\ell m} = m\, \omega_\mathrm{orb}$, with parity invariance requiring $\omega_{\ell m}= - \omega_{\ell - m}$.
+If that harmonic structure holds, then Eq.~\eqref{eq:spherical} is equivalent to the elliptical decomposition of Eq.~\eqref{eq:ellip_sum}, as we proceed to show.
 
 For concreteness, represent the $H_{\ell m}$ schematically as simple monochromatic components $H_{\ell m} (t) = \mathcal{C}_{\ell m} \exp\left(-i \omega_{\ell m} t\right)$, where $\mathcal{C}_{\ell m}$ is some complex-valued amplitude, that could be varying slowly with time (slower than $\omega_{\ell m}$).
 We can then refactor Eq.~\eqref{eq:spherical} so that we only sum over nonnegative values of $m$,
@@ -569,29 +572,29 @@ h_+ - i h_\times &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}
 \end{align}
 \end{subequations}
 \end{widetext}
-where, in the last line, we have absorbed the angular factors into $C_{\ell m} \equiv \mathcal{C}_{\ell m} {}_{-2}Y_{\ell m} (\iota, \varphi)$.
+where, in the last line, we have absorbed the angular factors into $C_{\ell m} \equiv {}_{-2}Y_{\ell m} (\iota, \varphi)\, \mathcal{C}_{\ell m}$.
 
 The summand in the last line of \eq{spherical_modes} takes the form of \eq{ellip_circ}, and its interpretation is the same: each $(\ell$, $|m|)$ contributes a single, elliptically polarized mode to the waveform.
-The amplitude and ellipticity of each mode are determined by both (1) the intrinsic amplitudes $C_{\ell \pm m}'$, and (2) the viewing angle $(\iota, \varphi)$, through the ${}_{-2} Y_{\ell m}$ factors.
-Although we have simplified \eq{spherical_modes} by taking each $(\ell, m)$ mode to be monochromatic, we would have arrived at the same conclusion regarding polarizations had we instead allowed for a generic (slow) amplitude and (fast) phase evolution by writing $H_{\ell m}(t) = \mathcal{C}_{\ell m}(t) \exp[-i \Phi_{\ell m}(t)]$, with parity invariance now requiring $\Phi_{\ell m}(t) = - \Phi_{\ell -m}^*(t)$; in that case the last line of \eq{spherical_modes} would have taken the form of \eq{ellip_sum}, with each summand representing a fully polarized, albeit non-monochromatic, mode.
+The amplitude and ellipticity of each mode are determined by both (1) the intrinsic amplitudes $\mathcal{C}_{\ell \pm m}$, and (2) the viewing angle $(\iota, \varphi)$, through the ${}_{-2} Y_{\ell m}$ factors.
+Although we have simplified \eq{spherical_modes} by taking each $(\ell, m)$ mode to be monochromatic, we would have arrived at the same conclusion regarding polarizations had we instead allowed for a generic (slow) amplitude and (fast) phase evolution by writing $H_{\ell m}(t) = \mathcal{A}_{\ell m}(t) \exp[-i \Phi_{\ell m}(t)]$, for real valued $\mathcal{A}_{\ell m}$ and with parity invariance now requiring $\Phi_{\ell m}(t) = - \Phi_{\ell -m}^*(t)$; in that case the last line of \eq{spherical_modes} would have taken the form of \eq{ellip_sum}, with each summand representing a fully polarized, albeit non-monochromatic, mode.
 
 A special case of Eq.~\eqref{eq:spherical_modes} is that of a nonprecesing compact binary inspiral.
-In that case, equatorial-reflection symmetry implies that $\mathcal{C}_{\ell -m} = (-1)^\ell \mathcal{C}_{\ell m}^*$.
-The strain can then be written as
+In that case, equatorial-reflection (planar) symmetry implies that $H_{\ell -m} = (-1)^\ell H_{\ell m}^*$ \cite{Faye:2012we}.
+The strain for a given $(\ell, |m|)$ mode can then be written as
 \begin{equation}
-h_+ - i h_\times = A'_{\ell m} \hspace{-2pt} \left[ Y^+_{\ell m} \cos \Phi_{\ell m}(t) - 
+h_+ - i h_\times = \mathcal{A}_{\ell m} \left[ Y^+_{\ell m} \cos \Phi_{\ell m}(t) - 
 i Y^\times_{\ell m} \sin \Phi_{\ell m}(t) \right]\hspace{-3pt} ,
 \end{equation}
-where we have let $C_{\ell m}' \equiv A_{\ell m}' \exp(i \phi_{\ell m}')$, $\Phi_{\ell m}(t) \equiv \omega_{\ell m} t - \phi_{\ell m}'$, and defined
+where we have used $H_{\ell m}(t) = \mathcal{A}_{\ell m}(t) \exp[-i \Phi_{\ell m}(t)]$ and defined
 \begin{equation}
-Y_{\ell m}^{+/\times} \equiv {}_{-2} Y_{\ell m}(\iota) \pm {}_{-2} Y_{\ell m}(\pi-\iota) \, ,
+Y_{\ell m}^{+/\times}(\iota,\varphi) \equiv {}_{-2} Y_{\ell m}(\iota, \varphi) \pm {}_{-2} Y_{\ell m}(\pi-\iota, \varphi + \pi) \, ,
 \end{equation}
-with the plus (minus) sign for the plus (cross) polarization (see Appendix B of \cite{Isi:2021iql}).
+with the plus (minus) sign for the plus (cross) polarization (see Appendix B of \cite{Isi:2021iql}); here we have used the symmetry that ${}_{-2} Y_{\ell -m}(\iota,\varphi) = (-1)^{\ell+m} {}_{-2} Y_{\ell m}^*(\pi-\iota,\varphi+\phi)$ \cite{goldberg:1967}.
 This implies that that, for a nonprecessing binary, the ellipticity of each $(\ell, |m|)$ mode is determined only by the source inclination.
 For the special case of the dominant $\ell=|m|=2$ mode, this reduces to the familiar expression in terms of $\cos\iota$,
 \begin{subequations}
 \beq
-h_+ = \frac{1}{2} \sqrt{\frac{5}{4\pi}} A'_{22} \left(1 + \cos^2\iota\right) \cos \Phi_{22}(t) \, , 
+h_+ = \frac{1}{2} \sqrt{\frac{5}{4\pi}} \mathcal{A}_{22} \left(1 + \cos^2\iota\right) \cos \Phi_{22}(t) \, , 
 \eeq
 \beq
 h_\times = \sqrt{\frac{5}{4\pi}} A'_{22}  \cos\iota \sin \Phi_{22}(t) \, .
