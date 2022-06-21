@@ -363,17 +363,17 @@ This expression carries the same information as Eq.~\eqref{eq:planewave} without
 Equation \eqref{eq:hcomp_fd_rl} lends itself to a straightforward physical interpretation.
 Any plane GW, with arbitrary time evolution and polarization state (including unpolarized states), can be expressed as a superposition of fully-polarized Fourier modes;
 each such monochromatic mode of frequency $|\omega|$ is made up of two counterrotating circularly-polarized contributions (R and L, the two summands) that add up to a single elliptically polarized mode.
-Such elliptical, or \emph{fully-polarized}, modes are thus of fundamental importance; we discuss their properties in detail below.
+Such elliptical, or \emph{fully-polarized}, modes are thus of fundamental importance; we discuss their properties in detail below, beginning with modes of a definite frequency as they appear in \eq{hcomp_fd_rl}.
 
 \section{Elliptical modes}
 
 \subsection{Monochromatic modes}
 
 Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space.
-We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega')\, C_{R/L} $,%
-\footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega') C_{R/L}/2 = \delta(f - f') C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
-isolating a single Fourier mode of frequency $\omega' >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
-The result of the Fourier integral is then (relabeling $\omega' \to \omega$ after integration)
+We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,%
+\footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
+isolating a single Fourier mode of frequency $\omega_0 >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
+The result of the Fourier integral is then (relabeling $\omega_0 \to \omega$ after integration)
 \begin{align} \label{eq:ellip_circ}
 h_+ - i h_\times =\frac{1}{\sqrt{2}} \left( C_R\, e^{-i \omega t} + C^*_L\, e^{i\omega t}\right)\, ,
 \end{align}
@@ -401,9 +401,9 @@ h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin
 \end{subequations}
 with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$. 
 In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
-The total power in this mode is given by the square of the \emph{intensity amplitude}, $\hat{A} \equiv \sqrt{C_R^2 + C_L^2} = A \sqrt{1 + \epsilon^2}$.
+The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as $\hat{A} \equiv \sqrt{C_R^2 + C_L^2} = A \sqrt{1 + \epsilon^2}$.
 
-Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.\footnote{We use ``elliptical'' generically to also encompass circular and linear polarizations, and hence we use ``elliptical'' and ``fully polarized'' interchangeably.}
+Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.\footnote{We use ``elliptical'' generically to also encompass circular and linear polarizations as special cases; in this sense, ``elliptical'' and ``fully polarized'' are synonyms.}
 As special cases, $\epsilon = +1$ ($\epsilon = -1$) encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
 an example in between, with $\epsilon=1/2$ and $\theta = \pi/2$, is illustrated in Fig.~\ref{fig:pol_diagram_ellip} (compare to Fig.~\ref{fig:pol_diagram_circ}, where $\epsilon=1$).
 Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode of this kind, with ellipticity determined by the relative magnitudes of $\tilde{h}_{R/L}(\omega)$.
@@ -419,7 +419,7 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 \end{figure*}
 
 The mathematical treatment of polarized GW states is entirely analogous to the electromagnetic case.
-To start, any of these states can be represented graphically by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
+To start, any of these states can be represented graphically by series of phasor diagrams like the one in Fig.~\ref{fig:ellipse}, as in the bottom of Figs.~\ref{fig:pol_diagram_circ} and \ref{fig:pol_diagram_ellip}.
 For monochromatic modes (i.e., of a definite $\omega$), the same information can also be encoded algebraically in a complex valued \emph{Jones vector} $\vec{C}$ like 
 % Any fully-polarized state can be represented by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
 % Additionally, for a monochromatic mode, the time dependence of the phasor can be factored out so that the whole state is encoded in a \emph{Jones vector} $\vec{A}$ like
@@ -432,11 +432,11 @@ h_\times
 C_+\\
 C_\times
 \end{pmatrix} e^{-i\omega t}\right] \equiv
-\Re \left[ \vec{A}\, e^{-i\omega t}\right] .
+\Re \left[ \vec{C}\, e^{-i\omega t}\right] .
 \eeq
 %just as is standard for electromagnetic waves.
 For example, in that notation, $\vec{C}=\left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, while $\vec{C} = \left(1,i\right)/\sqrt{2}$ encodes a circular R mode.
-We will briefly make use of Jones vectors to facilitate computations below.
+We will briefly make use of Jones vectors to facilitate coordinate transformations below.
 
 We can obtain another useful parametrization for fully polarized states by replacing the ellipticity parameter $\epsilon$ in \eq{hcomp_ellip} with an angle $\chi \equiv \arctan \epsilon$, which is also illustrated in Fig.~\ref{fig:ellipse}.
 In terms of this quantity and the intensity amplitude $\hat{A}=A\sqrt{1+\epsilon^2}=A \sec\chi$, the elliptical mode of \eq{hcomp_ellip} becomes
@@ -453,7 +453,7 @@ Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \ep
 % Additionally, the transformation $\{\theta \to \theta \pm \pi/2, \chi \to \pi/2 - \chi, \phi \to \phi \pm \pi/2\}$, with matching signs for the two $\pm \pi/2$ terms, leaves the equation unchanged; this means we can tighten the ranges to $0 < \theta < \pi/2$.
 
 We now have two angles that fully define the shape of the polarization ellipse, $\chi$ and $\theta$.
-If we interpret $-\pi/2 \leq 2\chi \leq \pi/2$ and $0 \leq 2\theta \leq 2\pi$ respectively as latitude and longitude coordinates, then the space of all unique polarization states can be arranged into a sphere such that linear polarization states of different orientations live on the equator ($\chi = 0$), and circular states live on the poles ($2\chi = \pm \pi/2$).
+If we interpret $-\pi/2 \leq 2\chi \leq \pi/2$ and $0 \leq 2\theta \leq 2\pi$ respectively as latitude and longitude coordinates, then the space of all unique polarization states can be arranged into a sphere such that linear polarization states of different orientations live on the equator ($\chi = 0$), and circular states live on the poles ($2\chi = \pm \pi/2$) \cite{poincare,goldstein}.
 Any two antipodal states in this so-called \emph{Poincar\'e sphere} can function as a polarization basis.
 In this language, reexpressing Eq.~\eqref{eq:planewave} as Eq.~\eqref{eq:planewave_circ} amounted to effecting a Poincar\'{e} rotation of our basis vectors.
 
@@ -474,13 +474,13 @@ for $C_+ = (C_R + C_L)/\sqrt{2}$ and $C_\times = i (C_R - C_L)/\sqrt{2}$.
 As implied by the definitions above, $Q/I$ controls the (power) fraction of linear polarization, $U/I$ the orientation of the linear component, and $V/I$ the fraction of circular polarization.
 The Poincar\'{e} sphere is then the sphere of radius $I$ centered on $\left(Q=0, U=0, V=0\right)$.
 
-For a fully polarized state, the Stokes parameters (quantifying signal power) are equivalent to the polarization quantitites $\left\{A, \epsilon, \theta, \phi\right\}$ or $\{\hat{A}, \chi, \theta, \phi\}$ defining the ellipse in Fig.~\ref{fig:ellipse} (and quantifying signal amplitude).
+For a fully polarized state, the Stokes parameters (quantifying signal power) are equivalent to the polarization quantitites $\left\{A, \epsilon, \theta\right\}$ or $\{\hat{A}, \chi, \theta\}$ defining the ellipse in Fig.~\ref{fig:ellipse} (and quantifying signal amplitude).
 Because they are defined in terms of power, Stokes parameters have the advantage of being easily generalizable to fully or partially unpolarized waves, which can be achieved by replacing the definition in Eq.~\eqref{eq:stokes} with corresponding two-point correlation functions (power spectra); in the fully-unpolarized case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
-The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx,Conneely:2018wis,Seto:2008sr,Kato:2015bye}; since we will be dealing mainly with coherent signals, we will not make further reference to Stokes parameters below.
+The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx,Conneely:2018wis,Seto:2008sr,Kato:2015bye}; since we will be dealing mainly with coherent signals, we will not make further reference to Stokes parameters in what follows.
 
 % Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
 
-\subsection{Nonmonochromatic modes}
+\subsection{Non-monochromatic modes}
 
 % \subsubsection{Fully-polarized non-monochromatic states}
 
@@ -488,7 +488,7 @@ We arrived at the expression for a fully-polarized, monochromatic GW in Eq.~\eqr
 Yet, we may also speak of fully-polarized states even if the signal is not monochromatic.
 
 The argument applies to any high-frequency coherent wave, i.e., any wave that can be written as a slow-varying amplitude modulating a fast phase.
-In that case, the polarization parameters $\{A, \epsilon, \theta, \phi\}$ can be defined instantaneously using the stationary phase approximation or similar procedures.
+In that case, the polarization parameters $\{A, \epsilon, \theta\}$ can be defined instantaneously using the stationary phase approximation or similar procedures.
 This way, any GW with a constant polarization state, i.e., whose polarization ellipse takes a fixed, determinate shape (but not necessarily scale), can be encapsulated by an expression of the form
 \begin{subequations} \label{eq:ellip_gen}
 \begin{equation} %\label{eq:ellip_sum_p}
@@ -501,7 +501,7 @@ h_\times = \mathcal{A}(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t
 enhancing Eq.~\eqref{eq:hcomp_ellip} with a (slowly) time varying amplitude $\mathcal{A}(t)$ and a (quickly) time varying phase $\Phi(t)$.%
 \footnote{The shape of the ellipse could also be made to vary adiabatically via $\epsilon$ and $\theta$ but that is seldomly done in real-world applications.}
 Following this expression, the aspect ratio and orientation of the polarization ellipse remains constant, while its size may increase or decrease according to $\mathcal{A}(t)$.
-The initial state of the signal is defined by the initial amplitude $A = A(t=0)$ and phase $\phi = \Phi(t=0)$.
+The initial state of the signal is defined by the initial amplitude $A = \mathcal{A}(t=0)$ and phase $\phi = \Phi(t=0)$.
 
 Most signals, unfortunately, are neither monochromatic nor fully polarized.
 Nevertheless, a large variety of morphologies can be captured with a finite superposition of elliptically polarized modes, potentially with time-varying polarization parameters.
@@ -520,25 +520,27 @@ sums of fully-polarized modes in the shape of \eq{ellip_gen},
 % \end{subequations}
 \begin{subequations} \label{eq:ellip_sum}
 \begin{equation} \label{eq:ellip_sum_p}
-h_+ = \sum \hspace{-1pt} A_i(t) \hspace{-1pt} \left[\cos \Phi_i(t) \cos \theta_i - \epsilon_i \sin \Phi_i(t) \sin\theta_i \right] ,
+h_+ = \sum \hspace{-1pt} \mathcal{A}_i(t) \hspace{-1pt} \left[\cos \Phi_i(t) \cos \theta_i - \epsilon_i \sin \Phi_i(t) \sin\theta_i \right] ,
 \end{equation}
 \begin{equation} \label{eq:ellip_sum_c}
-h_\times = \sum \hspace{-1pt} A_i(t) \hspace{-1pt} \left[ \cos \Phi_i(t) \sin \theta_i + \epsilon_i \sin \Phi_i(t) \cos\theta_i \right] ,
+h_\times = \sum \hspace{-1pt} \mathcal{A}_i(t) \hspace{-1pt} \left[ \cos \Phi_i(t) \sin \theta_i + \epsilon_i \sin \Phi_i(t) \cos\theta_i \right] ,
 \end{equation}
 \end{subequations}
-with a sum over some number of modes indexed by $i$, with amplitudes and phases taking some prescribed functional form.
+with a sum over some number of modes indexed by $i$, with amplitudes and phases taking some prescribed functional form for each $i$.
 
 The form of Eq.~\eqref{eq:ellip_sum} is flexible enough that it can be used in practice to model arbitrary signals in real detector data.
 For example, that is the strategy taken by \textsc{BayesWave} \cite{Cornish:2014kda,Cornish:2020dwh}, which reconstructs generic GW signals by fitting a variable number of elliptically-polarized sine-Gaussians.%
 \footnote{\textsc{BayesWave} can currently operate in two configurations: one which assumes the overall signal is elliptically polarized, and another which does not.}
 It is also the case, in ringdown studies that fit the final portion of a compact binary signal as a superposition of elliptically polarized damped sinusoids \cite{Isi:2021iql}.
 
-For such applications, each phasing function will usually correspond to some given frequency $\omega_i$ as in a Fourier expansion, so that $\Phi_i(t) = \omega_i t + \phi_i$; meanwhile, the $A_i(t)$ functions encode amplitude envelopes evolving slowly over some timescale $\tau_i \equiv 1/\gamma_i$.
-For example, in the case of ringdown templates, $A_i(t) = A_i \exp(-\gamma_i t)$ and $\Phi_i(t) = \omega_i t + \phi_i$, for some set of complex-valued frequencies $\tilde{\omega}_i = \omega_i - i\gamma_i$ to be inferred from the data together with polarization parameters $\{ A_i, \epsilon_i, \theta_i, \phi_i\}$.
+For such applications, each phasing function will usually correspond to some given frequency $\omega_i$ as in a Fourier expansion, so that $\Phi_i(t) = \omega_i t + \phi_i$; meanwhile, the $\mathcal{A}_i(t)$ functions encode amplitude envelopes evolving slowly over some timescale $\tau_i \equiv 1/\gamma_i$.
+For example, in the case of ringdown templates, $\mathcal{A}_i(t) = A_i \exp(-\gamma_i t)$ and $\Phi_i(t) = \omega_i t + \phi_i$, for some set of complex-valued frequencies $\tilde{\omega}_i = \omega_i - i\gamma_i$ to be inferred from the data together with polarization parameters $\{ A_i, \epsilon_i, \theta_i, \phi_i\}$.
 Equations \eqref{eq:ellip_sum} can be equivalently written in the frequency domain, as done for the sine-Gaussian basis in \cite{Cornish:2014kda,Cornish:2020dwh}.
 
-The most salient example of a signal that intrisically follows \eq{hcomp_ellip} is that of a compact binary coalescence (CBC).
-In fact, as we will see below, the simplest of those signals (viz., nonprecessing inspiral dominated by the quadrupolar angular harmonic) can be described by a single mode like the summand of \eq{hcomp_ellip}, with fixed ellipticity and polarization angle.
+Besides the modeling of generic signals, \eq{ellip_sum} serves as the exact representation of several classes of astrophysically-relevant signals.
+The most salient example of this, as we will see below, is that of a compact binary coalescences (CBCs); in particular, a nonprecessing, quasicircular CBC dominated by the quadrupolar angular harmonic of the radiation can be described by a single, fully polarized component, as in \eq{ellip_gen}.
+
+% In fact, as we will see below, the simplest of those signals (viz., nonprecessing inspiral dominated by the quadrupolar angular harmonic) can be described by a single mode like the summand of \eq{hcomp_ellip}, with fixed ellipticity and polarization angle.
 
 
 \subsection{Relation to spherical harmonics}
@@ -553,7 +555,7 @@ When modeling specific sources (e.g., in a numerical-relativity simulation), it 
 h_+ - i h_\times = \sum_{\ell \geq 2} \sum_{-\ell \leq m \leq \ell} H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi)\, ,
 \end{align}
 for a source seen with inclination $\iota$ and azimuthal angle $\varphi$, with intrinsic time-dependence encoded in the $H_{\ell m}$ functions as determined by Einstein's equations.
-The different $H_{\ell m}$'s are often associated with specific signal frequencies \cite{Thorne:1980ru}---for example, the dominant $\ell= |m|=2$ mode in a compact binary inspiral will evolve at twice the orbital frequency $\omega_\mathrm{orb}$ or, for other harmonics, $\omega_{\ell m} = m \omega_\mathrm{orb}$, with parity invariance requiring $\omega_{\ell m}= - \omega_{\ell - m}$.
+The different $H_{\ell m}$'s are generated by the time evolution of specific current and mass moment of the source, and, therefore, are often associated with specific signal frequencies \cite{Thorne:1980ru}---for example, the dominant $\ell= |m|=2$ mode in a compact binary inspiral will evolve at twice the orbital frequency $\omega_\mathrm{orb}$ or, for other harmonics, $\omega_{\ell m} = m\, \omega_\mathrm{orb}$, with parity invariance requiring $\omega_{\ell m}= - \omega_{\ell - m}$.
 If that is the case, then Eq.~\eqref{eq:spherical} is equivalent to the elliptical decomposition of Eq.~\eqref{eq:ellip_sum}, as we proceed to show.
 
 For concreteness, represent the $H_{\ell m}$ schematically as simple monochromatic components $H_{\ell m} (t) = \mathcal{C}_{\ell m} \exp\left(-i \omega_{\ell m} t\right)$, where $\mathcal{C}_{\ell m}$ is some complex-valued amplitude, that could be varying slowly with time (slower than $\omega_{\ell m}$).
