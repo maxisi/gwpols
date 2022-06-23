@@ -334,15 +334,19 @@ It also reveals that R and L switch roles for $\omega \to - \omega$, as we antic
 
 %\subsubsection{Complex strain}
 
-Next, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, $h_+ - i h_\times$, in the time domain.
+Next, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, 
+\beq
+H(t) \equiv h_+ - i h_\times,
+\eeq
+in the time domain.
 This complex number provides an alternative representation of the $\left(h_+, h_\times\right)$ phasor introduced in the previous section (see bottom panel of Fig.~\ref{fig:pol_diagram_circ}).
 If this quantity, the \emph{complex strain}, is purely real (imaginary), then the wave is purely plus (cross) polarized.
-In those same terms, a unit-amplitude circularly-polarized mode like the one in \eq{circ_example} can be expressed simply as $h_+ - i h_\times = \exp(\mp i \omega t)/\sqrt{2}$, with the minus (plus) sign in the exponent corresponding to R (L) for $\omega > 0$.%
+In those same terms, a unit-amplitude circularly-polarized mode like the one in \eq{circ_example} can be expressed simply as $H(t)  = \exp(\mp i \omega t)/\sqrt{2}$, with the minus (plus) sign in the exponent corresponding to R (L) for $\omega > 0$.%
 \footnote{The choice of sign in the definition of the complex strain as $h_+ - ih_\times$ matches the convention of the Fourier transform in Eq.~\eqref{eq:ft} in order to make it so that $\exp(-i|\omega| t)$ encodes a right-handed mode as defined in the source-based convention.}
 
 Using this fact, an economic way of expressing the information in Eq.~\eqref{eq:planewave} for any given direction of propagation $\hat{k}$ is to write the time-domain complex strain at the spatial origin ($\vec{x}=0$) as a Fourier integral of the form
 \begin{align} \label{eq:hcomp_fd}
-h_+ - i h_\times = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
+H(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \tilde{H}(\omega)\, e^{-i \omega t} \,\infd \omega \, ,
 \end{align}
 where the complex-valued Fourier amplitudes are defined by $\tilde{H}(\omega) \equiv \int (h_+ - i h_\times) \exp(i\omega t)\, \infd t = \tilde{h}_+(\omega) - i \tilde{h}_\times(\omega)$, following our Fourier transform convention in Eq.~\eqref{eq:ft}.
 Unlike in Eq.~\eqref{eq:planewave}, it is clear that these Fourier amplitudes will not generally satisfy the symmetry $\tilde{H}(-\omega) = \tilde{H}^*(\omega)$, since the quantity on the left hand side of Eq.~\eqref{eq:hcomp_fd} is not real-valued unless the wave is fully plus-polarized.
@@ -351,7 +355,7 @@ In fact, given the interpretation of $\exp(\pm i \omega t)$ discussed above, the
 This becomes obvious if we note that, by Eq.~\eqref{eq:circ_amps} and the definition of $\tilde{H}$, it must be the case that $\tilde{H}(\omega) = \sqrt{2}\, \tilde{h}_R (\omega) = \sqrt{2} \tilde{h}_L^*(-\omega)$, the last equality being due to Eq.~\eqref{eq:sym_circular}.
 We can leverage this to rewrite Eq.~\eqref{eq:hcomp_fd} as an integral restricted to positive frequencies,
 \begin{equation} \label{eq:hcomp_fd_rl}
-h_+ - i h_\times = \frac{1}{\sqrt{2\pi^2}} \int_{0}^{\infty} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega \, .
+H(t) = \frac{1}{\sqrt{2\pi^2}} \int_{0}^{\infty} \left[ \tilde{h}_R(\omega)\, e^{-i \omega t} + \tilde{h}_L^*(\omega)\, e^{i \omega t}\right] \infd \omega \, .
 \end{equation}
 This expression carries the same information as Eq.~\eqref{eq:planewave} without any redundancies.
 
@@ -376,23 +380,17 @@ Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor spac
 We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,%
 \footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
 isolating a single Fourier mode of frequency $\omega_0 >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
-The result of the Fourier integral is then (relabeling $\omega_0 \to \omega$ after integration)
+The result of the Fourier integral for $H(t) \equiv h_+ - i h_\times$ is then (relabeling $\omega_0 \to \omega$ after integration)
 \begin{align} \label{eq:ellip_circ}
-h_+ - i h_\times =\frac{1}{\sqrt{2}} \left( C_R\, e^{-i \omega t} + C^*_L\, e^{i\omega t}\right)\, ,
+H(t) =\frac{1}{\sqrt{2}} \left( C_R\, e^{-i \omega t} + C^*_L\, e^{i\omega t}\right)\, ,
 \end{align}
-which can, without loss of generality, be refactored into
+for complex amplitudes $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L})$, where $A_{R/L}$ and $\phi_{R/L}$ are real.
+Without loss of generality, the above expression can be refactored into
 \begin{align}
-h_+ - i h_\times = \frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right] .
+H(t) = \frac{1}{2}A\hspace{-2pt}\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right]\hspace{-3pt} .
 \end{align}
-% 
-% refactor the integrand in Eq.~\eqref{eq:hcomp_fd_rl} as%
-% \footnote{We factor $\sqrt{2}$ into the integrand so that, mirroring Eq.~\eqref{eq:ft}, the amplitude $A$ in this context is an amplitude spectral density with respect to the frequency $f \equiv \omega/(2\pi)$.}
-% \begin{align}
-% \sqrt{2} \left(\tilde{h}_R\, e^{-i \omega t} + \tilde{h}_L^*\, e^{i \omega t}\right) =\nonumber\\
-% \frac{1}{2}A\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right],
-% \end{align}
 In this expression, 
-$A \equiv (|{C}_R| + |{C}_L| )/ \sqrt{2} \geq 0$ is the peak amplitude of the mode, $-1 \leq \epsilon = (|{C}_R| - |{C}_L|)/(|{C}_R| + |{C}_L|) \leq 1$ is its ellipticity (i.e., the ratio of semiminor to semimajor axes), and $\phi_{R/L} = \mathrm{arg}({C}_{R/L})$ are the right- and left-handed Fourier phases.
+$A \equiv (A_R + A_L)/ \sqrt{2} \geq 0$ is the peak amplitude of the mode, and $\epsilon = (A_R - A_L)/(A_R + A_L)$ is its ellipticity, with $-1 \leq \epsilon \leq +1$ by construction.
 With some trigonometry, it is easy to show that this corresponds to linear polarization quadratures given by
 \begin{subequations} \label{eq:hcomp_ellip}
 \beq
@@ -404,12 +402,12 @@ h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin
 \end{subequations}
 with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$. 
 In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
-The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as $\hat{A} \equiv \sqrt{C_R^2 + C_L^2} = A \sqrt{1 + \epsilon^2}$.
+The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as $\hat{A} \equiv \sqrt{A_R^2 + A_L^2} = A \sqrt{1 + \epsilon^2}$.
 
 Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.\footnote{We use ``elliptical'' generically to also encompass circular and linear polarizations as special cases; in this sense, ``elliptical'' and ``fully polarized'' are synonyms.}
 As special cases, $\epsilon = +1$ ($\epsilon = -1$) encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
 an example in between, with $\epsilon=1/2$ and $\theta = \pi/2$, is illustrated in Fig.~\ref{fig:pol_diagram_ellip} (compare to Fig.~\ref{fig:pol_diagram_circ}, where $\epsilon=1$).
-Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode of this kind, with ellipticity determined by the relative magnitudes of $\tilde{h}_{R/L}(\omega)$.
+Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode of this kind, with ellipticity determined by the relative magnitudes of $\tilde{h}_{R/L}(\omega)$, and ellipse orientation determined by the difference in their Fourier phases, through $\theta = (\arg \tilde{h}_L - \arg \tilde{h}_R)/2$.
 
 \begin{figure*}
 \includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
@@ -435,9 +433,9 @@ h_\times
 C_+\\
 C_\times
 \end{pmatrix} e^{-i\omega t}\right] \equiv
-\Re \left[ \vec{C}\, e^{-i\omega t}\right] .
+\Re \left[ \vec{C}\, e^{-i\omega t}\right] ,
 \eeq
-%just as is standard for electromagnetic waves.
+with $C_{+/\times} \equiv A_{+/\times} \exp(i\phi_{+/\times})$.
 For example, in that notation, $\vec{C}=\left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, while $\vec{C} = \left(1,i\right)/\sqrt{2}$ encodes a circular R mode.
 We will briefly make use of Jones vectors to facilitate coordinate transformations below.
 
@@ -561,7 +559,7 @@ When modeling specific sources (e.g., in a numerical-relativity simulation), it 
 % &\left. H_{\ell-m}(t)\, {}_{-2}Y_{\ell -m} (\iota, \varphi) \right]
 % \end{align}
 \begin{align} \label{eq:spherical}
-h_+ - i h_\times = \sum_{\ell \geq 2} \sum_{-\ell \leq m \leq \ell} H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi)\, ,
+H(t) = \sum_{\ell \geq 2} \sum_{-\ell \leq m \leq \ell} H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi)\, ,
 \end{align}
 for a source seen with inclination $\iota$ and azimuthal angle $\varphi$, with intrinsic time-dependence encoded in the $H_{\ell m}$ functions as determined by Einstein's equations.
 The decomposition into spherical harmonics presumes the choice of both (1) a polar frame defining $\iota$ and $\varphi$, and (2) an orientation of the waveframe vectors with respect to the direction of propagation to establish the meaning of $h_{+/\times}$ as in \eq{hij}.
@@ -575,7 +573,7 @@ In that case, \eq{spherical} can be rewritten with an explicit term for negative
 \begin{widetext}
 \begin{subequations} \label{eq:spherical_modes}
 \begin{align}
-h_+ - i h_\times &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi) + H_{\ell -m}(t)\, {}_{-2}Y_{\ell -m} (\iota, \varphi) \right] \\
+H(t) &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi) + H_{\ell -m}(t)\, {}_{-2}Y_{\ell -m} (\iota, \varphi) \right] \\
 &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[\mathcal{A}_{\ell m}(t)\, e^{-i\Phi_{\ell m} (t)} {}_{-2}Y_{\ell m}(\iota, \varphi) +  (-1)^\ell \mathcal{A}_{\ell m}(t)\, e^{i\Phi_{\ell m} (t)} {}_{-2}Y_{\ell- m}(\iota, \varphi) \right] \\
 &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[C_{\ell m} e^{-i\Phi_{\ell m} (t)}  +  C_{\ell -m} e^{i\Phi_{\ell m} (t)} \right]\, ,
 \end{align}
@@ -607,8 +605,8 @@ A special case of Eq.~\eqref{eq:spherical_modes} is that of a nonprecesing compa
 In that case, equatorial-reflection (planar) symmetry implies that $H_{\ell -m} = (-1)^\ell H_{\ell m}^*$ \cite{Faye:2012we}.
 The strain for a given $(\ell, |m|)$ mode can then be written as
 \begin{equation}
-h_+ - i h_\times = \mathcal{A}_{\ell m} \left[ Y^+_{\ell m} \cos \Phi_{\ell m}(t) - 
-i Y^\times_{\ell m} \sin \Phi_{\ell m}(t) \right]\hspace{-3pt} ,
+H(t) = \mathcal{A}_{\ell m} \left[ Y^+_{\ell m} \cos \Phi_{\ell m}(t) - 
+i Y^\times_{\ell m} \sin \Phi_{\ell m}(t) \right],
 \end{equation}
 where we have used $H_{\ell m}(t) = \mathcal{A}_{\ell m}(t) \exp[-i \Phi_{\ell m}(t)]$ and defined
 \begin{equation}
@@ -874,12 +872,12 @@ We assume the amplitude could potentially subsume any (slow) time dependence pre
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_Aeps_Achi}
 \caption{The Jacobian to be applied in transforming a probability density from $\{\hat{A},\chi\}$ to $\{A,\epsilon\}$, \eq{jac_Aeps_Achi}.
-This indicates that a uniform prior on $\hat{A}$ and $\chi$ imposes a distribution that favors linear polarizattions ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$. }
+This indicates that a uniform prior on $\hat{A}$ and $\chi$ imposes a distribution that favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$. }
 \label{fig:jac_Aeps_Achi}
 \end{figure}
 
-In Sec.~\ref{sec:ellip:mono}, we presented two equivalent parametrizations of the $h_{+/\times}$ components of an elliptical wave, Eqs.~\eqref{eq:hcomp_ellip} and \eqref{eq:hcomp_ellip}, illustrated in Fig.~\ref{fig:ellipse}.
-Equation ~\eqref{eq:ellip_circ} parametrizes the signal strength via the maximum amplitude achieved by the wave, $A$ (the semimajor axis in Fig.~\ref{fig:ellipse}), and the shape of the polarization ellipse via the ellipticity, $\epsilon$ (the ratio between the semiminor and semimajor axes);
+In Sec.~\ref{sec:ellip:mono}, we presented two equivalent parametrizations of the $h_{+/\times}$ components of an elliptical wave, Eqs.~\eqref{eq:hcomp_ellip} and \eqref{eq:hcomp_ellip_chi}, illustrated in Fig.~\ref{fig:ellipse}.
+Equation ~\eqref{eq:hcomp_ellip} parametrizes the signal strength via the maximum amplitude achieved by the wave, $A$ (the semimajor axis in Fig.~\ref{fig:ellipse}), and the shape of the polarization ellipse via the ellipticity, $\epsilon$ (the ratio between the semiminor and semimajor axes);
 meanwhile, Eq.~\eqref{eq:hcomp_ellip_chi} parametrizes the strength via the intensity amplitude $\hat{A}$, which is the square-root of the signal intensity $I$, and the shape of the ellipse throught the angle $\chi$.
 The two parametrizations are straigthforwardly related by
 \begin{equation} \label{eq:Aellip_Ahatchi}
@@ -901,24 +899,17 @@ The Jacobian relating these two transformations is simply
 J_0 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(\hat{A}, \chi, \theta, \phi)}\right| =  \sec \chi = \sqrt{1 + \epsilon^2}
 \end{equation}
 or, equivalently $J_0 = \hat{A}/A$.
-This Jacobian is illustrated in Fig.~\ref{fig:jac_Aeps_Achi}.
-
-
+This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uniform prior in the $\{\hat{A}, \chi\}$ quantities implicitly favors linear polarizations relative to circular ones.
 
 \subsection{Circular components}
 
-An elliptical wave, Eq.~\eqref{eq:hcomp_ellip}, can be specified in terms of the circular polarization basis elements.
-If we let,
-\begin{align} \label{eq:Cphi}
-h_+ - i h_\times = A_{R}\, e^{-i \left(\omega t - \phi_R \right) } + A_{L}\, e^{i \left(\omega t - \phi_L \right) }\, ,
-\end{align}
-then note that setting $A_L = 0$ ($A_R =0$) results in a fully right-handed (left-handed) circularly polarized wave with amplitude $A_R$ ($A_L$) and phase $\phi_R$ ($\phi_L$).
-This form of the strain arose in Eq.~\eqref{eq:ellip_circ}, with $A_{R/L} e^{i\phi_{R/L}} = C_{R/L}/\sqrt{2}$.
-
-The above representation in terms circular-mode amplitudes and phases is equivalent to Eq.~\eqref{eq:hcomp_ellip} if we impose
+An elliptical wave, Eq.~\eqref{eq:hcomp_ellip}, can be specified in terms of the circular polarization basis elements as in \eq{ellip_circ},
+where the $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L}$ quantites control the amplitude and phase of the circularly-polarized components of the signal.
+%
+The representation in terms circular-mode amplitudes and phases is equivalent to Eq.~\eqref{eq:hcomp_ellip} if we impose
 \begin{equation} \label{eq:Cphi_to_Aellip}
 \begin{cases}
-A = A_R + A_L \\
+A = \frac{1}{\sqrt{2}}\left(A_R + A_L\right) \\
 \epsilon = (A_R - A_L)/(A_R + A_L) \\ 
 \theta = \frac{1}{2}(\phi_L - \phi_R)\\
 \phi = \frac{1}{2}(\phi_L + \phi_R)\\
@@ -927,8 +918,8 @@ A = A_R + A_L \\
 Equivalently, the inverse transformation is 
 \begin{equation}
 \begin{cases}
-A_R = \frac{1}{2} A \left(1 + \epsilon\right) \\
-A_L = \frac{1}{2} A \left(1 - \epsilon\right) \\
+A_R = \frac{1}{\sqrt{2}} A \left(1 + \epsilon\right) \\
+A_L = \frac{1}{\sqrt{2}} A \left(1 - \epsilon\right) \\
 \phi_R = \phi - \theta \\ 
 \phi_L = \phi + \theta \\ 
 \end{cases} .
@@ -938,8 +929,9 @@ This is a consequence of the fact that circular polarization basis is defined to
 
 The above transformations imply a Jacobian
 \begin{equation}
-J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \phi_R, \phi_L)}\right| =  \frac{1}{A_R + A_L}\, ,
+J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \phi_R, \phi_L)}\right| \propto \frac{1}{A_R + A_L}\, ,
 \end{equation}
+with a proportionality constant of $1/\sqrt{2}$, which can be ignored in most applications.
 Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode.
 Isotropic in $\phi_R$ and $\phi_L$ is also isotropic in $\theta$ and $\phi$.
 This means that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_\mathrm{max}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0,A_\mathrm{max}$ and peaks at $A = A_\mathrm{max}/2$ (Fig.~\ref{fig:jac_rl}).
