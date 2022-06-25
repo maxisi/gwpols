@@ -941,7 +941,7 @@ This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uni
 \subsection{Circular components}
 
 An elliptical wave, Eq.~\eqref{eq:hcomp_ellip}, can be specified in terms of the circular polarization basis elements as in \eq{ellip_circ},
-where the $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L}$ quantites control the amplitude and phase of the circularly-polarized components of the signal.
+where the $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L})$ quantites control the amplitude and phase of the circularly-polarized components of the signal.
 %
 The representation in terms circular-mode amplitudes and phases is equivalent to Eq.~\eqref{eq:hcomp_ellip} if we impose
 \begin{equation} \label{eq:Cphi_to_Aellip}
@@ -986,7 +986,7 @@ This was done, e.g., for one of the ringdown analyses in \cite{LIGOScientific:20
 
 \subsection{Linear components}
 
-Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity and parametrize it as
+Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity and parametrize them as
 \begin{subequations} \label{eq:Aphi}
 \begin{equation}
 h_+ = A_+ \cos (\omega t - \phi_+)\, ,
@@ -996,7 +996,7 @@ h_\times = A_\times \cos (\omega t - \phi_\times) \, ,
 \end{equation}
 \end{subequations}
 where $A_{+/\times}$ and $\phi_{+\times}$ are initial amplitudes and phases for each polarization.
-Structurally, this mimics the parametrization adopted by \textsc{BayesWave} \cite{Cornish:2020dwh}, with the replacement $A_{+/\times} \to A_{+/\times} \exp\left(-t^2/\tau^2\right)$ and $\phi_{+/\times} \to -\phi_{+/\times}$ for some characteristic time $\tau$ for each wavelet.
+Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for each wavelet \cite{Cornish:2020dwh}.
 
 \newcommand{\xp}{x_{+}}
 \newcommand{\xc}{x_{\times}}
@@ -1012,14 +1012,14 @@ Structurally, this mimics the parametrization adopted by \textsc{BayesWave} \cit
 % \newcommand{\yc}{A_{\times,s}}
 % \newcommand{\ypc}{A_{+/\times,s}}
 
-The above equations also represent an elliptically polarized mode, albeit in a different parametrization than Eq.~\eqref{eq:ellip}.
-To see this, first note that we can map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section through the transformation
+The above equations also represent an elliptically polarized mode.
+To relate this parametrization to that in Eq.~\eqref{eq:hcomp_ellip}, it is convenient to first map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section through the transformation
 \begin{equation} \label{eq:Aphi_to_Cphi}
 \begin{cases}
-A_R = \frac{1}{2}\sqrt{A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)} \\
-A_L = \frac{1}{2}\sqrt{A_+^2 + A_\times^2 - 2 A_+ A_\times \sin(\phi_\times - \phi_+)} \\
-\phi_R = \mathrm{atan2}\left(\yp -\xc, \xp + \yc \right) \\
-\phi_L = \mathrm{atan2}\left(-\yp -\xc, \xp - \yc \right)\, 
+A_R^2 = \frac{1}{2}\left[A_+^2 + A_\times^2 - 2 A_+ A_\times \sin(\phi_\times - \phi_+)\right] \\
+A_L^2 = \frac{1}{2}\left[A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)\right] \\
+\phi_R = \mathrm{atan2}\left(\yp + \xc, \xp - \yc \right) \\
+\phi_L = \mathrm{atan2}\left(\yp -\xc, \xp + \yc \right)\, 
 \end{cases} ,
 \end{equation}
 where, to simplify the notation, we have defined the cosine and sine quadratures
@@ -1038,8 +1038,9 @@ This is because this coordinate transformation encodes the frame rotation that w
 \begin{figure}
 \includegraphics[width=0.8\columnwidth]{diagram_apac}
 \caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed polarization case.
-\emph{Top:} Following Eq.~\eqref{eq:Aphi}, at time $t=0$, the plus and cross phasors, $\vec{A}_{+/\times} = A_{+/\times} \exp(-i \phi_{+/\times})$, subtend angles $-\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, - \ypc \right)$, in terms of the quantities defined in Eq.~\eqref{eq:xy}; the phasor $i\vec{A}_\times$ lies at a right angle from $\vec{A}_\times$, so that it subtends an angle $\pi/2 - \phi_\times$ with respect to the $x$-axis.
-\emph{Bottom:} the right-handed phasor, $\vec{A}_R = \vec{A}_+ + i \vec{A}_\times$, has components $\left(\xp + \yc, -\yc - \xc\right)$ and, therefore, $\phi_R = \mathrm{atan2}( -\yc - \xc, \xp + \yc)$; since the acute angle between $\vec{A}_+$ and $i\vec{A}_\times$ is $\pi - (\pi /2 - \phi_\times) - \phi_+ = \phi_\times - \phi_+ + \pi/2$, the law of cosine implies $A_R^2 = A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)$.
+$h_R = (h_+ - i h_\times)/\sqrt{2}$.
+\emph{Top:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones vectors, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times$ with respect to the positive $x$-axis.
+\emph{Bottom:} the right-handed Jones vector, $\vec{C}_R = \left(\vec{C}_+ + i \vec{C}_\times\right)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosine implies $2 A_R^2 = A_+^2 + A_\times^2 - 2 A_+ A_\times \sin(\phi_\times - \phi_+)$.
 This explains Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed case (the left-handed one is analogous).
 }
 \label{fig:diag_apac}
