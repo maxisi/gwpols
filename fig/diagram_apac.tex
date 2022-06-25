@@ -50,25 +50,25 @@
 \draw[thin,black,->]   (o) -- node[left] {$y$} (y);
 
 %\draw[gray,step=1cm] (0,0) grid +(9cm,6cm);
-\draw[\ccolor] pic[draw,angle radius=1.8cm,"$-\phi_\times$" shift={(8mm,8mm)}] {angle=x--o--c};
-\draw[\pcolor] pic[draw,angle radius=1cm,"$-\phi_+$" shift={(8mm,1mm)}] {angle=x--o--p};
+\draw[\ccolor] pic[draw,angle radius=1.8cm,"$\phi_\times$" shift={(8mm,8mm)}] {angle=x--o--c};
+\draw[\pcolor] pic[draw,angle radius=1cm,"$\phi_+$" shift={(8mm,1mm)}] {angle=x--o--p};
 
-\draw[ultra thick,\pcolor, ->]  (o) -- node[below right] {\Large $\vec{A}_+$} (p);
-\draw[ultra thick,\ccolor,->]  (o) -- node[above left] {\Large $\vec{A}_\times$} (c);
-\draw[ultra thick,\ccolor!50,->]  (o) -- node[below left] {\Large $i\vec{A}_\times$} (ic);
+\draw[ultra thick,\pcolor, ->]  (o) -- node[below right] {\Large $\vec{C}_+$} (p);
+\draw[ultra thick,\ccolor,->]  (o) -- node[above left] {\Large $\vec{C}_\times$} (c);
+\draw[ultra thick,\ccolor!50,->]  (o) -- node[below left] {\Large $i\vec{C}_\times$} (ic);
 
 %%%%%%%%
 
 \draw[thin,black, ->]  (o2) -- node[below] {$x$} (x2);
 \draw[thin,black,->]   (o2) -- node[left] {$y$} (y2);
 
-\draw[\rcolor] pic[draw,angle radius=0.7cm,"$\phi_\times -\phi_+ +\pi/2$" shift={(-16mm,0mm)},fill=\rcolor!50] {angle=r2--p2--o2};
+\draw[\rcolor] pic[draw,angle radius=0.7cm,"$\phi_+ - \phi_\times +\pi/2$" shift={(-16mm,0mm)},fill=\rcolor!50] {angle=r2--p2--o2};
 
-\draw[ultra thick,\ccolor!50,->]  (o2) -- node[below left] {\Large $i\vec{A}_\times$} (ic2);
-%\draw[ultra thick,\ccolor!50,->]  (p2) -- node[above right] {\Large $i\vec{A}_\times$} (r2);
-\draw[ultra thick,\pcolor, ->]  (o2) -- node[below right] {\Large $\vec{A}_+$} (p2);
+\draw[ultra thick,\ccolor!50,->]  (o2) -- node[below left] {\Large $i\vec{C}_\times$} (ic2);
+%\draw[ultra thick,\ccolor!50,->]  (p2) -- node[above right] {\Large $i\vec{C}_\times$} (r2);
+\draw[ultra thick,\pcolor, ->]  (o2) -- node[below right] {\Large $\vec{C}_+$} (p2);
 
-\draw[ultra thick,\rcolor,->]  (o2) -- node[label={[shift={(-0.4,0.3)}]{\Large $\vec{A}_R$}}] {} (r2);
+\draw[ultra thick,\rcolor,->]  (o2) -- node[label={[shift={(-0.4,0.3)}]{\Large $\vec{C}_R$}}] {} (r2);
 \draw[thick,dashed,gray,-]  (p2) -- node[above right] {} (r2);
 \draw[thick,dashed,gray,-]  (ic2) -- node[above right] {} (r2);
 
