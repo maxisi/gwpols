@@ -1,0 +1,93 @@
+\documentclass[tikz]{standalone}
+%\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{wasysym}
+
+\begin{document}
+\tdplotsetmaincoords{60}{110}
+%
+\pgfmathsetmacro{\rvec}{0.8}
+\pgfmathsetmacro{\thetavec}{30}
+\pgfmathsetmacro{\phivec}{58}
+
+\pgfmathsetmacro{\longascnode}{80}
+
+\pgfmathsetmacro{\wfl}{\rvec}
+\newcommand{\wfcolor}{gray}
+
+\pgfmathsetmacro{\psil}{\wfl}
+\pgfmathsetmacro{\psivec}{-30}
+
+\pgfmathsetmacro{\discrad}{\rvec}
+
+\newcommand*\lateraleye{%
+\scalebox{0.15}{
+\tikzset{every picture/.style={line width=0.75pt,-}} 
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+\draw  [-,line width=1.5]  (300,100.33) .. controls (326,122) and (352,135) .. (378,139.33) .. controls (352,143.67) and (326,156.67) .. (300,178.33) ;
+\draw  [-,fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (308.94,116.33) .. controls (313.87,116.33) and (317.86,125.51) .. (317.85,136.83) .. controls (317.84,148.15) and (313.84,157.33) .. (308.91,157.33) .. controls (303.99,157.32) and (300,148.14) .. (300.01,136.82) .. controls (300.02,125.5) and (304.02,116.32) .. (308.94,116.33) -- cycle ;
+\draw  [-,draw opacity=0][line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) -- (331.14,139.55) -- cycle ; \draw  [line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) ;
+\draw  [-,fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (304.43,124.2) .. controls (306.09,124.25) and (307.32,128.01) .. (307.18,132.6) .. controls (307.05,137.19) and (305.59,140.88) .. (303.93,140.83) .. controls (302.27,140.78) and (301.03,137.02) .. (301.17,132.43) .. controls (301.31,127.83) and (302.76,124.15) .. (304.43,124.2) -- cycle ;
+\end{tikzpicture}
+}\,}
+
+%
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+    \coordinate (O) at (0,0,0);
+    \draw[thin,-] (0,0,0) -- (\rvec,0,0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_1$}};
+    \draw[thin,-] (0,0,0) -- (-\rvec,0,0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};
+    %\draw[thin,->] (0,0,0) -- (0,\rvec,0) node[anchor=north west]{};
+    \draw[thick,->] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{L}$};
+
+    \draw[thick,->, black] (O) -- ({\discrad*cos(\phivec-90)},{\discrad*sin(\phivec-90)},0) node[anchor=north east]{$\ascnode$};
+
+    \tdplotsetcoord{P}{1.55*\rvec}{\thetavec}{\phivec}
+    \draw[thick,dotted, color=blue] (O) -- (Pxy);
+    \draw[thick,dotted, color=blue] (P) -- (Pxy);
+    \draw[-,color=blue,dotted] (O) -- (P) node[]{};
+    \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=45]{$\lateraleye$};
+    \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\varphi$}
+
+    \tdplotsetthetaplanecoords{\phivec}
+		\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
+		        {\thetavec}{anchor=south west}{$\iota$}
+
+    \tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
+    \tdplotsetrotatedthetaplanecoords{0}
+
+    \tdplotsetrotatedcoords{\phivec}{\thetavec}{-90}
+    \draw[thick,tdplot_rotated_coords,->, blue, opacity=1] (0,0,0)
+        -- (0,0,\wfl) node[anchor=south east]{$\hat{z}$};
+    
+    \draw[thin,tdplot_rotated_coords, gray] (0,0,0)
+        -- (-\wfl,0,0) node[anchor=north west]{};
+
+    \draw[-,thick,dotted,color=black,opacity=1,tdplot_rotated_coords] (0,0,0) -- %
+        (0,-\psil,0) node[anchor=south]{$\hat{L}'$};
+
+    \draw[-stealth,thick,color=blue,opacity=0.25,tdplot_rotated_coords] (0,0,0) -- %
+        ({\psil*cos(-\longascnode + \psivec)},{\psil*sin(-\longascnode + \psivec)},0) node[anchor=south]{$\hat{x}$};
+    \draw[-stealth,thick,color=blue,opacity=0.25,tdplot_rotated_coords] (0,0,0) -- %
+        (-{\psil*sin(-\longascnode + \psivec)},{\psil*cos(-\longascnode + \psivec)},0) node[anchor=east]{$\hat{y}$};
+    \tdplotdrawarc[tdplot_rotated_coords,color=blue,opacity=0.25]{(0,0,0)}{0.25*\psil}{-\longascnode}%
+        {-\longascnode+\psivec}{anchor=south}{$\psi$}
+
+    \draw[-stealth,thick,color=blue,tdplot_rotated_coords] (0,0,0) -- %
+        ({\psil*cos(-\longascnode)},{\psil*sin(-\longascnode)},0) node[anchor=east]{$\hat{x}'$};
+    \draw[-stealth,thick, dashed,opacity=0.7,color=blue,tdplot_rotated_coords] (0,0,0) -- %
+        (-{\psil*sin(-\longascnode)},{\psil*cos(-\longascnode)},0) node[anchor=north east]{$\hat{y}'$};
+
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=blue]{(0,0,0)}{\rvec}{0}%
+        {180}{anchor=east,color=blue}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=blue]{(0,0,0)}{\rvec}{0}%
+        {-180}{anchor=east,color=blue}{}
+
+    \tdplotdrawarc[tdplot_rotated_coords,color=blue]{(0,0,0)}{0.5*\psil}{0}%
+        {-\longascnode}{anchor=east,color=blue}{$\Omega$}
+
+    \draw[dashed,fill=gray,opacity=0.1] (\discrad,0,0) arc (0:360:\discrad);
+    \draw[thin,opacity=0.5] (\discrad,0,0) arc (0:360:\discrad);
+
+
+\end{tikzpicture}
+\end{document}
