@@ -25,9 +25,9 @@
     \draw[thick,->] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$N$};
 
     \tdplotsetcoord{P}{1.55*\rvec}{\thetavec}{\phivec}
-    \draw[-stealth,color=NavyBlue] (O) -- (P) node[fill=white]{$\star$};
     \draw[thick,dotted, color=NavyBlue] (O) -- (Pxy);
     \draw[thick,dotted, color=NavyBlue] (P) -- (Pxy);
+    \draw[-stealth,color=NavyBlue] (O) -- (P) node[fill=white]{$\star$};
     \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\alpha$}
 
     \tdplotsetthetaplanecoords{\phivec}
