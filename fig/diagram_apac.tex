@@ -5,13 +5,23 @@
 
 \begin{document}
 
-\def \Apx{4}
-\def \Apy{1}
-\def \Acx{2}
-\def \Acy{3}
+\pgfmathsetmacro{\rscale}{1.3}
 
-\def \xshift{0}
-\def \yshift{-4}
+\pgfmathsetmacro{\LenP}{\rscale*2.5}
+\pgfmathsetmacro{\LenC}{\rscale*2}
+\pgfmathsetmacro{\phiP}{15}
+\pgfmathsetmacro{\phiC}{50}
+
+
+\pgfmathsetmacro{\Apx}{\LenP*cos(\phiP)}
+\pgfmathsetmacro{\Apy}{\LenP*sin(\phiP)}
+\pgfmathsetmacro{\Acx}{\LenC*cos(\phiC)}
+\pgfmathsetmacro{\Acy}{\LenC*sin(\phiC)}
+
+\pgfmathsetmacro{\axlen}{1.9}
+
+\def \xshift{+5}
+\def \yshift{0}
 
 % \def \pcolor{Orange}
 % \def \ccolor{RoyalBlue}
@@ -20,21 +30,22 @@
 \def \rcolor{Orange}
 \def \ccolor{NavyBlue}
 \def \pcolor{PineGreen}
+\def \axiscolor{black}
 
 \begin{tikzpicture}%[> = stealth]
 \coordinate (o) at (0,0);
-\coordinate (x) at (2,0);
-\coordinate (y) at (0,2);
+\coordinate (x) at (\axlen*\rscale,0);
+\coordinate (y) at (0,\axlen*\rscale);
 
 \coordinate (p) at (\Apx, \Apy);
-\coordinate (c) at (\Acy, \Acy);
+\coordinate (c) at (\Acx, \Acy);
 \coordinate (ic) at (-\Acy, \Acx);
 \coordinate (r) at (\Apx - \Acy, \Apy + \Acx);
 \coordinate (l) at (\Apx + \Acy, \Apy - \Acx);
 
 \coordinate (o2) at (\xshift,\yshift);
-\coordinate (x2) at (2+\xshift,\yshift);
-\coordinate (y2) at (\xshift,2+\yshift);
+\coordinate (x2) at (\axlen*\rscale+\xshift,\yshift);
+\coordinate (y2) at (\xshift,\axlen*\rscale+\yshift);
 
 \coordinate (p2) at (\Apx+\xshift, \Apy+\yshift);
 \coordinate (c2) at (\Acy+\xshift, \Acy+\yshift);
@@ -46,31 +57,31 @@
 
 \tkzMarkRightAngle[draw=\ccolor!50,fill=\ccolor!25](c,o,ic)
 
-\draw[thin,black, ->]  (o) -- node[below] {$x$} (x);
-\draw[thin,black,->]   (o) -- node[left] {$y$} (y);
+\draw[thin,\axiscolor, ->]  (o) -- node[below] {$x$} (x);
+\draw[thin,\axiscolor,->]   (o) -- node[left] {$y$} (y);
 
 %\draw[gray,step=1cm] (0,0) grid +(9cm,6cm);
 \draw[\ccolor] pic[draw,angle radius=1.8cm,"$\phi_\times$" shift={(8mm,8mm)}] {angle=x--o--c};
 \draw[\pcolor] pic[draw,angle radius=1cm,"$\phi_+$" shift={(8mm,1mm)}] {angle=x--o--p};
 
-\draw[ultra thick,\pcolor, ->]  (o) -- node[below right] {\Large $\vec{C}_+$} (p);
-\draw[ultra thick,\ccolor,->]  (o) -- node[above left] {\Large $\vec{C}_\times$} (c);
-\draw[ultra thick,\ccolor!50,->]  (o) -- node[below left] {\Large $i\vec{C}_\times$} (ic);
+\draw[ultra thick,\pcolor, ->]  (o) -- (p) node[below, text height=0.45cm] {$\vec{C}_+$};
+\draw[ultra thick,\ccolor,->]  (o) -- (c) node[left, text width=0.7cm] { $\vec{C}_\times$};
+\draw[ultra thick,\ccolor!50,->, dashed]  (o) -- (ic) node[right, text height=-3cm, text width=-1cm] {$i\vec{C}_\times$};
 
 %%%%%%%%
 
-\draw[thin,black, ->]  (o2) -- node[below] {$x$} (x2);
-\draw[thin,black,->]   (o2) -- node[left] {$y$} (y2);
+\draw[thin,\axiscolor, ->]  (o2) -- node[below] {$x$} (x2);
+\draw[thin,\axiscolor,->]   (o2) -- node[left] {$y$} (y2);
 
-\draw[\rcolor] pic[draw,angle radius=0.7cm,"$\phi_+ - \phi_\times +\pi/2$" shift={(-16mm,0mm)},fill=\rcolor!50] {angle=r2--p2--o2};
+\draw[\rcolor] pic[draw,angle radius=0.7cm,"$\phi_+ - \phi_\times +\pi/2$", pic text options={shift={(-14mm,-3mm)},rotate=15,font=\small},fill=\rcolor!50] {angle=r2--p2--o2};
 
-\draw[ultra thick,\ccolor!50,->]  (o2) -- node[below left] {\Large $i\vec{C}_\times$} (ic2);
+\draw[ultra thick,\ccolor!50,->, dashed]  (o2) -- (ic2);
 %\draw[ultra thick,\ccolor!50,->]  (p2) -- node[above right] {\Large $i\vec{C}_\times$} (r2);
-\draw[ultra thick,\pcolor, ->]  (o2) -- node[below right] {\Large $\vec{C}_+$} (p2);
+\draw[ultra thick,\pcolor, ->]  (o2) --  (p2);
 
-\draw[ultra thick,\rcolor,->]  (o2) -- node[label={[shift={(-0.4,0.3)}]{\Large $\vec{C}_R$}}] {} (r2);
-\draw[thick,dashed,gray,-]  (p2) -- node[above right] {} (r2);
-\draw[thick,dashed,gray,-]  (ic2) -- node[above right] {} (r2);
+\draw[ultra thick,\rcolor,->]  (o2) -- (r2) node[label={[shift={(0.25,-1.25)}]{$\sqrt{2}\,\vec{C}_L$}}] {};
+\draw[thick,dotted,gray,-]  (p2) -- node[above right] {} (r2);
+\draw[thick,dotted,gray,-]  (ic2) -- node[above right] {} (r2);
 
 \end{tikzpicture}
 \end{document}

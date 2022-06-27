@@ -45,8 +45,9 @@
     \draw[thick,dotted, color=NavyBlue] (O) -- (Pxy);
     \draw[thick,dotted, color=NavyBlue] (P) -- (Pxy);
     \draw[-,color=NavyBlue,dotted] (O) -- (P) node[]{};
-    \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=45]{$\lateraleye$};
+    \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=56]{$\lateraleye$};
     \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\varphi$}
+    \tdplotdrawarc{(O)}{0.3}{0}{-(90-\phivec)}{anchor=north}{$\Phi$}
 
     \tdplotsetthetaplanecoords{\phivec}
 		\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
@@ -63,7 +64,7 @@
         -- (-\wfl,0,0) node[anchor=north west]{};
 
     \draw[-,thick,dotted,color=black,opacity=1,tdplot_rotated_coords] (0,0,0) -- %
-        (0,-\psil,0) node[anchor=south]{$\hat{L}'$};
+        (0,-\psil,0) node[anchor=south]{$\hat{L}_\perp$};
 
     \draw[-stealth,thick,color=NavyBlue,opacity=0.25,tdplot_rotated_coords] (0,0,0) -- %
         ({\psil*cos(-\longascnode + \psivec)},{\psil*sin(-\longascnode + \psivec)},0) node[anchor=south]{$\hat{x}$};

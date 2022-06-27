@@ -379,7 +379,9 @@ Such elliptical, or \emph{fully-polarized}, modes are thus of fundamental import
 \subsection{Monochromatic modes}
 \label{sec:ellip:mono}
 
-Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space.
+\subsubsection{Morphology}
+
+Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space (Fig.~\ref{fig:ellipse}).
 We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,%
 \footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
 isolating a single Fourier mode of frequency $\omega_0 >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
@@ -422,6 +424,25 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 \label{fig:pol_diagram_ellip}
 \end{figure*}
 
+\newcommand{\jonesbasis}{\vec{\mathfrak{e}}}
+
+We can obtain another useful parametrization for fully polarized states by replacing the ellipticity parameter $\epsilon$ in \eq{hcomp_ellip} with an angle $\chi \equiv \arctan \epsilon$, which is also illustrated in Fig.~\ref{fig:ellipse}.
+In terms of this quantity and the intensity amplitude $\hat{A}=A\sqrt{1+\epsilon^2}=A \sec\chi$, the elliptical mode of \eq{hcomp_ellip} becomes
+\begin{subequations} \label{eq:hcomp_ellip_chi}
+\beq
+h_+ = \hat{A} \left[\cos\chi \cos \theta \cos(\omega t - \phi) - \sin\chi \sin \theta \sin(\omega t - \phi)\right] ,
+\eeq
+\beq
+h_\times = \hat{A} \left[\cos\chi \sin \theta \cos(\omega t - \phi) + \sin\chi \cos \theta \sin(\omega t - \phi)\right] ,
+\eeq
+\end{subequations}
+Now, $\chi = 0$ gives a linearly polarized state, while $\chi=\pm \pi/4$ gives a R/L circularly polarized state.
+Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$, since \eq{hcomp_ellip_chi} is invariant under $\{\theta \to \theta + \pi, \chi \to \chi + \pi\}$.
+% Additionally, the transformation $\{\theta \to \theta \pm \pi/2, \chi \to \pi/2 - \chi, \phi \to \phi \pm \pi/2\}$, with matching signs for the two $\pm \pi/2$ terms, leaves the equation unchanged; this means we can tighten the ranges to $0 < \theta < \pi/2$.
+
+\subsubsection{Mathematical framework}
+\label{sec:math}
+
 The mathematical treatment of polarized GW states is entirely analogous to the electromagnetic case.
 To start, any of these states can be represented graphically by series of phasor diagrams like the one in Fig.~\ref{fig:ellipse}, as in the bottom of Figs.~\ref{fig:pol_diagram_circ} and \ref{fig:pol_diagram_ellip}.
 For monochromatic modes (i.e., of a definite $\omega$), the same information can also be encoded algebraically in a complex valued \emph{Jones vector} $\vec{C}$ like 
@@ -439,28 +460,20 @@ C_\times
 \Re \left[ \vec{C}\, e^{-i\omega t}\right] ,
 \eeq
 with $C_{+/\times} \equiv A_{+/\times} \exp(i\phi_{+/\times})$.
-For example, in that notation, $\vec{C}=\left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, while $\vec{C} = \left(1,i\right)/\sqrt{2}$ encodes a circular R mode.
+In that notation, $ \jonesbasis_+ \equiv \left(1, 0\right)$ encodes a unit-amplitude linearly polarized $+$ mode, and $\jonesbasis_\times \equiv \left(0,1\right)$ a $\times$ mode; meanwhile, $\jonesbasis_{R/L} \equiv \left(1,\pm i\right)/\sqrt{2}$ encode a circular R/L mode, with the plus sign for R.
+Thus, the generic signal in \eq{jones} can be equally conveyed by
+\beq \label{eq:jones_bases}
+\vec{C} = C_+ \, \jonesbasis_+ + C_\times \, \jonesbasis_\times = C_R \, \jonesbasis_R + C_L \, \jonesbasis_L\, ,
+\eeq
+with $C_{R/L} = (C_+ \mp i C_\times)/\sqrt{2}$ the same complex amplitudes as in \eq{ellip_circ}---although note that here $C_L$ appears without conjugation.
 We will briefly make use of Jones vectors to facilitate coordinate transformations below.
 
-We can obtain another useful parametrization for fully polarized states by replacing the ellipticity parameter $\epsilon$ in \eq{hcomp_ellip} with an angle $\chi \equiv \arctan \epsilon$, which is also illustrated in Fig.~\ref{fig:ellipse}.
-In terms of this quantity and the intensity amplitude $\hat{A}=A\sqrt{1+\epsilon^2}=A \sec\chi$, the elliptical mode of \eq{hcomp_ellip} becomes
-\begin{subequations} \label{eq:hcomp_ellip_chi}
-\beq
-h_+ = \hat{A} \left[\cos\chi \cos \theta \cos(\omega t - \phi) - \sin\chi \sin \theta \sin(\omega t - \phi)\right] ,
-\eeq
-\beq
-h_\times = \hat{A} \left[\cos\chi \sin \theta \cos(\omega t - \phi) + \sin\chi \cos \theta \sin(\omega t - \phi)\right] ,
-\eeq
-\end{subequations}
-Now, $\chi = 0$ gives a linearly polarized state, while $\chi=\pm \pi/4$ gives a R/L circularly polarized state.
-Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$, since \eq{hcomp_ellip_chi} is invariant under $\{\theta \to \theta + \pi, \chi \to \chi + \pi\}$.
-% Additionally, the transformation $\{\theta \to \theta \pm \pi/2, \chi \to \pi/2 - \chi, \phi \to \phi \pm \pi/2\}$, with matching signs for the two $\pm \pi/2$ terms, leaves the equation unchanged; this means we can tighten the ranges to $0 < \theta < \pi/2$.
 
-We now have two angles that fully define the shape of the polarization ellipse, $\chi$ and $\theta$.
+Considering the parametrization in \eq{hcomp_ellip_chi}, we have two angles that fully define the shape of the polarization ellipse, $\chi$ and $\theta$.
 If we interpret $-\pi/2 \leq 2\chi \leq \pi/2$ and $0 \leq 2\theta \leq 2\pi$ respectively as latitude and longitude coordinates, then the space of all unique polarization states can be arranged into a sphere such that linear polarization states of different orientations live on the equator ($\chi = 0$), and circular states live on the poles ($2\chi = \pm \pi/2$) \cite{poincare,goldstein}.
 Any two antipodal states in this so-called \emph{Poincar\'e sphere} can function as a polarization basis.
 In this language, reexpressing Eq.~\eqref{eq:planewave} as Eq.~\eqref{eq:planewave_circ} amounted to effecting a Poincar\'{e} rotation of our basis vectors.
-The polarization ellipse (Fig.~\ref{fig:ellipse}) can be recovered from the Poncar\'e sphere by a stereographic projection.
+The polarization ellipse (Fig.~\ref{fig:ellipse}) can be recovered from the Poincar\'e sphere by a stereographic projection.
 
 If we scale the radius of the Poincar\'{e} sphere to be the signal intensity $I \equiv \hat{A}^2$, then it can be defined in terms of Cartesian coordinates corresponding to the three other \emph{Stokes parameters} that characterize the distribution of power in the signal accross different polarization states \cite{Anile1974}.
 For a fully polarized monochromatic mode, in addition to $I$ itself, these are given by
@@ -834,18 +847,18 @@ This was the approach taken in \cite{Isi:2017equ,Chatziioannou:2021mij,Isi:2021i
 
 \begin{figure}
 \includegraphics[width=0.9\columnwidth]{diagram_sourceframe.pdf}
-\caption{Standard construction of the source frame used in LIGO-Virgo data analysis of compact binaries \cite{LALSuite:source}. Two inspiraling objects ($m_1$ and $m_2$) define an orbital plane (gray disk) perpendicular to the orbital angular momentum direction $\hat{L}$. At a given reference time (say, when the observed GW signal reaches 20 Hz) observers on Earth will be oriented with an inclination $\iota$ relative to $\hat{L}$ and an azimuthal angle $\varphi$ with respect to the line from $m_2$ to $m_1$ (the orbital phase).
+\caption{Standard construction of the source frame used in LIGO-Virgo data analysis of compact binaries \cite{LALSuite:source}. Two inspiraling objects ($m_1$ and $m_2$) define an orbital plane (gray disk) perpendicular to the orbital angular momentum direction $\hat{L}$. At a given time (say, when the observed GW signal reaches 20 Hz) observers on Earth will be oriented with an inclination $\iota$ relative to $\hat{L}$ and an azimuthal angle $\varphi$ with respect to the line from $m_2$ to $m_1$ (related to the reference orbital phase $\Phi=\pi/2-\varphi$).
 The intersection between the orbital plane and the plane of the sky (blue circle) defines the line of nodes, with the \emph{ascending node} ($\ascnode$) the point where the orbiting objects cross the sky-plane into the side of the observer.
 The polarization vectors $\{\hat{x},\hat{y}\}$ and $\{\hat{x}',\hat{y}'\}$ of Fig.~\ref{fig:diagram_waveframe} lie in the plane of the sky, separated by an angle $\psi$.
 The preferred vectors used to predict waveforms as in Sec.~\ref{sec:harmonics}, $\{\hat{x}',\hat{y}'\}$, define an angle $\Omega$, the longitude of ascending nodes, separating $\ascnode$ from $\hat{x}'$ (the origin of longitude).
-The LIGO-Virgo convention sets $\Omega=\pi/2$, so that $\hat{y}'$ is the ascending node and $\hat{x}'$ lies along the projection of $\hat{L}$ onto the plane of the sky ($\hat{L}'$).
+The LIGO-Virgo convention sets $\Omega=\pi/2$, so that $\hat{y}'$ is the ascending node and $\hat{x}'$ lies along the projection of $\hat{L}$ onto the plane of the sky ($\hat{L}_\perp$).
 }
 \label{fig:diagram_sourceframe}
 \end{figure}
 
 When modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
 This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we must make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
-That was the case in going from Eq.~\eqref{eq:ellip_gen} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
+That was the case in going from Eq.~\eqref{eq:ellip_gen} to Eq.~\eqref{eq:ellip_frame} above: if we know \emph{a priori} that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
 %This is the case for nonprecessing compact binary coalescences (CBCs).
 
 For a nonprecessing compact binary, as we saw in Sec.~\ref{sec:harmonics}, it is natural to orient our coordinates so as to respect the planar symmetry of the source.
@@ -860,35 +873,45 @@ The frame in \eq{nonprecessing}, which we here denote with primed symbols $\{\ha
 Although different definitions may be found in the literature (e.g., \cite{Faye:2012we,Kidder:2007rt}), the LIGO convention is to choose $\hat{y}'$ such that it points towards the ascending node, i.e., parallel to the \emph{line of nodes} defined by the intersection of the orbital plane with the plane of the sky \cite{LALSuite:source}; $\hat{x}'$ completes the triad (Fig.~\ref{fig:diagram_sourceframe} with $\Omega = \pi/2$).
 In this convention, then, $\hat{x}' = -\hat{e}_\iota$, $\hat{y}' = -\hat{e}_\varphi$ and $\hat{z}'=\hat{e}_r$, where $\left(r, \iota, \varphi\right)$ are the spherical coordinates associated with the spherical-harmonic frame in \eq{spherical_modes}.
 
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{diagram_skyview.pdf}
+\caption{View of Fig.~\ref{fig:diagram_sourceframe} as seen by the observer, with the LIGO-Virgo convention that $\Omega=\pi/2$. The masses rotate counterclockwise in the plane of the sky, spanned by the local west ($W$) and the in-sky projection of the celestial north ($N_\perp$).
+}
+\label{fig:diagram_skyview}
+\end{figure}
+
 Having specified $h_+$ and $h_\times$ in that standard, source-based frame, all we need to do to predict the signal at a given detector is to evaluate \eq{h}.
 As described in Sec.~\ref{sec:pol}, this is done in practice by expressing $\{\hat{x}', \hat{y}'\}$ in terms of canonical reference vectors $\{\hat{x},\hat{y}\}$, which are tied to an Earth-centered celestial coordinate system (Fig.~\ref{fig:diagram_waveframe}).
 By convention, we specify the relative orientation between the two frames through the angle $\psi$ from $\hat{x}$ and $\hat{x}'$, itself the intersection of the celestial equator with the plane of the sky \cite{LALSuite:wave}.
-Knowing that for CBCs $\hat{y}'$ was constructed to lie along the line of nodes, then $\psi = 0$ must mean that the ascending node points towards the projected celestial north ($\hat{y}'=\hat{y}=\ascnode$), and that the projection of the orbital angular momentum onto the plane of the sky is parallel to the horizon due west ($\hat{x}=\hat{x}'=\hat{L}'$, compare Figs.~\ref{fig:diagram_waveframe} and \ref{fig:diagram_sourceframe}).
+Knowing that for CBCs $\hat{y}'$ was constructed to lie along the line of nodes, then $\psi = 0$ must mean that the ascending node points towards the projected celestial north ($\hat{y}'=\hat{y}=\ascnode$), and that the projection of the orbital angular momentum onto the plane of the sky is parallel to the horizon due west ($\hat{x}=\hat{x}'=\hat{L}_\perp$); we illustrate this in Fig.~\ref{fig:diagram_skyview} from the point of view of the observer.
 
-In this convention, $\psi$ is equivalent to the (negation of the) \emph{position angle} of the source's orbital angular momentum $\Psi$, defined to be angle between the projected orbital angular momentum and the celestial north in the plane of the sky (i.e., the angle between $\hat{L}'$ and $\hat{y}$ in Fig.~\ref{fig:diagram_sourceframe}).
-More generally, $\Psi = \pi - \psi - \Omega$ in terms of the longitude of the ascending node $\Omega$ with $\hat{x}$ as the origin of longitude ($\Omega = \pi/2$ in the default LIGO-Virgo convention) \cite{LALSuite:source}.
+In this convention, $\psi$ is identical to the complement of the \emph{position angle} of the source's orbital angular momentum $\Psi$, defined to be angle between the projected orbital angular momentum and the celestial north in the plane of the sky (i.e., the angle between $\hat{L}_\perp$ and $\hat{y}$ in Fig.~\ref{fig:diagram_sourceframe}, shown explicitly in Fig.~\ref{fig:diagram_skyview}).
+More generally, $\Psi = \pi - \psi - \Omega$ in terms of the \emph{longitude of the ascending node} $\Omega$ with $\hat{x}$ as the origin of longitude.
+LIGO and Virgo always fix $\Omega = \pi/2$ \cite{LALSuite:source}, tying the primed polarization frame, in which $h_{+/\times}$ are predicted, to the source geometry.
+Thus, when LIGO-Virgo report measurements of the polarization angle in CBCs, the quantity reported is the in-plane sky angle of the orbital ascending node relative due north.
 
 In fact, with these conventions for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of our polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
 We can then think of this angle as a property of the source to be measured from our data, rather than an arbitrary parameter orienting our frame.
-Although this equivocation vastly simplifies analyses, it is helpful to keep in mind that the three angles are conceptually distinct.
+Although this equivocation vastly simplifies analyses, it is helpful to keep in mind that the three angles are conceptually distinct: $\psi$ can always be defined, but $\theta$ only exists for fully polarized waves, and $\Omega$ is an orbital element, not defined for arbitrary sources (say, a stochastic source, or a supernova).
 
 If the component spins are not (anti)aligned with the orbital angular momentum, the spins and the orbital plane will both precess.
 As a consequence, the system will not be reflection symmetric and the GW signal will not be elliptically polarized overall.
-Nonetheless, it is still conventional to tie $\hat{y}$ to the source as in Fig.~\ref{fig:diagram_sourceframe}, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
+Nonetheless, it is still conventional to tie $\hat{y}'$ to the source as in Fig.~\ref{fig:diagram_sourceframe}, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
 
 In summary, we can identify three conceptually distinct Cartesian frames: a wave frame that determines the principal directions along which we \emph{define} the effect of a plus vs cross wave; for an elliptical wave, an intrinsic polarization frame, encoding the principal directions of the polarization ellipse; and a source frame, aligned with the symmetries of the source, or otherwise anchored to some defining feature of it; all of these can be specified in some astronomical frame, like ecliptic celestial coordinates.
 For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always align with the polarization frame.
 
-In unmodeled analyses, as those discussed in Sec.~\ref{sec:ellip:gen}, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with (or they purposely disregard source orientation information).
+In unmodeled analyses, as those discussed in Sec.~\ref{sec:ellip:gen}, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with, or they purposely disregard source orientation information for the sake of generality.
 In that case, the model for $h_+$ and $h_\times$ can be defined in any arbitrary wave frame.
 A common choice is to simply set $\psi = 0$ in the standard coordinates described above, i.e., with $\hat{y}$ pointing towards the celestial north (Fig.~\ref{fig:diagram_sourceframe}).
 Having done so, all information regarding polarization orientation will be encoded in the $\theta$ parameter of Fig.~\ref{fig:ellipse}, with one value per elliptical mode in the decomposition of \eq{ellip_sum}.
+Varying both $\psi$ and $\theta$ simultaneously is ill-advised in that context, since the two parameters will be fully degenerate (see end of Sec.~\ref{sec:ellip}).
 
 \section{Coordinate transformations}
 
 In the previous sections, we have introduced different parametrizations of elliptical (fully polarized) waves, including Eqs.~\eqref{eq:ellip_circ}, \eqref{eq:hcomp_ellip} and \eqref{eq:hcomp_ellip_chi}.
 Their use varies depending on the specific application, according to convenience and convention.
-Understanding the relation between the different parametrization becomes especially important when implementing and interpreting measurements, since the choice of parametrization affects the prior specified in the analysis.
+Understanding the relation between the different parametrization becomes especially important when implementing and interpreting measurements, since the choice of parametrization influences the prior specified in the analysis.
 Measurements obtained with different parametrizations may be related via a Jacobian.
 
 We may also want to switch parametrizations for technical reasons.
@@ -902,6 +925,7 @@ If we parametrize our analysis in terms of some alternative set of parameters $\
 p \left( \vec{\xi} \right) = p \left( A, \epsilon, \theta, \phi \right) \left| \frac{\partial \{A, \epsilon, \theta, \phi\}}{\partial \vec{\xi}} \right| ,
 \end{equation}
 where the last factor $J \equiv | \partial (A, \epsilon, \theta, \phi)/\partial \vec{\xi} |$ is the determinant of the Jacobian matrix.
+Applying the Jacobian without any further reweighting yields a flat prior on the  $\{A, \epsilon, \theta, \phi\}$ quantities.
 
 In this section, we will consider four different parametrizations of an elliptical wave, and present the Jacobians relating them to the $\{A, \epsilon, \theta, \phi\}$ parametrization.
 We will focus on a single elliptical component as a standin for any individual term in the sum of Eq.~\eqref{eq:ellip_sum}, so that the results are trivially generalizable to decompositions of GWs with arbitrary polarizations, as would be used by \textsc{BayesWave} or other generic analyses.
@@ -956,7 +980,7 @@ A = \frac{1}{\sqrt{2}}\left(A_R + A_L\right) \\
 \end{cases} .
 \end{equation}
 Equivalently, the inverse transformation is 
-\begin{equation}
+\begin{equation} \label{eq:Aellip_to_Cphi}
 \begin{cases}
 A_R = \frac{1}{\sqrt{2}} A \left(1 + \epsilon\right) \\
 A_L = \frac{1}{\sqrt{2}} A \left(1 - \epsilon\right) \\
@@ -972,6 +996,7 @@ The above transformations imply a Jacobian
 J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \phi_R, \phi_L)}\right| \propto \frac{1}{A_R + A_L}\, ,
 \end{equation}
 with a proportionality constant of $1/\sqrt{2}$, which can be ignored in most applications.
+Based on \eq{Cphi_to_Aellip}, this is also proportional to $1/A$.
 Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode.
 Isotropic in $\phi_R$ and $\phi_L$ is also isotropic in $\theta$ and $\phi$.
 This means that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_\mathrm{max}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0,A_\mathrm{max}$ and peaks at $A = A_\mathrm{max}/2$ (Fig.~\ref{fig:jac_rl}).
@@ -979,13 +1004,28 @@ This was done, e.g., for one of the ringdown analyses in \cite{LIGOScientific:20
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_Aellip_RL}
-\caption{Distribution imposed on the overall mode amplitude $A$ of Eq.~\eqref{eq:ellip} by assuming a uniform prior on the circular mode amplitudes $A_R, A_L$ in the range $[0, 1]$.}
+\caption{Distribution imposed on the overall mode amplitude $A$ of Eq.~\eqref{eq:hcomp_ellip} by assuming a uniform prior on the circular mode amplitudes $A_R, A_L$ in the range $[0, 1]$.}
 \label{fig:jac_rl}
 \end{figure}
 
-% \begin{align}
-% h_+ - i h_\times = C_{R}\, e^{-i \left(\omega t - \phi_R \right) } = C_R \cos(\omega t - \phi_R) - i \sin(\omega t - \phi_R)
-% \end{align}
+We can also relate the circular amplitudes to the alternative parametrization of \eq{hcomp_ellip_chi}.
+The straightforward relation is given by the transformations
+\begin{equation} \label{eq:Cphi_to_Ahatchi}
+\begin{cases}
+\hat{A} = \sqrt{A_R^2 + A_L^2} \\
+\chi = \arctan\left( \frac{A_R - A_L}{A_R + A_L}\right)
+\end{cases} ,
+\end{equation}
+and
+\begin{equation} \label{eq:Cphi_to_Ahatchi}
+\begin{cases}
+A_R = \frac{1}{\sqrt{2}} \hat{A} \left(\cos\chi + \sin \chi\right) \\
+A_L = \frac{1}{\sqrt{2}} \hat{A} \left(\cos\chi - \sin \chi\right)
+\end{cases} ,
+\end{equation}
+while the remaining angles are related as in Eqs.~\eqref{eq:Cphi_to_Aellip} and \eqref{eq:Aellip_to_Cphi}.
+Accordingly, the Jacobian that takes us from the circular parametrization to one flat in $\{\hat{A},\chi\}$ can be shown to be $J = \hat{A}^{-1}/2$.
+
 
 \subsection{Linear components}
 
@@ -998,7 +1038,7 @@ h_+ = A_+ \cos (\omega t - \phi_+)\, ,
 h_\times = A_\times \cos (\omega t - \phi_\times) \, ,
 \end{equation}
 \end{subequations}
-where $A_{+/\times}$ and $\phi_{+\times}$ are initial amplitudes and phases for each polarization.
+where $A_{+/\times}$ and $\phi_{+\times}$ are initial amplitudes and phases for each polarization, as elsewhere in the text.
 Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for each wavelet \cite{Cornish:2020dwh}.
 
 \newcommand{\xp}{x_{+}}
@@ -1015,14 +1055,16 @@ Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for 
 % \newcommand{\yc}{A_{\times,s}}
 % \newcommand{\ypc}{A_{+/\times,s}}
 
-The above equations also represent an elliptically polarized mode.
-To relate this parametrization to that in Eq.~\eqref{eq:hcomp_ellip}, it is convenient to first map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section through the transformation
+Equation \eqref{eq:Aphi} still represents an elliptically polarized mode.
+To relate this parametrization to that in Eq.~\eqref{eq:hcomp_ellip}, it is convenient to first map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section.
+We can do this geometrically by considering the respective Jones vectors (Sec.~\ref{sec:math}), from which we get $C_{R/L} = (C_+ \mp i C_\times)/\sqrt{2}$, for $C_{+/\times} \equiv A_{+/\times} \exp(i\phi_{+/\times})$ as in \eq{jones_bases}.
+As illustrated in Fig.~\ref{fig:diagram_apac}, trigonometry then implies that
 \begin{equation} \label{eq:Aphi_to_Cphi}
 \begin{cases}
-A_R^2 = \frac{1}{2}\left[A_+^2 + A_\times^2 - 2 A_+ A_\times \sin(\phi_\times - \phi_+)\right] \\
-A_L^2 = \frac{1}{2}\left[A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)\right] \\
-\phi_R = \mathrm{atan2}\left(\yp + \xc, \xp - \yc \right) \\
-\phi_L = \mathrm{atan2}\left(\yp -\xc, \xp + \yc \right)\, 
+A_R^2 = \frac{1}{2}\left[A_+^2 + A_\times^2 + 2 A_+ A_\times \sin(\phi_\times - \phi_+)\right] \\
+A_L^2 = \frac{1}{2}\left[A_+^2 + A_\times^2 - 2 A_+ A_\times \sin(\phi_\times - \phi_+)\right] \\
+\phi_R = \mathrm{atan2}\left(\yp -\xc, \xp + \yc \right)\\
+\phi_L = \mathrm{atan2}\left(\yp + \xc, \xp - \yc \right) 
 \end{cases} ,
 \end{equation}
 where, to simplify the notation, we have defined the cosine and sine quadratures
@@ -1039,69 +1081,21 @@ This transformation is clearly less straightforward than those for the circular 
 This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
 
 \begin{figure}
-\includegraphics[width=0.8\columnwidth]{diagram_apac}
-\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed polarization case.
-$h_R = (h_+ - i h_\times)/\sqrt{2}$.
-\emph{Top:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones vectors, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times$ with respect to the positive $x$-axis.
-\emph{Bottom:} the right-handed Jones vector, $\vec{C}_R = \left(\vec{C}_+ + i \vec{C}_\times\right)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosine implies $2 A_R^2 = A_+^2 + A_\times^2 - 2 A_+ A_\times \sin(\phi_\times - \phi_+)$.
-This explains Eq.~\eqref{eq:Aphi_to_Cphi} for the right-handed case (the left-handed one is analogous).
+\includegraphics[width=\columnwidth]{diagram_apac}
+\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
+\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones vectors, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
+\emph{Right:} the left-handed Jones vector, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
 }
 \label{fig:diagram_apac}
 \end{figure}
 
-We can gain some intuition for Eq.~\eqref{eq:Aphi_to_Cphi} by considering the relationship between the phasors associated with either the linear or circular polarizations (Fig.~\ref{fig:diagram_apac}).
-At any given time, interpret Eq.~\eqref{eq:Aphi} as the real parts of two complex numbers, such that
-\beq
-h_{+/\times} = \Re \left\{ A_{+/\times} \exp[-i\left(\omega t - \phi_{+/\times}\right)] \right\} .
-\eeq 
-Geometrically, this corresponds to vectors $\vec{A}_{+/\times}$ of magnitude $A_{+/\times}$, subtending angles $\phi_{+/\times} - \omega t$ with respect to the real axis.
-At time $t=0$, then, the two linear polarizations lie at angles $\phi_{+/\times}$ away from the real axis; equivalently, in terms of the Cartesian components of Eq.~\eqref{eq:xy}, $\vec{A}_{+/\times} = \left(\xpc, - \ypc \right)$.
-The initial state of the right- or left-handed circular polarizations can be similarly represented by phasors $\vec{A}_{R/L}$, related to the linear basis by the definition $h_{R/L} = h_+ \pm i h_\times$ (and hence $\vec{A}_R = \vec{A}_+ \pm i \vec{A}_\times$).
-Using the fact that multiplication by $i$ is equivalent to a rotation by $\pi/2$ in the complex plane, it is straightforward to show that $\vec{A}_{R/L} = \left(\xp \pm \yc, -\yc \mp \xc\right)$, with the top (bottom) signs for R (L).
-Equation~\eqref{eq:Aphi_to_Cphi} then follows trivially from the law of cosines, as illustrated in Fig.~\ref{fig:diagram_apac}.
-
-% \mi{I'm not sure this discussion actually helps build any intuition}
-% To build some intuition for the above transformation, begin with Eq.~\eqref{eq:Cphi} and rearrange it using basic trigonometric identities to obtain
-% \begin{widetext}
-% \begin{align} \label{eq:Cphi_interm}
-% h_+ - ih_\times &= A_{R}\, e^{-i \left(\omega t - \phi_R \right) } + A_{L}\, e^{i \left(\omega t + \phi_L \right) } \nonumber \\
-% &= \left[A_R \cos(\omega t - \phi_R) + A_L \cos(\omega t - \phi_L)\right] - i\left[ A_R \sin (\omega t - \phi_R) - A_L \sin(\omega t - \phi_L)\right]  \nonumber \\
-% &= \left[\cos\omega t \left( A_R \cos \phi_R + A_L \cos \phi_L \right) + \sin \omega t \left(A_R \sin \phi_R - A_L \sin \phi_L \right) \right] \nonumber \\
-% &\phantom{=} - i \left[\cos\omega t \left(-A_R \sin\phi_R - A_L \sin\phi_L\right) + \sin \omega t \left( A_R \cos\phi_R - A_L \cos\phi_L\right)\right] .
-% %&= \left(\xp \cos\omega t + \yp \sin\omega t\right) - i \left(\xc \cos\omega t + \yc \sin\omega t\right)
-% \end{align}
-% \end{widetext}
-% Now note that Eq.~\eqref{eq:Aphi} and the definitions in Eq.~\eqref{eq:xy} imply
-% \begin{align}
-% h_+ - i h_\times &= \left(\xp \cos\omega t + \yp \sin\omega t\right) \nonumber\\
-% &\phantom{=}- i \left(\xc \cos\omega t + \yc \sin\omega t\right) .
-% \end{align}
-% By direct comparison with Eq.~\eqref{eq:Cphi_interm}, we must then have
-% \begin{equation}
-% \begin{cases}
-% \xp = A_R \cos\phi_R + A_L \cos \phi_L \\
-% \yp = A_R \sin\phi_R - A_L \sin \phi_L \\
-% \xc = -A_R \sin\phi_R - A_L \sin \phi_L \\
-% \yc = A_R \cos\phi_R - A_L \cos \phi_L \\
-% \end{cases},
-% \end{equation}
-% from which Eq.~\eqref{eq:Aphi_to_Cphi} follows after some manipulation taking advantage of the inverse of Eq.~\eqref{eq:xy}, namely
-% \begin{subequations}
-% \begin{equation}
-% A_{+/\times} = \sqrt{\xpc^2 + \ypc^2} \, ,
-% \end{equation}
-% \begin{equation}
-% \phi_{+/\times} = \mathrm{atan2}\left(\ypc, \xpc\right) .
-% \end{equation}
-% \end{subequations}
-
-The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple when expressed in terms of the first set of parameters,
+The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple when expressed in terms of the former set of parameters,
 \begin{subequations} \label{eq:jac_Aphi}
 \begin{align}
 J_2 &\equiv \left| \frac{\partial(A, \epsilon, \theta, \phi)}{\partial(A_+, A_\times, \phi_+, \phi_\times)}\right| \nonumber \\
-&= 2 A_+ A_\times/ \left[ \sqrt{A_+^4 + A_\times^4 + 2 A_+^2 A_\times^2 \cos 2(\phi_\times - \phi_+)} \right. \nonumber \\
+&= 2 A_+ A_\times \left[ \sqrt{A_+^4 + A_\times^4 + 2 A_+^2 A_\times^2 \cos 2(\phi_\times - \phi_+)} \right. \nonumber \\
 & \times \left( \sqrt{A_+^2 + A_\times^2 -2 A_+ A_\times \sin(\phi_\times-\phi_+)} \right. \nonumber \\
-&\left.\left. +  \sqrt{A_+^2 + A_\times^2 +2 A_+ A_\times \sin(\phi_\times-\phi_+)}\right)\right]\\
+&\left.\left. +  \sqrt{A_+^2 + A_\times^2 +2 A_+ A_\times \sin(\phi_\times-\phi_+)}\right)\right]^{-1}\\
 &= \frac{1}{2 A} \sqrt{\left(\frac{1 + \epsilon^2}{1 - \epsilon^2}\right)^2 - \cos^2 2\theta} \, .
 \end{align}
 \end{subequations}
