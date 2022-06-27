@@ -486,6 +486,7 @@ The Stokes parameters are thus especially useful when dealing with stochastic si
 % Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
 
 \subsection{Non-monochromatic modes}
+\label{sec:ellip:gen}
 
 % \subsubsection{Fully-polarized non-monochromatic states}
 
@@ -831,55 +832,6 @@ This was the approach taken in \cite{Isi:2017equ,Chatziioannou:2021mij,Isi:2021i
 \subsection{Compact binaries and the angles $\Psi$ and $\Omega$}
 \label{sec:position}
 
-When modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
-This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we must make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
-That was the case in going from Eq.~\eqref{eq:ellip_gen} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
-%This is the case for nonprecessing compact binary coalescences (CBCs).
-
-For a nonprecessing compact binary, as we saw in Sec.~\ref{sec:harmonics}, it is natural to orient our coordinates so as to respect the planar symmetry of the source.
-With that standard choice, we find that the linear polarizations take the simple form of \eq{nonprecessing}, which matches the expression for an elliptical mode with $\theta=0$ as in \eq{ellip_frame}.
-This again reveals that our choice of coordinates was a good one: because this wave-frame orientation preserves the symmetries of the source, it also happens to be aligned with the principal directions of the polarization ellipse.
-%
-When making predictions for the signal we may always choose this frame to simplify calculations.
-
-In order to compare predictions to measurements, we need to understand how the frame in which the $h_{+/\times}$ polarizations were predicted is oriented with respect to the detectors.
-The frame in \eq{nonprecessing}, which we here denote with primed symbols $\{\hat{x}', \hat{y}', \hat{z}'\}$, was constructed such that the GW direction of propagation, $\hat{z}'=\hat{k}$, is purely radial, with the remaining basis elements purely polar or azimuthal.
-Although different definitions may be found in the literature (e.g., \cite{Faye:2012we,Kidder:2007rt}), the LIGO convention is to choose $\hat{y}'$ such that it points towards the ascending node, i.e., parallel to the \emph{line of nodes} defined by the intersection of the orbital plane with the plane of the sky \cite{LALSuite:source}; $\hat{x}'$ completes the triad.
-In this convention, then, $\hat{x}' = -\hat{e}_\iota$, $\hat{y}' = -\hat{e}_\varphi$ and $\hat{z}'=\hat{e}_r$, where $\left(r, \iota, \varphi\right)$ are the spherical coordinates associated with the spherical-harmonic frame in \eq{spherical_modes}.
-
-% If the spins of the objects are aligned and the source does not precess, one can show that, in that frame, $h_+$ and $h_\times$ for the dominant ($\ell=|m|=2$) moment of the radiation take the form (e.g., \cite{Poisson2014})
-% \begin{subequations} \label{eq:cbc}
-% \beq
-% h_+ = \left(1 + \cos^2 \iota\right) A(t; R, \vec{\lambda}) \cos \Phi(t; \vec{\lambda}) \, , 
-% \label{eq:cbc_p} 
-% \eeq
-% \beq
-% h_\times = 2 \cos \iota\, A(t; R, \vec{\lambda}) \sin \Phi(t; \vec{\lambda})\, ,
-% \label{eq:cbc_c}
-% \eeq
-% \end{subequations}
-% where the inclination $\iota$ is the angle between the orbital angular momentum and the line of sight, and $A(t; \vec{\lambda}) \equiv R  A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ are some amplitude and phasing functions fully determined by intrinsic source parameters $\vec{\lambda}$.
-% These quantities include the component masses and spin vectors, a reference phase and, potentially, parameters related to eccentricity and matter effects (like tides).
-% In the case of an inspiraling compact binary, the $A(t; R, \vec{\lambda})$ and $\Phi(t; \vec{\lambda})$ functions encode a characteristic ``chirping'' signal, but this fact is irrelevant to discussions of polarization structure.
-% % The inclination $\iota$ is the polar angle with respect to the orbital angular momentum.
-
-Having specified $h_+$ and $h_\times$ in that standard, source-based frame, all we need to do to predict the signal at a given detector is to evaluate \eq{h} by expressing the components of $h_{ij}$ and $D_{ij}$ in a common basis.
-For ground-based detectors, this basis is usually the equatorial celestial coordinates introduced in Sec.~\ref{sec:pol}, namely $\{\hat{x},\hat{y},\hat{z}\}$ where $\hat{x}$ is parallel to the celestial equator pointing due West and, as always, $\hat{z}=\hat{k}$.
-We can relate this absolute reference to any other valid choice of waveframe $\{\hat{x}', \hat{y}', \hat{z}'=\hat{z}\}$ by specifying the angle $\psi$ between $\hat{x}'$ and the celestial equator, following the right-hand rule around $\hat{z}$ \cite{LALSuite:wave}.
-Knowing that the waveframe $\hat{y}$ is tied to the line of nodes, then $\psi = 0$ must mean that the line of nodes points towards the celestial North, or, equivalently, the projection of the orbital angular onto the plane of the sky is parallel to the celestial equator due West (see Fig.~\ref{fig:diagram_sourceframe}).
-Knowing this, we can obtain expressions for $h_+$ and $h_\times$ in the celestial frame by measuring the angle from the line of ascending nodes to the celestial south and using \eq{htransf} with $\Delta\psi = \psi - 0 =\psi$.
-
-% Having specified $h_+$ and $h_\times$ in that standard, source-based frame, we need to determine how that frame itself is oriented with respect to the detectors in order to evaluate \eq{h}.
-% This is most easily done by expressing the components of $h_{ij}$ and $D_{ij}$ in a common basis, usually equatorial celestial coordinates for ground-based detectors.
-%In LIGO, it is conventional to compute the polarizations in a frame such that $\hat{y}$ lies along the intersection of the orbital plane with the plane of the sky (the line of nodes), $\hat{z}$ is parallel to the wave vector as required by \eq{hij}, and $\hat{x}$ completes the triad \cite{LALSuite:source}.
-
-In this convention, $\psi$ is equivalent to the \emph{position angle} of the source's orbital angular momentum $\Psi$, defined to be angle between the projected orbital angular momentum and the celestial equator in the plane of the sky (following the right-hand rule relative to $\hat{z}$).
-More generally, $\Psi = \psi - \Omega$ in terms of the longitude of the ascending node $\Omega$ with $\hat{x}$ as the origin of longitude ($\Omega = \pi/2$ in the default LIGO-Virgo convention) \cite{LALSuite:source}.
-
-In fact, for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of our polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
-We can then think of this angle as a property of the source to be measured from our data, rather than an arbitrary parameter orienting our frame.
-Although this equivocation vastly simplifies analysis, it is useful to keep in mind that the three angles are conceptually distinct.
-
 \begin{figure}
 \includegraphics[width=0.9\columnwidth]{diagram_sourceframe.pdf}
 \caption{Standard construction of the source frame used in LIGO-Virgo data analysis of compact binaries \cite{LALSuite:source}. Two inspiraling objects ($m_1$ and $m_2$) define an orbital plane (gray disk) perpendicular to the orbital angular momentum direction $\hat{L}$. At a given reference time (say, when the observed GW signal reaches 20 Hz) observers on Earth will be oriented with an inclination $\iota$ relative to $\hat{L}$ and an azimuthal angle $\varphi$ with respect to the line from $m_2$ to $m_1$ (the orbital phase).
@@ -891,16 +843,45 @@ The LIGO-Virgo convention sets $\Omega=\pi/2$, so that $\hat{y}'$ is the ascendi
 \label{fig:diagram_sourceframe}
 \end{figure}
 
+When modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
+This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we must make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
+That was the case in going from Eq.~\eqref{eq:ellip_gen} to Eq.~\eqref{eq:ellip_frame} above: if we know a priori that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
+%This is the case for nonprecessing compact binary coalescences (CBCs).
+
+For a nonprecessing compact binary, as we saw in Sec.~\ref{sec:harmonics}, it is natural to orient our coordinates so as to respect the planar symmetry of the source.
+With that standard choice, we find that the linear polarizations take the simple form of \eq{nonprecessing}, which matches the expression for an elliptical mode with $\theta=0$ as in \eq{ellip_frame}.
+This again reveals that our choice of coordinates was a good one in modeling that source: because this wave-frame orientation preserves the symmetries of the binary, it also happens to be aligned with the principal directions of the polarization ellipse.
+%
+When making predictions for the signal we may always choose this frame to simplify calculations.
+
+Of course, the frame that is most convenient for source modeling need not be the best frame to describe measurements.
+In order to compare predictions to measurements, we need to understand how the frame in which the $h_{+/\times}$ polarizations were predicted is oriented with respect to the detectors.
+The frame in \eq{nonprecessing}, which we here denote with primed symbols $\{\hat{x}', \hat{y}', \hat{z}'\}$, was constructed such that the GW direction of propagation, $\hat{z}'=\hat{k}$, is purely radial, with the remaining basis elements purely polar or azimuthal.
+Although different definitions may be found in the literature (e.g., \cite{Faye:2012we,Kidder:2007rt}), the LIGO convention is to choose $\hat{y}'$ such that it points towards the ascending node, i.e., parallel to the \emph{line of nodes} defined by the intersection of the orbital plane with the plane of the sky \cite{LALSuite:source}; $\hat{x}'$ completes the triad (Fig.~\ref{fig:diagram_sourceframe} with $\Omega = \pi/2$).
+In this convention, then, $\hat{x}' = -\hat{e}_\iota$, $\hat{y}' = -\hat{e}_\varphi$ and $\hat{z}'=\hat{e}_r$, where $\left(r, \iota, \varphi\right)$ are the spherical coordinates associated with the spherical-harmonic frame in \eq{spherical_modes}.
+
+Having specified $h_+$ and $h_\times$ in that standard, source-based frame, all we need to do to predict the signal at a given detector is to evaluate \eq{h}.
+As described in Sec.~\ref{sec:pol}, this is done in practice by expressing $\{\hat{x}', \hat{y}'\}$ in terms of canonical reference vectors $\{\hat{x},\hat{y}\}$, which are tied to an Earth-centered celestial coordinate system (Fig.~\ref{fig:diagram_waveframe}).
+By convention, we specify the relative orientation between the two frames through the angle $\psi$ from $\hat{x}$ and $\hat{x}'$, itself the intersection of the celestial equator with the plane of the sky \cite{LALSuite:wave}.
+Knowing that for CBCs $\hat{y}'$ was constructed to lie along the line of nodes, then $\psi = 0$ must mean that the ascending node points towards the projected celestial north ($\hat{y}'=\hat{y}=\ascnode$), and that the projection of the orbital angular momentum onto the plane of the sky is parallel to the horizon due west ($\hat{x}=\hat{x}'=\hat{L}'$, compare Figs.~\ref{fig:diagram_waveframe} and \ref{fig:diagram_sourceframe}).
+
+In this convention, $\psi$ is equivalent to the (negation of the) \emph{position angle} of the source's orbital angular momentum $\Psi$, defined to be angle between the projected orbital angular momentum and the celestial north in the plane of the sky (i.e., the angle between $\hat{L}'$ and $\hat{y}$ in Fig.~\ref{fig:diagram_sourceframe}).
+More generally, $\Psi = \pi - \psi - \Omega$ in terms of the longitude of the ascending node $\Omega$ with $\hat{x}$ as the origin of longitude ($\Omega = \pi/2$ in the default LIGO-Virgo convention) \cite{LALSuite:source}.
+
+In fact, with these conventions for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of our polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
+We can then think of this angle as a property of the source to be measured from our data, rather than an arbitrary parameter orienting our frame.
+Although this equivocation vastly simplifies analyses, it is helpful to keep in mind that the three angles are conceptually distinct.
+
 If the component spins are not (anti)aligned with the orbital angular momentum, the spins and the orbital plane will both precess.
 As a consequence, the system will not be reflection symmetric and the GW signal will not be elliptically polarized overall.
-Nonetheless, it is still conventional to tie $\hat{y}$ to the source, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
+Nonetheless, it is still conventional to tie $\hat{y}$ to the source as in Fig.~\ref{fig:diagram_sourceframe}, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
 
 In summary, we can identify three conceptually distinct Cartesian frames: a wave frame that determines the principal directions along which we \emph{define} the effect of a plus vs cross wave; for an elliptical wave, an intrinsic polarization frame, encoding the principal directions of the polarization ellipse; and a source frame, aligned with the symmetries of the source, or otherwise anchored to some defining feature of it; all of these can be specified in some astronomical frame, like ecliptic celestial coordinates.
 For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always align with the polarization frame.
 
-In unmodeled analyses, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with (or they purposely disregard source orientation information).
+In unmodeled analyses, as those discussed in Sec.~\ref{sec:ellip:gen}, it is not possible or useful to explicitly tie the polarization frame to properties of the source, since these analyses are not tailored to any specific source to begin with (or they purposely disregard source orientation information).
 In that case, the model for $h_+$ and $h_\times$ can be defined in any arbitrary wave frame.
-A common choice is to simply set $\psi = 0$ in the standard coordinates described above, i.e., with $\hat{y}$ pointing towards the celestial North (Fig.~\ref{fig:diagram_sourceframe}).
+A common choice is to simply set $\psi = 0$ in the standard coordinates described above, i.e., with $\hat{y}$ pointing towards the celestial north (Fig.~\ref{fig:diagram_sourceframe}).
 Having done so, all information regarding polarization orientation will be encoded in the $\theta$ parameter of Fig.~\ref{fig:ellipse}, with one value per elliptical mode in the decomposition of \eq{ellip_sum}.
 
 \section{Coordinate transformations}
