@@ -937,7 +937,7 @@ We assume the amplitude could potentially subsume any (slow) time dependence pre
 \includegraphics[width=\columnwidth]{jac_Aeps_Achi}
 \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\hat{A},\chi\}$ over the ranges $0 < \hat{A} \leq \hat{A}_{\max}$ and $-\pi/4 \leq \chi \leq \pi/4$.
 Since $\hat{A} = A \sqrt{1+\epsilon^2}$ and $\max(\epsilon)= 1$, we should make sure to bound $A \leq  A_{\max} \equiv \hat{A}_{\max} /\sqrt{2}$ (dashed line).
-With that constraint, the $\epsilon$ distribution (inset histogram) is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ implicitly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (orange curve). }
+With that constraint, the $\epsilon$ distribution (inset histogram) is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ implicitly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (orange curves). }
 \label{fig:jac_Aeps_Achi}
 \end{figure}
 
@@ -968,10 +968,10 @@ This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uni
 
 \subsection{Circular components}
 
-An elliptical wave, Eq.~\eqref{eq:hcomp_ellip}, can be specified in terms of the circular polarization basis elements as in \eq{ellip_circ},
-where the $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L})$ quantites control the amplitude and phase of the circularly-polarized components of the signal.
+An monochromatic elliptical wave, Eq.~\eqref{eq:hcomp_ellip}, can be specified in terms of the circular polarization basis elements as in \eq{ellip_circ},
+where the $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L})$ quantites control the amplitude and phase of the right and left circularly-polarized components of the signal.
 %
-The representation in terms circular-mode amplitudes and phases is equivalent to Eq.~\eqref{eq:hcomp_ellip} if we impose
+The representation in terms such circular-mode amplitudes and phases is equivalent to Eq.~\eqref{eq:hcomp_ellip} if we impose
 \begin{equation} \label{eq:Cphi_to_Aellip}
 \begin{cases}
 A = \frac{1}{\sqrt{2}}\left(A_R + A_L\right) \\
@@ -990,22 +990,27 @@ A_L = \frac{1}{\sqrt{2}} A \left(1 - \epsilon\right) \\
 \end{cases} .
 \end{equation}
 These expressions are particularly simple: amplitude parameters $\{ A_R, A_L\}$ transform directly into amplitdue parameters $\{A, \epsilon\}$, irrespective of phasing angles.
-This is a consequence of the fact that circular polarization basis is defined to be invariant under rotations around the direction of propagation, which is the feature controlled by the phases.
+This is a consequence of the fact that the circular polarizations are defined to be invariant under rotations around the direction of propagation, up to an overall phase as shown in \eq{htransf_circ}.
 
 The above transformations imply a Jacobian
-\begin{equation}
+\begin{equation} \label{eq:jac_Aeps_Arl}
 J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \phi_R, \phi_L)}\right| \propto \frac{1}{A_R + A_L}\, ,
 \end{equation}
-with a proportionality constant of $1/\sqrt{2}$, which can be ignored in most applications.
-Based on \eq{Cphi_to_Aellip}, this is also proportional to $1/A$.
-Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode.
-Isotropic in $\phi_R$ and $\phi_L$ is also isotropic in $\theta$ and $\phi$.
-This means that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_\mathrm{max}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0,A_\mathrm{max}$ and peaks at $A = A_\mathrm{max}/2$ (Fig.~\ref{fig:jac_rl}).
+with a proportionality constant of $1/\sqrt{2}$, which can be ignored in most applications; based on \eq{Cphi_to_Aellip}, this is also proportional to $1/A$.
+Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode defined by $A$ (Fig.~\ref{fig:jac_rl}).
+An isotropic in $\phi_R$ and $\phi_L$ is also isotropic in $\theta$ and $\phi$.
+
+Equation \eqref{eq:jac_Aeps_Arl} implies that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_{R/L,\mathrm{max}}$actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0$ and $A=\sqrt{2}\,A_{R/L,\mathrm{max}}$, and peaks at $A = A_{R/L,\mathrm{max}}/\sqrt{2} \equiv A_{\max}$ (top panel of Fig.~\ref{fig:jac_rl}).
+Without enforcing the $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (left panel of Fig.~\ref{fig:jac_rl}).
 This was done, e.g., for one of the ringdown analyses in \cite{LIGOScientific:2020tif}.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aellip_RL}
-\caption{Distribution imposed on the overall mode amplitude $A$ of Eq.~\eqref{eq:hcomp_ellip} by assuming a uniform prior on the circular mode amplitudes $A_R, A_L$ in the range $[0, 1]$.}
+\includegraphics[width=\columnwidth]{jac_Aeps_Arl}
+\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{A_R,A_L\}$ over the ranges $0 < A_{R/L} \leq A_{R/L,\max}$.
+Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dashed line);
+failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonunform distribution on $\epsilon$ (left panel).
+Restricting to $A < A_{\max}$, the distribution is proportional to $A$ and flat in $\epsilon$, following $\propto 1/J_1$ for the Jacobian in \eq{jac_Aeps_Arl} (orange curves).
+}
 \label{fig:jac_rl}
 \end{figure}
 
@@ -1025,12 +1030,13 @@ A_L = \frac{1}{\sqrt{2}} \hat{A} \left(\cos\chi - \sin \chi\right)
 \end{cases} ,
 \end{equation}
 while the remaining angles are related as in Eqs.~\eqref{eq:Cphi_to_Aellip} and \eqref{eq:Aellip_to_Cphi}.
-Accordingly, the Jacobian that takes us from the circular parametrization to one flat in $\{\hat{A},\chi\}$ can be shown to be $J = \hat{A}^{-1}/2$.
+Accordingly, the Jacobian that takes us from the circular parametrization to one flat in $\{\hat{A},\chi\}$ can be shown to be $J \propto \hat{A}^{-1}$.
+Thus, as expected from the composition of Eqs.~\eqref{eq:jac_Aeps_Achi} and \eqref{eq:jac_Aeps_Arl}, a prior uniform in $A_{R/L}$ will also favor large intensity amplitudes with probability $\propto \hat{A}$, when restricted to the appropriate range; it will also be uniform in $\chi$.
 
 
 \subsection{Linear components}
 
-Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity and parametrize them as
+Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity, parametrizing them directly as
 \begin{subequations} \label{eq:Aphi}
 \begin{equation}
 h_+ = A_+ \cos (\omega t - \phi_+)\, ,
