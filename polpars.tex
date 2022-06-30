@@ -362,7 +362,9 @@ This expression carries the same information as Eq.~\eqref{eq:planewave} without
 \begin{figure}
 \includegraphics[width=0.7\columnwidth]{diagram_ellipse.pdf}
 \caption{Polarization ellipse. At any given time, the phasor of an elliptically polarized signal lies on an ellipse with some instantaneous amplitude $A(t)$ and time-independent ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi \equiv \Phi(t=0)$, determines the initial location of the phasor within the ellipse.
-The shape of the ellipse can also be parametrized in terms of the angle $\chi \equiv \arctan \epsilon$.}
+The shape of the ellipse can also be parametrized in terms of the angle $\chi \equiv \arctan \epsilon$.
+The domain for these parameters is $A \geq 0$, $-1 \leq \epsilon \leq 1$, $-\pi/4 \leq \chi \leq \pi/4$, $0 \leq \theta < \pi$ and $0 \leq \phi < \pi$ (or, equivalently $-\pi/2 \leq \theta < \pi/2$ and $-\pi/2 \leq \phi < \pi/2$).
+}
 \label{fig:ellipse}
 \end{figure}
 
@@ -435,7 +437,7 @@ h_\times = \hat{A} \left[\cos\chi \sin \theta \cos(\omega t - \phi) + \sin\chi \
 \eeq
 \end{subequations}
 Now, $\chi = 0$ gives a linearly polarized state, while $\chi=\pm \pi/4$ gives a R/L circularly polarized state.
-Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$, since \eq{hcomp_ellip_chi} is invariant under $\{\theta \to \theta + \pi, \chi \to \chi + \pi\}$.
+Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$ and $0 \leq \phi \leq \pi$, since Eqs.~\eqref{eq:hcomp_ellip_chi} and\eqref{eq:hcomp_ellip} are invariant under $\{\theta \to \theta + \pi,  \phi \to \phi + \pi\}$.
 % Additionally, the transformation $\{\theta \to \theta \pm \pi/2, \chi \to \pi/2 - \chi, \phi \to \phi \pm \pi/2\}$, with matching signs for the two $\pm \pi/2$ terms, leaves the equation unchanged; this means we can tighten the ranges to $0 < \theta < \pi/2$.
 
 \subsubsection{Mathematical framework}
@@ -945,8 +947,8 @@ We assume the amplitude could potentially subsume any (slow) time dependence pre
 \begin{figure}
 \includegraphics[width=0.8\columnwidth]{jac_Aeps_Achi}
 \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\hat{A},\chi\}$ over the ranges $0 < \hat{A} \leq \hat{A}_{\max}$ and $-\pi/4 \leq \chi \leq \pi/4$.
-Since $\hat{A} = A \sqrt{1+\epsilon^2}$ and $\max(\epsilon)= 1$, we should make sure to bound $A \leq  A_{\max} \equiv \hat{A}_{\max} /\sqrt{2}$ (dashed line), as in the example of Fig.~\ref{fig:jac_example}.
-With that constraint, the $\epsilon$ distribution (inset histogram) is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ implicitly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (orange curves). }
+Since $\hat{A} = A \sqrt{1+\epsilon^2}$ and $\max(\epsilon)= 1$, we should make sure to bound $A \leq  A_{\max} \equiv \hat{A}_{\max} /\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example}.
+With that constraint (blue), the $A,\epsilon$ distribution is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ is uniform in $A$ but slightly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (dashed curves). }
 \label{fig:jac_Aeps_Achi}
 \end{figure}
 
@@ -1007,18 +1009,18 @@ J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \ph
 \end{equation}
 with a proportionality constant of $1/\sqrt{2}$, which is ignored in most applications as it can be absorbed by an overall normalization; based on \eq{Cphi_to_Aellip}, this is also proportional to $1/A$.
 Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode defined by $A$ (Fig.~\ref{fig:jac_rl}).
-An isotropic prior in $\phi_R$ and $\phi_L$ is also isotropic in $\theta$ and $\phi$.
+An isotropic prior in $0 < \phi_{R/L} < 2\pi$ is also uniform in $0 < \theta <\pi$ and $0 < \phi <\pi$.
 
 Equation \eqref{eq:jac_Aeps_Arl} implies that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_{R/L,\mathrm{max}}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0$ and $A=\sqrt{2}\,A_{R/L,\mathrm{max}}$, and peaks at $A = A_{R/L,\mathrm{max}}/\sqrt{2} \equiv A_{\max}$ (top panel of Fig.~\ref{fig:jac_rl}).
 Without enforcing a $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (left panel of Fig.~\ref{fig:jac_rl}).
 This was the case, e.g., for one of the ringdown analyses in \cite{LIGOScientific:2020tif}, which sampled uniformly in amplitude coefficients equivalent to $A_{R/L}$ up to an overall scaling.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aeps_Arl}
+\includegraphics[width=0.8\columnwidth]{jac_Aeps_Arl}
 \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{A_R,A_L\}$ over the ranges $0 < A_{R/L} \leq A_{R/L,\max}$.
-Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dashed line);
-failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonunform distribution on $\epsilon$ (left panel).
-Restricting to $A < A_{\max}$, the density is proportional to $A$ and flat in $\epsilon$, following $\propto 1/J_1$ for the Jacobian in \eq{jac_Aeps_Arl} (orange curves).
+Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example};
+failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonunform distribution on $\epsilon$ (right panel).
+Restricting to $A < A_{\max}$ (blue), the density is proportional to $A$ and flat in $\epsilon$, following $\propto 1/J_1$ for the Jacobian in \eq{jac_Aeps_Arl} (dashed curves).
 }
 \label{fig:jac_rl}
 \end{figure}
@@ -1120,7 +1122,7 @@ Additionally, Fig.~\ref{fig:jac_Aphi} shows the dependence of this Jacobian as a
 The Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that purely circular polarizations will be heavily disfavored if we apply uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aellip_Aphi}
+\includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
 \caption{Contour levels for the Jacobian relating the $\{A, \epsilon, \theta, \phi\}$ and $\{A_+, A_\times, \phi_+, \phi_\times\}$ parametrizations, Eq.~\eqref{eq:jac_Aphi}, as a function of the wave ellipticity $\epsilon$ and ellipse-orientation angle $\theta$ for a fixed value of $A$.}
 \label{fig:jac_Aphi}
 \end{figure}
