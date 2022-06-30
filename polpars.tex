@@ -52,7 +52,8 @@
 \usepackage{csquotes}
 \usepackage{array}
 \usepackage{booktabs}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
 \usepackage{wasysym}
 
 \newcommand{\ts}{\textsuperscript}
@@ -91,8 +92,6 @@
 
 \iftoggle{commentsoff}{
   \newcommand*{\mi}[1]{}
-  \newcommand*{\mg}[1]{}
-  \newcommand*{\wf}[1]{}
   \newcommand*{\comment}[1]{}
   \newcommand*{\suggest}[3]{#2}
   \newcommand*{\todo}[1]{}
@@ -103,7 +102,6 @@
   \newcommand*{\commentmark}[1]{}
 }{
   \newcommand*{\mi}[1]{{\color{magenta} [{\bf MAX}: #1]}}
-  \newcommand*{\wf}[1]{\textcolor{green}{\textbf{WILL}: #1}}
   \newcommand*{\suggest}[3]{\textcolor{Purple}{\textbf{#3} \sout{#1} #2}}
   \newcommand*{\comment}[1]{{\color{blue} [{\bf NOTE}: #1]}}
   \newcommand*{\warn}[1]{{\color{red} [{\bf WARNING}: #1]}}
