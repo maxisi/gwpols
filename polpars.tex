@@ -437,8 +437,8 @@ h_\times = \hat{A} \left[\cos\chi \sin \theta \cos(\omega t - \phi) + \sin\chi \
 \eeq
 \end{subequations}
 Now, $\chi = 0$ gives a linearly polarized state, while $\chi=\pm \pi/4$ gives a R/L circularly polarized state.
-Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$ and $0 \leq \phi \leq \pi$, since Eqs.~\eqref{eq:hcomp_ellip_chi} and\eqref{eq:hcomp_ellip} are invariant under $\{\theta \to \theta + \pi,  \phi \to \phi + \pi\}$.
-% Additionally, the transformation $\{\theta \to \theta \pm \pi/2, \chi \to \pi/2 - \chi, \phi \to \phi \pm \pi/2\}$, with matching signs for the two $\pm \pi/2$ terms, leaves the equation unchanged; this means we can tighten the ranges to $0 < \theta < \pi/2$.
+Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$ and $0 \leq \phi \leq \pi$, since Eqs.~\eqref{eq:hcomp_ellip} and\eqref{eq:hcomp_ellip_chi} are invariant under $\{\theta \to \theta + \pi,  \phi \to \phi + \pi\}$.
+To accommodate these ranges, it can be useful to work with alternative angles $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$ that are allowed to range fully over $[0, 2\pi]$.
 
 \subsubsection{Mathematical framework}
 \label{sec:math}
@@ -943,12 +943,15 @@ We will focus on a single elliptical component as a standin for any individual t
 We assume the amplitude could potentially subsume any (slow) time dependence present implied by $\mathcal{A}(t)$ in Eq.~\eqref{eq:ellip_gen}, e.g., the amplitude parameters below could correspond to a reference amplitude $A=\mathcal{A}(t=0)$.
 
 \subsection{Amplitude and ellipticity}
+\label{sec:jac:Achi}
 
 \begin{figure}
 \includegraphics[width=0.8\columnwidth]{jac_Aeps_Achi}
 \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\hat{A},\chi\}$ over the ranges $0 < \hat{A} \leq \hat{A}_{\max}$ and $-\pi/4 \leq \chi \leq \pi/4$.
 Since $\hat{A} = A \sqrt{1+\epsilon^2}$ and $\max(\epsilon)= 1$, we should make sure to bound $A \leq  A_{\max} \equiv \hat{A}_{\max} /\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example}.
-With that constraint (blue), the $A,\epsilon$ distribution is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ is uniform in $A$ but slightly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (dashed curves). }
+With that constraint (blue), the $A,\epsilon$ distribution is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ is uniform in $A$ but slightly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (dashed curves). 
+The marginal histograms are normalized by bin count.
+}
 \label{fig:jac_Aeps_Achi}
 \end{figure}
 
@@ -978,6 +981,7 @@ or, equivalently $J_0 = \hat{A}/A$.
 This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uniform prior in the $\{\hat{A}, \chi\}$ quantities implicitly favors linear polarizations relative to circular ones.
 
 \subsection{Circular components}
+\label{sec:jac:Arl}
 
 An monochromatic elliptical wave, Eq.~\eqref{eq:hcomp_ellip}, can be specified in terms of the circular polarization basis elements as in \eq{ellip_circ},
 where the $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L})$ quantities control the amplitude and phase of the right and left circularly-polarized components of the signal.
@@ -1008,11 +1012,11 @@ The above transformations imply a Jacobian
 J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \phi_R, \phi_L)}\right| \propto \frac{1}{A_R + A_L}\, ,
 \end{equation}
 with a proportionality constant of $1/\sqrt{2}$, which is ignored in most applications as it can be absorbed by an overall normalization; based on \eq{Cphi_to_Aellip}, this is also proportional to $1/A$.
-Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode defined by $A$ (Fig.~\ref{fig:jac_rl}).
+Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode defined by $A$ (Fig.~\ref{fig:jac_Aeps_Arl}).
 An isotropic prior in $0 < \phi_{R/L} < 2\pi$ is also uniform in $0 < \theta <\pi$ and $0 < \phi <\pi$.
 
-Equation \eqref{eq:jac_Aeps_Arl} implies that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_{R/L,\mathrm{max}}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0$ and $A=\sqrt{2}\,A_{R/L,\mathrm{max}}$, and peaks at $A = A_{R/L,\mathrm{max}}/\sqrt{2} \equiv A_{\max}$ (top panel of Fig.~\ref{fig:jac_rl}).
-Without enforcing a $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (left panel of Fig.~\ref{fig:jac_rl}).
+Equation \eqref{eq:jac_Aeps_Arl} implies that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_{R/L,\mathrm{max}}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0$ and $A=\sqrt{2}\,A_{R/L,\mathrm{max}}$, and peaks at $A = A_{R/L,\mathrm{max}}/\sqrt{2} \equiv A_{\max}$ (top panel of Fig.~\ref{fig:jac_Aeps_Arl}).
+Without enforcing a $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (left panel of Fig.~\ref{fig:jac_Aeps_Arl}).
 This was the case, e.g., for one of the ringdown analyses in \cite{LIGOScientific:2020tif}, which sampled uniformly in amplitude coefficients equivalent to $A_{R/L}$ up to an overall scaling.
 
 \begin{figure}
@@ -1021,8 +1025,9 @@ This was the case, e.g., for one of the ringdown analyses in \cite{LIGOScientifi
 Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example};
 failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonunform distribution on $\epsilon$ (right panel).
 Restricting to $A < A_{\max}$ (blue), the density is proportional to $A$ and flat in $\epsilon$, following $\propto 1/J_1$ for the Jacobian in \eq{jac_Aeps_Arl} (dashed curves).
+The marginal histograms are normalized by bin count.
 }
-\label{fig:jac_rl}
+\label{fig:jac_Aeps_Arl}
 \end{figure}
 
 We can also relate the circular amplitudes to the alternative parametrization of \eq{hcomp_ellip_chi}.
@@ -1046,6 +1051,7 @@ Thus, as expected from the composition of Eqs.~\eqref{eq:jac_Aeps_Achi} and \eqr
 
 
 \subsection{Linear components}
+\label{sec:jac:Apc}
 
 Rather than using the circular basis, we could instead work with the linear polarization modes as the fundamental quantity, parametrizing them directly as
 \begin{subequations} \label{eq:Aphi}
@@ -1066,12 +1072,28 @@ Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for 
 \newcommand{\yc}{y_{\times}}
 \newcommand{\ypc}{y_{+/\times}}
 
+\newcommand{\xr}{x_{R}}
+\newcommand{\xl}{x_{L}}
+\newcommand{\xrl}{x_{R/L}}
+\newcommand{\yr}{y_{R}}
+\newcommand{\yl}{y_{L}}
+\newcommand{\yrl}{y_{R/L}}
+
 % \newcommand{\xp}{A_{+,c}}
 % \newcommand{\xc}{A_{\times,c}}
 % \newcommand{\xpc}{A_{+/\times,c}}
 % \newcommand{\yp}{A_{+,s}}
 % \newcommand{\yc}{A_{\times,s}}
 % \newcommand{\ypc}{A_{+/\times,s}}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{diagram_apac}
+\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
+\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
+\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
+}
+\label{fig:diagram_apac}
+\end{figure}
 
 Equation \eqref{eq:Aphi} still represents an elliptically polarized mode.
 To relate this parametrization to that in Eq.~\eqref{eq:hcomp_ellip}, it is convenient to first map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section.
@@ -1098,15 +1120,6 @@ Together with Eq.~\eqref{eq:Cphi_to_Aellip}, this allows us to compute $\{A, \ep
 This transformation is clearly less straightforward than those for the circular components in the previous section, with amplitude and phase parameters mixing into each other.
 This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{diagram_apac}
-\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
-\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
-\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
-}
-\label{fig:diagram_apac}
-\end{figure}
-
 The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple, however, when expressed in terms of the former set of parameters,
 \begin{subequations} \label{eq:jac_Aphi}
 \begin{align}
@@ -1117,43 +1130,69 @@ J_2 &\equiv \left| \frac{\partial(A, \epsilon, \theta, \phi)}{\partial(A_+, A_\t
 &= \frac{1}{2 A} \sqrt{\left(\frac{1 + \epsilon^2}{1 - \epsilon^2}\right)^2 - \cos^2 2\theta} \, .
 \end{align}
 \end{subequations}
-The $J_2 \propto 1/A$ dependence of this Jacobian implies that an analysis with uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities will implicitly favor high signal amplitudes.
-Additionally, Fig.~\ref{fig:jac_Aphi} shows the dependence of this Jacobian as a function of $\epsilon$ and $\theta$ for a fixed (nonzero) value of $A$.
-The Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that purely circular polarizations will be heavily disfavored if we apply uniform priors on the $\{A_+, A_\times, \phi_+, \phi_\times\}$ quantities.
+The Jacobian factorizes into a factor of $1/A$, and a nontrivial function of $\epsilon$ and $\theta$.
+The $J_2 \propto 1/A$ dependence implies that an analysis with uniform priors in the linear polarization amplitudes will implicitly favor high overall signal power, as was the case for the circular amplitudes in Fig.~\ref{fig:jac_Aeps_Arl}.
+Furthermore, the Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that circular polarizations will be disfavored in this scenario.
+
+Both those features are visible in Fig.~\ref{fig:jac_Aphi}, which shows the distribution imposed on all of our canonical parameters, $\{A,\epsilon, \theta, \phi\}$, by drawing uniformly in $0 < A_{+/\times} < A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$, for some arbitrary scale $A_{\rm max}$.
+The distribution increases proportionally with $A$ up to $A_{\max}$ and peaks strongly at $\epsilon = 0$, sharply favoring linear polarizations.
+In fact, the $\theta$ dependence of \eq{jac_Aphi} implies that pure $+$ or $\times$ polarizations ($\theta=0$ or $\theta = \pm\pi/2$, respectively) will be favored over any other orientation, i.e., pure linear polarizations aligned with the frame used to define $+$ and $\times$ in \eq{Aphi}.
+
+The sharpness of the $\epsilon$ and $\theta$ features in Fig.~\ref{fig:jac_Aphi} suggests that fully correcting for the Jacobian in \eq{jac_Aphi} will be challenging in sampling applications.
+Therefore, the parametrization of \eq{Aphi} is likely nonperformant if the goal is to obtain results under a uniform prior in $\{A,\epsilon\}$---we found this to be the case in practice in the context of \cite{Chatziioannou:2021mij}.
+The parameterization is otherwise also likely undesirable if there is no known orientation of the polarization frame to favor in writing down \eq{Aphi}, i.e., in the language of Sec.~\ref{sec:angles}, if there is no a priori preferred polarization angle $\psi$.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
-\caption{Contour levels for the Jacobian relating the $\{A, \epsilon, \theta, \phi\}$ and $\{A_+, A_\times, \phi_+, \phi_\times\}$ parametrizations, Eq.~\eqref{eq:jac_Aphi}, as a function of the wave ellipticity $\epsilon$ and ellipse-orientation angle $\theta$ for a fixed value of $A$.}
+\caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
+The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, and $\pi/2 \leq \theta,\phi <\pi/2$, as in the example of Fig.~\ref{fig:jac_example}.
+The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
+The difference between the blue and gray distributions for $\theta$ and $\phi$ is an artifact of the chosen angle ranges: it would not have appeared had we instead worked with $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$, both in the range $[0,2\pi]$.
+The marginal histograms are normalized by bin count.
+The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi} ($\theta = 0, \pm\pi/2$).
+}
 \label{fig:jac_Aphi}
 \end{figure}
 
-\begin{figure*}
-\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_A}
-\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_epsilon}\\
-\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_theta}
-\includegraphics[width=\columnwidth]{jac_Aellip_Aphi_phi}
-\caption{Marginal distributions imposed on the polarization ellipse parameters $\{A, \epsilon, \theta, \phi\}$ of Fig.~\ref{fig:ellipse} by drawing uniformly in the linear polarization parameters $\{A_+, A_\times, \phi_+, \phi_\times\}$ parameters of Eq.~\eqref{eq:Aphi} from $0\leq A_{+/\times} \leq 1$ and $0 \leq \phi_{+/\times} \leq 2\pi$, and constraining to $A \leq 1$.
-The resulting distribution is favors large amplitudes (top left), favors linear polarizations (top right), and is anisotropic (bottom row).
-}
-\label{fig:jac_Aphi_pars}
-\end{figure*}
-
-That is indeed the behavior we find in Fig.~\ref{fig:jac_Aphi_pars} when sampling uniformly from $0\leq A_{+/\times} \leq 1$ and $0 \leq \phi_{+/\times} \leq 2\pi$, with an additional constraint that $A \leq 1$ for the resulting overall signal amplitude.
-Enforcing this extra condition ensures that isotropy is preserved for the cosine and sine quadratures of the $+$ and $\times$ polarizations (we return to this below).
-
-The strong preference for 
-
 \subsection{Linear polarization quadratures}
+\label{sec:jac:Axy}
 
-Instead, it can be helpful to sample in terms of the cosine and sine quadratures corresponding to the polarizations of Eq.~\eqref{eq:ellip}.
-This is useful \cite{Hogg:2017akh}.
+In the previous section we introduced the linear polarization quadratures $\xpc \equiv A_{+/\times} \cos \phi_{+/\times}$ and $\ypc \equiv A_{+/\times} \sin \phi_{+/\times}$, \eq{xy}, which are the Cartesian components (real and imaginary) corresponding to the complex-valued Jones amplitudes that encode the polarization state of the signal (see Fig.~\ref{fig:diagram_apac} and Sec.~\ref{sec:math}).
+In \eq{Aphi_to_Cphi} we used these quantities to conveniently express the relation between the phases of the linear components of \eq{Aphi} and those of their circular counterparts, \eq{ellip_circ}, but their usefulness extends more widely.
+Notably, the quadratures are usually more suitable for sampling applications, since working with periodic phases like $\phi_{+/\times}$ can be problematic for stochastic algorithms like Markov chain Monte Carlo (MCMC) \cite{Hogg:2017akh}.
+Together with Gaussian priors, they can also make some problems analytically integrable \cite{Hogg:2020jwh}.
 
+The linear-polarization quadratures enter the waveform linearly, such that
+\begin{subequations} \label{eq:Axy}
 \begin{equation}
-h_+ = A_{+,c} \cos \omega t + A_{+,s} \sin \omega t
+h_+ = \xp \cos \omega t + \yp \sin \omega t \, 
 \end{equation}
 \begin{equation}
-h_\times = A_{\times,c} \cos \omega t + A_{\times,s} \sin \omega t
+h_\times = \xc \cos \omega t + \yc \sin \omega t \, ,
 \end{equation}
+\end{subequations}
+is the corresponding expression for an elliptical monochromatic mode, analogous to \eq{Aphi}.
+Their relation to the linear polarizations of \eq{Aphi} is given by their definition in \eq{xy}; this implies a transformation into the circular-polarization parameters given by
+\begin{equation} \label{eq:Cphi_to_Axy}
+\begin{cases}
+A_R^2 = \frac{1}{2}\left[\left(\yp - \xc\right)^2 + \left(\xp + \yc\right)^2\right] \\
+A_R^2 = \frac{1}{2}\left[\left(\yp + \xc\right)^2 + \left(\xp - \yc\right)^2\right] \\
+\phi_R = \mathrm{atan2}\left(\yp -\xc, \xp + \yc \right)\\
+\phi_L = \mathrm{atan2}\left(\yp + \xc, \xp - \yc \right) 
+\end{cases} ,
+\end{equation}
+where last two lines are the same as in \eq{Aphi_to_Cphi}.
+The inverse transformation is, as one might expect,
+\begin{equation} \label{eq:Axy_to_Cphi}
+\begin{cases}
+\xp = \frac{1}{\sqrt{2}} \left( \xr + \xl \right)\\
+\yp = \frac{1}{\sqrt{2}} \left( \yr + \yl \right)\\
+\xc = \frac{1}{\sqrt{2}} \left( \yl - \yr \right)\\
+\yc = \frac{1}{\sqrt{2}} \left( \xr - \xl \right)\\
+\end{cases} ,
+\end{equation}
+for circular-polarization quadratures $\xrl \equiv A_{R/L}\cos\phi_{R/L}$ and $\yrl \equiv A_{R/L} \sin \phi_{R/L}$.
+From \eq{Cphi_to_Aellip}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters.
 
 \section{Nontensor polarizations}
 \label{sec:nongr}
