@@ -769,6 +769,13 @@ However, the two angles $\theta$ and $\psi$ are conceptually distinct; in partic
 
 % where the source sky location is parametrized by its right ascension $\alpha$ and declination $\delta$.
 
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{diagram_ellipse_extra.pdf}
+\caption{Changing wave frame orientation.
+}
+\label{fig:diagram_ellipse_extra}
+\end{figure}
+
 As for any GW, the detector output for an elliptically polarized wave will be given by \eq{h}.
 In this case, however, \eq{Ftransf} implies that $\psi$ and $\theta$ are degenerate, as detailed in Appendix A of \cite{Isi:2017equ}.
 Concretely, for a fixed sky location (i.e., propagation direction), a change from $\psi \to \psi' = \psi + \Delta\psi$ in the antenna patterns can be absorbed by a change in $\theta$ because the expression
@@ -1130,9 +1137,9 @@ J_2 &\equiv \left| \frac{\partial(A, \epsilon, \theta, \phi)}{\partial(A_+, A_\t
 &= \frac{1}{2 A} \sqrt{\left(\frac{1 + \epsilon^2}{1 - \epsilon^2}\right)^2 - \cos^2 2\theta} \, .
 \end{align}
 \end{subequations}
-The Jacobian factorizes into a factor of $1/A$, and a nontrivial function of $\epsilon$ and $\theta$.
+The Jacobian factorizes into a piece for the size of the ellipse ($1/A$), and a less trivial piece for its shape and orientation (function of $\epsilon$ and $\theta$).
 The $J_2 \propto 1/A$ dependence implies that an analysis with uniform priors in the linear polarization amplitudes will implicitly favor high overall signal power, as was the case for the circular amplitudes in Fig.~\ref{fig:jac_Aeps_Arl}.
-Furthermore, the Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that circular polarizations will be disfavored in this scenario.
+Additionally, the dependence on the ellipse's shape implies that the Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that circular polarizations will be disfavored in this scenario.
 
 Both those features are visible in Fig.~\ref{fig:jac_Aphi}, which shows the distribution imposed on all of our canonical parameters, $\{A,\epsilon, \theta, \phi\}$, by drawing uniformly in $0 < A_{+/\times} < A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$, for some arbitrary scale $A_{\rm max}$.
 The distribution increases proportionally with $A$ up to $A_{\max}$ and peaks strongly at $\epsilon = 0$, sharply favoring linear polarizations.
