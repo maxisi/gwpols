@@ -1150,14 +1150,6 @@ The Jacobian factorizes into a piece for the size of the ellipse ($1/A$), and a 
 The $J_2 \propto 1/A$ dependence implies that an analysis with uniform priors in the linear polarization amplitudes will implicitly favor high overall signal power, as was the case for the circular amplitudes in Fig.~\ref{fig:jac_Aeps_Arl}.
 Additionally, the dependence on the ellipse's shape implies that the Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that circular polarizations will be disfavored in this scenario.
 
-Both those features are visible in Fig.~\ref{fig:jac_Aphi}, which shows the distribution imposed on all of our canonical parameters, $\{A,\epsilon, \theta, \phi\}$, by drawing uniformly in $0 < A_{+/\times} < A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$, for some arbitrary scale $A_{\rm max}$.
-The distribution increases proportionally with $A$ up to $A_{\max}$ and peaks strongly at $\epsilon = 0$, sharply favoring linear polarizations.
-In fact, the $\theta$ dependence of \eq{jac_Aphi} implies that pure $+$ or $\times$ polarizations ($\theta=0$ or $\theta = \pm\pi/2$, respectively) will be favored over any other orientation, i.e., pure linear polarizations aligned with the frame used to define $+$ and $\times$ in \eq{Aphi}.
-
-The sharpness of the $\epsilon$ and $\theta$ features in Fig.~\ref{fig:jac_Aphi} suggests that fully correcting for the Jacobian in \eq{jac_Aphi} will be challenging in sampling applications.
-Therefore, the parametrization of \eq{Aphi} is likely nonperformant if the goal is to obtain results under a uniform prior in $\{A,\epsilon\}$---we found this to be the case in practice in the context of \cite{Chatziioannou:2021mij}.
-The parameterization is otherwise also likely undesirable if there is no known orientation of the polarization frame to favor in writing down \eq{Aphi}, i.e., in the language of Sec.~\ref{sec:angles}, if there is no a priori preferred polarization angle $\psi$.
-
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
 \caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
@@ -1169,6 +1161,14 @@ The distribution represented here heavily favors linear polarizations ($\epsilon
 }
 \label{fig:jac_Aphi}
 \end{figure}
+
+Both those features are visible in Fig.~\ref{fig:jac_Aphi}, which shows the distribution imposed on all of our canonical parameters, $\{A,\epsilon, \theta, \phi\}$, by drawing uniformly in $0 < A_{+/\times} < A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$, for some arbitrary scale $A_{\rm max}$.
+The distribution increases proportionally with $A$ up to $A_{\max}$ and peaks strongly at $\epsilon = 0$, sharply favoring linear polarizations.
+In fact, the $\theta$ dependence of \eq{jac_Aphi} implies that pure $+$ or $\times$ polarizations ($\theta=0$ or $\theta = \pm\pi/2$, respectively) will be favored over any other orientation, i.e., pure linear polarizations aligned with the frame used to define $+$ and $\times$ in \eq{Aphi}.
+
+The sharpness of the $\epsilon$ and $\theta$ features in Fig.~\ref{fig:jac_Aphi} suggests that fully correcting for the Jacobian in \eq{jac_Aphi} will be challenging in sampling applications.
+Therefore, the parametrization of \eq{Aphi} is likely nonperformant if the goal is to obtain results under a uniform prior in $\{A,\epsilon\}$---we found this to be the case in practice in the context of \cite{Chatziioannou:2021mij}.
+The parameterization is otherwise also likely undesirable if there is no known orientation of the polarization frame to favor in writing down \eq{Aphi}, i.e., in the language of Sec.~\ref{sec:angles}, if there is no a priori preferred polarization angle $\psi$.
 
 \subsection{Linear polarization quadratures}
 \label{sec:jac:Axy}
@@ -1208,7 +1208,19 @@ The inverse transformation is, as one might expect,
 \end{cases} ,
 \end{equation}
 for circular-polarization quadratures $\xrl \equiv A_{R/L}\cos\phi_{R/L}$ and $\yrl \equiv A_{R/L} \sin \phi_{R/L}$.
-From \eq{Cphi_to_Aellip}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters.
+
+From \eq{Cphi_to_Aellip}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters $\{A,\epsilon,\theta,\phi\}$.
+The corresponding Jacobian is remarkably simple when expressed in terms of the ellipse amplitude and shape,
+\begin{subequations}
+\begin{align} \label{eq:jac_Aeps_Axy}
+J_3 &\equiv 2 \left\{\sqrt{\left(\yp -\xc \right)^2 +\left(\xp +\yc\right)^2}
+\right. \nonumber \\
+&\times \sqrt{\left(\yp + \xc\right)^2 + \left(\xp - \yc\right)^2}  \nonumber\\
+&\times \left[ \sqrt{\left(\yp -\xc \right)^2 +\left(\xp +\yc\right)^2} \right.  \nonumber\\
+&+ \left.\left. \sqrt{\left(\yp + \xc\right)^2 + \left(\xp - \yc\right)^2} \right]\right\}^{-1} \\
+&= \frac{1}{A^{3} \left(1 - \epsilon^2\right)}  .
+\end{align}
+\end{subequations}
 
 \section{Nontensor polarizations}
 \label{sec:nongr}
