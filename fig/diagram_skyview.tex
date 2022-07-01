@@ -54,13 +54,13 @@
 
 \draw[rotate=\ThetaAngle, line width = \lw, color=gray, fill=gray!10] (0, 0) ellipse ({\A} and {\semiminor});
 
-\draw[line width = \lw, dashed, ->] (-\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$\hat{x}=W$};
-\draw[line width =\lw , dashed, ->] (0, -\AxLen) -- (0, \AxLen) node[anchor=north east]{$\hat{y} = N_\perp$};
+\draw[line width = \lw, dashed, ->] (-\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$\hat{x}'=W$};
+\draw[line width =\lw , dashed, ->] (0, -\AxLen) -- (0, \AxLen) node[anchor=north east]{$\hat{y}' = N_\perp$};
 
-\draw[line width = \lw, ->, dashed, \ccolor] (O) -- (xp) node[anchor=west]{$\hat{x}'$};
+\draw[line width = \lw, ->, dashed, \ccolor] (O) -- (xp) node[anchor=west]{$\hat{x}$};
 \draw[line width = \lw, -stealth] (O) -- (A) node[anchor=north, text height=12pt]{$\hat{L}_{\perp}$};
 
-\draw[line width = \lw, ->, dashed, \ccolor] (O) -- (yp) node[left]{$\hat{y}'$};
+\draw[line width = \lw, ->, dashed, \ccolor] (O) -- (yp) node[left]{$\hat{y}$};
 \draw[line width = \lw, -stealth] (O) -- (a) node[anchor=north, text height=10pt]{$\ascnode$};
 
 \draw[\ccolor] pic[draw,angle radius=1.5cm*\A,"$\psi$" shift={(12mm,6mm)}] {angle=x--O--A};

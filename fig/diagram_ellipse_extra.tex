@@ -61,13 +61,13 @@
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% AXES
 
-\draw[line width = \lw, dashed, ->] (-0.7*\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$h_{+}$};
-\draw[line width =\lw , dashed, ->] (0, -0.7*\AxLen) -- (0, \AxLen) node[anchor=north east]{$h_{\times}$};
+\draw[line width = \lw, dashed, ->] (-0.7*\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$h_{+}'$};
+\draw[line width =\lw , dashed, ->] (0, -0.7*\AxLen) -- (0, \AxLen) node[anchor=north east]{$h_{\times}'$};
 
-\draw[line width = \lw, dashed, ->, color=gray!50] (xpm) -- (xp) node[anchor=north east, text height=10pt]{$h_{+}'$};
-\draw[line width =\lw , dashed, ->, color=gray!50] (ypm) -- (yp) node[anchor=north east]{$h_{\times}'$};
+\draw[line width = \lw, dashed, ->, color=gray!50] (xpm) -- (xp) node[anchor=north east, text height=10pt]{$h_{+}$};
+\draw[line width =\lw , dashed, ->, color=gray!50] (ypm) -- (yp) node[anchor=north east]{$h_{\times}$};
 
-\draw[gray] pic[draw,angle radius=0.5cm*\AxLen,"$2\Delta\psi$" shift={(11mm,1mm)}] {angle=x--O--xp};
+\draw[gray] pic[draw,<-,angle radius=0.5cm*\AxLen,"$2\Delta\psi$" shift={(13mm,1mm)}] {angle=x--O--xp};
 
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,7 +81,7 @@
 %\draw[line width =\lw, -, dotted, color=\ccolor, opacity=0.5] (O) -- (\ax/2,\ay/2) node[anchor=north east,text width=10pt,text height=6pt]{} -- (a);
 
 
-\draw[\ccolor] pic[draw,angle radius=1.4cm*\semiminor,"$\theta_2$" shift={(5mm,5mm)}] {angle=x--O--A};
+\draw[\ccolor] pic[draw,angle radius=1.4cm*\semiminor,"$\theta_2'$" shift={(5mm,5mm)}] {angle=x--O--A};
 
 
 
@@ -99,7 +99,7 @@
 
 %\draw[line width =\lw, -, color=\rcolor, opacity=0.5, dotted] (O) -- (\axp/2,\ayp/2) node[anchor=north east,text width=10pt,text height=6pt]{} -- (ap);
 
-\draw[\rcolor] pic[draw,angle radius=0.4cm*\semiminorp,"$\theta_1$" shift={(2mm,4mm)}] {angle=x--O--Ap};
+\draw[\rcolor] pic[draw,angle radius=0.4cm*\semiminorp,"$\theta_1'$" shift={(2mm,4mm)}] {angle=x--O--Ap};
 
 
 \end{tikzpicture}
