@@ -1178,7 +1178,8 @@ In \eq{Aphi_to_Cphi} we used these quantities to conveniently express the relati
 Notably, the quadratures are usually more suitable for sampling applications, since working with periodic phases like $\phi_{+/\times}$ can be problematic for stochastic algorithms like Markov chain Monte Carlo (MCMC) \cite{Hogg:2017akh}.
 Together with Gaussian priors, they can also make some problems analytically integrable \cite{Hogg:2020jwh}.
 
-The linear-polarization quadratures enter the waveform linearly, such that
+The usefulness of the linear-polarization quadratures stems from the fact that, unlike phase parameters, they enter the waveform linearly.
+Concretely, the expression for an elliptical monochromatic mode in terms of this quantities is
 \begin{subequations} \label{eq:Axy}
 \begin{equation}
 h_+ = \xp \cos \omega t + \yp \sin \omega t \, 
@@ -1187,7 +1188,7 @@ h_+ = \xp \cos \omega t + \yp \sin \omega t \,
 h_\times = \xc \cos \omega t + \yc \sin \omega t \, ,
 \end{equation}
 \end{subequations}
-is the corresponding expression for an elliptical monochromatic mode, analogous to \eq{Aphi}.
+in analogy to \eq{Aphi}.
 Their relation to the linear polarizations of \eq{Aphi} is given by their definition in \eq{xy}; this implies a transformation into the circular-polarization parameters given by
 \begin{equation} \label{eq:Cphi_to_Axy}
 \begin{cases}
