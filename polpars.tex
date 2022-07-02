@@ -1231,6 +1231,19 @@ J_3 &\equiv 2 \left\{\sqrt{\left(\yp -\xc \right)^2 +\left(\xp +\yc\right)^2}
 &= \frac{1}{A^{3} \left(1 - \epsilon^2\right)}  .
 \end{align}
 \end{subequations}
+This Jacobian again factorizes into a piece for the size of the polarization ellipse and another for its shape, but without a dependence on the ellipse orientation.
+The scale-dependent factor ($1/A^3$) indicates that a flat prior on $\{\xpc,\ypc\}$ will strongly favor large signal amplitudes.
+Like in \eq{jac_Aphi}, this Jacobian diverges for $\epsilon = \pm 1$ which means that circular polarizations will be disfavored, albeit less strongly than in the previous section.
+The lack of dependence of $J_3$ on the orientation ellipse $\theta$ indicates that no specific polarization frame is framed by this prior, reflecting the isotropy built into the definition of $\xpc, \ypc$.
+
+We illustrate the effect of this Jacobian in Fig.~\ref{fig:jac_Axy}.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{jac_Aeps_Axy}
+\caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
+}
+\label{fig:jac_Axy}
+\end{figure}
 
 \section{Nontensor polarizations}
 \label{sec:nongr}
