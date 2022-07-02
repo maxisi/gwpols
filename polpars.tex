@@ -1179,17 +1179,16 @@ Notably, the quadratures are usually more suitable for sampling applications, si
 Together with Gaussian priors, they can also make some problems analytically integrable \cite{Hogg:2020jwh}.
 
 The usefulness of the linear-polarization quadratures stems from the fact that, unlike phase parameters, they enter the waveform linearly.
-Concretely, the expression for an elliptical monochromatic mode in terms of this quantities is
+Concretely, the expression for an elliptical monochromatic mode in terms of these quantities is
 \begin{subequations} \label{eq:Axy}
 \begin{equation}
 h_+ = \xp \cos \omega t + \yp \sin \omega t \, 
 \end{equation}
 \begin{equation}
-h_\times = \xc \cos \omega t + \yc \sin \omega t \, ,
+h_\times = \xc \cos \omega t + \yc \sin \omega t \, .
 \end{equation}
 \end{subequations}
-in analogy to \eq{Aphi}.
-Their relation to the linear polarizations of \eq{Aphi} is given by their definition in \eq{xy}; this implies a transformation into the circular-polarization parameters given by
+Their relation to the linear polarizations of \eq{Aphi} is given by directly the definition of $\xpc$ and $\ypc$ in \eq{xy}; such relation implies a transformation into the circular-polarization parameters given by
 \begin{equation} \label{eq:Cphi_to_Axy}
 \begin{cases}
 A_R^2 = \frac{1}{2}\left[\left(\yp - \xc\right)^2 + \left(\xp + \yc\right)^2\right] \\
@@ -1199,7 +1198,7 @@ A_R^2 = \frac{1}{2}\left[\left(\yp + \xc\right)^2 + \left(\xp - \yc\right)^2\rig
 \end{cases} ,
 \end{equation}
 where last two lines are the same as in \eq{Aphi_to_Cphi}.
-The inverse transformation is, as one might expect,
+The inverse transformation is, as one might expect from Fig.~\ref{fig:diagram_apac},
 \begin{equation} \label{eq:Axy_to_Cphi}
 \begin{cases}
 \xp = \frac{1}{\sqrt{2}} \left( \xr + \xl \right)\\
@@ -1211,6 +1210,16 @@ The inverse transformation is, as one might expect,
 for circular-polarization quadratures $\xrl \equiv A_{R/L}\cos\phi_{R/L}$ and $\yrl \equiv A_{R/L} \sin \phi_{R/L}$.
 
 From \eq{Cphi_to_Aellip}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters $\{A,\epsilon,\theta,\phi\}$.
+The inverse transformation, from  $\{A,\epsilon,\theta,\phi\}$ into $\{\xpc, \ypc\}$ is easier to express succinctly and is given by
+\begin{equation} \label{eq:Axy_to_Cphi}
+\begin{cases}
+\xp = A \left(\cos\theta \cos\phi + \epsilon \sin\theta \sin\phi\right)\\
+\yp = A \left(\cos\theta \sin\phi - \epsilon \sin\theta \cos\phi\right)\\
+\xc = A \left(\sin\theta \cos\phi - \epsilon \cos\theta \sin\phi\right)\\
+\yc = A \left(\sin\theta \sin\phi + \epsilon \cos\theta \cos\phi\right)
+\end{cases} ,
+\end{equation}
+as is straightforward to check based on \eq{Axy} and \eq{hcomp_ellip}.
 The corresponding Jacobian is remarkably simple when expressed in terms of the ellipse amplitude and shape,
 \begin{subequations}
 \begin{align} \label{eq:jac_Aeps_Axy}
