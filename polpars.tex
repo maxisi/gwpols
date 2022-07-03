@@ -1178,7 +1178,7 @@ In \eq{Aphi_to_Cphi} we used these quantities to conveniently express the relati
 Notably, the quadratures are usually more suitable for sampling applications, since working with periodic phases like $\phi_{+/\times}$ can be problematic for stochastic algorithms like Markov chain Monte Carlo (MCMC) \cite{Hogg:2017akh}.
 Together with Gaussian priors, they can also make some problems analytically integrable \cite{Hogg:2020jwh}.
 
-The usefulness of the linear-polarization quadratures stems from the fact that, unlike phase parameters, they enter the waveform linearly.
+The usefulness of the linear-polarization quadratures stems from the fact that, unlike phase parameters like $\phi_{+/\times}$, they enter the waveform linearly.
 Concretely, the expression for an elliptical monochromatic mode in terms of these quantities is
 \begin{subequations} \label{eq:Axy}
 \begin{equation}
@@ -1188,7 +1188,7 @@ h_+ = \xp \cos \omega t + \yp \sin \omega t \,
 h_\times = \xc \cos \omega t + \yc \sin \omega t \, .
 \end{equation}
 \end{subequations}
-Their relation to the linear polarizations of \eq{Aphi} is given by directly the definition of $\xpc$ and $\ypc$ in \eq{xy}; such relation implies a transformation into the circular-polarization parameters given by
+The relation of $\xpc$ and $\ypc$ to the linear polarizations of \eq{Aphi} is given directly by the definition in \eq{xy}; such relation implies a transformation into the circular-polarization parameters given by
 \begin{equation} \label{eq:Cphi_to_Axy}
 \begin{cases}
 A_R^2 = \frac{1}{2}\left[\left(\yp - \xc\right)^2 + \left(\xp + \yc\right)^2\right] \\
@@ -1207,7 +1207,7 @@ The inverse transformation is, as one might expect from Fig.~\ref{fig:diagram_ap
 \yc = \frac{1}{\sqrt{2}} \left( \xr - \xl \right)\\
 \end{cases} ,
 \end{equation}
-for circular-polarization quadratures $\xrl \equiv A_{R/L}\cos\phi_{R/L}$ and $\yrl \equiv A_{R/L} \sin \phi_{R/L}$.
+for circular-polarization quadratures defined as $\xrl \equiv A_{R/L}\cos\phi_{R/L}$ and $\yrl \equiv A_{R/L} \sin \phi_{R/L}$.
 
 From \eq{Cphi_to_Aellip}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters $\{A,\epsilon,\theta,\phi\}$.
 The inverse transformation, from  $\{A,\epsilon,\theta,\phi\}$ into $\{\xpc, \ypc\}$ is easier to express succinctly and is given by
@@ -1219,10 +1219,11 @@ The inverse transformation, from  $\{A,\epsilon,\theta,\phi\}$ into $\{\xpc, \yp
 \yc = A \left(\sin\theta \sin\phi + \epsilon \cos\theta \cos\phi\right)
 \end{cases} ,
 \end{equation}
-as is straightforward to check based on \eq{Axy} and \eq{hcomp_ellip}.
+as is straightforward to check based on \eq{Axy} and \eq{hcomp_ellip} by basic trignometry.
+
 The corresponding Jacobian is remarkably simple when expressed in terms of the ellipse amplitude and shape,
-\begin{subequations}
-\begin{align} \label{eq:jac_Aeps_Axy}
+\begin{subequations} \label{eq:jac_Aeps_Axy}
+\begin{align}
 J_3 &\equiv 2 \left\{\sqrt{\left(\yp -\xc \right)^2 +\left(\xp +\yc\right)^2}
 \right. \nonumber \\
 &\times \sqrt{\left(\yp + \xc\right)^2 + \left(\xp - \yc\right)^2}  \nonumber\\
@@ -1233,16 +1234,58 @@ J_3 &\equiv 2 \left\{\sqrt{\left(\yp -\xc \right)^2 +\left(\xp +\yc\right)^2}
 \end{subequations}
 This Jacobian again factorizes into a piece for the size of the polarization ellipse and another for its shape, but without a dependence on the ellipse orientation.
 The scale-dependent factor ($1/A^3$) indicates that a flat prior on $\{\xpc,\ypc\}$ will strongly favor large signal amplitudes.
-Like in \eq{jac_Aphi}, this Jacobian diverges for $\epsilon = \pm 1$ which means that circular polarizations will be disfavored, albeit less strongly than in the previous section.
+Like in \eq{jac_Aphi}, this $J_2$ diverges for $\epsilon = \pm 1$ which means that circular polarizations will be disfavored, albeit less strongly than $J_2$.
 The lack of dependence of $J_3$ on the orientation ellipse $\theta$ indicates that no specific polarization frame is framed by this prior, reflecting the isotropy built into the definition of $\xpc, \ypc$.
 
-We illustrate the effect of this Jacobian in Fig.~\ref{fig:jac_Axy}.
+The features described above are visible in the distribution imposed on $\{A,\epsilon,\theta,\phi\}$ by drawing uniformly on $\{\xpc, \ypc\}$, as shown in Fig.~\ref{fig:jac_Axy} for $A$ and $\epsilon$.
+Over the targeted region ($A < A_{\max}$) the distribution steeply favors high signal amplitudes; it also favors linear polarizations ($\epsilon = 0$), although less sharply.
+Enforcing $A < A_{\max}$, no specific value of $-\pi/2 < \theta, \phi < \pi/2$ is preferred; however, a similar structure to that in Fig.~\ref{fig:jac_Aphi} would appear outside that range of angles, which can again be mitigated by working with $\bar{\theta}$ and $\bar{\phi}$ instead.
+The constraint on the amplitude, $A < A_{\rm max}$, is crucial to guarantee isotropy in the ellipse orientation: without it, the corners of the squares defined by $-A_{\max} < \xpc,\ypc < A_{\max}$ would result in special directions of high probability, just as in the example of Fig.~\ref{fig:jac_example}.
+The same result could be obtained by applying an intrinsically isotropic prior in the $\{\xpc, \ypc\}$ space, e.g., uncorrelated Gaussians.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_Aeps_Axy}
-\caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
+\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
+The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
+Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
+As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
 }
 \label{fig:jac_Axy}
+\end{figure}
+
+\subsection{Inclination of a planar source}
+\label{sec:jac:cosi}
+
+There are several applications for which it is desirable to make a connection between the ellipticity of a signal and the corresponding inclination angle of a source via \eq{ellip_cosi}.
+This is because even unmodeled analyses, like \textsc{BayesWave}, often target sources that are dominated by the quadrupolar harmonic of the radiation ($\ell=|m|=2$), and that can be presumed to respect the planar symmetry that gave rise to that equation (see Sec.~\ref{sec:harmonics}).
+
+In that case, a physically meaningful prior for the shape of the polarization ellipse is usually one that is uniform in $\cos\iota$, corresponding to an isotropic prior on the source orientation.
+Such a prior is necessarily nonuniform in $\epsilon$, as can be inferred from the relation between the two quantities, illustrated above in Fig.~\ref{fig:ellip_cosi}: uniform draws in $\cos\iota$ will necessarily favor circular polarizations over linear ones, since the $\epsilon$ versus $\cos\iota$ curve flattens at the edges as $\cos\iota\to\pm 1$ and $\epsilon \to \pm 1$.
+Conversely, a prior uniform in $\epsilon$ will necessarily disfavor face on ($\cos\iota=+1$) or face off ($\cos\iota=-1$) sources.
+
+Indeed, the Jacobian $J_4 \equiv \left|\partial\epsilon/\partial \cos\iota\right|$, transforming from $\cos\iota$ to $\epsilon$, is
+\begin{subequations} \label{eq:jac_eps_cosi}
+\begin{align}
+J_4 &=1 - \epsilon^2 + \sqrt{1-\epsilon^2} \\
+&\propto \frac{1 - \cos^2\iota}{\left(1+\cos^2\iota\right)^2} \, ,
+\end{align}
+\end{subequations}
+which vanishes for $\cos\iota = \pm 1$ (or, equivalently, $\epsilon = \pm 1$) and peaks at $\cos\iota = 0$ ($\epsilon= 0$).
+This indicates that a distribution uniform in $\cos\iota$ will place infinite weight on $\epsilon = \pm 1$, while a distribution uniform in $\epsilon$ will place no weight on $\cos\iota = \pm 1$ (left and right panels in Fig.~\ref{fig:jac_cosi}, respectively).
+
+The divergences of the Jacobian above complicates transformations from one prior to the other, and suggest their implementation in sampling applications is likely nonperformant---in other words, if the goal is to apply a uniform prior on $\cos\iota$, then we should sample in that quantity directly, not $\epsilon$.
+
+This issue becomes more pronounced if, rather than being uniform in $\epsilon$, the original prior itself disfavored $\epsilon = \pm 1$ in the first place.
+This was the case for the parametrization in terms of $\hat{A}$ and $\chi$ in Sec.~\ref{sec:jac:Achi}, the linear polarization amplitudes in Sec.~\ref{sec:jac:Apc} and the linear polarization quadratures in Sec.~\ref{sec:jac:Axy}.
+Of all these, the problem is most severe for the linear polarization amplitudes, since that parametrization places high weight (formally infinite) on $\epsilon = 0$ (Fig.~\ref{fig:jac_Aphi}).
+Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}, which likely explains the difficulty in recovering the sky location of the circularly-polarized ($\cos\iota=1$) signal simulated in Fig.~11 of that work.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{jac_eps_cosi}
+\caption{\emph{Left:} Probability density imposed on $\epsilon$ by applying a flat prior on $\cos\iota$, which is inversely proportional to the Jacobian $J_4$ in \eq{jac_eps_cosi}; this diverges at $\epsilon = \pm 1$.
+\emph{Right:} Distribution imposed on $\cos\iota$ by a flat prior on $\epsilon$, which is directly proportional to \eq{jac_eps_cosi}; this vanishes at $\cos\iota = \pm 1$.
+}
+\label{fig:jac_cosi}
 \end{figure}
 
 \section{Nontensor polarizations}
