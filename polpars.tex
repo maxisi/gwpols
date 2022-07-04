@@ -776,9 +776,9 @@ However, the two angles $\theta$ and $\psi$ are conceptually distinct; in partic
 % where the source sky location is parametrized by its right ascension $\alpha$ and declination $\delta$.
 
 \begin{figure}
-\includegraphics[width=0.7\columnwidth]{diagram_ellipse_extra.pdf}
+\includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
 \caption{A clockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
-The diagram illustrates two such modes with original orientation angles $\theta_{1/2}$.
+The diagram illustrates two such modes with ellipse orientations $\theta_{1/2}$ with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
 }
 \label{fig:diagram_ellipse_extra}
 \end{figure}
@@ -1309,7 +1309,7 @@ h_\times  & \hb - h_+ & \hy  \\
 \hx    & \hy    & \hlon
 \end{pmatrix} ,
 \eeq
-where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) modes.%
+where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) modes;%
 \footnote{There are other possible normalizations in use in the literature, e.g., $\hlon \to \sqrt{2} \hlon$.}
 Equivalently, as above, we can write this as a weighted sum over polarization tensors,
 \beq
@@ -1317,8 +1317,18 @@ h_{ij} = \sum_p h_p\, e^p_{ij} \, ,
 \eeq
 for $p$ in $\{+,\times, \xsym, \ysym, \bsym, \lsym\}$, and polarization tensors $e^p_{ij}$ defined implicitly by comparison with Eq.~\eqref{eq:hij_ngr}.
 Generally, the $h_p$ are functions of time, as for plus and cross above.
+%
+With similar assumptions as in the GR case, the detector output can be written as a sum over polarizations weighted by antenna patterns,
+\beq \label{eq:h_ngr}
+h(t) = \sum_p F_p(\alpha, \delta; \psi)\, h_p(t)\, ,
+\eeq
+with $F_p \equiv D^{ij} e^p_{ij}$ as before. 
+%The functional form of all the antenna patterns can be computed in any given coordinate system using the definitions of the $e^p_{ij}$ tensors implied by \eq{hij_ngr}.
+The physical effect of the non-GR polarizations is encoded in the antenna patterns, and is illustrated in, e.g., Fig.~1 of \cite{Isi:2017equ}.
 
 The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR modes exhibit under rotations.
+Polarizations of different spin weight do not mix with each other under rotations.
+
 A rotation by $\Delta \psi$ around the line of propagation transforms the two vector amplitudes by
 \begin{subequations} \label{eq:htransf_v}
 \beq
@@ -1328,7 +1338,24 @@ A rotation by $\Delta \psi$ around the line of propagation transforms the two ve
 \hy \rightarrow \hy' = \hx \cos \Delta \psi + \hy \sin \Delta\psi \, ,
 \eeq
 \end{subequations}
-reflecting the fact that these are the components of a spin-weight $s=1$ field (hence ``vector'').
+reflecting the fact that these are the components of a spin weight $|s|=1$ field (hence ``vector'').
+Accordingly, any transformation in which the polarization angle entered as $2\psi$ for the tensor modes will look the same for vector modes but with the angle entering simply as $\psi$.
+In particular, the two vector modes allow for the definition of right and left handed combinations in full analogy with \eq{circ}, 
+\beq \label{eq:circ_vec}
+e^{v,R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^{\rm x}_{ij} \pm i e^{\rm y}_{ij} \right) ,
+\eeq
+except that they correspond to eigenstates of the helicity operator with eigenvalues $\pm 1$, instead of $\pm 2$.
+These circular vector modes transform, in analogy with \eq{htransf_circ}, by
+\begin{subequations} \label{eq:htransf_circ_vec}
+\begin{align}
+h_{v,R} &\rightarrow h_{v,R}' = h_{v,R} \exp(- i  \Delta \psi) \, ,\\
+h_{v,L} &\rightarrow h_{v,L}' = h_{v,L} \exp(+ i  \Delta \psi)\, .
+\end{align}
+\end{subequations}
+Just like we can define circular vector modes, we can also construct elliptically polarized vector states.
+These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to field of spin weight $\left|s\right|=1$.
+
+
 On the other hand, the two scalar modes are invariant under rotations around $z$,
 \begin{subequations} \label{eq:htransf_s}
 \beq
@@ -1338,16 +1365,9 @@ On the other hand, the two scalar modes are invariant under rotations around $z$
 \hlon \rightarrow \hlon' = \hlon\, ,
 \eeq
 \end{subequations}
-revealing that these behave as spin-weight $s=0$ fields (hence ``scalar'').
-Polarizations of different spin weight do not mix with each other under rotations.
-
-With similar assumptions as in the GR case, the detector output can be written as a sum over polarizations weighted by antenna patterns,
-\beq \label{eq:h_ngr}
-h(t) = \sum_p F_p(\alpha, \delta; \psi)\, h_p(t)\, ,
-\eeq
-with $F_p \equiv D^{ij} e^p_{ij}$ as before. 
-The functional form of all the antenna patterns can be computed in any given coordinate system using the definitions of the $e^p_{ij}$ tensors implied by \eq{hij_ngr}.
-
+revealing that these behave as spin weight $s=0$ fields (hence ``scalar'').
+Since these modes are already invariant under rotations, there is no meaningful notion of a circular (or elliptical) scalar polarization.
+%
 As it turns out, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
 In terms of the breathing and longitudinal modes above, this is
 \beq
@@ -1358,29 +1378,26 @@ Equivalently, the antenna patterns for the breathing and longitudinal modes are 
 Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the specific morphology of the $\hb(t)$ and $\hlon(t)$ functions.
 For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing mode---so that the sum is over only five polarizations instead of six.
 
-The vector modes allow for the definition of right and left handed combinations in full analogy with \eq{circ}, except that they correspond to eigenstates of the helicity operator with eigenvalues $\pm 1$, instead of $\pm 2$.
-Accordingly, any transformation in which the polarization angle entered as $2\psi$ for the tensor modes will look the same for vector modes but with the angle entering simply as $\psi$.
-The scalar modes are themselves invariant under rotations, and there is no meaningful definition of a circular scalar polarization.
-
-Just like we can define circular vector modes, we can also construct elliptically polarized vector states.
-These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to field of spin- weight $\left|s\right|=1$.
-There is no analog for scalar modes, which are each described by an independent scalar field.
-
 The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip} can easily be extended to accommodate nontensor modes.
 In particular, a generalized definition of Stokes parameters was derived in \cite{Anile1974} to account for all helicities---this requires 36 Stokes parameters.
-However, the utility of such generalized Stokes parameters is unclear, since the polarizations of different helicites do not mix into each other.
+However, the practical utility of such fully-generalized Stokes parameters is unclear, since the polarizations of different helicites do not mix into each other under rotations.
 Instead, it is possible to simply enhance the set of four tensor Stokes parameters by an additional four vector Stokes parameters (defined analogously), and two parameters for the intensity of each of the scalar modes;
 this adds up to 12 polarization parameters, instead of 36, at the expense of ignoring potential coherence across helicities.
 
 
 \section{Conclusion}
 
+We have reviewed in detail the mathematical treatment of GW polarizations.
+We have identified different parametrizations commonly in used, and derived their relations.
+This has practical impacts for data analysis.
+
 \begin{acknowledgments}
+The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
 % NASA
-M.I.\ is supported by NASA through the NASA Hubble Fellowship
-grant No.\ HST-HF2-51410.001-A awarded by the Space Telescope
-Science Institute, which is operated by the Association of Universities
-for Research in Astronomy, Inc., for NASA, under contract NAS5-26555.
+% M.I.\ is supported by NASA through the NASA Hubble Fellowship
+% grant No.\ HST-HF2-51410.001-A awarded by the Space Telescope
+% Science Institute, which is operated by the Association of Universities
+% for Research in Astronomy, Inc., for NASA, under contract NAS5-26555.
 % % LIGO
 % M.I.\ is a member of the LIGO Laboratory.
 % LIGO was constructed by the California Institute of Technology and
