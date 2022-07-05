@@ -55,6 +55,7 @@
 %\usepackage[T1]{fontenc}
 %\usepackage{lmodern}
 \usepackage{wasysym}
+\usepackage[nolist,nohyperlinks]{acronym}
 
 \newcommand{\ts}{\textsuperscript}
 
@@ -66,12 +67,6 @@
 \newcommand*{\eq}[1]{Eq.~\eqref{eq:#1}}
 \newcommand*{\fig}[1]{Fig.~\ref{fig:#1}}
 \newcommand*{\sect}[1]{Sec.~\ref{sec:#1}}
-
-\newcommand{\boldmu}{\boldsymbol{\mu}}
-\newcommand{\boldn}{\mathbf{n}}
-\newcommand{\boldd}{\mathbf{d}}
-\newcommand{\bolds}{\mathbf{s}}
-\newcommand{\boldSigma}{\boldsymbol{\Sigma}}
 
 %% Try to control orphans, widows, and extra whitespace
 %\widowpenalty=10000
@@ -119,14 +114,6 @@
 \newcommand{\infd}{\mathrm{d}}
 \newcommand{\white}{\bar}
 
-\newcommand{\snropt}{\mathrm{SNR}}
-\newcommand{\snrmf}{\mathrm{SNR}_{\rm mf}}
-\newcommand{\cov}{C}
-\newcommand{\acf}{\rho}
-\newcommand{\nmode}{D}
-
-
-
 \begin{document}
 
 % Use the \preprint command to place your local institutional report
@@ -153,6 +140,8 @@
 % Because hyperref only gets the *last* author, we need to be explicit.
 \hypersetup{pdfauthor={Isi}}
 
+
+
 \date{\today}
 
 \begin{abstract}
@@ -163,10 +152,25 @@ Amazing!
 
 % \tableofcontents
 
+\begin{acronym}
+\acro{GW}{gravitational wave}
+\acro{GR}{general relativity}
+\acro{CBC}{compact-binary coalescence}
+\end{acronym}
+
 \section{Introduction}
 \label{sec:intro}
 
-It is useful to parametrize gravitational-wave (GW) polarizations in different ways.
+\Acp{GW} come in two distinct polarization states, whose evolution encodes information about the dynamics of the source and the structure of \ac{GR}.
+As for electromagnetic waves, these polarization states are only unambiguously defined up to rotations of the reference frame around the wave's direction of propagation.
+When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is necessary (or convenient) to parametrize these polarizations in different ways depending on the application.
+For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing \ac{GW} polarizations in the same frame used to produce the predictions.
+On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct \acp{GW} without relying on specific input from theory, and must instead make an arbitrary choice in orienting the polarization frame.
+Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the \ac{GW} polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies but parsimonious enough to remain computationally tractable.
+Analyses that focus on recovering signal power, without coherently modeling the phase evolution, may use yet different conventions.
+
+Such ambiguities result in a variety of conventions for the definition and parametrization of \ac{GW} polarizations, both as described in the literature and as implemented in actual data analysis pipelines.
+The result can not only be conceptually confusing to the uninitiated reader, but can also obfuscate comparisons across analyses with different conventions, or even difficult the interpretation the output of a given analysis.
 Here I outline some useful alternatives and show how they are related.
 It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
 
@@ -360,10 +364,10 @@ H(t) = \frac{1}{\sqrt{2\pi^2}} \int_{0}^{\infty} \left[ \tilde{h}_R(\omega)\, e^
 This expression carries the same information as Eq.~\eqref{eq:planewave} without any redundancies.
 
 \begin{figure}
-\includegraphics[width=0.7\columnwidth]{diagram_ellipse.pdf}
-\caption{Polarization ellipse. At any given time, the phasor of an elliptically polarized signal lies on an ellipse with some instantaneous amplitude $A(t)$ and time-independent ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi \equiv \Phi(t=0)$, determines the initial location of the phasor within the ellipse.
+\includegraphics[width=0.65\columnwidth]{diagram_ellipse.pdf}
+\caption{Polarization ellipse. Following \eq{hcomp_ellip}, at any given time, the phasor (blue arrow) of an elliptically polarized signal lies on an ellipse with some maximum amplitude $A$ and ellipticity $\epsilon$, with semimajor axis tilted by an angle $\theta$ with respect to the plus-polarization axis (abscissa); a second angle, $\phi$, determines the initial location of the phasor within the ellipse.
 The shape of the ellipse can also be parametrized in terms of the angle $\chi \equiv \arctan \epsilon$.
-The domain for these parameters is $A \geq 0$, $-1 \leq \epsilon \leq 1$, $-\pi/4 \leq \chi \leq \pi/4$, $0 \leq \theta < \pi$ and $0 \leq \phi < \pi$ (or, equivalently $-\pi/2 \leq \theta < \pi/2$ and $-\pi/2 \leq \phi < \pi/2$).
+The domain for these parameters is $A \geq 0$, $-1 \leq \epsilon \leq 1$, $-\pi/4 \leq \chi \leq \pi/4$, $0 \leq \theta < \pi$ and $0 \leq \phi < \pi$ (or, equivalently, $-\pi/2 \leq \theta < \pi/2$ and $-\pi/2 \leq \phi < \pi/2$).
 }
 \label{fig:ellipse}
 \end{figure}
@@ -562,7 +566,7 @@ This is justified because, as argued in \cite{Chatziioannou:2021mij}, we expect 
 Moreover, even if there was a choice of waveframe in which the two linear polarizations looked completely dissimilar, the polarizations will look spectrally similar to generic observers whose frame is randomly oriented (see the discussion of polarization mixing in Sec.~\ref{sec:angles} below).
 
 Besides the modeling of generic signals, \eq{ellip_sum} serves as the exact representation of several classes of astrophysically-relevant signals.
-The most salient example of this, as we will see below, is that of compact binary coalescences (CBCs); in particular, a nonprecessing, quasicircular CBC dominated by the quadrupolar angular harmonic of the radiation can be described by a single, fully polarized component, as in \eq{ellip_gen}.
+The most salient example of this, as we will see below, is that of CBCs; in particular, a nonprecessing, quasicircular CBC dominated by the quadrupolar angular harmonic of the radiation can be described by a single, fully polarized component, as in \eq{ellip_gen}.
 
 % In fact, as we will see below, the simplest of those signals (viz., nonprecessing inspiral dominated by the quadrupolar angular harmonic) can be described by a single mode like the summand of \eq{hcomp_ellip}, with fixed ellipticity and polarization angle.
 
@@ -753,6 +757,14 @@ Nevertheless, even though any choice of assignment for $\psi$ is formally valid,
 \subsection{Elliptical waves and the angle $\theta$}
 \label{sec:ellip}
 
+\begin{figure}[tbp]
+\includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
+\caption{A clockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
+The diagram illustrates two such modes with ellipse orientations $\theta_{1/2}$ with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
+}
+\label{fig:diagram_ellipse_extra}
+\end{figure}
+
 Another notion of ``polarization angle'' arises naturally in the description of elliptically polarized signals.
 The expression for an elliptical wave in \eq{ellip_gen} presumes some specific choice of $\psi$ that defines the meaning of plus vs cross by orienting $\hat{x}$, as explained in the previous section.
 The expression simplifies if we choose that angle such that the plus and cross axes are aligned with the principal components of the ellipse, i.e., constructing the polarization frame to ensure that $\theta = 0$ (see Fig.~\ref{fig:ellipse}).
@@ -772,16 +784,6 @@ Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:
 Therefore, when working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
 If we adopt $\theta =0$ as a convention (or, equivalently, $\theta=\pi$), then we \emph{define} our wave frame to lie along the principal axes of the polarization ellipse and, thus, the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation.
 However, the two angles $\theta$ and $\psi$ are conceptually distinct; in particular, $\theta$ is defined only for elliptically polarized waves, whereas $\psi$ is always defined.
-
-% where the source sky location is parametrized by its right ascension $\alpha$ and declination $\delta$.
-
-\begin{figure}
-\includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
-\caption{A clockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
-The diagram illustrates two such modes with ellipse orientations $\theta_{1/2}$ with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
-}
-\label{fig:diagram_ellipse_extra}
-\end{figure}
 
 As for any GW, the detector output for an elliptically polarized wave will be given by \eq{h}.
 In this case, however, \eq{Ftransf} implies that $\psi$ and $\theta$ are degenerate, as detailed in Appendix A of \cite{Isi:2017equ}.
@@ -991,7 +993,7 @@ A = \hat{A} \cos \chi \\
 with no change to the angles $\theta$ and $\phi$.
 The Jacobian relating these two transformations is simply
 \begin{equation} \label{eq:jac_Aeps_Achi}
-J_0 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(\hat{A}, \chi, \theta, \phi)}\right| =  \sec \chi = \sqrt{1 + \epsilon^2}
+J_0 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(\hat{A}, \chi, \theta, \phi)}\right| =  \sec \chi = \sqrt{1 + \epsilon^2} \, ,
 \end{equation}
 or, equivalently $J_0 = \hat{A}/A$.
 This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uniform prior in the $\{\hat{A}, \chi\}$ quantities implicitly favors linear polarizations relative to circular ones.
@@ -1264,12 +1266,10 @@ Such a prior is necessarily nonuniform in $\epsilon$, as can be inferred from th
 Conversely, a prior uniform in $\epsilon$ will necessarily disfavor face on ($\cos\iota=+1$) or face off ($\cos\iota=-1$) sources.
 
 Indeed, the Jacobian $J_4 \equiv \left|\partial\epsilon/\partial \cos\iota\right|$, transforming from $\cos\iota$ to $\epsilon$, is
-\begin{subequations} \label{eq:jac_eps_cosi}
-\begin{align}
-J_4 &=1 - \epsilon^2 + \sqrt{1-\epsilon^2} \\
-&\propto \frac{1 - \cos^2\iota}{\left(1+\cos^2\iota\right)^2} \, ,
-\end{align}
-\end{subequations}
+\begin{equation} \label{eq:jac_eps_cosi}
+J_4 =1 - \epsilon^2 + \sqrt{1-\epsilon^2} 
+\propto \frac{1 - \cos^2\iota}{\left(1+\cos^2\iota\right)^2} \, ,
+\end{equation}
 which vanishes for $\cos\iota = \pm 1$ (or, equivalently, $\epsilon = \pm 1$) and peaks at $\cos\iota = 0$ ($\epsilon= 0$).
 This indicates that a distribution uniform in $\cos\iota$ will place infinite weight on $\epsilon = \pm 1$, while a distribution uniform in $\epsilon$ will place no weight on $\cos\iota = \pm 1$ (left and right panels in Fig.~\ref{fig:jac_cosi}, respectively).
 
@@ -1387,9 +1387,12 @@ this adds up to 12 polarization parameters, instead of 36, at the expense of ign
 
 \section{Conclusion}
 
-We have reviewed in detail the mathematical treatment of GW polarizations.
-We have identified different parametrizations commonly in used, and derived their relations.
-This has practical impacts for data analysis.
+We have reviewed in detail the mathematical treatment of GW polarizations, showing how any GW signal can be decomposed into linear, circular or elliptical polarization modes.
+We argued for the conceptual importance of elliptical modes and touched upon their practical importance for GW data in unmodeled (or losely modeled) analyses.
+We then went on to study in detail the properties of these fully polarized modes, and present a variety of useful parametrizations.
+To understand the relation between practical application that make use of different such parametrizations, we computed Jacobians for the corresponding coordinate transformations.
+This allows us to understand the implications of parametrizations assumed by, e.g., \textsc{BayesWave} for the polarization of a signal.
+We briefly touched on the generalization to metric theories of gravity without tensor modes.
 
 \begin{acknowledgments}
 The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
