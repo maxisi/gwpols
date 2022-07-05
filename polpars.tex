@@ -145,7 +145,12 @@
 \date{\today}
 
 \begin{abstract}
-Amazing!
+We review the formalism underlying the description of gravitational wave (GW) polarizations and the coordinate frames used to define them.
+In the process, we clarify the notion of ``polarization angle'' and identify three conceptually distinct definitions.
+We describe how those are related and how they arise in the practice of GW data analysis, explaining in detail the associated reference frames and conventions that have become standard in LIGO-Virgo data analysis.
+Furthermore, we show that any GW signal can be expressed as a superposition of elliptical (i.e., fully-polarized) states, and describe in detail the properties and possible parametrizations of such elementary states.
+We discuss a variety of parametrizations in use in the literature, and compute Jacobians for the coordinate transformations relating them.
+This allows us to examine the suitability of each parametrization for different applications, including unmodeled or semimodeled signal reconstructions.
 \end{abstract}
 
 \maketitle
@@ -161,22 +166,27 @@ Amazing!
 \section{Introduction}
 \label{sec:intro}
 
-\Acp{GW} come in two distinct polarization states, whose evolution encodes information about the dynamics of the source and the structure of \ac{GR}.
+\Acp{GW} come in two distinct polarization states, which encode information about the structure of \ac{GR} and the dynamics of the source.
 As for electromagnetic waves, these polarization states are only unambiguously defined up to rotations of the reference frame around the wave's direction of propagation.
-When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is necessary (or convenient) to parametrize these polarizations in different ways depending on the application.
+When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is necessary (or convenient) to parametrize these polarizations differently depending on the application.
 For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing \ac{GW} polarizations in the same frame used to produce the predictions.
 On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct \acp{GW} without relying on specific input from theory, and must instead make an arbitrary choice in orienting the polarization frame.
 Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the \ac{GW} polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies but parsimonious enough to remain computationally tractable.
 Analyses that focus on recovering signal power, without coherently modeling the phase evolution, may use yet different conventions.
 
-Such ambiguities result in a variety of conventions for the definition and parametrization of \ac{GW} polarizations, both as described in the literature and as implemented in actual data analysis pipelines.
-The result can not only be conceptually confusing to the uninitiated reader, but can also obfuscate comparisons across analyses with different conventions, or even difficult the interpretation the output of a given analysis.
-Here I outline some useful alternatives and show how they are related.
-It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
+The abundance of conventions for the definition and parametrization of \ac{GW} polarizations extends from the descriptions in the literature to the implementations of actual data analysis pipelines.
+Such variety can not only be conceptually confusing, but can also hinder comparisons across analyses with different conventions, or even obfuscate the interpretation of a given analysis.
+As an example, these considerations come into play when parametrizing continuous \acp{GW} from galactic pulsars, and in relating such expected measurements to electromagnetic observations of the source orientation \cite{Isi:2017equ,Pitkin:2017qfy}.
+They are also relevant in parametrizing ringdown signals for black hole spectroscopy, where multiple factorizations are possible for the polarization amplitudes \cite{Isi:2021iql}.
+They are also important for understanding the implications of different treatments of signal polarization in unmodeled analyses, e.g., with the \textsc{BayesWave} algorithm \cite{Cornish:2014kda,Cornish:2020dwh,Chatziioannou:2021mij}.
 
-The goal of this note is twofold.
-First, pedagogical, in reviewing different polarization conventions and their relation.
-Second, technical, in providing explicit expressions for Jacobians relating different polarization parametrizations, ready for implementation in parameter estimation codes or similar applications.
+This paper attempts to bridge the different treatments in the literature by providing a comprehensive exposition of the formalism underlying \ac{GW} polarizations and the different conventions used in parametrizing them.
+The goal is twofold:
+first, pedagogical, in reviewing different polarization conventions and their connections;
+second, technical, in providing explicit expressions for Jacobians relating different polarization parametrizations, ready for implementation in parameter estimation codes or similar applications.
+%
+%It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
+
 
 This note is geared towards observers, or theorists interested in drawing connections to observation.
 As such, it aims for concreteness, rather than comprehensiveness; it does not cover formal aspects of the frameworks connecting to the mathematical structure of general relativity and multipole expansions therein.
@@ -199,14 +209,6 @@ h_\times  & - h_+ & 0  \\
 \eeq
 where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source.
 
-\begin{figure}
-\includegraphics[width=0.4\columnwidth]{pol_ring_plus}
-\includegraphics[width=0.4\columnwidth]{pol_ring_cross}
-\caption{Effect of plus (left) and cross (right) polarizations on a small, freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is also shown for reference (thin dotted line).
-}
-\label{fig:rings}
-\end{figure}
-
 It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, in terms of the $e^{+/\times}_{ij}$ polarization basis tensors given by
 \begin{subequations} \label{eq:lin}
 \begin{align}
@@ -218,6 +220,14 @@ where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat
 Since this frame is constructed to have $\hat{z}$ aligned with the wavevector $\vec{k}$ (i.e., $\hat{z} = \hat{k} \equiv \vec{k}/|k|$), the polarization tensors are implicit functions of the wave propagation direction $\hat{k}$, or, equivalently, the source sky location $\hat{n} = -\hat{k}$.
 For a given $\hat{k}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
+
+\begin{figure}
+\includegraphics[width=0.4\columnwidth]{pol_ring_plus}
+\includegraphics[width=0.4\columnwidth]{pol_ring_cross}
+\caption{Effect of plus (left) and cross (right) polarizations on a small, freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is also shown for reference (thin dotted line).
+}
+\label{fig:rings}
+\end{figure}
 
 We will refer to plus and cross jointly as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
