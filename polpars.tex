@@ -158,7 +158,7 @@ This allows us to examine the suitability of each parametrization for different 
 % \tableofcontents
 
 \begin{acronym}
-\acro{GW}{gravitational wave}
+% \acro{GW}{gravitational wave}
 \acro{GR}{general relativity}
 \acro{CBC}{compact-binary coalescence}
 \end{acronym}
@@ -166,21 +166,21 @@ This allows us to examine the suitability of each parametrization for different 
 \section{Introduction}
 \label{sec:intro}
 
-\Acp{GW} come in two distinct polarization states, which encode information about the structure of \ac{GR} and the dynamics of the source.
+Gravitational waves (GWs) come in two distinct polarization states, which encode information about the structure of \ac{GR} and the dynamics of the source.
 As for electromagnetic waves, these polarization states are only unambiguously defined up to rotations of the reference frame around the wave's direction of propagation.
 When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is necessary (or convenient) to parametrize these polarizations differently depending on the application.
-For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing \ac{GW} polarizations in the same frame used to produce the predictions.
-On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct \acp{GW} without relying on specific input from theory, and must instead make an arbitrary choice in orienting the polarization frame.
-Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the \ac{GW} polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies but parsimonious enough to remain computationally tractable.
+For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing GW polarizations in the same frame used to produce the predictions.
+On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct GWs without relying on specific input from theory, and must instead make an arbitrary choice in orienting the polarization frame.
+Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the GW polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies but parsimonious enough to remain computationally tractable.
 Analyses that focus on recovering signal power, without coherently modeling the phase evolution, may use yet different conventions.
 
-The abundance of conventions for the definition and parametrization of \ac{GW} polarizations extends from the descriptions in the literature to the implementations of actual data analysis pipelines.
+The abundance of conventions for the definition and parametrization of GW polarizations extends from the descriptions in the literature to the implementations of actual data analysis pipelines.
 Such variety can not only be conceptually confusing, but can also hinder comparisons across analyses with different conventions, or even obfuscate the interpretation of a given analysis.
-As an example, these considerations come into play when parametrizing continuous \acp{GW} from galactic pulsars, and in relating such expected measurements to electromagnetic observations of the source orientation \cite{Isi:2017equ,Pitkin:2017qfy}.
+As an example, these considerations come into play when parametrizing continuous GWs from galactic pulsars, and in relating such expected measurements to electromagnetic observations of the source orientation \cite{Isi:2017equ,Pitkin:2017qfy}.
 They are also relevant in parametrizing ringdown signals for black hole spectroscopy, where multiple factorizations are possible for the polarization amplitudes \cite{Isi:2021iql}.
 They are also important for understanding the implications of different treatments of signal polarization in unmodeled analyses, e.g., with the \textsc{BayesWave} algorithm \cite{Cornish:2014kda,Cornish:2020dwh,Chatziioannou:2021mij}.
 
-This paper attempts to bridge the different treatments in the literature by providing a comprehensive exposition of the formalism underlying \ac{GW} polarizations and the different conventions used in parametrizing them.
+This paper attempts to bridge the different treatments in the literature by providing a comprehensive exposition of the formalism underlying GW polarizations and the different conventions used in parametrizing them.
 The goal is twofold:
 first, pedagogical, in reviewing different polarization conventions and their connections;
 second, technical, in providing explicit expressions for Jacobians relating different polarization parametrizations, ready for implementation in parameter estimation codes or similar applications.
