@@ -166,33 +166,40 @@ This allows us to examine the suitability of each parametrization for different 
 \section{Introduction}
 \label{sec:intro}
 
-Gravitational waves (GWs) come in two distinct polarization states, which encode information about the structure of \ac{GR} and the dynamics of the source.
+Gravitational waves (GWs) come in two distinct polarization states, whose time evolution encodes information about the structure of \ac{GR} and the dynamics of the source.
 As for electromagnetic waves, these polarization states are only unambiguously defined up to rotations of the reference frame around the wave's direction of propagation.
-When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is necessary (or convenient) to parametrize these polarizations differently depending on the application.
-For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing GW polarizations in the same frame used to produce the predictions.
+When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is natural to parametrize these polarizations differently depending on the application.
+For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing GW polarizations in the frame used to produce the predictions.
 On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct GWs without relying on specific input from theory, and must instead make an arbitrary choice in orienting the polarization frame.
 Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the GW polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies but parsimonious enough to remain computationally tractable.
-Analyses that focus on recovering signal power, without coherently modeling the phase evolution, may use yet different conventions.
+Analyses that focus on recovering signal power without coherently modeling the phase evolution may use yet different conventions.
 
-The abundance of conventions for the definition and parametrization of GW polarizations extends from the descriptions in the literature to the implementations of actual data analysis pipelines.
-Such variety can not only be conceptually confusing, but can also hinder comparisons across analyses with different conventions, or even obfuscate the interpretation of a given analysis.
-As an example, these considerations come into play when parametrizing continuous GWs from galactic pulsars, and in relating such expected measurements to electromagnetic observations of the source orientation \cite{Isi:2017equ,Pitkin:2017qfy}.
-They are also relevant in parametrizing ringdown signals for black hole spectroscopy, where multiple factorizations are possible for the polarization amplitudes \cite{Isi:2021iql}.
-They are also important for understanding the implications of different treatments of signal polarization in unmodeled analyses, e.g., with the \textsc{BayesWave} algorithm \cite{Cornish:2014kda,Cornish:2020dwh,Chatziioannou:2021mij}.
+The abundance of definitions and parametrizations of GW polarizations extends from the descriptions in the literature to the implementations of actual data analysis pipelines.
+Such variety can not only be conceptually confusing, but can also hinder comparisons across analyses with different conventions, or even obfuscate the interpretation of the output from a given analysis.
+As an example, these considerations come into play when parametrizing continuous GWs from galactic pulsars, and in relating such (projected) measurements to electromagnetic observations of the source orientation \cite{Isi:2017equ,Pitkin:2017qfy}.
+They are relevant in parametrizing ringdown signals for black hole spectroscopy, where multiple factorizations are possible for the polarization amplitudes \cite{Isi:2021iql}.
+They are also important for understanding the implications of different treatments of polarization ellipticity in unmodeled analyses, e.g., with the \textsc{BayesWave} algorithm \cite{Cornish:2014kda,Cornish:2020dwh,Chatziioannou:2021mij}, and in comparing such results to those from modeled \ac{CBC} analyses.
 
-This paper attempts to bridge the different treatments in the literature by providing a comprehensive exposition of the formalism underlying GW polarizations and the different conventions used in parametrizing them.
+This paper provides a comprehensive exposition of the formalism underlying GW polarizations in practical applications.
 The goal is twofold:
-first, pedagogical, in reviewing different polarization conventions and their connections;
-second, technical, in providing explicit expressions for Jacobians relating different polarization parametrizations, ready for implementation in parameter estimation codes or similar applications.
+\emph{first}, pedagogical, in reviewing the relations between different polarization conventions, and in clarifying how these come to bear in real-world data analysis;
+\emph{second}, technical, in explicitly working out the coordinate transformations that link different parametrizations, and providing ready-to-use expressions for the corresponding Jacobians---the mathematical factors that translate between posterior probability densities obtained under different parametrizations, which are required to exchange priors in parameter estimation codes or similar applications.
 %
 %It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
+%
+%
+In this work, the exposition is geared towards observers, or theorists interested in drawing connections to observation---as such, it aims for pragmatism, rather than elegance, and, in particular, it does not cover formal aspects that connect the treatment of GW polarizations to the mathematical structure of GR; such connections can be found elsewhere by following the references.
 
+The review of GW polarizations begins in Sec.~\ref{sec:primer} with a derivation of signal decompositions into three different polarization bases: linear, circular and elliptical.
+Having established the importance of elliptical (fully polarized) modes, Sec.~\ref{sec:ellip} examines their key properties, sketching their connection to spin-weighted spherical harmonics.
+Next, Sec.~\ref{sec:angles} carefully examines the different notions of ``polarization angle'' that arise for elliptical and nonelliptical signals, elucidating their connection. 
+Taking advantage of the mathematical formalism introduced in the preceding sections, Sec.~\ref{sec:jacobians} provides a census of different parametrizations of elliptical states, derives the Jacobians connecting them and discusses their implications for parameter estimation.
+Finally, Sec.~\ref{sec:nongr} briefly covers generalizations to beyond-GR polarization states.
+%Section \ref{sec:conclusion} concludes.
 
-This note is geared towards observers, or theorists interested in drawing connections to observation.
-As such, it aims for concreteness, rather than comprehensiveness; it does not cover formal aspects of the frameworks connecting to the mathematical structure of general relativity and multipole expansions therein.
-References are provided when such links are possible.
 
 \section{Polarization primer}
+\label{sec:primer}
 
 \subsection{Linear basis}
 \label{sec:linear}
@@ -221,14 +228,6 @@ Since this frame is constructed to have $\hat{z}$ aligned with the wavevector $\
 For a given $\hat{k}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
 
-\begin{figure}
-\includegraphics[width=0.4\columnwidth]{pol_ring_plus}
-\includegraphics[width=0.4\columnwidth]{pol_ring_cross}
-\caption{Effect of plus (left) and cross (right) polarizations on a small, freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is also shown for reference (thin dotted line).
-}
-\label{fig:rings}
-\end{figure}
-
 We will refer to plus and cross jointly as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
 Other polarization bases can be constructed, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
@@ -241,6 +240,14 @@ with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in 
 For a differential-arm detector like LIGO with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
 \footnote{These expressions are valid in the local Lorentz frame of the detector, so we can raise and lower indices with the flat metric.}
 In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
+
+\begin{figure}
+\includegraphics[width=0.4\columnwidth]{pol_ring_plus}
+\includegraphics[width=0.4\columnwidth]{pol_ring_cross}
+\caption{Effect of plus (left) and cross (right) polarizations on a small, freely falling ring of particles. The wave propagates in the $z$ direction, perpendicular to the page. The effect is illustrated half a period apart (solid vs dashed); the unperturbed ring is also shown for reference (thin dotted line).
+}
+\label{fig:rings}
+\end{figure}
 
 % Equation \eqref{eq:hij} presumes a specific choice of wave frame orientation that defines the basis in which the $h_{ij}$ components are written.
 % Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
@@ -936,6 +943,7 @@ Having done so, all information regarding polarization orientation will be encod
 Varying both $\psi$ and $\theta$ simultaneously is ill-advised in that context, since the two parameters will be fully degenerate (see end of Sec.~\ref{sec:ellip}).
 
 \section{Coordinate transformations}
+\label{sec:jacobians}
 
 In the previous sections, we have introduced different parametrizations of elliptical (fully polarized) waves, including Eqs.~\eqref{eq:ellip_circ}, \eqref{eq:hcomp_ellip} and \eqref{eq:hcomp_ellip_chi}.
 Their use varies depending on the specific application, according to convenience and convention.
@@ -1396,6 +1404,7 @@ this adds up to 12 polarization parameters, instead of 36, at the expense of ign
 
 
 \section{Conclusion}
+\label{sec:conclusion}
 
 We have reviewed in detail the mathematical treatment of GW polarizations, showing how any GW signal can be decomposed into linear, circular or elliptical polarization modes.
 We argued for the conceptual importance of elliptical modes and touched upon their practical importance for GW data in unmodeled (or losely modeled) analyses.
