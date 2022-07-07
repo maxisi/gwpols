@@ -1408,22 +1408,24 @@ this adds up to 12 polarization parameters, instead of 36, at the expense of ign
 
 We have reviewed in detail the mathematical treatment of GW polarizations as it pertains practical applications for GW data analysis.
 We began by showing how any GW signal can be decomposed into linear (Fig.~\ref{fig:rings}), circular (Fig.~\ref{fig:pol_diagram_circ}) or elliptical (Fig.~\ref{fig:pol_diagram_ellip}) modes, after choosing a physical polarization frame.
-Arguing for the conceptual importance of elliptical (i.e., fully-polarized) modes, we outlined several of their key properties and reviewed a number of mathematical tools (Jones vectors, Poincar\'{e} sphere, Stokes parameters) useful in their description.
-Since a large number of signal morphologies can be captured by superpositions of fully-polarized states, we emphasized their practical importance for GW data analyiss in unmodeled (or loosely modeled) applications, as well as in connection to spin-weighted spherical harmonic decompositions of the GW strain from planar sources (e.g., nonprecessing \acp{CBC}).
+Arguing for the conceptual importance of elliptical (i.e., fully-polarized) modes, we outlined several of their key properties and reviewed a number of standard mathematical tools (Jones vectors, Poincar\'{e} sphere, Stokes parameters) useful in their description.
+Since a large number of signal morphologies can be captured by superpositions of fully-polarized states, we emphasized their practical importance for GW data analyiss in unmodeled (or loosely modeled) applications, as well as in connection to the decompositions of the GW strain from planar sources (e.g., nonprecessing \acp{CBC}) into spin-weighted spherical harmonic.
 
-We then clarified the conceptual differences between different notions of ``polarization angle,'' and showed how they can often (but not always) be used interchangeably in practice.
+We then clarified the conceptual distinctions between different notions of ``polarization angle'' ($\psi$, $\theta$, and $\Psi$ or $\Omega$) and showed how the different angles can often (but not always) be used interchangeably in practice.
 In the process, we described in detail the different coordinate frames that appear in the practice of GW data analysis, including for making waveform predictions, for describing the wave propagation, and for deriving the measured signal over a network of detectors.
 The current LIGO-Virgo conventions for all these frames are illustrated in Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview}, which clarify the relations between all the relevant angles.
 
-To understand the connections between practical applications that make use of different such polarization parametrizations, we computed Jacobians for the corresponding coordinate transformations.
-This allows us to understand the implications of parametrizations for the polarization of a signal assumed by, e.g., \textsc{BayesWave} or ringdown analyses.
-We found that parametrizing the GW signal in terms of the circular polarization amplitudes, the linear polarization amplitudes, or the cosine and sine quadratures of the linear polarizations leads to implicitly favoring overall high signal intensities.
-The parametrizations in terms of the linear amplitudes or their quadratures, as well as a parametrization in terms of an ellipse shape angle $\chi$, lead to favoring linear polarizations.
-This preference is particularly pronounced for the parametrization in terms of the linear amplitudes, which also picks a preferred direction for the polarization ellipse, aligned with the plus and cross axes as determined by the implicit definition of the physical waveframe.
+To understand the connections between analyses that make use of different polarization parametrizations, we computed Jacobians for the corresponding coordinate transformations.
+This allowed us to understand the implications of parametrizations for the polarization of a signal assumed by, e.g., \textsc{BayesWave} or ringdown analyses.
+We found that parametrizing the GW signal in terms of the circular polarization amplitudes (Fig.~\ref{fig:jac_Aeps_Arl}), the linear polarization amplitudes (Fig.~\ref{fig:jac_Aphi}), or the cosine and sine quadratures of the linear polarizations (Fig.~\ref{fig:jac_Axy}) leads to implicitly favoring overall high signal intensities.
+The parametrizations in terms of the linear amplitudes or their quadratures, as well as a parametrization in terms of an ellipse shape angle $\chi$ (Fig.~\ref{fig:jac_Aeps_Achi}), lead to favoring linear polarizations.
+This preference is particularly pronounced for the parametrization in terms of the linear amplitudes, which also picks a preferred direction for the polarization ellipse, aligned with the plus and cross axes as determined by the implicit definition of the physical waveframe (choice of $\psi$).
+We also showed how to relate the ellipticity to the inclination of a planar source, and how an isotropic prior in the source inclination is highly nonuniform in terms of ellipticity, favoring circular polarizations.
 
-In the last section, we briefly touched on the generalization to metric theories of gravity without tensor modes, and how the tools examined in this work would generalize beyond GR.
+In the last section, we briefly touched on the generalization to metric theories of gravity without tensor modes, for which the mathematical treatment is, for the most part, exactly analogous.
 
 \begin{acknowledgments}
+I would like to thank Will Farr and Katerina Chatziioannou for insighful discussions.
 The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
 % NASA
 % M.I.\ is supported by NASA through the NASA Hubble Fellowship
@@ -1440,35 +1442,6 @@ This paper carries LIGO document number \dcc{}.
 \end{acknowledgments}
 
 % \appendix
-
-% \section{Circular Fourier amplitudes}
-% \label{app:circ}
-% 
-% Here we fill in the steps relating the circular polarization Fourier amplitudes, $\tilde{h}_{R/L}$, to the Fourier amplitudes of the complex strain, $\tilde{H}$, as introduced in Sec.~\ref{sec:ellip}.
-% Begin with the expression for the time-domain strain in terms of the linear components, Eq.~\eqref{eq:planewave},
-% \begin{align}
-% h_{ij}(t) &= \int_{-\infty}^{+\infty} \left[\tilde{h}_+(\omega) e^+_{ij} + \tilde{h}_\times(\omega) e^\times_{ij}\right] e^{-i\omega t} \infd \omega \nonumber\\ 
-% &=\left[\int\tilde{h}_+e^{-i\omega t} \infd \omega\right] \hspace{-2pt} e^+_{ij} + \left[\int \tilde{h}_\times e^{-i\omega t} \infd \omega\right] \hspace{-2pt} e^\times_{ij},
-% \end{align}
-% where we have suppressed limits of integration and $\omega$ dependence when obvious.
-% %
-% Picking out the $h_{+/\times}$ amplitudes from $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, the complex strain can then be written as
-% %\begin{widetext}
-% \begin{align}
-% h_+ - i h_\times &= \int\tilde{h}_+e^{-i\omega t} \infd \omega -i \int \tilde{h}_\times e^{-i\omega t} \infd \omega \nonumber \\
-% &= \int \left(\tilde{h}_+ -i \tilde{h}_\times \right) e^{-i\omega t} \infd \omega \nonumber \\
-% &= \sqrt{2} \int_{-\infty}^{\infty} \tilde{h}_R(\omega)\, e^{-i\omega t} \infd \omega \, ,
-% \end{align}
-% where we have used the expression for $\tilde{h}_R$ in Eq.~\eqref{eq:circ_amps}.
-% By direct comparison with Eq.~\eqref{eq:hcomp_fd}, it is now obvious that $\tilde{H}(\omega)= \sqrt{2} h_R(\omega)$.
-% 
-% Furthermore, we can take advantage of Eq.~\eqref{eq:sym_circular} to rewrite the above integral only in terms of positive frequencies as
-% \begin{align}
-% h_+ - i h_\times &= \sqrt{2}\int_{0}^{\infty} \left[\tilde{h}_R(\omega) e^{-i\omega t} + \tilde{h}_R(-\omega) e^{i\omega t} \right] \infd \omega \nonumber \\
-% &= \sqrt{2}\int_{0}^{\infty} \left[ \tilde{h}_R(\omega) e^{-i\omega t}  + \tilde{h}^*_L(\omega) e^{i\omega t}\right] \infd \omega
-% \end{align}
-% %\end{widetext}
-% so $H(\omega)= \sqrt{2} h_R(\omega)$ and $H_L = \sqrt{2} h_L^*$.
 
 
 \bibliography{refs}
