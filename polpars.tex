@@ -188,7 +188,7 @@ The goal is twofold:
 %It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
 %
 %
-In this work, the exposition is geared towards observers, or theorists interested in drawing connections to observation---as such, it strives for pragmatism over elegance, and, in particular, steers away from formal connections between the treatment of GW polarizations and the mathematical structure of GR.
+In this work, the exposition is geared towards observers, or theorists interested in drawing connections to observation---as such, it strives for concreteness over abstraction, and, in particular, steers away from formal connections between the treatment of GW polarizations and the mathematical structure of GR.
 
 The review of GW polarizations begins in Sec.~\ref{sec:primer} with a derivation of signal decompositions into three different polarization bases: linear, circular and elliptical.
 Having established the importance of elliptical (fully polarized) modes, Sec.~\ref{sec:ellip} examines their key properties, outlines some of their uses, and sketches their connection to spin-weighted spherical harmonics.
@@ -214,13 +214,13 @@ h_\times  & - h_+ & 0  \\
 0 & 0 & 0
 \end{pmatrix} ,
 \eeq
-where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source.
+where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source, as well as on any other relevant source parameters controlling the amplitude and phase of the wave, as dictacted by Einstein's equations.
 
 It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, in terms of the $e^{+/\times}_{ij}$ polarization basis tensors given by
 \begin{subequations} \label{eq:lin}
 \begin{align}
-e^+_{ij} &\equiv \hat{x}_i \hat{x}_j - \hat{x}_i \hat{x}_j \, ,\\
-e^\times_{ij} &\equiv \hat{x}_i \hat{y}_j + \hat{x}_i \hat{y}_j\, ,
+e^+_{ij} &\equiv \hat{x}_i \hat{x}_j - \hat{y}_i \hat{y}_j \, ,\\
+e^\times_{ij} &\equiv \hat{x}_i \hat{y}_j + \hat{y}_i \hat{x}_j\, ,
 \end{align}
 \end{subequations}
 where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
@@ -229,12 +229,12 @@ For a given $\hat{k}$, it is easy to check that these tensors are orthogonal suc
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
 
 We will refer to plus and cross jointly as the \emph{linear} polarization basis.
-Their physical interpretation is best illustrated by their instantaneous effect on a freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
+Their physical interpretation is best illustrated by their instantaneous effect on a small, freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
 Other polarization bases can be constructed, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
 
-In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the projection
+In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the dyadic projection
 \beq \label{eq:h}
-h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, 
+h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, ,
 \eeq
 with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ that encodes the geometry of the measurement.
 For a differential-arm detector like LIGO with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
@@ -281,7 +281,7 @@ Equation \eqref{eq:planewave} implicitly defines the complex-valued Fourier pola
 establishing our convention for the Fourier transform.
 
 Since $h_{ij}$ is real valued, the Fourier strain must  satisfy the complex-conjugate symmetry $\tilde{h}_{ij}(-\omega, \hat{k}) = \tilde{h}_{ij}^*(\omega,\hat{k})$, where the asterisk indicates complex conjugation.
-For the linear polarizations, this reduces to
+For the linear polarizations, this directly reduces to
 \beq \label{eq:sym_linear}
 \tilde{h}_{+/\times}(\omega) = \tilde{h}_{+/\times}^*(-\omega)\, ,
 \eeq
@@ -1406,12 +1406,22 @@ this adds up to 12 polarization parameters, instead of 36, at the expense of ign
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have reviewed in detail the mathematical treatment of GW polarizations, showing how any GW signal can be decomposed into linear, circular or elliptical polarization modes.
-We argued for the conceptual importance of elliptical modes and touched upon their practical importance for GW data in unmodeled (or losely modeled) analyses.
-We then went on to study in detail the properties of these fully polarized modes, and present a variety of useful parametrizations.
-To understand the relation between practical application that make use of different such parametrizations, we computed Jacobians for the corresponding coordinate transformations.
-This allows us to understand the implications of parametrizations assumed by, e.g., \textsc{BayesWave} for the polarization of a signal.
-We briefly touched on the generalization to metric theories of gravity without tensor modes.
+We have reviewed in detail the mathematical treatment of GW polarizations as it pertains practical applications for GW data analysis.
+We began by showing how any GW signal can be decomposed into linear (Fig.~\ref{fig:rings}), circular (Fig.~\ref{fig:pol_diagram_circ}) or elliptical (Fig.~\ref{fig:pol_diagram_ellip}) modes, after choosing a physical polarization frame.
+Arguing for the conceptual importance of elliptical (i.e., fully-polarized) modes, we outlined several of their key properties and reviewed a number of mathematical tools (Jones vectors, Poincar\'{e} sphere, Stokes parameters) useful in their description.
+Since a large number of signal morphologies can be captured by superpositions of fully-polarized states, we emphasized their practical importance for GW data analyiss in unmodeled (or loosely modeled) applications, as well as in connection to spin-weighted spherical harmonic decompositions of the GW strain from planar sources (e.g., nonprecessing \acp{CBC}).
+
+We then clarified the conceptual differences between different notions of ``polarization angle,'' and showed how they can often (but not always) be used interchangeably in practice.
+In the process, we described in detail the different coordinate frames that appear in the practice of GW data analysis, including for making waveform predictions, for describing the wave propagation, and for deriving the measured signal over a network of detectors.
+The current LIGO-Virgo conventions for all these frames are illustrated in Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview}, which clarify the relations between all the relevant angles.
+
+To understand the connections between practical applications that make use of different such polarization parametrizations, we computed Jacobians for the corresponding coordinate transformations.
+This allows us to understand the implications of parametrizations for the polarization of a signal assumed by, e.g., \textsc{BayesWave} or ringdown analyses.
+We found that parametrizing the GW signal in terms of the circular polarization amplitudes, the linear polarization amplitudes, or the cosine and sine quadratures of the linear polarizations leads to implicitly favoring overall high signal intensities.
+The parametrizations in terms of the linear amplitudes or their quadratures, as well as a parametrization in terms of an ellipse shape angle $\chi$, lead to favoring linear polarizations.
+This preference is particularly pronounced for the parametrization in terms of the linear amplitudes, which also picks a preferred direction for the polarization ellipse, aligned with the plus and cross axes as determined by the implicit definition of the physical waveframe.
+
+In the last section, we briefly touched on the generalization to metric theories of gravity without tensor modes, and how the tools examined in this work would generalize beyond GR.
 
 \begin{acknowledgments}
 The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
