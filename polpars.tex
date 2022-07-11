@@ -145,12 +145,13 @@
 \date{\today}
 
 \begin{abstract}
-We review the formalism underlying the description of gravitational wave (GW) polarizations and the coordinate frames used to define them.
+We review the formalism underlying the modeling of gravitational wave (GW) polarizations, and the coordinate frames used to define them.
 In the process, we clarify the notion of ``polarization angle'' and identify three conceptually distinct definitions.
-We describe how those are related and how they arise in the practice of GW data analysis, explaining in detail the associated reference frames and conventions that have become standard in LIGO-Virgo data analysis.
-Furthermore, we show that any GW signal can be expressed as a superposition of elliptical (i.e., fully-polarized) states, and describe in detail the properties and possible parametrizations of such elementary states.
-We discuss a variety of parametrizations in use in the literature, and compute Jacobians for the coordinate transformations relating them.
+We describe how those are related and how they arise in the practice of GW data analysis, explaining in detail the relevant conventions that have become standard in LIGO-Virgo data analysis.
+Furthermore, we show that any GW signal can be expressed as a superposition of elliptical (i.e., fully-polarized) states, and examine the properties and possible parametrizations of such elementary states.
+We discuss a variety of common parametrizations, and compute Jacobians for the coordinate transformations relating them.
 This allows us to examine the suitability of each parametrization for different applications, including unmodeled or semimodeled signal reconstructions.
+We point out that analyses parametrized directly in terms of the linear (plus and cross) modes tend to implicitly favor large signal amplitudes, and favor linearly-polarized waves along a predefined direction, which makes them suboptimal for targeting face-on or face-off sources.
 \end{abstract}
 
 \maketitle
@@ -166,36 +167,35 @@ This allows us to examine the suitability of each parametrization for different 
 \section{Introduction}
 \label{sec:intro}
 
-Gravitational waves (GWs) come in two distinct polarization states, whose time evolution encodes information about the structure of \ac{GR} and the dynamics of the source.
-As for electromagnetic waves, these polarization states are only unambiguously defined up to rotations of the reference frame around the wave's direction of propagation.
-When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is natural to parametrize these polarizations differently depending on the application.
-For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing GW polarizations in the frame used to produce the predictions.
-On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct GWs without relying on specific input from theory, and must instead make an arbitrary choice in orienting the polarization frame.
-Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the GW polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies but parsimonious enough to remain computationally tractable.
-Analyses that focus on recovering signal power without coherently modeling the phase evolution may use yet different conventions.
+Gravitational waves (GWs) come in two distinct polarization states, whose amplitude and phase evolution reflect the structure of \ac{GR} and the dynamics of the source.
+As for electromagnetic waves, these states are only unambiguously defined up to rotations of the reference frame around the wave's direction of propagation.
+When analyzing data from detectors like LIGO \cite{TheLIGOScientific:2014jea} and Virgo \cite{TheVirgo:2014hva}, it is natural to parametrize polarizations differently depending on the application.
+For instance, searches for \acp{CBC} aim to relate the signal observed by different detectors to templates obtained from theory, and thus benefit from describing GW polarizations in the same frame as the predictions (e.g., \cite{Faye:2012we,Kidder:2007rt}).
+On the other hand, unmodeled (or semimodeled) analyses aim to reconstruct GWs without relying on detailed input from theory, and must instead make an arbitrary choice in orienting the polarization frame \cite{Klimenko:2004qh,Klimenko:2005xv,Klimenko:2008fu,Cornish:2014kda,Cornish:2020dwh}.
+Furthermore, lacking waveform templates, unmodeled analyses must also decide how to parametrize the GW polarization state and its time evolution in a way sufficiently flexible to capture a range of morphologies while parsimonious enough to remain computationally tractable.
+Analyses that focus on recovering signal power without coherently modeling the phase evolution may use yet different conventions \cite{Romano:2016dpx}.
 
-The abundance of definitions and parametrizations of GW polarizations extends from the descriptions in the literature to the implementations of actual data analysis pipelines.
-Such variety can not only be conceptually confusing, but can also hinder comparisons across analyses with different conventions, or even obfuscate the interpretation of the output from a given analysis.
-As an example, these considerations come into play when parametrizing continuous GWs from galactic pulsars, and in relating such (projected) measurements to electromagnetic observations of the source orientation \cite{Isi:2017equ,Pitkin:2017qfy}.
-They are relevant in parametrizing ringdown signals for black hole spectroscopy, where multiple factorizations are possible for the polarization amplitudes \cite{Isi:2021iql}.
-They are also important for understanding the implications of different treatments of polarization ellipticity in unmodeled analyses, e.g., with the \textsc{BayesWave} algorithm \cite{Cornish:2014kda,Cornish:2020dwh,Chatziioannou:2021mij}, and in comparing such results to those from modeled \ac{CBC} analyses.
+The abundance of polarization parametrizations and reference directions is visible in the literature as well as in the implementation of data analysis software.
+Such variety can sometimes cause confusion, and hinder comparisons across analyses with different conventions, or even complicate the interpretation of individual analysis outputs.
+As an example, this comes into play when parametrizing continuous GWs from galactic pulsars, and in relating such (projected) measurements to electromagnetic observations of the source orientation (e.g., \cite{Ng:2007te,Dupuis:2005xv,Isi:2017equ,Pitkin:2017qfy}).
+They are relevant in parametrizing ringdown signals for black hole spectroscopy, where multiple factorizations are possible for the polarization amplitudes (e.g., \cite{Isi:2021iql,Carullo:2019flw,LIGOScientific:2020tif,LIGOScientific:2021sio}).
+They are also important for understanding the implications of different treatments of polarization ellipticity in unmodeled analyses, e.g., with the \textsc{BayesWave} algorithm \cite{Cornish:2014kda,Cornish:2020dwh,Chatziioannou:2021mij}, and in comparing such results to modeled \ac{CBC} inference.
 
-This paper provides a comprehensive exposition of the formalism underlying GW polarizations in practical applications.
+This paper provides a comprehensive exposition of the formalism underlying GW polarizations as it pertains practical applications.
 The goal is twofold:
 \emph{first}, pedagogical, in reviewing the relations between different polarization conventions, and in clarifying how these come to bear in real-world data analysis;
-\emph{second}, technical, in explicitly working out the coordinate transformations that link different parametrizations, and providing ready-to-use expressions for the corresponding Jacobians---the mathematical factors that translate between posterior probability densities obtained under different parametrizations, which are required to exchange priors in parameter estimation codes or similar applications.
+\emph{second}, technical, in explicitly working out the coordinate transformations that link different parametrizations, and providing ready-to-use expressions for the corresponding Jacobians---the mathematical factors that translate between posterior probability densities obtained under different parametrizations, which are required to exchange priors when carrying out Bayesian inference or similar applications.
 %
 %It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
 %
 %
-In this work, the exposition is geared towards observers, or theorists interested in drawing connections to observation---as such, it strives for concreteness over abstraction, and, in particular, steers away from formal connections between the treatment of GW polarizations and the mathematical structure of GR.
+In this work, the exposition is geared towards observers, or theorists interested in drawing connections to observation---as such, it strives for concreteness over abstraction, and, in particular, steers away from the rich formal connections between the treatment of GW polarizations and the mathematical structure of GR.
 
 The review of GW polarizations begins in Sec.~\ref{sec:primer} with a derivation of signal decompositions into three different polarization bases: linear, circular and elliptical.
-Having established the importance of elliptical (fully polarized) modes, Sec.~\ref{sec:ellip} examines their key properties, outlines some of their uses, and sketches their connection to spin-weighted spherical harmonics.
+Having established the importance of elliptical (fully polarized) modes, Sec.~\ref{sec:ellip_modes} examines their key properties, outlines some of their uses, and sketches their connection to spin-weighted spherical harmonics.
 Next, Sec.~\ref{sec:angles} carefully examines the different notions of ``polarization angle'' that arise for elliptical and nonelliptical signals, elucidating both their conceptual independence and their frequent interchangeability in practice. 
 Taking advantage of the mathematical formalism introduced in the preceding sections, Sec.~\ref{sec:jacobians} provides a census of different parametrizations of elliptical states, derives the Jacobians connecting them, and discusses their implications for parameter estimation.
-Finally, Sec.~\ref{sec:nongr} briefly covers generalizations of these ideas to beyond-GR polarization states.
-%Section \ref{sec:conclusion} concludes.
+Finally, Sec.~\ref{sec:nongr} briefly covers generalizations of these ideas to beyond-GR polarization states, an Sec.~\ref{sec:conclusion} concludes.
 
 
 \section{Polarization primer}
@@ -214,7 +214,7 @@ h_\times  & - h_+ & 0  \\
 0 & 0 & 0
 \end{pmatrix} ,
 \eeq
-where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source, as well as on any other relevant source parameters controlling the amplitude and phase of the wave, as dictacted by Einstein's equations.
+where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source, as well as on any other relevant source parameters controlling the amplitude and phase of the wave, as dictated by Einstein's equations.
 
 It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, in terms of the $e^{+/\times}_{ij}$ polarization basis tensors given by
 \begin{subequations} \label{eq:lin}
@@ -223,7 +223,7 @@ e^+_{ij} &\equiv \hat{x}_i \hat{x}_j - \hat{y}_i \hat{y}_j \, ,\\
 e^\times_{ij} &\equiv \hat{x}_i \hat{y}_j + \hat{y}_i \hat{x}_j\, ,
 \end{align}
 \end{subequations}
-where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed orthonormal basis; we will call this the \emph{wave frame}.
+where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed Cartesian basis; we will call this the \emph{wave frame}.
 Since this frame is constructed to have $\hat{z}$ aligned with the wavevector $\vec{k}$ (i.e., $\hat{z} = \hat{k} \equiv \vec{k}/|k|$), the polarization tensors are implicit functions of the wave propagation direction $\hat{k}$, or, equivalently, the source sky location $\hat{n} = -\hat{k}$.
 For a given $\hat{k}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
 % Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
@@ -269,10 +269,10 @@ h_{ij}(t,\vec{x}) &= \frac{1}{2\pi}\int_{-\infty}^{+\infty} \tilde{h}_{ij}(\omeg
 &= \frac{1}{2\pi} \sum_{p=+,\times} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \nonumber
 \end{align}
 where the sum is over linear polarization states ($+,\times$) defined in some wave frame attached to the propagation direction $\hat{k}$,%
-\footnote{More broadly, the strain value at any point in spacetime may be expressed with full generality as a superposition of these planewaves
+\footnote{More broadly, the strain at any point in spacetime may be expressed with full generality as a superposition of these planewaves
 % $h_{ij}(t,\vec{x}) = \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})
 % \exp\left[{i\omega \left(\hat{k}\cdot\vec{x}/c-t\right)}\right] \infd \omega \infd \hat{k}$
-by integrating over all directions of propagation.}
+by integrating over all directions of propagation (e.g., \cite{Romano:2016dpx,Isi:2018miq}).}
 and we obtained the second line using the fact that the $e^{+/\times}_{ij}$ are real valued.
 Equation \eqref{eq:planewave} implicitly defines the complex-valued Fourier polarization functions $\tilde{h}_p(\omega)$ to correspond to the time-domain polarizations at the spatial origin, $h_p(t) \equiv h_p(t, \vec{x}=0)$, by
 \beq \label{eq:ft}
@@ -293,7 +293,7 @@ The existence of this symmetry reveals a redundancy in the description that we c
 \includegraphics[width=0.8\textwidth]{pol_diagram_circ}
 \caption{A right-handed, circularly polarized GW as a function of time (left to right) over a period. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which rotates counterclockwise with time; each individual particle is pushed in a circle around its original location, i.e., the location it would have had in absence of the wave (small empty circles).
 \emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time; the plus polarization is $\pi/2$ radians ahead of the cross polarization.
-\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
+\emph{Bottom:} representation of the polarization state as a phasor vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
 Reversing the direction of time by reading this diagram right-to-left gives the effect of a left-handed circularly polarized wave.
 }
 \label{fig:pol_diagram_circ}
@@ -395,7 +395,7 @@ each such monochromatic mode of frequency $|\omega|$ is made up of two counterro
 Such elliptical, or \emph{fully-polarized}, modes are thus of fundamental importance; we discuss their properties in detail below, beginning with modes of a definite frequency as they appear in \eq{hcomp_fd_rl}.
 
 \section{Elliptical modes}
-\label{sec:ellip}
+\label{sec:ellip_modes}
 
 \subsection{Monochromatic modes}
 \label{sec:ellip:mono}
@@ -411,7 +411,8 @@ The result of the Fourier integral for $H(t) \equiv h_+ - i h_\times$ is then (r
 H(t) =\frac{1}{\sqrt{2}} \left( C_R\, e^{-i \omega t} + C^*_L\, e^{i\omega t}\right)\, ,
 \end{align}
 for complex amplitudes $C_{R/L} \equiv A_{R/L} \exp(i\phi_{R/L})$, where $A_{R/L}$ and $\phi_{R/L}$ are real.
-Without loss of generality, the above expression can be refactored into
+Without loss of generality, the above expression can be refactored into%
+\footnote{This is the same parametrization we defined in \cite{Isi:2021iql} up to a factor of $\sqrt{2}$ in the circular polarization amplitudes.}
 \begin{align}
 H(t) = \frac{1}{2}A\hspace{-2pt}\left[ \left(1+\epsilon\right) e^{-i (\omega t - \phi_R)} + \left(1-\epsilon\right) e^{i (\omega t - \phi_L)} \right]\hspace{-3pt} .
 \end{align}
@@ -440,7 +441,7 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 %\includegraphics[width=\columnwidth]{pol_diagram_ellip}
 \caption{An elliptically polarized GW as a function of time (left to right) over a period, described by Eq.~\eqref{eq:hcomp_ellip} with $\epsilon=1/2$, $\theta=\pi/2$, $\phi=0$ and arbitrary amplitude. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which in this case rotates counterclockwise with time, albeit nonrigidly; each individual particle is pushed in an ellipse with the same ellipticity as the wave itself, and oriented at an angle $\theta + \varphi$ from the $x$-axis, where $\varphi$ is the polar coordinate locating the particle around the ring.
 \emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time.
-\emph{Bottom:} representation of the polarization state as a Jones vector in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
+\emph{Bottom:} representation of the polarization state as a phasor in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
 }
 \label{fig:pol_diagram_ellip}
 \end{figure*}
@@ -514,8 +515,8 @@ As implied by the definitions above, $Q/I$ controls the (power) fraction of line
 The Poincar\'{e} sphere is then the sphere of radius $I$ centered on $\left(Q=0, U=0, V=0\right)$.
 
 For a fully polarized state, the Stokes parameters (quantifying signal power) are equivalent to the polarization quantitites $\left\{A, \epsilon, \theta\right\}$ or $\{\hat{A}, \chi, \theta\}$ defining the ellipse in Fig.~\ref{fig:ellipse} (and quantifying signal amplitude).
-Because they are defined in terms of power, Stokes parameters have do not retain phasing information, but have the advantage of being easily generalizable to fully or partially unpolarized waves, which can be achieved by replacing the definition in Eq.~\eqref{eq:stokes} with corresponding two-point correlation functions (power spectra); in the fully-unpolarized case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
-The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx,Conneely:2018wis,Seto:2008sr,Kato:2015bye}; since we will be dealing mainly with coherent signals, we will not make further reference to Stokes parameters in what follows.
+Because they are defined in terms of power, Stokes parameters do not retain phasing information, but have the advantage of being easily generalizable to fully or partially unpolarized waves, which can be achieved by replacing the definition in Eq.~\eqref{eq:stokes} with corresponding two-point correlation functions (power spectra); in the fully-unpolarized case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
+The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx,Conneely:2018wis,Seto:2008sr,Kato:2015bye}; since we will be dealing mainly with phase-coherent signals, we will not make further reference to Stokes parameters in what follows.
 
 % Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
 
@@ -601,11 +602,11 @@ H(t) = \sum_{\ell \geq 2} \sum_{-\ell \leq m \leq \ell} H_{\ell m}(t)\, {}_{-2}Y
 \end{align}
 for a source seen with inclination $\iota$ and azimuthal angle $\varphi$, with intrinsic time-dependence encoded in the $H_{\ell m}$ functions as determined by Einstein's equations.
 The decomposition into spherical harmonics presumes the choice of both (1) a polar frame defining $\iota$ and $\varphi$, and (2) an orientation of the waveframe vectors with respect to the direction of propagation to establish the meaning of $h_{+/\times}$ as in \eq{hij}.
-In the LIGO convention (which follows \cite{Blanchet:2008je,Faye:2012we}), the waveframe in \eq{spherical} is defined by $\hat{x} = -\hat{e}_\iota$ and $\hat{y} = - \hat{e}_\varphi$ \cite{LALSuite:source}, and the overall polar frame is centered on and comoving with the source, with an orientation following its symmetries (e.g., aligned with the orbital plane).
+In the LIGO-Virgo convention (which follows \cite{Blanchet:2008je,Faye:2012we}), the waveframe in \eq{spherical} is defined by $\hat{x} = -\hat{e}_\iota$ and $\hat{y} = - \hat{e}_\varphi$ \cite{LALSuite:source}, and the overall polar frame is centered on and comoving with the source, with an orientation following its symmetries (e.g., aligned with the orbital plane).
 
 The different $H_{\ell m}$'s in \eq{spherical} are generated by the time evolution of specific current and mass moments of the source \cite{Thorne:1980ru}.
 As such, their structure must inherit the symmetries of Einstein's equations, including parity.
-In particular, for any source satisfying equatorial-reflection (planar) symmetry, like a nonprecessing inspiral, parity can be shown to imply that $H_{\ell -m} = (-1)^\ell H_{\ell m}^*$ \cite{Faye:2012we}, assuming that the coordinates in \eq{spherical} are oriented such that $\iota=\pi$ is the plane of symmetry.
+In particular, for any source satisfying equatorial-reflection (planar) symmetry, like a nonprecessing inspiral, parity can be shown to imply that $H_{\ell -m} = (-1)^\ell H_{\ell m}^*$ \cite{Faye:2012we}, assuming that the coordinates in \eq{spherical} are oriented such that $\iota=\pi/2$ is the plane of symmetry.
 Allowing for a generic (slow) amplitude and (fast) phase evolution by writing $H_{\ell m}(t) = \mathcal{A}_{\ell m}(t) \exp[-i \Phi_{\ell m}(t)]$, this symmetry reduces to $\mathcal{A}_{\ell -m}(t) = (-1)^\ell \mathcal{A}_{\ell m}(t)$ and $\Phi_{\ell m}(t) = - \Phi_{\ell -m}(t)$, where we have taken $\mathcal{A}$ and $\Phi$ to be real valued.
 In that case, \eq{spherical} can be rewritten with an explicit term for negative values of $m$ as
 \begin{widetext}
@@ -660,7 +661,7 @@ where we have defined $\Phi_{\ell m}'(t) \equiv \Phi_{\ell m}(t) - m \varphi$, a
 \begin{equation}
 Y_{\ell m}^{+/\times}(\iota) \equiv {}_{-2} Y_{\ell m}(\iota) \pm {}_{-2} Y_{\ell m}(\pi-\iota) \, ,
 \end{equation}
-with the plus (minus) sign for $+$ ($\times$), and noting that, after factoring out the $\varphi$ dependence, the ${}_{-2} Y_{\ell m}(\iota)$ factors are real valued.
+with the plus (minus) sign for $+$ ($\times$), and noting that, after factoring out the $\varphi$ dependence, the ${}_{-2} Y_{\ell m}(\iota)$ quantities are real valued.
 For the special case of the dominant $\ell=|m|=2$ mode, the strain $H_{\ell|m|} = h_+ - i h_\times$ thus reduces to
 \begin{subequations} \label{eq:nonprecessing}
 \beq
@@ -684,9 +685,9 @@ The fact that $\theta = 0$ is a consequence of our special choice of coordinate 
 \label{fig:ellip_cosi}
 \end{figure}
 
-The above results, Eqs.~(\ref{eq:spherical_modes}--\ref{eq:ellip_cosi}), hold only for source with equatorial-reflection symmetry.
+The above results, Eqs.~(\ref{eq:spherical_modes}--\ref{eq:ellip_cosi}), hold only for sources with equatorial-reflection symmetry.
 The GWs for more generic, precessing, sources will not generally be given by the superposition of fully polarized modes with constant ellipticity.
-However, some of such signals may be decomposed into elliptical modes of slowly evolving ellipticity; that is the case, for example, for the early stages of precessing compact binary inspirals, whose signal can be well approximated by \eq{nonprecessing} with a slowly time varying inclination.
+However, some of such signals may be decomposed into elliptical modes with a slowly-evolving ellipticity; that is the case, for example, for the early stages of precessing compact binary inspirals, whose signal can be well approximated by \eq{nonprecessing} with a slowly varying inclination.
 
 In some cases, nonplanar sources can also give rise to superpositions of fully polarized modes.
 For example, this is the case for black-hole ringdown signals \cite{Vishveshwara:1970cc, Press:1971wr, Teukolsky:1973ha, Chandrasekhar:1975zza}, which can be written as a harmonic expansion similar to \eq{spherical},
@@ -713,10 +714,10 @@ If the ringdown excitations had equatorial symmetry, then the initial amplitudes
 Equation \eqref{eq:hij} presumes a specific choice of frame orientation that defines the basis in which the $h_{ij}$ components are written and, therefore, the physical meaning of $h_{+}$ and $h_\times$.
 Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
 This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference direction.
-For instance, in the LIGO convention, this angle is defined with respect to celestial coordinates such that $\psi=0$ means that the waveframe $\hat{x}$ is parallel to the celestial equator due west, and $\psi$ is measured following the right hand rule around $\hat{z}$ \cite{LALSuite:wave}; we illustrate this in Fig.~\ref{fig:diagram_waveframe}.
+For instance, in the LIGO-Virgo convention, this angle is defined with respect to celestial coordinates such that $\psi=0$ means that the waveframe $\hat{x}$ is parallel to the celestial equator due west, and $\psi$ is measured following the right hand rule around $\hat{z}$ \cite{LALSuite:wave}; we illustrate this in Fig.~\ref{fig:diagram_waveframe}.
 
 With some trigonometry, it is straightforward to show that a \emph{clockwise}%
-\footnote{This clockwise \emph{passive} rotation of the waveframe corresponds to a counterclockwise \emph{active} rotation of the polarization state.}
+\footnote{This \emph{passive} clockwise rotation of the waveframe corresponds to an \emph{active} counterclockwise rotation of the polarization state.}
 rotation of $\hat{x}$ and $\hat{y}$ by some angle $\Delta \psi$ around $\hat{z}$ leaves the form of \eq{hij} unchanged after redefining
 \begin{subequations} \label{eq:htransf}
 \beq
@@ -741,7 +742,7 @@ F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi - F_+ \sin 2\Delta\p
 \end{subequations}
 ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary angle $\psi$.
 More generally, any scalar like $D^{ij} e^{p}_{ij}$ will necessarily be frame invariant.%
-\footnote{This extends to gauge transformations: the spacetime tensors $D_{ab}$ and $h_{ab}$ are gauge dependent, but their innerproduct is not.}
+\footnote{This extends to gauge transformations: the spacetime tensors $D_{ab}$ and $h_{ab}$ are gauge dependent, but their inner product is not.}
 
 Unlike the linear modes of Eq.~\eqref{eq:lin}, the tensors of Eq.~\eqref{eq:circ} do not mix under rotations around the direction of propagation:
 the circular polarizations are eigenstates of the helicity operator with weight $\pm 2$, corresponding to the two helicities of a spin-2 massless particle (see, e.g., \cite{Hinterbichler2011}).
@@ -772,7 +773,7 @@ The definition of the angle $\psi$ (as in Fig.~\ref{fig:diagram_waveframe}) is n
 Nevertheless, even though any choice of assignment for $\psi$ is formally valid, specific signal morphologies may make some choices more convenient than others.
 
 \subsection{Elliptical waves and the angle $\theta$}
-\label{sec:ellip}
+\label{sec:theta}
 
 \begin{figure}[tbp]
 \includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
@@ -1371,7 +1372,7 @@ h_{v,L} &\rightarrow h_{v,L}' = h_{v,L} \exp(+ i  \Delta \psi)\, .
 \end{align}
 \end{subequations}
 Just like we can define circular vector modes, we can also construct elliptically polarized vector states.
-These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to field of spin weight $\left|s\right|=1$.
+These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip_modes} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to field of spin weight $\left|s\right|=1$.
 
 
 On the other hand, the two scalar modes are invariant under rotations around $z$,
@@ -1393,10 +1394,10 @@ h_{\rm s} \equiv \hb - 2\hlon\, ,
 \eeq
 which is the only scalar mode measurable by existing detectors.
 Equivalently, the antenna patterns for the breathing and longitudinal modes are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
-Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the specific morphology of the $\hb(t)$ and $\hlon(t)$ functions.
+Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the detailed morphology of the $\hb(t)$ and $\hlon(t)$ functions.
 For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing mode---so that the sum is over only five polarizations instead of six.
 
-The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip} can easily be extended to accommodate nontensor modes.
+The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip_modes} can easily be extended to accommodate nontensor modes.
 In particular, a generalized definition of Stokes parameters was derived in \cite{Anile1974} to account for all helicities---this requires 36 Stokes parameters.
 However, the practical utility of such fully-generalized Stokes parameters is unclear, since the polarizations of different helicites do not mix into each other under rotations.
 Instead, it is possible to simply enhance the set of four tensor Stokes parameters by an additional four vector Stokes parameters (defined analogously), and two parameters for the intensity of each of the scalar modes;
