@@ -775,14 +775,6 @@ Nevertheless, even though any choice of assignment for $\psi$ is formally valid,
 \subsection{Elliptical waves and the angle $\theta$}
 \label{sec:theta}
 
-\begin{figure}[tbp]
-\includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
-\caption{A clockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
-The diagram illustrates two such modes with ellipse orientations $\theta_{1/2}$ with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
-}
-\label{fig:diagram_ellipse_extra}
-\end{figure}
-
 Another notion of ``polarization angle'' arises naturally in the description of elliptically polarized signals.
 The expression for an elliptical wave in \eq{ellip_gen} presumes some specific choice of $\psi$ that defines the meaning of plus vs cross by orienting $\hat{x}$, as explained in the previous section.
 The expression simplifies if we choose that angle such that the plus and cross axes are aligned with the principal components of the ellipse, i.e., constructing the polarization frame to ensure that $\theta = 0$ (see Fig.~\ref{fig:ellipse}).
@@ -798,6 +790,14 @@ h_\times = \epsilon \mathcal{A}(t) \sin \Phi(t)\, ,
 \end{subequations}
 and we may just read off the ellipticity as the ratio of the $\times$ to $+$ amplitudes.
 Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} unless $\hat{x}$ is chosen appropriately; only circularly polarized signals ($\epsilon=\pm1$) will take  this simplified form irrespective of the wave frame orientation (again showing that these are eigenstates of the helicity operator).
+
+\begin{figure}[tbp]
+\includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
+\caption{A clockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
+The diagram illustrates two such modes with ellipse orientations $\theta_{1/2}$ with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
+}
+\label{fig:diagram_ellipse_extra}
+\end{figure}
 
 Therefore, when working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
 If we adopt $\theta =0$ as a convention (or, equivalently, $\theta=\pi$), then we \emph{define} our wave frame to lie along the principal axes of the polarization ellipse and, thus, the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation.
@@ -1123,15 +1123,6 @@ Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for 
 % \newcommand{\yc}{A_{\times,s}}
 % \newcommand{\ypc}{A_{+/\times,s}}
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{diagram_apac}
-\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
-\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
-\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
-}
-\label{fig:diagram_apac}
-\end{figure}
-
 Equation \eqref{eq:Aphi} still represents an elliptically polarized mode.
 To relate this parametrization to that in Eq.~\eqref{eq:hcomp_ellip}, it is convenient to first map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section.
 We can do this geometrically by considering the respective Jones vectors (Sec.~\ref{sec:math}), from which we get $C_{R/L} = (C_+ \mp i C_\times)/\sqrt{2}$, for $C_{+/\times} \equiv A_{+/\times} \exp(i\phi_{+/\times})$ as in \eq{jones_bases}.
@@ -1156,6 +1147,15 @@ where, to simplify the notation, we have defined the cosine and sine quadratures
 Together with Eq.~\eqref{eq:Cphi_to_Aellip}, this allows us to compute $\{A, \epsilon, \theta, \phi\}$ as a function of $\{A_+, A_\times, \phi_+, \phi_\times\}$.
 This transformation is clearly less straightforward than those for the circular components in the previous section, with amplitude and phase parameters mixing into each other.
 This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{diagram_apac}
+\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
+\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
+\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
+}
+\label{fig:diagram_apac}
+\end{figure}
 
 The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple, however, when expressed in terms of the former set of parameters,
 \begin{subequations} \label{eq:jac_Aphi}
@@ -1242,6 +1242,16 @@ The inverse transformation, from  $\{A,\epsilon,\theta,\phi\}$ into $\{\xpc, \yp
 \end{equation}
 as is straightforward to check based on \eq{Axy} and \eq{hcomp_ellip} by basic trignometry.
 
+\begin{figure}
+\includegraphics[width=\columnwidth]{jac_Aeps_Axy}
+\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
+The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
+Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
+As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
+}
+\label{fig:jac_Axy}
+\end{figure}
+
 The corresponding Jacobian is remarkably simple when expressed in terms of the ellipse amplitude and shape,
 \begin{subequations} \label{eq:jac_Aeps_Axy}
 \begin{align}
@@ -1263,16 +1273,6 @@ Over the targeted region ($A < A_{\max}$) the distribution steeply favors high s
 Enforcing $A < A_{\max}$, no specific value of $-\pi/2 < \theta, \phi < \pi/2$ is preferred; however, a similar structure to that in Fig.~\ref{fig:jac_Aphi} would appear outside that range of angles, which can again be mitigated by working with $\bar{\theta}$ and $\bar{\phi}$ instead.
 The constraint on the amplitude, $A < A_{\rm max}$, is crucial to guarantee isotropy in the ellipse orientation: without it, the corners of the squares defined by $-A_{\max} < \xpc,\ypc < A_{\max}$ would result in special directions of high probability, just as in the example of Fig.~\ref{fig:jac_example}.
 The same result could be obtained by applying an intrinsically isotropic prior in the $\{\xpc, \ypc\}$ space, e.g., uncorrelated Gaussians.
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aeps_Axy}
-\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
-The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
-Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
-As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
-}
-\label{fig:jac_Axy}
-\end{figure}
 
 \subsection{Inclination of a planar source}
 \label{sec:jac:cosi}
@@ -1387,7 +1387,7 @@ On the other hand, the two scalar modes are invariant under rotations around $z$
 revealing that these behave as spin weight $s=0$ fields (hence ``scalar'').
 Since these modes are already invariant under rotations, there is no meaningful notion of a circular (or elliptical) scalar polarization.
 %
-As it turns out, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
+Furthermore, as it turns out, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
 In terms of the breathing and longitudinal modes above, this is
 \beq
 h_{\rm s} \equiv \hb - 2\hlon\, ,
