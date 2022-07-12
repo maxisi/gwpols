@@ -910,6 +910,13 @@ The frame in \eq{nonprecessing}, which we here denote with unprimed symbols $\{\
 Although different definitions may be found in the literature (e.g., \cite{Faye:2012we,Kidder:2007rt}), the LIGO-Virgo convention is to choose $\hat{y}$ such that it points towards the ascending node, i.e., parallel to the \emph{line of nodes} defined by the intersection of the orbital plane with the plane of the sky \cite{LALSuite:source}; $\hat{x}$ completes the triad (Fig.~\ref{fig:diagram_sourceframe} with $\Omega = \pi/2$).
 In this convention, then, $\hat{x} = -\hat{e}_\iota$, $\hat{y} = -\hat{e}_\varphi$ and $\hat{z}=\hat{e}_r$, where $\left(r, \iota, \varphi\right)$ are the spherical coordinates associated with the spherical-harmonic frame in \eq{spherical_modes}.
 
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{diagram_skyview.pdf}
+\caption{View of Fig.~\ref{fig:diagram_sourceframe} as seen by the observer, with the LIGO-Virgo convention that $\Omega=\pi/2$. The masses rotate counterclockwise in the plane of the sky, spanned by the local west ($W$) and the in-sky projection of the celestial north ($N_\perp$).
+}
+\label{fig:diagram_skyview}
+\end{figure}
+
 Having specified $h_+$ and $h_\times$ in that standard, source-based frame, all we need to do to predict the signal at a given detector is to evaluate \eq{h}.
 As described in Sec.~\ref{sec:pol}, this is done in practice by expressing $\{\hat{x}, \hat{y}\}$ in terms of canonical reference vectors $\{\hat{x}',\hat{y}'\}$, which are themselves tied to an Earth-centered celestial coordinate system (Fig.~\ref{fig:diagram_waveframe}).
 By convention, we specify the relative orientation between the two frames through the angle $\psi$ defined clockwise from $\hat{x}$ and $\hat{x}'$ around $\hat{z}$, itself the intersection of the celestial equator with the plane of the sky \cite{LALSuite:wave,Anderson:T010110}.
@@ -919,13 +926,6 @@ In this convention, $\psi$ is identical to the complement of the \emph{position 
 More generally, $\Psi = \pi - \psi - \Omega$ in terms of the \emph{longitude of the ascending node} $\Omega$ with $\hat{x}$ as the origin of longitude.
 LIGO and Virgo always fix $\Omega = \pi/2$ \cite{LALSuite:source}, tying the primed polarization frame, in which $h_{+/\times}$ are predicted, to the source geometry.
 Thus, when LIGO-Virgo report measurements of the polarization angle in CBCs, the quantity reported is the in-plane sky angle of the orbital ascending node relative due north.
-
-\begin{figure}
-\includegraphics[width=0.8\columnwidth]{diagram_skyview.pdf}
-\caption{View of Fig.~\ref{fig:diagram_sourceframe} as seen by the observer, with the LIGO-Virgo convention that $\Omega=\pi/2$. The masses rotate counterclockwise in the plane of the sky, spanned by the local west ($W$) and the in-sky projection of the celestial north ($N_\perp$).
-}
-\label{fig:diagram_skyview}
-\end{figure}
 
 In fact, with these conventions for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of our polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
 We can then think of this angle as a property of the source to be measured from our data, rather than an arbitrary parameter orienting our frame.
@@ -1125,6 +1125,15 @@ Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for 
 % \newcommand{\yc}{A_{\times,s}}
 % \newcommand{\ypc}{A_{+/\times,s}}
 
+\begin{figure}
+\includegraphics[width=\columnwidth]{diagram_apac}
+\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
+\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
+\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
+}
+\label{fig:diagram_apac}
+\end{figure}
+
 Equation \eqref{eq:Aphi} still represents an elliptically polarized mode.
 To relate this parametrization to that in Eq.~\eqref{eq:hcomp_ellip}, it is convenient to first map Eq.~\eqref{eq:Aphi} into the circular-basis parameters of the previous section.
 We can do this geometrically by considering the respective Jones vectors (Sec.~\ref{sec:math}), from which we get $C_{R/L} = (C_+ \mp i C_\times)/\sqrt{2}$, for $C_{+/\times} \equiv A_{+/\times} \exp(i\phi_{+/\times})$ as in \eq{jones_bases}.
@@ -1151,12 +1160,15 @@ This transformation is clearly less straightforward than those for the circular 
 This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{diagram_apac}
-\caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
-\emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
-\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
+\includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
+\caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
+The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, and $\pi/2 \leq \theta,\phi <\pi/2$, as in the example of Fig.~\ref{fig:jac_example}.
+The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
+The difference between the blue and gray distributions for $\theta$ and $\phi$ is an artifact of the chosen angle ranges: it would not have appeared had we instead worked with $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$, both in the range $[0,2\pi]$.
+%The marginal histograms are normalized by bin count.
+The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi} ($\theta = 0, \pm\pi/2$).
 }
-\label{fig:diagram_apac}
+\label{fig:jac_Aphi}
 \end{figure}
 
 The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple, however, when expressed in terms of the former set of parameters,
@@ -1173,18 +1185,6 @@ The Jacobian factorizes into a piece for the size of the ellipse ($1/A$), and a 
 The $J_2 \propto 1/A$ dependence implies that an analysis with uniform priors in the linear polarization amplitudes will implicitly favor high overall signal power, as was the case for the circular amplitudes in Fig.~\ref{fig:jac_Aeps_Arl}.
 Additionally, the dependence on the ellipse's shape implies that the Jacobian diverges to positive infinity for $\epsilon = \pm 1$, meaning that circular polarizations will be disfavored in this scenario.
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
-\caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
-The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, and $\pi/2 \leq \theta,\phi <\pi/2$, as in the example of Fig.~\ref{fig:jac_example}.
-The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
-The difference between the blue and gray distributions for $\theta$ and $\phi$ is an artifact of the chosen angle ranges: it would not have appeared had we instead worked with $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$, both in the range $[0,2\pi]$.
-The marginal histograms are normalized by bin count.
-The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi} ($\theta = 0, \pm\pi/2$).
-}
-\label{fig:jac_Aphi}
-\end{figure}
-
 Both those features are visible in Fig.~\ref{fig:jac_Aphi}, which shows the distribution imposed on all of our canonical parameters, $\{A,\epsilon, \theta, \phi\}$, by drawing uniformly in $0 < A_{+/\times} < A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$, for some arbitrary scale $A_{\rm max}$.
 The distribution increases proportionally with $A$ up to $A_{\max}$ and peaks strongly at $\epsilon = 0$, sharply favoring linear polarizations.
 In fact, the $\theta$ dependence of \eq{jac_Aphi} implies that pure $+$ or $\times$ polarizations ($\theta=0$ or $\theta = \pm\pi/2$, respectively) will be favored over any other orientation, i.e., pure linear polarizations aligned with the frame used to define $+$ and $\times$ in \eq{Aphi}.
@@ -1200,6 +1200,16 @@ In the previous section we introduced the linear polarization quadratures $\xpc 
 In \eq{Aphi_to_Cphi} we used these quantities to conveniently express the relation between the phases of the linear components of \eq{Aphi} and those of their circular counterparts, \eq{ellip_circ}, but their usefulness extends more widely.
 Notably, the quadratures are usually more suitable for sampling applications, since working with periodic phases like $\phi_{+/\times}$ can be problematic for stochastic algorithms like Markov chain Monte Carlo (MCMC) \cite{Hogg:2017akh}.
 Together with Gaussian priors, they can also make some problems analytically integrable \cite{Hogg:2020jwh}.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{jac_Aeps_Axy}
+\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
+The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
+Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
+As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
+}
+\label{fig:jac_Axy}
+\end{figure}
 
 The usefulness of the linear-polarization quadratures stems from the fact that, unlike phase parameters like $\phi_{+/\times}$, they enter the waveform linearly.
 Concretely, the expression for an elliptical monochromatic mode in terms of these quantities is
@@ -1244,16 +1254,6 @@ The inverse transformation, from  $\{A,\epsilon,\theta,\phi\}$ into $\{\xpc, \yp
 \end{equation}
 as is straightforward to check based on \eq{Axy} and \eq{hcomp_ellip} by basic trigonometry.
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aeps_Axy}
-\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
-The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
-Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
-As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
-}
-\label{fig:jac_Axy}
-\end{figure}
-
 The corresponding Jacobian is remarkably simple when expressed in terms of the ellipse amplitude and shape,
 \begin{subequations} \label{eq:jac_Aeps_Axy}
 \begin{align}
@@ -1294,13 +1294,6 @@ J_4 =1 - \epsilon^2 + \sqrt{1-\epsilon^2}
 which vanishes for $\cos\iota = \pm 1$ (or, equivalently, $\epsilon = \pm 1$) and peaks at $\cos\iota = 0$ ($\epsilon= 0$).
 This indicates that a distribution uniform in $\cos\iota$ will place infinite weight on $\epsilon = \pm 1$, while a distribution uniform in $\epsilon$ will place no weight on $\cos\iota = \pm 1$ (left and right panels in Fig.~\ref{fig:jac_cosi}, respectively).
 
-The divergences of the Jacobian above complicate transformations from one prior to the other, and suggest their implementation in sampling applications is likely nonperformant---in other words, if the goal is to apply a uniform prior on $\cos\iota$, then we should sample in that quantity directly, not in $\epsilon$.
-
-This issue becomes more pronounced if, rather than being uniform in $\epsilon$, the original prior itself disfavored $\epsilon = \pm 1$ in the first place.
-This was the case for the parametrization in terms of $\hat{A}$ and $\chi$ in Sec.~\ref{sec:jac:Achi}, the linear polarization amplitudes in Sec.~\ref{sec:jac:Apc} and the linear polarization quadratures in Sec.~\ref{sec:jac:Axy}.
-Of all these, the problem is most severe for the linear polarization amplitudes, since that parametrization places high weight (formally infinite) on $\epsilon = 0$ (Fig.~\ref{fig:jac_Aphi}).
-Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}, which likely explains the difficulty in recovering the sky location of the circularly-polarized ($\cos\iota=1$) signal simulated in Fig.~11 of that work.
-
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_eps_cosi}
 \caption{\emph{Left:} Probability density imposed on $\epsilon$ by applying a flat prior on $\cos\iota$, which is inversely proportional to the Jacobian $J_4$ in \eq{jac_eps_cosi}; this diverges at $\epsilon = \pm 1$.
@@ -1308,6 +1301,13 @@ Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}
 }
 \label{fig:jac_cosi}
 \end{figure}
+
+The divergences of the Jacobian above complicate transformations from one prior to the other, and suggest their implementation in sampling applications is likely nonperformant---in other words, if the goal is to apply a uniform prior on $\cos\iota$, then we should sample in that quantity directly, not in $\epsilon$.
+
+This issue becomes more pronounced if, rather than being uniform in $\epsilon$, the original prior itself disfavored $\epsilon = \pm 1$ in the first place.
+This was the case for the parametrization in terms of $\hat{A}$ and $\chi$ in Sec.~\ref{sec:jac:Achi}, the linear polarization amplitudes in Sec.~\ref{sec:jac:Apc} and the linear polarization quadratures in Sec.~\ref{sec:jac:Axy}.
+Of all these, the problem is most severe for the linear polarization amplitudes, since that parametrization places high weight (formally infinite) on $\epsilon = 0$ (Fig.~\ref{fig:jac_Aphi}).
+Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}, which likely explains the difficulty in recovering the sky location of the circularly-polarized ($\cos\iota=1$) signal simulated in Fig.~11 of that work.
 
 \section{Nontensor polarizations}
 \label{sec:nongr}
