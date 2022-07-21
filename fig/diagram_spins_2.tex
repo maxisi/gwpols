@@ -39,10 +39,10 @@
 %
 \begin{tikzpicture}[scale=5,tdplot_main_coords]
     \coordinate (O) at (0,0,0);
-    \draw[thick,->] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{J}$};
+    \draw[thick,->,opacity=0.25] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{J}$};
 
-    \draw[thick,->, black] (O) -- ({\discrad*cos(90-\phiNvec)},{-\discrad*sin(90-\phiNvec)},0) node[anchor=north]{$\hat{x}_J$};
-    \draw[thick,->, black] (O) -- ({\discrad*cos(\phiNvec)},{\discrad*sin(\phiNvec)},0) node[anchor=north]{$\hat{y}_J$};
+    \draw[thick,->, black,opacity=0.25] (O) -- ({\discrad*cos(90-\phiNvec)},{-\discrad*sin(90-\phiNvec)},0) node[anchor=north]{$\hat{x}_J$};
+    \draw[thick,->, black,opacity=0.25] (O) -- ({\discrad*cos(\phiNvec)},{\discrad*sin(\phiNvec)},0) node[anchor=north]{$\hat{y}_J$};
 
     \tdplotsetcoord{J}{\rvec}{0}{0}
     \tdplotsetcoord{P}{1.55*\rvec}{\thetaJNvec}{\phiNvec}
@@ -58,8 +58,8 @@
 		        {\thetaJNvec}{anchor=south west}{$\theta_{JN}$}
 
     \tdplotsetrotatedcoords{\phiNvec}{\thetaJNvec}{-90}
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=gray,opacity=0.5]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=gray}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=gray,opacity=0.5]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=gray}{}
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=black]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=black}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=black]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=black}{}
 
 %% Hiding theta_JL since it's not ever computed
 %     \tdplotsetthetaplanecoords{\phivec}
@@ -74,20 +74,22 @@
         -- (0,0,\wfl) node[anchor=south east]{$\hat{L}$};
 
     \tdplotsetcoord{L}{\wfl}{\thetaJLvec}{\phivec}
-    \draw[thick,dotted, color=NavyBlue] (O) -- (Lxy);
-    \draw[thick,dotted, color=NavyBlue] (L) -- (Lxy);
-    \tdplotdrawarc{(O)}{0.2}{\phiNvec-90}{\phivec}{anchor=north east}{$\phi_{JL}$}
+    \draw[thick,dotted, color=NavyBlue, opacity=0.5] (O) -- (Lxy);
+    \draw[thick,dotted, color=NavyBlue, opacity=0.5] (L) -- (Lxy);
+    %\tdplotdrawarc{(O)}{0.2}{\phiNvec-90}{\phivec}{anchor=north east}{$\phi_{JL}$}
     
     \draw[thin,tdplot_rotated_coords, gray, opacity=0.2] (\wfl,0,0)
         -- (-\wfl,0,0) node[anchor=north west]{};
 
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}%
+    \tdplotdrawarc[dashed,tdplot_rotated_coords,color=NavyBlue,opacity=1]{(0,0,0)}{\rvec}{0}%
         {180}{anchor=east,color=NavyBlue}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}%
+    \tdplotdrawarc[tdplot_rotated_coords,color=NavyBlue,opacity=1]{(0,0,0)}{\rvec}{0}%
         {-180}{anchor=east,color=NavyBlue}{}
 
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{-180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue,opacity=0.5]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue,opacity=0.5]{(0,0,0)}{\orbitl}{0}{-180}{anchor=east,color=NavyBlue}{}
+
+    \tdplotdrawarc[thin,tdplot_rotated_coords, ->]{(0,0,0)}{\orbitl}{\longascnode-180}{\longascnode - 5}{anchor=east,color=NavyBlue}{}
 
     \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode)},{\psil*sin(\longascnode)},0) {node[anchor=south east]{$\hat{x}_L$}};
     \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode+90)},{\psil*sin(\longascnode+90)},0) {node[anchor=north]{$\hat{y}_L$}};
@@ -96,7 +98,7 @@
     %\draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\psil*cos(\longascnode+180)},{\psil*sin(\longascnode+180)},0) {node[anchor=north west]{$\hat{y}_L$}};
     \draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\orbitl*cos(\longascnode+180)},{\orbitl*sin(\longascnode+180)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};
 
-    \draw[fill=gray,opacity=0.2] (\discrad,0,0) arc (0:360:\discrad);
+    \draw[fill=gray,opacity=0.1] (\discrad,0,0) arc (0:360:\discrad);
     %\draw[thin,opacity=0.5] (\discrad,0,0) arc (0:360:\discrad);
 
 
