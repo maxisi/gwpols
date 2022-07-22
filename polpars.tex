@@ -1446,7 +1446,37 @@ The Flatiron Institute is a division of the Simons Foundation, supported through
 This paper carries LIGO document number \dcc{}.
 \end{acknowledgments}
 
-% \appendix
+\appendix
+
+\section{Compact-binary spin frames}
+
+Besides the frames discussed in the main text, additional coordinates come into play when describing a precessing \ac{CBC}.
+These are required to specify the orientations of the spins of the component objects, which are not aligned with the orbital angular momentum for the case of a precessing binary.
+Even though these coordinates are not directly relevant for the description of GW polarizations, we describe them here for completeness following the current LIGO-Virgo convention \cite{LALSuite:spins}.
+
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{diagram_spins.pdf}
+\caption{Coordinate frames used to specify the component spin vectors for a nonprecessing \ac{CBC}. The Cartesian components of each individual spin vector $\hat{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes as in Fig.~\ref{fig:spins_2}.
+The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame, $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is perpendicular to both $\vec{J}$ and $\vec{k}$ (black).}
+\label{fig:spins}
+\end{figure}
+
+The component spin vectors, $\vec{S}_{1/2}$, are prescribed at an arbitrary reference time (e.g., the moment when the signal reaches 20 Hz at the detector) in a Cartesian frame with $z$-axis along the orbital angular momentum, $\vec{L}$, with $x$-axis along the line pointing from the lighter object ($m_2$) to the heavier object ($m_1$), and with $y$-axis completing the triad; this $L$-based coordinate frame is shown in blue Fig.~\ref{fig:spins}.
+
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{diagram_spins_2.pdf}
+\caption{As in Fig.~\ref{fig:spins} but showing the reference orbital phase, $\phi_{\rm orb}$. This is the angle in the orbital plane (blue) defined following the right-hand rule around $\vec{L}$, between the line of nodes ($\ascnode$) and the location of the heaviest object ($m_1$) at the reference time. The line of nodes lies along the intersection between the plane of the sky (black, unfilled circle) and the orbital plane, as in Figs.~\ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview}.}
+\label{fig:spins_2}
+\end{figure}
+
+In the above frame, the spin components are specified relative to the orbital plane.
+For a precessing system, the orientation of the binary itself is set with respect to the observer through the angle $\theta_{JN}$ between the direction of propagation $\hat{k}$ and the total angular momentum of the binary, $\vec{J} \equiv \vec{L} + \vec{S}_1 + \vec{S}_2$ (Fig.~\ref{fig:spins} in black).
+An additional angle, $\phi_{JL}$, establishes the orientation of $\vec{L}$ around $\vec{J}$, measured azimuthally with respect to the vector $\hat{x}_J$ perpendicular to the plane containing both $\vec{J}$ and $\hat{k}$, i.e., $\hat{x}_J = \hat{k} \times \hat{J} / |\hat{k} \times \hat{J}|$ in Fig.~\ref{fig:spins}.
+The final degree of freedom is set by specifying the orbital phase $\phi_{\rm orb}$ at the reference time, defined as the angle spanned by the location of the primary body with respect to the line of nodes ($\ascnode$) within the orbital plane (Fig.~\ref{fig:spins_2}).
+
+For a nonprecessing binary, $\vec{J}$ is parallel to $\vec{L}$, and so $\phi_{JL}$ is undefinded.
+Meanwhile, $\theta_{JN}$ reduces to the angle $\iota$, which is defined to be the angle between $\hat{k}$ and the $\hat{L}$ (Fig.~\ref{fig:diagram_sourceframe}).
+The term ``inclination angle'' can refer either to $\theta_{JN}$ or $\iota$ depending on context.
 
 
 \bibliography{refs}
