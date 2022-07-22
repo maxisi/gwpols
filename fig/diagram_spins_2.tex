@@ -13,7 +13,8 @@
 \pgfmathsetmacro{\phivec}{20}
 \pgfmathsetmacro{\phiNvec}{80}
 
-\pgfmathsetmacro{\longascnode}{25}
+\pgfmathsetmacro{\orbphase}{25}
+\pgfmathsetmacro{\longascnode}{-148}
 
 \pgfmathsetmacro{\wfl}{\rvec}
 \newcommand{\wfcolor}{gray}
@@ -24,6 +25,8 @@
 \pgfmathsetmacro{\orbitl}{0.5*\psil}
 
 \pgfmathsetmacro{\discrad}{\rvec}
+
+\pgfmathsetmacro{\phiNvec}{80}
 
 \newcommand*\lateraleye{%
 \scalebox{0.15}{
@@ -39,27 +42,28 @@
 %
 \begin{tikzpicture}[scale=5,tdplot_main_coords]
     \coordinate (O) at (0,0,0);
-    \draw[thick,->,opacity=0.25] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{J}$};
 
-    \draw[thick,->, black,opacity=0.25] (O) -- ({\discrad*cos(90-\phiNvec)},{-\discrad*sin(90-\phiNvec)},0) node[anchor=north]{$\hat{x}_J$};
-    \draw[thick,->, black,opacity=0.25] (O) -- ({\discrad*cos(\phiNvec)},{\discrad*sin(\phiNvec)},0) node[anchor=north]{$\hat{y}_J$};
+    \draw[fill=gray,opacity=0.2] (\discrad,0,0) arc (0:360:\discrad);
+    %\tdplotdrawarc[fill=gray,opacity=0.2]{(0,0,0)}{\discrad}{0}{90}{anchor=east,}{}
+    %\draw[fill=gray!30] (0,0) -- (\discrad,0) arc[start angle=0, end angle=360,radius=\discrad] -- (0,0);
 
     \tdplotsetcoord{J}{\rvec}{0}{0}
     \tdplotsetcoord{P}{1.55*\rvec}{\thetaJNvec}{\phiNvec}
     \tdplotsetcoord{Pp}{\rvec}{\thetaJNvec}{\phiNvec}
-    \draw[dotted, color=black] (P) -- (Pxy);
-    \draw[dotted, color=black] (P) -- (J);
-    \draw[-,color=black,dotted] (O) -- (P) node[]{};
-    \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=50]{$\lateraleye$};
-    \draw[thick,->,color=black] (O) -- (Pp);
+%    \draw[dotted, color=black] (P) -- (Pxy);
+%    \draw[dotted, color=black] (P) -- (J);
+    %\draw[-,color=black,dotted] (O) -- (P) node[]{};
+%    \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=50]{$\lateraleye$};
+%    \draw[thick,->,color=black] (O) -- (Pp) node[anchor=west]{$\hat{k}$};
 
     \tdplotsetthetaplanecoords{\phiNvec}
-		\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
-		        {\thetaJNvec}{anchor=south west}{$\theta_{JN}$}
+		%\tdplotdrawarc[tdplot_rotated_coords,color=gray]{(0,0,0)}{0.5}{0}{\thetaJNvec}{anchor=south west}{}
 
     \tdplotsetrotatedcoords{\phiNvec}{\thetaJNvec}{-90}
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=black]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=black}{}
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=black,opacity=0.5]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=black}{}
     \tdplotdrawarc[thin,tdplot_rotated_coords,color=black]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=black}{}
+
+    \draw[thick,tdplot_rotated_coords,->,color=NavyBlue] (0,0,0) -- ({\rvec*cos(\longascnode)},{\rvec*sin(\longascnode)},0) {node[anchor=south]{$\ascnode$}};
 
 %% Hiding theta_JL since it's not ever computed
 %     \tdplotsetthetaplanecoords{\phivec}
@@ -70,37 +74,37 @@
     \tdplotsetrotatedthetaplanecoords{0}
 
     \tdplotsetrotatedcoords{\phivec}{\thetaJLvec}{-90}
-    \draw[thick,tdplot_rotated_coords,->, NavyBlue, opacity=1] (0,0,0)
-        -- (0,0,\wfl) node[anchor=south east]{$\hat{L}$};
+    % \draw[thick,tdplot_rotated_coords,->, NavyBlue, opacity=1] (0,0,0) -- (0,0,\wfl) node[anchor=south east]{$\hat{L}$};
 
     \tdplotsetcoord{L}{\wfl}{\thetaJLvec}{\phivec}
-    \draw[thick,dotted, color=NavyBlue, opacity=0.5] (O) -- (Lxy);
-    \draw[thick,dotted, color=NavyBlue, opacity=0.5] (L) -- (Lxy);
-    %\tdplotdrawarc{(O)}{0.2}{\phiNvec-90}{\phivec}{anchor=north east}{$\phi_{JL}$}
+%    \draw[thick,dotted, color=NavyBlue, opacity=0.5] (O) -- (Lxy);
+%    \draw[thick,dotted, color=NavyBlue, opacity=0.5] (L) -- (Lxy);
     
-    \draw[thin,tdplot_rotated_coords, gray, opacity=0.2] (\wfl,0,0)
-        -- (-\wfl,0,0) node[anchor=north west]{};
+    \draw[thin,tdplot_rotated_coords,NavyBlue,opacity=0.2] (\wfl,0,0) -- (-\wfl,0,0) node[anchor=north west]{};
 
-    \tdplotdrawarc[dashed,tdplot_rotated_coords,color=NavyBlue,opacity=1]{(0,0,0)}{\rvec}{0}%
-        {180}{anchor=east,color=NavyBlue}{}
-    \tdplotdrawarc[tdplot_rotated_coords,color=NavyBlue,opacity=1]{(0,0,0)}{\rvec}{0}%
-        {-180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=NavyBlue}{}
 
     \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue,opacity=0.5]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue,opacity=0.5]{(0,0,0)}{\orbitl}{0}{-180}{anchor=east,color=NavyBlue}{}
 
-    \tdplotdrawarc[thin,tdplot_rotated_coords, ->]{(0,0,0)}{\orbitl}{\longascnode-180}{\longascnode - 5}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue,opacity=0.5]{(0,0,0)}{\orbitl}{0}{-180}{}{}
+    \tdplotdrawarc[thick,tdplot_rotated_coords]{(0,0,0)}{\orbitl}{0}{-94}{anchor=south}{$\phi_{\rm orb}$}
+    \tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,black]{(0,0,0)}{\orbitl}{\longascnode+58+90}{\orbphase - 5}{}{}
 
-    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode)},{\psil*sin(\longascnode)},0) {node[anchor=south east]{$\hat{x}_L$}};
-    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode+90)},{\psil*sin(\longascnode+90)},0) {node[anchor=north]{$\hat{y}_L$}};
-    \draw[thin,tdplot_rotated_coords,-,dashed, color=NavyBlue] (0,0,0) -- ({\orbitl*cos(\longascnode)},{\orbitl*sin(\longascnode)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=south east]{$m_1$}};
+    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue,opacity=0.7] (0,0,0) -- ({\psil*cos(\orbphase)},{\psil*sin(\orbphase)},0) {node[anchor=east]{$\hat{x}_L$}};
+    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue,opacity=0.7] (0,0,0) -- ({\psil*cos(\orbphase+90)},{\psil*sin(\orbphase+90)},0) {node[anchor=north]{$\hat{y}_L$}};
 
-    %\draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\psil*cos(\longascnode+180)},{\psil*sin(\longascnode+180)},0) {node[anchor=north west]{$\hat{y}_L$}};
-    \draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\orbitl*cos(\longascnode+180)},{\orbitl*sin(\longascnode+180)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};
+    \draw[thin,tdplot_rotated_coords,-,dashed,opacity=0] (0,0,0) -- ({\orbitl*cos(\orbphase)},{\orbitl*sin(\orbphase)},0) {node[shape=circle,fill=black, scale=0.7,opacity=1]{} node[anchor=south east,color=black,opacity=1]{$m_1$}};
 
-    \draw[fill=gray,opacity=0.1] (\discrad,0,0) arc (0:360:\discrad);
+    %\draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\psil*cos(\orbphase+180)},{\psil*sin(\orbphase+180)},0) {node[anchor=north west]{$\hat{y}_L$}};
+    \draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\orbitl*cos(\orbphase+180)},{\orbitl*sin(\orbphase+180)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};
+
     %\draw[thin,opacity=0.5] (\discrad,0,0) arc (0:360:\discrad);
 
+    \draw[thick,->,color=gray] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{J}$};
+
+    \draw[thick,->,gray] (O) -- ({\discrad*cos(90-\phiNvec)},{-\discrad*sin(90-\phiNvec)},0) node[anchor=north]{$\hat{x}_J$};
+    \draw[thick,->,gray] (O) -- ({\discrad*cos(\phiNvec)},{\discrad*sin(\phiNvec)},0) node[anchor=north]{$\hat{y}_J$};
 
 
 \end{tikzpicture}

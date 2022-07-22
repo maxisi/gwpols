@@ -51,7 +51,7 @@
     \draw[dotted, color=black] (P) -- (J);
     \draw[-,color=black,dotted] (O) -- (P) node[]{};
     \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=50]{$\lateraleye$};
-    \draw[thick,->,color=black] (O) -- (Pp);
+    \draw[thick,->,color=black] (O) -- (Pp) node[anchor=west]{$\hat{k}$};
 
     \tdplotsetthetaplanecoords{\phiNvec}
 		\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
@@ -89,7 +89,7 @@
     \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}
     \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{-180}{anchor=east,color=NavyBlue}{}
 
-    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode)},{\psil*sin(\longascnode)},0) {node[anchor=south east]{$\hat{x}_L$}};
+    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode)},{\psil*sin(\longascnode)},0) {node[anchor=east]{$\hat{x}_L$}};
     \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\longascnode+90)},{\psil*sin(\longascnode+90)},0) {node[anchor=north]{$\hat{y}_L$}};
     \draw[thin,tdplot_rotated_coords,-,dashed, color=NavyBlue] (0,0,0) -- ({\orbitl*cos(\longascnode)},{\orbitl*sin(\longascnode)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=south east]{$m_1$}};
 
