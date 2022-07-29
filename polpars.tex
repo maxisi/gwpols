@@ -450,7 +450,22 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 \newcommand{\jonesbasis}{\vec{\mathfrak{e}}}
 
 The domain for the parameters in \eq{hcomp_ellip} is $A \geq 0$, $-1 \leq \epsilon \leq 1$, $0 \leq \theta < 2\pi$ and $0 \leq \phi < 2\pi$ (or, equivalently, $-\pi \leq \theta < \pi$ and $-\pi \leq \phi < \pi$).
-However, if $\theta$ and $\phi$ are allowed to very independently over this range, this results in a double covering of the waveform phase space, since the template is invariant under the addition or subtraction of $\pi$ to both $\theta$ and $\phi$, i.e., the transformations $\{\theta, \phi\} \to \{\theta \pm \pi, \phi \pm \pi\}$ for any combination of plus and minus signs; this degeneracy is easy to infer from Fig.~\ref{fig:ellipse}, and can be traced back to the property discussed in Footnote \ref{foot:angles} in relation to $\phi_{R/L}$.
+However, allowing $\theta$ and $\phi$ to vary freely over this range results in a double covering of the waveform space; this is because the template is invariant under the addition or subtraction of $\pi$ to both $\theta$ and $\phi$, i.e., under the transformations $\{\theta, \phi\} \to \{\theta \pm \pi, \phi \pm \pi\}$, for any combination of plus and minus signs
+The existence of this degeneracy is easy to infer from Fig.~\ref{fig:ellipse}, and can be traced back to the property discussed in Footnote \ref{foot:angles} in relation to $\phi_{R/L}$.
+Over the $[-\pi, \pi]$ branch cut, the $\{\theta, \phi\}$ space can therefore be restricted to a diamond bounded by the four diagonals satisfying $|\phi| = \pi \pm \theta$.
+
+The requirement for $\theta$ to extend all the way up to $2\pi$ (or $\pm \pi$) arises from our definition of the phase angle $\phi$ with respect to the semimajor axis of the ellipse (see Fig.~\ref{fig:ellipse}).
+Fundamentally, however, $\theta$ need only be specified over half that range in order to determine the orientation of the ellipse, disregarding the signal phase.
+Indeed, had we instead chosen to work in terms of a phase angle $\bar{\phi} \equiv \theta - \phi = -\phi_R$ defined relative to the $h_+$ axis (and thus decoupled from $\theta$), \eq{hcomp_ellip} would have become
+\begin{subequations} \label{eq:hcomp_ellip_2th}
+\beq
+h_+ = \frac{A}{2} \left[\left(1+\epsilon\right) \cos(\omega t + \bar{\phi}) + \left(1 - \epsilon\right) \cos(\omega t + \bar{\phi} - 2\theta) \right] ,
+\eeq
+\beq
+h_\times = \frac{A}{2} \left[\left(1 + \epsilon\right) \sin(\omega t + \bar{\phi}) -\left(1-\epsilon\right) \sin(\omega t + \bar{\phi} - 2\theta) \right] ,
+\eeq
+\end{subequations}
+
 Based on \eq{hcomp_ellip}, the angle $\theta$ is required to vary over the full range $[0, 2\pi]$ in order to allow for all waveform phases; however, fundamentally, $\theta$ would only enter the waveform as $2\theta$ had we defined the phase offset with respect to the $+$-polarization axis, i.e., replacing $\phi$ by $\hat{\phi} \equiv \theta + \phi = \phi_L$; with that replacement, $\theta$ need only vary over $[0, \pi]$ (or $[-\pi/2, \pi/2]$), as it is clear by considering the orientation of the ellipse in Fig.~\ref{fig:ellipse} irrespective of the initial phase. 
 
 We can obtain another useful parametrization for fully polarized states by replacing the ellipticity parameter $\epsilon$ in \eq{hcomp_ellip} with an angle $\chi \equiv \arctan \epsilon$, which is also illustrated in Fig.~\ref{fig:ellipse}.
