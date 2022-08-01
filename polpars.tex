@@ -401,6 +401,7 @@ The shape of the ellipse can also be parametrized in terms of the angle $\chi \e
 \label{sec:ellip:mono}
 
 \subsubsection{Morphology}
+\label{sec:ellip:mono:morph}
 
 Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space (Fig.~\ref{fig:ellipse}).
 We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,%
@@ -429,7 +430,7 @@ h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin
 \end{subequations}
 with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$.%
 \footnote{Since $\phi_{R/L}$ are $2\pi$-periodic, the most generic relation between them and $\{\theta$, $\phi\}$ is actually $\theta = [\phi_L - \phi_R  + 2\pi (k-j)]/2 \mod 2\pi$ and $\phi = [\phi_L + \phi_R  + 2\pi (k+j)]/2 \mod 2\pi$ for any integers $k,j$. \label{foot:angles}}
-In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
+In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented so as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
 The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as $\hat{A} \equiv \sqrt{A_R^2 + A_L^2} = A \sqrt{1 + \epsilon^2}$.
 
 Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.\footnote{We use ``elliptical'' generically to also encompass circular and linear polarizations as special cases; in this sense, ``elliptical'' and ``fully polarized'' are synonyms.}
@@ -451,8 +452,9 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 
 The domain for the parameters in \eq{hcomp_ellip} is $A \geq 0$, $-1 \leq \epsilon \leq 1$, $0 \leq \theta < 2\pi$ and $0 \leq \phi < 2\pi$ (or, equivalently, $-\pi \leq \theta < \pi$ and $-\pi \leq \phi < \pi$).
 However, allowing $\theta$ and $\phi$ to vary freely over this range results in a double covering of the waveform space; this is because the template is invariant under the addition or subtraction of $\pi$ to both $\theta$ and $\phi$, i.e., under the transformations $\{\theta, \phi\} \to \{\theta \pm \pi, \phi \pm \pi\}$, for any combination of plus and minus signs
-The existence of this degeneracy is easy to infer from Fig.~\ref{fig:ellipse}, and can be traced back to the property discussed in Footnote \ref{foot:angles} in relation to $\phi_{R/L}$.
+The existence of this degeneracy is easy to infer from Fig.~\ref{fig:ellipse}, and can be traced back to the property discussed in footnote \ref{foot:angles} in relation to $\phi_{R/L}$.
 Over the $[-\pi, \pi]$ branch cut, the $\{\theta, \phi\}$ space can therefore be restricted to a diamond bounded by the four diagonals satisfying $|\phi| = \pi \pm \theta$.
+This comes into play in practice when translating between probability densities obtained under different parametrizations, as we do in Sec.~\ref{sec:jacobians}.
 
 The requirement that $\theta$ extend all the way up to $2\pi$ (or $\pm \pi$) arises from our definition of the phase angle $\phi$ with respect to the semimajor axis of the ellipse (see Fig.~\ref{fig:ellipse}).
 Fundamentally, however, $\theta$ need only be specified over half that range in order to determine the \emph{orientation} of the ellipse, disregarding the signal phase.
@@ -465,7 +467,7 @@ h_+ = \frac{A}{2} \left[\left(1+\epsilon\right) \cos(\omega t + \bar{\phi}) + \l
 h_\times = \frac{A}{2} \left[\left(1 + \epsilon\right) \sin(\omega t + \bar{\phi}) -\left(1-\epsilon\right) \sin(\omega t + \bar{\phi} - 2\theta) \right] ,
 \eeq
 \end{subequations}
-where now $0 \leq \theta < \pi$ (or $-\pi/2 \leq \theta < \pi/2$) spans the full space of waveforms, with the initial phase set freely by $0 \leq \bar{\phi} < 2\pi$.
+where now $\theta$ only enters the template as $2\theta$, and so $0 \leq \theta < \pi$ (or $-\pi/2 \leq \theta < \pi/2$) spans the full space of waveforms, with the initial state set freely by $0 \leq \bar{\phi} < 2\pi$.
 
 We can obtain another useful parametrization for fully polarized states by replacing the ellipticity parameter $\epsilon$ in \eq{hcomp_ellip} with an angle $\chi \equiv \arctan \epsilon$, which is also illustrated in Fig.~\ref{fig:ellipse}.
 In terms of this quantity and the intensity amplitude $\hat{A}=A\sqrt{1+\epsilon^2}=A \sec\chi$, the elliptical mode of \eq{hcomp_ellip} becomes
@@ -478,14 +480,13 @@ h_\times = \hat{A} \left[\cos\chi \sin \theta \cos(\omega t - \phi) + \sin\chi \
 \eeq
 \end{subequations}
 Now, $\chi = 0$ gives a linearly polarized state, while $\chi=\pm \pi/4$ gives a R/L circularly polarized state.
-Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$, and we can further limit $0 \leq \theta \leq \pi$ and $0 \leq \phi \leq \pi$, since Eqs.~\eqref{eq:hcomp_ellip} and\eqref{eq:hcomp_ellip_chi} are invariant under $\{\theta \to \theta + \pi,  \phi \to \phi + \pi\}$.
-To accommodate these ranges, it can be useful to work with alternative angles $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$ that are allowed to range fully over $[0, 2\pi]$.
+Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \epsilon \leq 1$.
 
 \subsubsection{Mathematical framework}
 \label{sec:math}
 
 The mathematical treatment of polarized GW states is entirely analogous to the electromagnetic case.
-To start, any of these states can be represented graphically by series of phasor diagrams like the one in Fig.~\ref{fig:ellipse}, as in the bottom of Figs.~\ref{fig:pol_diagram_circ} and \ref{fig:pol_diagram_ellip}.
+To start, any of these states can be represented graphically by a series of phasor diagrams like the one in Fig.~\ref{fig:ellipse}, as in the bottom of Figs.~\ref{fig:pol_diagram_circ} and \ref{fig:pol_diagram_ellip}.
 For monochromatic modes (i.e., of a definite $\omega$), the same information can also be encoded algebraically in a complex valued \emph{Jones vector} $\vec{C}$ like 
 % Any fully-polarized state can be represented by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
 % Additionally, for a monochromatic mode, the time dependence of the phasor can be factored out so that the whole state is encoded in a \emph{Jones vector} $\vec{A}$ like
@@ -565,7 +566,7 @@ while its size may increase or decrease according to $\mathcal{A}(t)$.
 The initial state of the signal is defined by the initial amplitude $A = \mathcal{A}(t=0)$ and phase $\phi = \Phi(t=0)$.
 
 Most conceivable signals are neither monochromatic nor fully polarized.
-Nevertheless, a large variety of morphologies can be captured with a finite superposition of elliptically polarized modes, potentially with time-varying polarization parameters as above.
+Nevertheless, a large variety of morphologies can be captured by a finite superposition of elliptically polarized modes, potentially with time-varying polarization parameters as above.
 This should be apparent from the fact that an (uncountably) \emph{infinite} set of elliptical modes can describe \emph{any} GW signal, as we showed in \eq{hcomp_fd_rl}.
 For many practical applications, it is advantageous to decompose signals into 
 sums of fully-polarized modes in the shape of \eq{ellip_gen},
@@ -1064,28 +1065,44 @@ A_L = \frac{1}{\sqrt{2}} A \left(1 - \epsilon\right) \\
 These expressions are particularly simple: amplitude parameters $\{ A_R, A_L\}$ transform directly into amplitude parameters $\{A, \epsilon\}$, irrespective of phasing angles.
 This is a consequence of the fact that the circular polarizations are defined to be invariant under rotations around the direction of propagation, up to an overall phase as shown in \eq{htransf_circ}.
 
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{jac_Aeps_Arl}
+\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{A_R,A_L\}$ over the ranges $0 < A_{R/L} \leq A_{R/L,\max}$.
+Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example};
+failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonuniform distribution on $\epsilon$ (right panel).
+Restricting to $A < A_{\max}$ (blue), the density is proportional to $A$ and flat in $\epsilon$, following $\propto 1/J_1$ for the Jacobian in \eq{jac_Aeps_Arl} (dashed curves).
+The marginal histograms are normalized by bin count.
+}
+\label{fig:jac_Aeps_Arl}
+\end{figure}
+
 The above transformations imply a Jacobian
 \begin{equation} \label{eq:jac_Aeps_Arl}
 J_1 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(A_R, A_L, \phi_R, \phi_L)}\right| \propto \frac{1}{A_R + A_L}\, ,
 \end{equation}
 with a proportionality constant of $1/\sqrt{2}$, which is ignored in most applications as it can be absorbed by an overall normalization; based on \eq{Cphi_to_Aellip}, this is also proportional to $1/A$.
 Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode defined by $A$ (Fig.~\ref{fig:jac_Aeps_Arl}).
-An isotropic prior in $0 < \phi_{R/L} < 2\pi$ is also uniform in $0 < \theta <\pi$ and $0 < \phi <\pi$.
+
+\begin{figure}
+\includegraphics[width=0.8\columnwidth]{jac_Aeps_Arl_angles}
+\caption{Distribution imposed on $\{\theta,\phi\}$ by applying a flat prior on $\{\phi_R,\phi_L\}$ over $-\pi/2 < \phi_{R/L} \leq \pi/2$, through the simple transformation of \eq{Aellip_to_Cphi} (gray) or the more generic version in footnote \ref{foot:angles} (blue).
+The latter spans the full domain by populating the corners outside the diagonals defined by $|\phi| = \pi \pm \theta$ (dotted lines), restoring uniformity in the marginals (blue dashed) at the expense of double covering the waveform space.
+In practice, the samples from the blue distribution can be obtained by randomly adding $\pm \pi$ to both $\theta$ and $\phi$ for  half of the samples drawn from the gray distribution.
+The marginal histograms are normalized by bin count.
+}
+\label{fig:jac_Aeps_Arl_angles}
+\end{figure}
 
 Equation \eqref{eq:jac_Aeps_Arl} implies that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_{R/L,\mathrm{max}}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0$ and $A=\sqrt{2}\,A_{R/L,\mathrm{max}}$, and peaks at $A = A_{R/L,\mathrm{max}}/\sqrt{2} \equiv A_{\max}$ (top panel of Fig.~\ref{fig:jac_Aeps_Arl}).
 Without enforcing a $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (left panel of Fig.~\ref{fig:jac_Aeps_Arl}).
 This was the case, e.g., for one of the ringdown analyses in \cite{LIGOScientific:2020tif}, which sampled uniformly in amplitude coefficients equivalent to $A_{R/L}$ up to an overall scaling.
 
-\begin{figure}
-\includegraphics[width=0.8\columnwidth]{jac_Aeps_Arl}
-\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{A_R,A_L\}$ over the ranges $0 < A_{R/L} \leq A_{R/L,\max}$.
-Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example};
-failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonunform distribution on $\epsilon$ (right panel).
-Restricting to $A < A_{\max}$ (blue), the density is proportional to $A$ and flat in $\epsilon$, following $\propto 1/J_1$ for the Jacobian in \eq{jac_Aeps_Arl} (dashed curves).
-The marginal histograms are normalized by bin count.
-}
-\label{fig:jac_Aeps_Arl}
-\end{figure}
+The absence of angles in \eq{jac_Aeps_Arl} indicates that a uniform distribution in $\phi_{R/L}$ is also uniform in terms of $\theta$ and $\phi$.
+However, this feature can be obfuscated by the fact that the relation between the two sets of angles is not strictly bijective due to their $2\pi$-periodicities (see footnote \ref{foot:angles}).
+%Applying the transformation as written in \eq{Aellip_to_Cphi}, the boundaries of the domain in $\{\theta, \phi\}$ space will exhibit
+When applied as written, \eq{Aellip_to_Cphi} transforms a uniform distribution over $-\pi/2 < \phi_{R/L} < \pi/2$ into a uniform distribution over a $\pi/4$-rotated square domain in the $\{\theta, \phi\}$-space, as implied by the discussion in Sec.~\ref{sec:ellip:mono:morph} and illustrated in Fig.~\ref{fig:jac_Aeps_Arl_angles}; the corresponding marginals appear to favor $\theta=0$ and $\phi = 0$ (gray in Fig.~\ref{fig:jac_Aeps_Arl_angles}).
+The uniformity over the full range of angles can again be made manifest by applying the more generic transformation of footnote \ref{foot:angles} (blue in Fig.~\ref{fig:jac_Aeps_Arl_angles}), at the expense of restoring the double-covering of the waveform space described in Sec.~\ref{sec:ellip:mono:morph}.
+
 
 We can also relate the circular amplitudes to the alternative parametrization of \eq{hcomp_ellip_chi}.
 The straightforward relation is given by the transformations
@@ -1181,11 +1198,12 @@ This is because this coordinate transformation encodes the frame rotation that w
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
 \caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
-The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, and $\pi/2 \leq \theta,\phi <\pi/2$, as in the example of Fig.~\ref{fig:jac_example}.
+The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, as in the example of Fig.~\ref{fig:jac_example}.
 The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
-The difference between the blue and gray distributions for $\theta$ and $\phi$ is an artifact of the chosen angle ranges: it would not have appeared had we instead worked with $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$, both in the range $[0,2\pi]$.
+The difference between the blue and gray distributions for $\theta$ and $\phi$ is explained in the same way as in Fig.~\ref{fig:jac_Aeps_Arl_angles}.
+% an artifact of the chosen angle ranges: it would not have appeared had we instead worked with $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$, both in the range $[0,2\pi]$.
 %The marginal histograms are normalized by bin count.
-The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi} ($\theta = 0, \pm\pi/2$).
+The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi}.
 }
 \label{fig:jac_Aphi}
 \end{figure}
