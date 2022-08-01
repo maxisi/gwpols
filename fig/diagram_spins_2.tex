@@ -96,7 +96,6 @@
 
     \draw[thin,tdplot_rotated_coords,-,dashed,opacity=0] (0,0,0) -- ({\orbitl*cos(\orbphase)},{\orbitl*sin(\orbphase)},0) {node[shape=circle,fill=black, scale=0.7,opacity=1]{} node[anchor=south east,color=black,opacity=1]{$m_1$}};
 
-    %\draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\psil*cos(\orbphase+180)},{\psil*sin(\orbphase+180)},0) {node[anchor=north west]{$\hat{y}_L$}};
     \draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\orbitl*cos(\orbphase+180)},{\orbitl*sin(\orbphase+180)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};
 
     %\draw[thin,opacity=0.5] (\discrad,0,0) arc (0:360:\discrad);
