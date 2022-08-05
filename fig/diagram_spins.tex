@@ -14,7 +14,8 @@
 \pgfmathsetmacro{\phiNvec}{80}
 
 \pgfmathsetmacro{\orbphase}{25}
-\pgfmathsetmacro{\longascnode}{-148}
+%\pgfmathsetmacro{\longascnode}{-148}
+\pgfmathsetmacro{\longascnode}{-148-180}
 
 \pgfmathsetmacro{\wfl}{\rvec}
 \newcommand{\wfcolor}{gray}
@@ -63,7 +64,7 @@
     \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=gray,opacity=0.5]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=gray}{}
     \tdplotdrawarc[thin,tdplot_rotated_coords,color=gray,opacity=0.5]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=gray}{}
 
-    \draw[tdplot_rotated_coords,color=gray, opacity=0.5] (0,0,0) -- ({\rvec*cos(\longascnode)},{\rvec*sin(\longascnode)},0) {node[anchor=south]{$\ascnode$}};
+    \draw[tdplot_rotated_coords,color=gray, opacity=0.5,dashed] (0,0,0) -- ({\rvec*cos(\longascnode)},{\rvec*sin(\longascnode)},0) {node[anchor=north east]{$\ascnode$}};
 
     
 %% Hiding theta_JL since it's not ever computed
@@ -85,16 +86,17 @@
     
     \draw[thin,tdplot_rotated_coords, gray, opacity=0.2] (\wfl,0,0)
         -- (-\wfl,0,0) node[anchor=north west]{};
-    \tdplotdrawarc[NavyBlue,thick,tdplot_rotated_coords]{(0,0,0)}{\orbitl}{0}{-94}{anchor=east,text height=-50pt}{$\phi_{\rm orb}$}
-    \tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58+90}{\orbphase - 5}{}{}
+    \tdplotdrawarc[NavyBlue,thick,tdplot_rotated_coords]{(0,0,0)}{\orbitl}{0}{-180}{shift={(1.5,0.5)},anchor=east,text height=-50pt}{$\phi_{\rm orb}$}
+    \tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
+    \tdplotdrawarc[thick,tdplot_rotated_coords,|-,dashed,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,dashed,NavyBlue]{(0,0,0)}{\orbitl}{0}{85}{}{}
+    %\tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,NavyBlue]{(0,0,0)}{\orbitl}{-180}{-270}{}{}
 
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}%
-        {180}{anchor=east,color=NavyBlue}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}%
-        {-180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=NavyBlue}{}
 
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{-180}{anchor=east,color=NavyBlue}{}
+    %\tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}
+    %\tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{-180}{anchor=east,color=NavyBlue}{}
 
     \draw[thick,->] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{J}$};
 
