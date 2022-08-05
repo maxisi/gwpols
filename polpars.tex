@@ -847,14 +847,14 @@ which is the same result we would have obtained by replacing $\theta \to \theta'
 for a signal made up of multiple fully-polarized components, as in \eq{ellip_sum}, the waveframe orientation affects all ellipse orientations in the same way, i.e., $\theta_n \to \theta_n'=\theta_n + \Delta\psi$ (Fig.~\ref{fig:diagram_ellipse_extra}).
 We could have equivalently (and more quickly) derived this by noting that $\theta$ is related to the phases of the circularly-polarized components of the signal by $\theta = \left(\phi_L - \phi_R\right)/2$, as in \eq{hcomp_ellip}; the transformation rule for $\theta$ then follows from \eq{htransf_circ}, which implies $\phi_{R/L} \to \phi'_{R/L} \mp 2\Delta\psi$, with the negative (positive) sign for R (L).
 
-This implies that elliptical-wave analyses that allow $\theta$ to vary freely should avoid degeneracies by fixing $\psi$ to an arbitrary a priori value.
+This relation between $\theta$ and $\psi$ implies that elliptical-wave analyses that allow $\theta$ to vary freely should avoid degeneracies by fixing $\psi$ to an arbitrary a priori value.
 Choosing this fiducial value to be $\psi=0$, the template at a given detector would be constructed as
 \begin{equation}
 h = F_+(\psi=0)\, h_+ + F_\times(\psi=0)\,  h_\times \, ,
 \end{equation}
 for $h_{+/\times}$, as in Eq.~\eqref{eq:ellip_sum}, functions of $\{\theta_i, \epsilon_i\}$ and whatever other parameters are needed to evaluate the amplitude and phasing functions $\{\mathcal{A}_i(t), \Phi_i(t)\}$ (or their frequency-domain analogs).
-The antenna patterns $F_{+/\times}$ are evaluated for some sky location and arrival time, which can be allowed to vary in order to measure them from the data.
-On the other hand, the angle $\psi$ is fixed; allowing it to vary would amount to shifting all $\theta_i$ values by $2\psi$, per Eq.~\eqref{eq:theta_psi}.
+The antenna patterns $F_{+/\times}$ are evaluated for some sky location and arrival time, which can be allowed to vary so as to measure them from the observed data.
+On the other hand, the angle $\psi$ is fixed; allowing it to vary would amount to shifting all $\theta_i$ values by $2\psi$, per Eq.~\eqref{eq:theta_psi} and Fig.~\ref{fig:diagram_ellipse_extra}.
 Fixing $\psi$ to some fiducial value was the approach taken in \cite{Isi:2017equ,Chatziioannou:2021mij,Isi:2021iql}.
 
 
@@ -939,22 +939,22 @@ In this convention, then, $\hat{x} = -\hat{e}_\iota$, $\hat{y} = -\hat{e}_\varph
 
 Having specified $h_+$ and $h_\times$ in that standard, source-based frame, all we need to do to predict the signal at a given detector is to evaluate \eq{h}.
 As described in Sec.~\ref{sec:pol}, this is done in practice by expressing $\{\hat{x}, \hat{y}\}$ in terms of canonical reference vectors $\{\hat{x}',\hat{y}'\}$, which are themselves tied to an Earth-centered celestial coordinate system (Fig.~\ref{fig:diagram_waveframe}).
-By convention, we specify the relative orientation between the two frames through the angle $\psi$ defined clockwise from $\hat{x}$ and $\hat{x}'$ around $\hat{z}$, itself the intersection of the celestial equator with the plane of the sky \cite{LALSuite:wave,Anderson:T010110}.
-Knowing that for CBCs $\hat{y}$ was constructed to lie along the line of nodes, then $\psi = 0$ must mean that the ascending node points towards the projected celestial north ($\hat{y}'=\hat{y}=\ascnode$), and that the projection of the orbital angular momentum onto the plane of the sky is parallel to the horizon due west ($\hat{x}'=\hat{x}=\hat{L}_\perp$); we illustrate this in Fig.~\ref{fig:diagram_skyview} from the point of view of the observer.
+By convention, we specify the relative orientation between the two frames through the angle $\psi$ defined clockwise from $\hat{x}$ to $\hat{x}'$ around $\hat{z}$, where $\hat{x}'$ is the intersection of the celestial equator with the plane of the sky \cite{LALSuite:wave,Anderson:T010110}.
+Knowing that, for CBCs, $\hat{y}$ was constructed to lie along the line of nodes, then $\psi = 0$ must mean that the ascending node points towards the projected celestial north ($\hat{y}'=\hat{y}=\ascnode$), and that the projection of the orbital angular momentum onto the plane of the sky is parallel to the horizon due west ($\hat{x}'=\hat{x}=\hat{L}_\perp$); we illustrate this in Fig.~\ref{fig:diagram_skyview} from the point of view of the observer.
 
-In this convention, $\psi$ is identical to the complement of the \emph{position angle} of the source's orbital angular momentum $\Psi$, defined to be angle between the projected orbital angular momentum and the celestial north in the plane of the sky (i.e., the angle between $\hat{L}_\perp$ and $\hat{y}'$ in Fig.~\ref{fig:diagram_sourceframe}, shown explicitly in Fig.~\ref{fig:diagram_skyview} for $\Omega=\pi/2$).
+In this convention, $\psi$ is identical to the complement of the \emph{position angle} of the source's orbital angular momentum $\Psi$, defined to be the angle between the projected orbital angular momentum and the celestial north in the plane of the sky (i.e., the angle between $\hat{L}_\perp$ and $\hat{y}'$ in Fig.~\ref{fig:diagram_sourceframe}, shown explicitly in Fig.~\ref{fig:diagram_skyview} for $\Omega=\pi/2$).
 More generally, $\Psi = \pi - \psi - \Omega$ in terms of the \emph{longitude of the ascending node} $\Omega$ with $\hat{x}$ as the origin of longitude.
 LIGO and Virgo always fix $\Omega = \pi/2$ \cite{LALSuite:source}, tying the primed polarization frame, in which $h_{+/\times}$ are predicted, to the source geometry.
 Thus, when LIGO-Virgo report measurements of the polarization angle in CBCs, the quantity reported is the in-plane sky angle of the orbital ascending node relative due north.
 
-In fact, with these conventions for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of our polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
+In fact, with these conventions for a nonprecessing binary, the three angles $\psi$, $\Psi$ and $\theta$ can all be subsumed by a single parameter (usually written $\psi$) simultaneously encoding the orientation of the polarization basis, the alignment of the source in the sky, and the principal axes of the GW polarization ellipse.
 We can then think of this angle as a property of the source to be measured from our data, rather than an arbitrary parameter orienting our frame.
 Although this equivocation vastly simplifies analyses, it is helpful to keep in mind that the three angles are conceptually distinct: $\psi$ can always be defined, but $\theta$ only exists for fully polarized waves, and $\Psi$ is an orbital element, not defined for arbitrary sources (say, a stochastic source, or a supernova).
 
 If the component spins are not (anti)aligned with the orbital angular momentum, the spins and the orbital plane will both precess.
 As a consequence, the system will not be reflection symmetric and the GW signal will not be elliptically polarized overall (see Sec.~\ref{sec:harmonics}).
-Nonetheless, it is still conventional to tie $\hat{y}$ to the source as in Fig.~\ref{fig:diagram_sourceframe}, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz).
-In that case, yet another coordinate frame is used to specify the component spins at the reference time, as specified in \cite{LALSuite:spins} and illustrated in, e.g., Fig.~1 in \cite{Varma:2021csh}.
+Nonetheless, it is still conventional to tie $\hat{y}$ to the source as in Fig.~\ref{fig:diagram_sourceframe}, referring to the line of nodes as oriented at some specific point in the binary evolution (e.g., when the detected GW signal reaches 20 Hz, or at a mass-invariant reference point \cite{Varma:2021csh,Mould:2021xst}).
+In that case, yet another coordinate frame is used to specify the component spins at the reference time, as specified in \cite{LALSuite:spins} and illustrated in App.~\ref{app:spins}.
 
 In summary, we can identify three conceptually distinct Cartesian frames: a wave frame that determines the principal directions along which we \emph{define} the effect of a plus vs cross wave; for an elliptical wave, an intrinsic polarization frame, encoding the principal directions of the polarization ellipse; and a source frame, aligned with the symmetries of the source, or otherwise anchored to some defining feature of it; all of these can be specified in some astronomical frame, like ecliptic celestial coordinates.
 For nonprecessing binaries, which are highly symmetric, we can define the source frame to make it always align with the polarization frame.
@@ -975,7 +975,8 @@ Measurements obtained with different parametrizations can be related via a Jacob
 
 We may also want to switch parametrizations for technical reasons.
 Although conceptually insightful, the manifestly-elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ of \eq{hcomp_ellip} contains multiple degeneracies that make it less than ideal for sampling purposes.
-For instance, the angles $\theta$ and $\phi$ become totally degenerate when $\epsilon = \pm 1$; another degeneracy appears as $\theta \to \theta + \pi$ and $\epsilon \to - \epsilon$.
+For instance, the angles $\theta$ and $\phi$ become totally degenerate when $\epsilon = \pm 1$.
+% another degeneracy appears as $\theta \to \theta + \pi$ and $\epsilon \to - \epsilon$.
 To circumvent this, we may switch to a more suitable parametrization in the sampling process, and then translate the result back into $\{A, \epsilon, \theta, \phi\}$ for interpretation.
 In that case, we can still specify a prior in terms of the elliptical quantities by again making use of a Jacobian.
 
@@ -1016,7 +1017,7 @@ The marginal histograms are normalized by bin count.
 
 In Sec.~\ref{sec:ellip:mono}, we presented two equivalent parametrizations of the $h_{+/\times}$ components of an elliptical wave, Eqs.~\eqref{eq:hcomp_ellip} and \eqref{eq:hcomp_ellip_chi}, illustrated in Fig.~\ref{fig:ellipse}.
 Equation ~\eqref{eq:hcomp_ellip} parametrizes the signal strength via the maximum amplitude achieved by the wave, $A$ (the semimajor axis in Fig.~\ref{fig:ellipse}), and the shape of the polarization ellipse via the ellipticity, $\epsilon$ (the ratio between the semiminor and semimajor axes);
-meanwhile, Eq.~\eqref{eq:hcomp_ellip_chi} parametrizes the strength via the intensity amplitude $\hat{A}$, which is the square-root of the signal intensity $I$, and the shape of the ellipse throught the angle $\chi$.
+meanwhile, Eq.~\eqref{eq:hcomp_ellip_chi} parametrizes the strength via the intensity amplitude $\hat{A}$, which is the square-root of the signal intensity $I$, and the shape of the ellipse through the angle $\chi$.
 The two parametrizations are straigthforwardly related by
 \begin{equation} \label{eq:Aellip_Ahatchi}
 \begin{cases}
@@ -1037,7 +1038,7 @@ The Jacobian relating these two transformations is simply
 J_0 \equiv \left| \frac{\partial(A,\epsilon,\theta,\phi)}{\partial(\hat{A}, \chi, \theta, \phi)}\right| =  \sec \chi = \sqrt{1 + \epsilon^2} \, ,
 \end{equation}
 or, equivalently $J_0 = \hat{A}/A$.
-This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uniform prior in the $\{\hat{A}, \chi\}$ quantities implicitly favors linear polarizations relative to circular ones.
+This Jacobian, illustrated in Fig.~\ref{fig:jac_Aeps_Achi}, indicates that a uniform prior in the $\{\hat{A}, \chi\}$ quantities implicitly favors linear polarizations ($\epsilon = 0$) over circular ones, although the preference is mild.
 
 \subsection{Circular components}
 \label{sec:jac:Arl}
@@ -1052,8 +1053,9 @@ A = \frac{1}{\sqrt{2}}\left(A_R + A_L\right) \\
 \epsilon = (A_R - A_L)/(A_R + A_L) \\ 
 \theta = \frac{1}{2}(\phi_L - \phi_R)\\
 \phi = \frac{1}{2}(\phi_L + \phi_R)\\
-\end{cases} .
+\end{cases} 
 \end{equation}
+(although see footnote \ref{foot:angles} for the angles).
 Equivalently, the inverse transformation is 
 \begin{equation} \label{eq:Aellip_to_Cphi}
 \begin{cases}
@@ -1095,7 +1097,7 @@ The marginal histograms are normalized by bin count.
 \end{figure}
 
 Equation \eqref{eq:jac_Aeps_Arl} implies that an analysis that samples uniformly in $A_R$ and $A_L$ within some range $0 \leq A_{R,L} \leq A_{R/L,\mathrm{max}}$ actually favors large overall mode amplitudes $A$, with a triangular distribution that vanishes at $A=0$ and $A=\sqrt{2}\,A_{R/L,\mathrm{max}}$, and peaks at $A = A_{R/L,\mathrm{max}}/\sqrt{2} \equiv A_{\max}$ (top panel of Fig.~\ref{fig:jac_Aeps_Arl}).
-Without enforcing a $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (left panel of Fig.~\ref{fig:jac_Aeps_Arl}).
+Without enforcing the $A \leq A_{\max}$ constraint, the ellipticity distribution will no longer be uniform, instead favoring linear polarizations (right panel of Fig.~\ref{fig:jac_Aeps_Arl}).
 This was the case, e.g., for one of the ringdown analyses in \cite{LIGOScientific:2020tif}, which sampled uniformly in amplitude coefficients equivalent to $A_{R/L}$ up to an overall scaling.
 
 The absence of angles in \eq{jac_Aeps_Arl} indicates that a uniform distribution in $\phi_{R/L}$ is also uniform in terms of $\theta$ and $\phi$.
@@ -1166,7 +1168,7 @@ Structurally, this mimics the parametrization adopted by \textsc{BayesWave} for 
 \includegraphics[width=\columnwidth]{diagram_apac}
 \caption{Geometric derivation of Eq.~\eqref{eq:Aphi_to_Cphi} for the left-handed polarization case.
 \emph{Left:} Following Eq.~\eqref{eq:Aphi}, the plus and cross Jones-vecor amplitudes, $\vec{C}_{+/\times} = A_{+/\times} \exp(i \phi_{+/\times})$, subtend angles $\phi_{+/\times}$ relative to the real axis ($x$, abscissa) and thus have Cartesian coordinates $\left(\xpc, \ypc \right)$, in terms of the quadratures defined in Eq.~\eqref{eq:xy}; the vector $i\vec{C}_\times$ is orthogonal to $\vec{C}_\times$, so that it subtends an angle $\pi/2 + \phi_\times-\phi_+$ with respect to $\vec{C}_+$.
-\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
+\emph{Right:} the left-handed Jones amplitude, $\vec{C}_L = (\vec{C}_+ + i \vec{C}_\times)/\sqrt{2}$, has components $\left(\xp - \yc, \yp + \xc\right)/\sqrt{2}$ and, therefore, $\phi_R = \mathrm{atan2}( \yp + \xc, \xp - \yc)$; since the acute angle between $\vec{C}_+$ and $i\vec{C}_\times$ is $\pi - (\pi /2 + \phi_\times - \phi_+) = \phi_+ - \phi_\times + \pi/2$, the law of cosines implies Eq.~\eqref{eq:Aphi_to_Cphi} for $A_L$. (The right-handed case is analogous).
 }
 \label{fig:diagram_apac}
 \end{figure}
@@ -1310,7 +1312,7 @@ The lack of dependence of $J_3$ on the orientation ellipse $\theta$ indicates th
 
 The features described above are visible in the distribution imposed on $\{A,\epsilon,\theta,\phi\}$ by drawing uniformly on $\{\xpc, \ypc\}$, as shown in Fig.~\ref{fig:jac_Axy} for $A$ and $\epsilon$.
 Over the targeted region ($A < A_{\max}$) the distribution steeply favors high signal amplitudes; it also favors linear polarizations ($\epsilon = 0$), although less sharply than in Fig.~\ref{fig:jac_Aphi}.
-Enforcing $A < A_{\max}$, no specific value of $-\pi/2 < \theta, \phi < \pi/2$ is preferred; however, a similar structure to that in Fig.~\ref{fig:jac_Aphi} would appear outside that range of angles, which can again be mitigated by working with $\bar{\theta}$ and $\bar{\phi}$ instead.
+Enforcing $A < A_{\max}$, no specific value of $\theta, \phi$ is preferred; however, a similar structure to that in Fig.~\ref{fig:jac_Aphi} would appear unless explicitly mitigated, as explained in that case.
 The constraint on the amplitude, $A < A_{\rm max}$, is crucial to guarantee isotropy in the ellipse orientation: without it, the corners of the squares defined by $-A_{\max} < \xpc,\ypc < A_{\max}$ would result in special directions of high probability, just as in the example of Fig.~\ref{fig:jac_example}.
 The same result could be obtained by applying an intrinsically isotropic prior in the $\{\xpc, \ypc\}$ space, e.g., uncorrelated Gaussians.
 
@@ -1321,7 +1323,7 @@ There are several applications for which it is desirable to make a connection be
 This is because even unmodeled analyses, like \textsc{BayesWave}, often target sources that are dominated by the quadrupolar harmonic of the radiation ($\ell=|m|=2$), and that can be presumed to respect the planar symmetry that gave rise to that equation (see Sec.~\ref{sec:harmonics}).
 
 In that case, a physically meaningful prior for the shape of the polarization ellipse is usually one that is uniform in $\cos\iota$, corresponding to an isotropic prior on the source orientation.
-Such a prior is necessarily nonuniform in $\epsilon$, as can be inferred from the relation between the two quantities, illustrated above in Fig.~\ref{fig:ellip_cosi}: uniform draws in $\cos\iota$ will necessarily favor circular polarizations over linear ones, since the $\epsilon$ versus $\cos\iota$ curve flattens at the edges as $\cos\iota\to\pm 1$ and $\epsilon \to \pm 1$.
+Such a prior is necessarily nonuniform in $\epsilon$, as can be inferred from the relation between the two quantities, illustrated in Fig.~\ref{fig:ellip_cosi}: uniform draws in $\cos\iota$ will necessarily favor circular polarizations over linear ones, since the $\epsilon$-versus-$\cos\iota$ curve flattens at the edges as $\cos\iota\to\pm 1$ and $\epsilon \to \pm 1$.
 Conversely, a prior uniform in $\epsilon$ will necessarily disfavor face on ($\cos\iota=+1$) or face off ($\cos\iota=-1$) sources.
 
 Indeed, the Jacobian $J_4 \equiv \left|\partial\epsilon/\partial \cos\iota\right|$, transforming from $\cos\iota$ to $\epsilon$, is
@@ -1334,26 +1336,26 @@ This indicates that a distribution uniform in $\cos\iota$ will place infinite we
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{jac_eps_cosi}
-\caption{\emph{Left:} Probability density imposed on $\epsilon$ by applying a flat prior on $\cos\iota$, which is inversely proportional to the Jacobian $J_4$ in \eq{jac_eps_cosi}; this diverges at $\epsilon = \pm 1$.
-\emph{Right:} Distribution imposed on $\cos\iota$ by a flat prior on $\epsilon$, which is directly proportional to \eq{jac_eps_cosi}; this vanishes at $\cos\iota = \pm 1$.
+\caption{\emph{Left:} Probability density imposed on $\epsilon$ by applying a flat prior in $\cos\iota$, which is inversely proportional to the Jacobian $J_4$ in \eq{jac_eps_cosi}; this diverges at $\epsilon = \pm 1$.
+\emph{Right:} Distribution imposed on $\cos\iota$ by a flat prior in $\epsilon$, which is directly proportional to \eq{jac_eps_cosi}; this vanishes at $\cos\iota = \pm 1$.
 }
 \label{fig:jac_cosi}
 \end{figure}
 
-The divergences of the Jacobian above complicate transformations from one prior to the other, and suggest their implementation in sampling applications is likely nonperformant---in other words, if the goal is to apply a uniform prior on $\cos\iota$, then we should sample in that quantity directly, not in $\epsilon$.
+The divergences of the Jacobian above complicate transformations from one prior to the other, and suggest their implementation in sampling applications is likely nonperformant---in other words, if the goal is to apply a uniform prior in $\cos\iota$, then we should sample in that quantity directly, not in $\epsilon$.
 
 This issue becomes more pronounced if, rather than being uniform in $\epsilon$, the original prior itself disfavored $\epsilon = \pm 1$ in the first place.
 This was the case for the parametrization in terms of $\hat{A}$ and $\chi$ in Sec.~\ref{sec:jac:Achi}, the linear polarization amplitudes in Sec.~\ref{sec:jac:Apc} and the linear polarization quadratures in Sec.~\ref{sec:jac:Axy}.
-Of all these, the problem is most severe for the linear polarization amplitudes, since that parametrization places high weight (formally infinite) on $\epsilon = 0$ (Fig.~\ref{fig:jac_Aphi}).
+Of all these, the problem is most severe for the linear polarization amplitudes, since that parametrization places heavy weight (formally infinite) on $\epsilon = 0$ (Fig.~\ref{fig:jac_Aphi}).
 Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}, which likely explains the difficulty in recovering the sky location of the circularly-polarized ($\cos\iota=1$) signal simulated in Fig.~11 of that work.
 
 \section{Nontensor polarizations}
 \label{sec:nongr}
 
 \newcommand{\xsym}{\ensuremath{x}}
-\newcommand{\ysym}{{y}}
-\newcommand{\bsym}{{b}}
-\newcommand{\lsym}{{l}}
+\newcommand{\ysym}{\ensuremath{y}}
+\newcommand{\bsym}{\ensuremath{b}}
+\newcommand{\lsym}{\ensuremath{l}}
 \newcommand{\hx}{h_{\xsym}}
 \newcommand{\hy}{h_{\ysym}}
 \newcommand{\hb}{h_{\bsym}}
@@ -1370,7 +1372,7 @@ h_\times  & \hb - h_+ & \hy  \\
 \eeq
 where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) modes;%
 \footnote{There are other possible normalizations in use in the literature, e.g., $\hlon \to \sqrt{2} \hlon$.}
-Equivalently, as above, we can write this as a weighted sum over polarization tensors,
+Equivalently, as above, we can write this as a weighted sum over generalized polarization tensors,
 \beq
 h_{ij} = \sum_p h_p\, e^p_{ij} \, ,
 \eeq
@@ -1412,7 +1414,7 @@ h_{v,L} &\rightarrow h_{v,L}' = h_{v,L} \exp(+ i  \Delta \psi)\, .
 \end{align}
 \end{subequations}
 Just like we can define circular vector modes, we can also construct elliptically polarized vector states.
-These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip_modes} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to field of spin weight $\left|s\right|=1$.
+These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip_modes} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to a field of spin weight $\left|s\right|=1$.
 
 
 On the other hand, the two scalar modes are invariant under rotations around $z$,
@@ -1424,7 +1426,7 @@ On the other hand, the two scalar modes are invariant under rotations around $z$
 \hlon \rightarrow \hlon' = \hlon\, ,
 \eeq
 \end{subequations}
-revealing that these behave as spin weight $s=0$ fields (hence ``scalar'').
+revealing that these behave as spin-weight $s=0$ fields (hence ``scalar'').
 Since these modes are already invariant under rotations, there is no meaningful notion of a circular (or elliptical) scalar polarization.
 %
 Furthermore, in the small-antenna limit, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
@@ -1456,18 +1458,19 @@ Since a large number of signal morphologies can be captured by superpositions of
 We then clarified the conceptual distinctions between different notions of ``polarization angle'' ($\psi$, $\theta$, and $\Psi$ or $\Omega$) and showed how the different angles can often (but not always) be used interchangeably in practice.
 In the process, we described in detail the different coordinate frames that appear in the practice of GW data analysis, including for making waveform predictions, for describing the wave propagation, and for deriving the measured signal over a network of detectors.
 The current LIGO-Virgo conventions for all these frames are illustrated in Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview}, which clarify the relations between all the relevant angles.
+(Appendix \ref{app:spins} describes an additional coordinate frame used to specify generic spins in a binary, even though it is not directly relevant to GW polarizations.)
 
-To understand the connections between analyses that make use of different polarization parametrizations, we computed Jacobians for the corresponding coordinate transformations.
+To lay out the connections between analyses that make use of different polarization parametrizations, we computed Jacobians for the corresponding coordinate transformations.
 This allowed us to understand the implications of parametrizations for the polarization of a signal assumed by, e.g., \textsc{BayesWave} or ringdown analyses.
-We found that parametrizing the GW signal in terms of the circular polarization amplitudes (Fig.~\ref{fig:jac_Aeps_Arl}), the linear polarization amplitudes (Fig.~\ref{fig:jac_Aphi}), or the cosine and sine quadratures of the linear polarizations (Fig.~\ref{fig:jac_Axy}) leads to implicitly favoring overall high signal intensities.
+We found that parametrizing the GW signal in terms of the circular polarization amplitudes (Fig.~\ref{fig:jac_Aeps_Arl}), the linear polarization amplitudes (Fig.~\ref{fig:jac_Aphi}), or the cosine and sine quadratures of the linear polarizations (Fig.~\ref{fig:jac_Axy}) leads to implicitly favoring high signal intensities.
 The parametrizations in terms of the linear amplitudes or their quadratures, as well as a parametrization in terms of an ellipse shape angle $\chi$ (Fig.~\ref{fig:jac_Aeps_Achi}), lead to favoring linear polarizations.
 This preference is particularly pronounced for the parametrization in terms of the linear amplitudes, which also picks a preferred direction for the polarization ellipse, aligned with the plus and cross axes as determined by the implicit definition of the physical waveframe (choice of $\psi$).
 We also showed how to relate the ellipticity to the inclination of a planar source, and how an isotropic prior in the source inclination is highly nonuniform in terms of ellipticity, favoring circular polarizations.
 
-In the last section, we briefly touched on the generalization to metric theories of gravity without tensor modes, for which the mathematical treatment is, for the most part, exactly analogous.
+In the last section, we briefly touched on the generalization to metric theories of gravity with additional (nontensor) modes, for which the mathematical treatment is, for the most part, exactly analogous.
 
 \begin{acknowledgments}
-I would like to thank Will Farr, Katerina Chatziioannou and Leo Stein for insighful discussions, as well as Jose Mar\'ia Ezquiaga for comments on the draft.
+I would like to thank Will Farr, Katerina Chatziioannou and Leo Stein for insighful discussions, as well as Jose Mar\'ia Ezquiaga and Jolien Creighton for comments on the draft.
 The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
 % NASA
 % M.I.\ is supported by NASA through the NASA Hubble Fellowship
@@ -1486,6 +1489,7 @@ This paper carries LIGO document number \dcc{}.
 \appendix
 
 \section{Compact-binary spin frames}
+\label{app:spins}
 
 Besides the polarization-related frames discussed in the main text, additional coordinates come into play when describing a precessing \ac{CBC}.
 These are required to specify the orientations of the spins of the individual objects in the binary, since these are not aligned with the orbital angular momentum for the case of a precessing system.
@@ -1493,8 +1497,9 @@ Even though these coordinates are not directly relevant to the description of GW
 
 \begin{figure}
 \includegraphics[width=0.8\columnwidth]{diagram_spins.pdf}
-\caption{Coordinate frames used to specify the component spin vectors for a nonprecessing \ac{CBC}. The Cartesian components of each individual spin vector $\vec{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ at a reference time (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes ($\ascnode$).
-The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame, $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$ (black). For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint gray circle), which is orthogonal to $\hat{k}$.}
+\caption{Coordinate frames used to specify the component spin vectors for a precessing \ac{CBC}. The Cartesian components of each individual spin vector $\vec{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ at a reference time (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes ($\ascnode$).
+The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame, $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$ (black). For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint gray circle), which is orthogonal to $\hat{k}$.
+(Dashed traces mark elements below the $\{\hat{x}_J, \hat{y}_J\}$ plane.)}
 \label{fig:spins}
 \end{figure}
 
