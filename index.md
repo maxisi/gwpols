@@ -1,3 +1,5 @@
+{% include lib/mathjax.html %}
+
 # Gravitational-wave polarizations
 
 Like electromagnetic waves, gravitational waves (GWs) come in two distinct polarization states. These can be parametrized in a number of ways---we illustrate a few examples below.
