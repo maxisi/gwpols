@@ -1,0 +1,84 @@
+\documentclass[tikz,dvipsnames]{standalone}
+%\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{wasysym}
+
+\begin{document}
+\tdplotsetmaincoords{60}{110}
+%
+\pgfmathsetmacro{\rvec}{0.8}
+\pgfmathsetmacro{\thetavec}{50}
+\pgfmathsetmacro{\phivec}{78}
+
+\pgfmathsetmacro{\wfl}{\rvec}
+\newcommand{\wfcolor}{gray}
+
+\pgfmathsetmacro{\psil}{\wfl}
+\pgfmathsetmacro{\psivec}{30}
+
+\pgfmathsetmacro{\discrad}{\rvec}
+%
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+    \coordinate (O) at (0,0,0);
+    \draw[thick,->] (0,0,0) -- (\rvec,0,0) node[anchor=north west]{$\vernal$};
+    \draw[thick,->] (0,0,0) -- (0,\rvec,0) node[anchor=north west]{};
+    \draw[thick,->] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$N$};
+
+    \tdplotsetcoord{P}{1.55*\rvec}{\thetavec}{\phivec}
+    \draw[thick,dotted, color=NavyBlue] (O) -- (Pxy);
+    \draw[thick,dotted, color=NavyBlue] (P) -- (Pxy);
+    \draw[-stealth,color=NavyBlue] (O) -- (P) node[fill=white, font=\Large]{$\star$};
+    \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\alpha$}
+
+    \tdplotsetthetaplanecoords{\phivec}
+    \draw[thin,opacity=0.5] (\discrad,0,0) arc (0:360:\discrad);
+
+    \tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
+    \tdplotsetrotatedthetaplanecoords{0}
+    \tdplotdrawarc[tdplot_rotated_coords,color=black]{(0,0,0)}{0.2}{0}%
+        {90-\thetavec}{anchor=south west}{$\delta$}
+
+    \tdplotsetrotatedcoords{\phivec}{180+\thetavec}{-90}
+    \draw[thick,dashed,tdplot_rotated_coords,->, NavyBlue, opacity=0.5] (0,0,0)
+        -- (0,0,\wfl) node[anchor=south east]{$\hat{z}$};
+    \draw[dashed,fill=gray,opacity=0.1] (\discrad,0,0) arc (0:360:\discrad);
+    
+    \draw[thick,tdplot_rotated_coords,->, gray] (0,0,0)
+        -- (\wfl,0,0) node[anchor=north east]{$\hat{x}'$};
+    \draw[thin,tdplot_rotated_coords, gray] (0,0,0)
+        -- (-\wfl,0,0) node[anchor=north west]{};
+    \draw[thick,tdplot_rotated_coords,->, gray] (0,0,0)
+        -- (0,\wfl,0) node[anchor=south]{$\hat{y}'$};
+    \draw[-stealth,thick,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
+        ({\psil*cos(\psivec)},{\psil*sin(\psivec)},0) node[anchor=east]{$\hat{x}$};
+    \draw[-stealth,thick,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
+        (-{\psil*sin(\psivec)},{\psil*cos(\psivec)},0) node[anchor=south]{$\hat{y}$};
+
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}%
+        {180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}%
+        {-180}{anchor=east,color=NavyBlue}{}
+
+    \tdplotdrawarc[tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{0.5*\psil}{0}%
+        {\psivec}{anchor=east,color=NavyBlue}{$\psi$}
+
+    % \tdplotsetrotatedcoordsorigin{(P)}
+    % \draw[thick,tdplot_rotated_coords,->] (0,0,0)
+    %     -- (\wfl,0,0) node[anchor=north west]{$x$};
+    % \draw[thick,tdplot_rotated_coords,->] (0,0,0)
+    %     -- (0,\wfl,0) node[anchor=west]{$y$};
+    % \draw[thick,tdplot_rotated_coords,->] (0,0,0)
+    %     -- (0,0,\wfl) node[anchor=south]{$z$};
+
+    % \draw[-stealth,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
+    %     ({\psil*cos(\psivec)},{\psil*sin(\psivec)},0) node[anchor=west]{$x'$};
+    % \draw[-stealth,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
+    %     (-{\psil*sin(\psivec)},{\psil*cos(\psivec)},0) node[anchor=west]{$y'$};
+    % % \draw[dashed,color=NavyBlue,tdplot_rotated_coords] (0,.2,0) -- (.2,.2,0);
+    % % \draw[dashed,color=NavyBlue,tdplot_rotated_coords] (.2,0,0) -- (.2,.2,0);
+
+    % \tdplotdrawarc[tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{0.5*\psil}{0}%
+    %     {\psivec}{anchor=east,color=NavyBlue}{$\psi$}
+
+\end{tikzpicture}
+\end{document}

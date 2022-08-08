@@ -1,0 +1,106 @@
+\documentclass[tikz,dvipsnames]{standalone}
+%\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary{angles,quotes,shapes.geometric}
+
+\begin{document}
+
+\pgfmathsetmacro{\lw}{0.3mm}
+
+\pgfmathsetmacro{\A}{3}
+\pgfmathsetmacro{\ellip}{0.25}
+\pgfmathsetmacro{\semiminor}{\ellip*\A}
+\pgfmathsetmacro{\ThetaAngle}{45}
+\pgfmathsetmacro{\PhiAngle}{-30}
+
+\pgfmathsetmacro{\Ax}{\A*cos(\ThetaAngle)}
+\pgfmathsetmacro{\Ay}{\A*sin(\ThetaAngle)}
+\pgfmathsetmacro{\ax}{-\semiminor*sin(\ThetaAngle)}
+\pgfmathsetmacro{\ay}{\semiminor*cos(\ThetaAngle)}
+\pgfmathsetmacro{\Ix}{\A*(cos(\ThetaAngle)*cos(-\PhiAngle)-\ellip*sin(\ThetaAngle)*sin(-\PhiAngle))}
+\pgfmathsetmacro{\Iy}{\A*(sin(\ThetaAngle)*cos(-\PhiAngle)+\ellip*cos(\ThetaAngle)*sin(-\PhiAngle))}
+
+\pgfmathsetmacro{\Ap}{2.5}
+\pgfmathsetmacro{\ellipp}{0.5}
+\pgfmathsetmacro{\semiminorp}{\ellipp*\Ap}
+\pgfmathsetmacro{\ThetaAnglep}{45+30}
+\pgfmathsetmacro{\PhiAnglep}{-30}
+
+\pgfmathsetmacro{\Axp}{\Ap*cos(\ThetaAnglep)}
+\pgfmathsetmacro{\Ayp}{\Ap*sin(\ThetaAnglep)}
+\pgfmathsetmacro{\axp}{-\semiminorp*sin(\ThetaAnglep)}
+\pgfmathsetmacro{\ayp}{\semiminorp*cos(\ThetaAnglep)}
+\pgfmathsetmacro{\Ixp}{\Ap*(cos(\ThetaAnglep)*cos(-\PhiAnglep)-\ellipp*sin(\ThetaAnglep)*sin(-\PhiAnglep))}
+\pgfmathsetmacro{\Iyp}{\Ap*(sin(\ThetaAnglep)*cos(-\PhiAnglep)+\ellipp*cos(\ThetaAnglep)*sin(-\PhiAnglep))}
+
+\pgfmathsetmacro{\AxLen}{1.2*\A}
+
+\pgfmathsetmacro{\PsiAngle}{15}
+
+% \def \pcolor{Orange}
+% \def \ccolor{RoyalBlue}
+% \def \rcolor{PineGreen}
+
+\def \rcolor{Orange}
+\def \ccolor{NavyBlue}
+\def \pcolor{PineGreen}
+
+\begin{tikzpicture}%[> = stealth]
+\coordinate (O) at (0,0);
+\coordinate (x) at (1,0);
+\coordinate (A) at (\Ax,\Ay);
+\coordinate (a) at (\ax,\ay);
+\coordinate (h) at (\Ix,\Iy);
+
+\coordinate (xp) at ({\AxLen*cos(\PsiAngle)},{\AxLen*sin(\PsiAngle)});
+\coordinate (yp) at ({\AxLen*cos(\PsiAngle+90)},{\AxLen*sin(\PsiAngle+90)});
+\coordinate (xpm) at ({-0.7*\AxLen*cos(\PsiAngle)},{-0.7*\AxLen*sin(\PsiAngle)});
+\coordinate (ypm) at ({-0.7*\AxLen*cos(\PsiAngle+90)},{-0.7*\AxLen*sin(\PsiAngle+90)});
+
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% AXES
+
+\draw[line width = \lw, dashed, ->] (-0.7*\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$h_{+}'$};
+\draw[line width =\lw , dashed, ->] (0, -0.7*\AxLen) -- (0, \AxLen) node[anchor=north east]{$h_{\times}'$};
+
+\draw[line width = \lw, dashed, ->, color=gray!50] (xpm) -- (xp) node[anchor=north east, text height=10pt]{$h_{+}$};
+\draw[line width =\lw , dashed, ->, color=gray!50] (ypm) -- (yp) node[anchor=north east]{$h_{\times}$};
+
+\draw[gray] pic[draw,<-,angle radius=0.5cm*\AxLen,"$2\Delta\psi$" shift={(13mm,1mm)}] {angle=x--O--xp};
+
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ELLIPSE NUMBER 1
+
+\draw[rotate=\ThetaAngle, line width = \lw, color=\ccolor] (0, 0) ellipse ({\A} and {\semiminor});
+
+\draw[line width =\lw, -, color=\ccolor, dotted, opacity=0.5] (0, 0) -- (\Ax/2,\Ay/2) node[anchor=north west,text width=6pt,text height=6pt]{} -- (\Ax,\Ay);
+%\draw[line width = \lw, -] (O) -- (A) node[above right]{$A$};
+
+%\draw[line width =\lw, -, dotted, color=\ccolor, opacity=0.5] (O) -- (\ax/2,\ay/2) node[anchor=north east,text width=10pt,text height=6pt]{} -- (a);
+
+
+\draw[\ccolor] pic[draw,angle radius=1.4cm*\semiminor,"$\theta_2'$" shift={(5mm,5mm)}] {angle=x--O--A};
+
+
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ELLIPSE NUMBER 2
+
+\coordinate (Ap) at (\Axp,\Ayp);
+\coordinate (ap) at (\axp,\ayp);
+\coordinate (hp) at (\Ixp,\Iyp);
+
+
+\draw[rotate=\ThetaAnglep, line width = \lw, color=\rcolor] (0, 0) ellipse ({\Ap} and {\semiminorp});
+
+\draw[line width =\lw, -, color=\rcolor, dotted, opacity=0.5] (0, 0) -- (\Axp/2,\Ayp/2) node[anchor=north west,text width=6pt,text height=6pt]{} -- (\Axp,\Ayp);
+
+%\draw[line width =\lw, -, color=\rcolor, opacity=0.5, dotted] (O) -- (\axp/2,\ayp/2) node[anchor=north east,text width=10pt,text height=6pt]{} -- (ap);
+
+\draw[\rcolor] pic[draw,angle radius=0.4cm*\semiminorp,"$\theta_1'$" shift={(2mm,4mm)}] {angle=x--O--Ap};
+
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,76 @@
+\documentclass[tikz,dvipsnames]{standalone}
+%\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{wasysym}
+\usetikzlibrary{angles,quotes,shapes.geometric}
+
+\begin{document}
+
+\pgfmathsetmacro{\lw}{0.3mm}
+
+\pgfmathsetmacro{\A}{1.5}
+\pgfmathsetmacro{\ellip}{2}
+\pgfmathsetmacro{\semiminor}{\ellip*\A}
+
+\pgfmathsetmacro{\Ahat}{\A*sqrt(1+\ellip*\ellip)}
+
+\pgfmathsetmacro{\ThetaAngle}{45}
+\pgfmathsetmacro{\PhiAngle}{-130}
+
+\pgfmathsetmacro{\Ax}{\A*cos(\ThetaAngle)}
+\pgfmathsetmacro{\Ay}{\A*sin(\ThetaAngle)}
+
+\pgfmathsetmacro{\ax}{-\semiminor*sin(\ThetaAngle)}
+\pgfmathsetmacro{\ay}{\semiminor*cos(\ThetaAngle)}
+
+\pgfmathsetmacro{\Ix}{\A*(cos(\ThetaAngle)*cos(-\PhiAngle)-\ellip*sin(\ThetaAngle)*sin(-\PhiAngle))}
+\pgfmathsetmacro{\Iy}{\A*(sin(\ThetaAngle)*cos(-\PhiAngle)+\ellip*cos(\ThetaAngle)*sin(-\PhiAngle))}
+
+\pgfmathsetmacro{\AxLen}{1.2*\semiminor}
+
+\pgfmathsetmacro{\BasisLen}{1.3*\semiminor}
+
+% \def \pcolor{Orange}
+% \def \ccolor{RoyalBlue}
+% \def \rcolor{PineGreen}
+
+\def \rcolor{Orange}
+\def \ccolor{NavyBlue}
+\def \pcolor{PineGreen}
+
+\begin{tikzpicture}%[> = stealth]
+\coordinate (O) at (0,0);
+\coordinate (x) at (1,0);
+\coordinate (y) at (0,1);
+\coordinate (A) at (\Ax,\Ay);
+\coordinate (a) at (\ax,\ay);
+\coordinate (m1) at (\Ix,\Iy);
+\coordinate (m2) at (-\Ix,-\Iy);
+
+\coordinate (xp) at (\Ax*\BasisLen/\A,\Ay*\BasisLen/\A);
+\coordinate (yp) at (\ax*\BasisLen/\semiminor,\ay*\BasisLen/\semiminor);
+
+%\draw[line width = \lw, color=gray, fill=gray!10] (0, 0) circle (\Ahat);
+
+\draw[rotate=\ThetaAngle, line width = \lw, color=gray, fill=gray!10] (0, 0) ellipse ({\A} and {\semiminor});
+
+\draw[line width = \lw, dashed, ->] (-\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$\hat{x}'=W$};
+\draw[line width =\lw , dashed, ->] (0, -\AxLen) -- (0, \AxLen) node[anchor=north east]{$\hat{y}' = N_\perp$};
+
+\draw[line width = \lw, ->, dashed, \ccolor] (O) -- (xp) node[anchor=west]{$\hat{x}$};
+\draw[line width = \lw, -stealth] (O) -- (A) node[anchor=north, text height=12pt]{$\hat{L}_{\perp}$};
+
+\draw[line width = \lw, ->, dashed, \ccolor] (O) -- (yp) node[left]{$\hat{y}$};
+\draw[line width = \lw, -stealth] (O) -- (a) node[anchor=north, text height=10pt]{$\ascnode$};
+
+\draw[\ccolor] pic[draw,angle radius=1.5cm*\A,"$\psi$" shift={(12mm,6mm)}] {angle=x--O--A};
+\draw[gray,dotted,thick] pic[draw,angle radius=1.5cm*\A,"$\Psi$" shift={(6mm,12mm)}] {angle=A--O--y};
+
+%\draw[line width = 0.5*\lw, -,dotted] (O) -- (1.5*\Ix,1.5*\Iy);
+\draw[thin,-] (O) -- (m1) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=east]{$m_1$}};
+\draw[thin,-] (O) -- (m2) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};
+
+%\draw[black] pic[draw,angle radius=0.8cm*\A,"$\Phi$" shift={(-7mm,5mm)}] {angle=a--O--m1};
+
+\end{tikzpicture}
+\end{document}

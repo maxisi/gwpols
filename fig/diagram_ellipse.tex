@@ -1,0 +1,71 @@
+\documentclass[tikz,dvipsnames]{standalone}
+%\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary{angles,quotes,shapes.geometric}
+
+\begin{document}
+
+\pgfmathsetmacro{\lw}{0.3mm}
+
+\pgfmathsetmacro{\A}{3}
+\pgfmathsetmacro{\ellip}{0.5}
+\pgfmathsetmacro{\semiminor}{\ellip*\A}
+
+\pgfmathsetmacro{\Ahat}{\A*sqrt(1+\ellip*\ellip)}
+
+\pgfmathsetmacro{\ThetaAngle}{45}
+\pgfmathsetmacro{\PhiAngle}{-30}
+
+\pgfmathsetmacro{\Ax}{\A*cos(\ThetaAngle)}
+\pgfmathsetmacro{\Ay}{\A*sin(\ThetaAngle)}
+
+\pgfmathsetmacro{\ax}{-\semiminor*sin(\ThetaAngle)}
+\pgfmathsetmacro{\ay}{\semiminor*cos(\ThetaAngle)}
+
+\pgfmathsetmacro{\Ix}{\A*(cos(\ThetaAngle)*cos(-\PhiAngle)-\ellip*sin(\ThetaAngle)*sin(-\PhiAngle))}
+\pgfmathsetmacro{\Iy}{\A*(sin(\ThetaAngle)*cos(-\PhiAngle)+\ellip*cos(\ThetaAngle)*sin(-\PhiAngle))}
+
+\pgfmathsetmacro{\AxLen}{1.2*\A}
+
+% \def \pcolor{Orange}
+% \def \ccolor{RoyalBlue}
+% \def \rcolor{PineGreen}
+
+\def \rcolor{Orange}
+\def \ccolor{NavyBlue}
+\def \pcolor{PineGreen}
+
+\begin{tikzpicture}%[> = stealth]
+\coordinate (O) at (0,0);
+\coordinate (x) at (1,0);
+\coordinate (A) at (\Ax,\Ay);
+\coordinate (a) at (\ax,\ay);
+\coordinate (h) at (\Ix,\Iy);
+
+%\draw[line width = \lw, color=gray, fill=gray!10] (0, 0) circle (\Ahat);
+
+\draw[rotate=\ThetaAngle, line width = \lw, color=gray, fill=gray!10] (0, 0) ellipse ({\A} and {\semiminor});
+
+\draw[line width = \lw, dashed, ->] (-0.7*\AxLen, 0) -- (\AxLen, 0) node[anchor=north east]{$h_{+}$};
+\draw[line width =\lw , dashed, ->] (0, -0.7*\AxLen) -- (0, \AxLen) node[anchor=north east]{$h_{\times}$};
+\draw[line width =\lw, -] (0, 0) -- (\Ax/2,\Ay/2) node[anchor=north west,text width=6pt,text height=6pt]{$A$} -- (\Ax,\Ay);
+%\draw[line width = \lw, -] (O) -- (A) node[above right]{$A$};
+
+%\draw[line width = \lw, -] (O) -- (a) node[above left]{$\epsilon A$};
+\draw[line width =\lw, -] (O) -- (\ax/2,\ay/2) node[anchor=north east,text width=10pt,text height=6pt]{$\epsilon A$} -- (a);
+
+\draw[line width = 0.5*\lw, -,dotted] (O) -- (1.5*\Ax,1.5*\Ay);
+\draw[line width = \lw, -, dotted] (a) -- (A) node[above left]{};
+\draw[\ccolor] pic[draw,angle radius=1.2cm*\A,"$-\phi$" shift={(1cm,1.5cm)}] {angle=A--O--h};
+
+\draw[\ccolor] pic[draw,angle radius=0.5cm*\semiminor,"$\chi$" shift={(-5mm,-3.5mm)}] {angle=a--A--O};
+\draw[\ccolor] pic[draw,angle radius=0.5cm*\semiminor,"$\theta$" shift={(5mm,2mm)}] {angle=x--O--A};
+
+\draw[line width = 0.5*\lw, -,dotted] (O) -- (1.5*\Ix,1.5*\Iy);
+\draw[line width = 1.5*\lw, ->,color=\ccolor] (O) -- (h) node[above left]{$h$};
+
+% \draw [decorate, decoration = {brace, amplitude = 15pt, mirror, raise =4pt}, yshift = 0pt]
+%(-1.4, 1.4) -- (0, 0) node [black, midway, xshift = -0.9cm, yshift = -0.3cm ] {$\frac{c}{\sqrt{\lambda_2}}$};
+
+\end{tikzpicture}
+\end{document}
