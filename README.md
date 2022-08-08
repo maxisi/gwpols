@@ -1,6 +1,6 @@
 # Parametrizing gravitational-wave polarizations
 
-[![Build paper](https://github.com/maxisi/polpars/actions/workflows/paper-maker.yml/badge.svg)](https://github.com/maxisi/polpars/actions/workflows/paper-maker.yml) [![Latest PDF](https://img.shields.io/badge/PDF-latest-orange.svg?style=flat)](https://github.com/maxisi/polpars/blob/main-pdf/polpars.pdf)
+[![Build paper](https://github.com/maxisi/gwpols/actions/workflows/paper-maker.yml/badge.svg)](https://github.com/maxisi/gwpols/actions/workflows/paper-maker.yml) [![Latest PDF](https://img.shields.io/badge/PDF-latest-orange.svg?style=flat)](https://github.com/maxisi/gwpols/blob/main-pdf/polpars.pdf)
 
 Code and additional material related to the paper on _Parametrizing gravitational-wave polarizations_ (Isi 2022). The paper reviews the formalism of gravitational wave (GW) polarizations as it pertains practical data analysis applications, and derives a variety of useful parameterizations and corresponding Jacobians.
 
