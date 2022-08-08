@@ -10,12 +10,12 @@ dependencies:
   - ipython
   - jupyterlab
   - lalsuite
-  - matplotlib
+  - matplotlib>=3.5.0
   - numpy
   - pandas
   - pip:
     - pyspherical
-  - python=3.8
+  - python=3
   - scipy
   - seaborn
   - numexpr

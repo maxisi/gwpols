@@ -1,6 +1,8 @@
 polpars.pdf
 polparsNotes.bib
+polpars.tar.gz
 
+__pycache__
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

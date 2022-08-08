@@ -186,10 +186,6 @@ This paper provides a comprehensive exposition of the formalism underlying GW po
 The goal is twofold:
 \emph{first}, pedagogical, in reviewing the relations between different polarization conventions, and in clarifying how these come to bear in real-world data analysis;
 \emph{second}, technical, in explicitly working out the coordinate transformations that link different parametrizations, and providing ready-to-use expressions for the corresponding Jacobians---the mathematical factors that translate between posterior probability densities obtained under different parametrizations, which are required to exchange priors when carrying out Bayesian inference or similar applications.
-%
-%It is important to understand the priors implied by the choice of parametrization through the corresponding Jacobians.
-%
-%
 In this work, the exposition is geared towards observers, or theorists interested in drawing connections to observation---as such, it strives for concreteness over abstraction, and, in particular, steers away from the rich formal connections between the treatment of GW polarizations and the mathematical structure of GR.
 
 The review of GW polarizations begins in Sec.~\ref{sec:primer} with a derivation of signal decompositions into three different polarization bases: linear, circular and elliptical.
@@ -227,7 +223,6 @@ e^\times_{ij} &\equiv \hat{x}_i \hat{y}_j + \hat{y}_i \hat{x}_j\, ,
 where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed Cartesian basis; we will call this the \emph{wave frame}.
 Since this frame is constructed to have $\hat{z}$ aligned with the wavevector $\vec{k}$ (i.e., $\hat{z} = \hat{k} \equiv \vec{k}/|k|$), the polarization tensors are implicit functions of the wave propagation direction $\hat{k}$, or, equivalently, the source sky location $\hat{n} = -\hat{k}$.
 For a given $\hat{k}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
-% Generic metric theories beyond GR generally predict up to four additional polarizations, which we briefly address in Sec.~\ref{sec:nongr}.
 
 We will refer to plus and cross jointly as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a small, freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
@@ -249,19 +244,6 @@ In this limit, the antenna patterns are thus purely geometric factors that encod
 }
 \label{fig:rings}
 \end{figure}
-
-% Equation \eqref{eq:hij} presumes a specific choice of wave frame orientation that defines the basis in which the $h_{ij}$ components are written.
-% Although \eq{hij} requires that $\hat{z}$ be parallel to the (spatial) wave vector $\vec{k}$, there is no a priori restriction on the orientation of the $x$ and $y$ axes within the plane perpendicular to $\vec{k}$.
-% %This freedom is usually encapsulated in the choice of an arbitrary \emph{polarization angle} $\psi$, defined with respect to some convenient reference (e.g., the celestial equator \cite{LALSuite:wave}).
-% With some trigonometry, it is straightforward to show that a rotation of the frame by some angle $\Delta \psi$ around $z$ leaves the form of \eq{hij} unchanged after redefining
-% \begin{subequations} \label{eq:htransf}
-% \begin{align}
-% h_+ &\rightarrow h_+' = h_+ \cos 2\Delta \psi - h_\times \sin 2\Delta\psi \, , \\
-% h_\times &\rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\psi \, .
-% \end{align}
-% \end{subequations}
-% This reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary rotation.
-% (We return to this point in Sec.~\ref{sec:pol}.)
 
 After fixing the frame orientation, any plane GW may be expressed in terms of the Fourier components of its polarization amplitudes as
 \begin{align}
@@ -303,7 +285,6 @@ Reversing the direction of time by reading this diagram right-to-left gives the 
 \subsection{Circular basis}
 
 First, instead of the linear plus and cross polarizations above, we could equivalently work with the associated \emph{circular} right-handed (R) and left-handed (L) modes.
-%, which are eigenstates of the helicity operator.
 These are defined in the Fourier domain by the complex-valued basis tensors
 \beq \label{eq:circ}
 e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right) ,
@@ -312,11 +293,6 @@ with the plus (minus) sign corresponding to R (L).
 These tensors are also orthogonal and normalized similarly to $e^{+/\times}_{ij}$ such that $(e^{p'ij})^* e^p_{ij} = 2 \delta^{pp'}$ for $p,p'$ in $\{R,L\}$.
 
 To understand the physical significance of the circular polarizations,
-% consider an individual Fourier mode of frequency $\omega>0$ propagating in the positive-$z$ direction,
-% \beq
-% h_{ij}(t,z; \omega) = \Re \left\{ \tilde{H}_{ij} \exp[ i \omega (z/c - \omega t)]\right\},
-% \eeq
-% for some time and location independent (and complex-valued) amplitude tensor $\tilde{H}_{ij}$.
 consider a purely R-polarized monochromatic mode $h^R_{ij}$ with frequency $\omega > 0$, unit amplitude and zero phase offset; at the spatial origin ($\vec{x}=0$), the time-domain strain from such a mode will be given by
 \begin{align} \label{eq:circ_example}
 h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
@@ -353,8 +329,6 @@ It also reveals that R and L switch roles for $\omega \to - \omega$, as we antic
 
 \subsection{Elliptical basis}
 \label{sec:ellip}
-
-%\subsubsection{Complex strain}
 
 Next, it is convenient to encode the two linear GW polarizations as quadratures of a single complex-valued scalar field, 
 \beq
@@ -440,7 +414,6 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 
 \begin{figure*}
 \includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
-%\includegraphics[width=\columnwidth]{pol_diagram_ellip}
 \caption{An elliptically polarized GW as a function of time (left to right) over a period, described by Eq.~\eqref{eq:hcomp_ellip} with $\epsilon=1/2$, $\theta=\pi/2$, $\phi=0$ and arbitrary amplitude. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which in this case rotates counterclockwise with time, albeit nonrigidly; each individual particle is pushed in an ellipse with the same ellipticity as the wave itself, and oriented at an angle $\theta + \varphi$ from the $x$-axis, where $\varphi$ is the polar coordinate locating the particle around the ring.
 \emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time.
 \emph{Bottom:} representation of the polarization state as a phasor in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
@@ -488,8 +461,6 @@ Its domain is given by $-\pi/4 \leq \chi \leq \pi/4$, as implied by $-1 \leq \ep
 The mathematical treatment of polarized GW states is entirely analogous to the electromagnetic case.
 To start, any of these states can be represented graphically by a series of phasor diagrams like the one in Fig.~\ref{fig:ellipse}, as in the bottom of Figs.~\ref{fig:pol_diagram_circ} and \ref{fig:pol_diagram_ellip}.
 For monochromatic modes (i.e., of a definite frequency $\omega$), the same information can also be encoded algebraically in a complex valued \emph{Jones vector} $\vec{C}$ like 
-% Any fully-polarized state can be represented by phasor diagrams like the one in Fig.~\ref{fig:ellipse}.
-% Additionally, for a monochromatic mode, the time dependence of the phasor can be factored out so that the whole state is encoded in a \emph{Jones vector} $\vec{A}$ like
 \beq \label{eq:jones}
 \begin{pmatrix}
 h_+\\
@@ -538,12 +509,8 @@ For a fully polarized state, the Stokes parameters (quantifying signal power) ar
 Because they are defined in terms of power, Stokes parameters do not retain phasing information, but have the advantage of being easily generalizable to fully or partially unpolarized waves, which can be achieved by replacing the definition in Eq.~\eqref{eq:stokes} with corresponding two-point correlation functions (power spectra); in the fully-unpolarized case, $Q=U=V=0$ and there is no Poincar\'{e} sphere to speak of.
 The Stokes parameters are thus especially useful when dealing with stochastic signals \cite{Romano:2016dpx,Conneely:2018wis,Seto:2008sr,Kato:2015bye}; since we will be dealing mainly with phase-coherent signals, we will not make further reference to Stokes parameters in what follows.
 
-% Consequently, its applicability extends beyond the formal Fourier expansion in \eq{hcomp_fd_rl} to any context in which the signal (or a component thereof) can be described as having a definite polarization state (which may potentially evolve adiabatically).
-
 \subsection{Non-monochromatic modes}
 \label{sec:ellip:gen}
-
-% \subsubsection{Fully-polarized non-monochromatic states}
 
 We arrived at the expression for a fully-polarized, monochromatic GW in Eq.~\eqref{eq:hcomp_ellip} by way of the generic Fourier decomposition of a plane wave in Eq.~\eqref{eq:hcomp_fd_rl}, wherein elliptical modes appear naturally with a determinate frequency.
 Yet, we may also speak of fully-polarized states even if the signal is not monochromatic.
@@ -607,9 +574,6 @@ Besides the modeling of generic signals, \eq{ellip_sum} serves as the exact repr
 The most salient example of this, as we will see below, is that of CBCs; in particular, a nonprecessing, quasicircular CBC dominated by the quadrupolar angular harmonic of the radiation can be described by a single, fully polarized component, as in \eq{ellip_gen}.
 More generally, the signal from a precessing CBC is well represented by the superposition of five fully polarized modes \cite{Fairhurst:2019vut}.
 
-% In fact, as we will see below, the simplest of those signals (viz., nonprecessing inspiral dominated by the quadrupolar angular harmonic) can be described by a single mode like the summand of \eq{hcomp_ellip}, with fixed ellipticity and polarization angle.
-
-
 \subsection{Relation to spherical harmonics}
 \label{sec:harmonics}
 
@@ -643,23 +607,6 @@ H(t) &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}(t)\, {}_{-2
 for some overall complex-valued amplitudes $\mathcal{C}_{\ell \pm m}$, which absorbe the angular dependence of the spherical harmonics and any potential (slow) time variation in $\mathcal{A}_{\ell m}$.
 In the second line above, we took advantage of the identity relating spherical harmonics for different signs of $m$, ${}_{-2} Y_{\ell -m}(\iota,\varphi) = (-1)^{\ell} {}_{-2} Y_{\ell m}^*(\pi-\iota,\varphi)$ \cite{goldberg:1967}.
 
-% % The different $H_{\ell m}$'s in \eq{spherical} are generated by the time evolution of specific current and mass moments of the source, and, therefore, are often associated with specific signal frequencies \cite{Thorne:1980ru}.
-% For example, the dominant $\ell= |m|=2$ mode in a nonprecessing compact binary inspiral will evolve with a signal freqyency $\omega_{22}$ which is twice the orbital frequency $\omega_\mathrm{orb}$ or, more generally for other harmonics, $\omega_{\ell m} = m\, \omega_\mathrm{orb}$, with parity invariance requiring $\omega_{\ell m}= - \omega_{\ell - m}$.
-% If that harmonic structure holds, then Eq.~\eqref{eq:spherical} is equivalent to the elliptical decomposition of Eq.~\eqref{eq:ellip_sum}, as we proceed to show.
-% 
-% For concreteness, represent the $H_{\ell m}$ schematically as simple monochromatic components $H_{\ell m} (t) = \mathcal{C}_{\ell m} \exp\left(-i \omega_{\ell m} t\right)$, where $\mathcal{C}_{\ell m}$ is some complex-valued amplitude, that could be varying slowly with time (slower than $\omega_{\ell m}$).
-% We can then refactor Eq.~\eqref{eq:spherical} so that we only sum over nonnegative values of $m$,
-% \begin{widetext}
-% \begin{subequations} \label{eq:spherical_modes}
-% \begin{align}
-% h_+ - i h_\times &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}(t)\, {}_{-2}Y_{\ell m} (\iota, \varphi) + H_{\ell -m}(t)\, {}_{-2}Y_{\ell -m} (\iota, \varphi) \right] \\
-% &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[\mathcal{C}_{\ell m} e^{-i\omega_{\ell m} t} {}_{-2}Y_{\ell m}(\iota, \varphi) +  \mathcal{C}_{\ell -m} e^{i\omega_{\ell m} t} {}_{-2}Y_{\ell- m}(\iota, \varphi) \right] \\
-% &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[C_{\ell m} e^{-i\omega_{\ell m} t}  +  C_{\ell -m} e^{i\omega_{\ell m} t} \right]\, ,
-% \end{align}
-% \end{subequations}
-% \end{widetext}
-% where, in the last line, we have absorbed the angular factors into $C_{\ell m} \equiv {}_{-2}Y_{\ell m} (\iota, \varphi)\, \mathcal{C}_{\ell m}$.
-
 The summand in the last line of \eq{spherical_modes} takes the form of \eq{ellip_circ}, and its interpretation is the same for any fixed observation direction: each $(\ell$, $|m|)$ angular harmonic contributes a single, elliptically polarized mode to the waveform, composed of right- and left-handed pieces corresponding to the $m>0$ and $m<0$ modes respectively.
 Thus the overall strain for such a source must be a superposition of purely polarized modes, with adiabatically evolving amplitudes as in \eq{ellip_sum}.
 
@@ -670,8 +617,6 @@ The intensity of the mode will vary with time following $\mathcal{A}_{\ell m}(t)
 \epsilon_{\ell|m|}(\iota) = \frac{\left|{}_{-2} Y_{\ell m}(\iota,\varphi)\right| - \left|{}_{-2} Y_{\ell -m}(\iota,\varphi)\right|}{\left|{}_{-2} Y_{\ell m}(\iota,\varphi)\right| + \left|{}_{-2} Y_{\ell -m}(\iota,\varphi)\right|} ,
 \end{align}
 which is exclusively a function of the inclination $\iota$, because $\varphi$ only affects the phase (not the magnitude) of the spin-weighted spherical-harmonic factors, with ${}_{-2} Y_{\ell m}(\iota,\varphi) = {}_{-2} Y_{\ell m}(\iota) \exp(i m \varphi)$ factoring out the $\varphi$ dependence.
-
-% Although we have simplified \eq{spherical_modes} by taking each $(\ell, m)$ mode to be monochromatic, we would have arrived at the same conclusion regarding polarizations had we instead allowed for a generic (slow) amplitude and (fast) phase evolution by writing $H_{\ell m}(t) = \mathcal{A}_{\ell m}(t) \exp[-i \Phi_{\ell m}(t)]$, for real valued $\mathcal{A}_{\ell m}$ and with parity invariance now requiring $\Phi_{\ell m}(t) = - \Phi_{\ell -m}^*(t)$; in that case the last line of \eq{spherical_modes} would have taken the form of \eq{ellip_sum}, with each summand representing a fully polarized, albeit non-monochromatic, mode.
 
 The complex strain $H_{\ell|m|}(t)$ for a given elliptical $(\ell, |m|)$ mode, as given by the summand in \eq{spherical_modes}, can be further rewritten as
 \begin{equation}
@@ -857,8 +802,6 @@ The antenna patterns $F_{+/\times}$ are evaluated for some sky location and arri
 On the other hand, the angle $\psi$ is fixed; allowing it to vary would amount to shifting all $\theta_i$ values by $2\psi$, per Eq.~\eqref{eq:theta_psi} and Fig.~\ref{fig:diagram_ellipse_extra}.
 Fixing $\psi$ to some fiducial value was the approach taken in \cite{Isi:2017equ,Chatziioannou:2021mij,Isi:2021iql}.
 
-
-
 % \begin{alignat}{2}
 % h &= &&\left. F_+(\psi + \Delta \psi) h_+ + F_\times(\psi + \Delta \psi) h_\times\right.  \\
 %   &= &&\left[ F_+(\psi) \cos 2\Delta\psi + F_\times(\psi) \sin 2\Delta\psi \right] h_+\, + \\
@@ -916,7 +859,6 @@ The LIGO-Virgo convention sets $\Omega=\pi/2$, so that $\hat{y}$ is the ascendin
 When modeling GW waveforms from specific systems, it is useful to tie the polarization frame to the geometry of the source.
 This is advantageous because, in order to write out explicit expressions for $h_+$ and $h_\times$, we must make \emph{some} definite choice of frame orientation, and doing so in a way that respects the symmetries of the source (if any) can lead to simplified expressions.
 That was the case in going from Eq.~\eqref{eq:ellip_gen} to Eq.~\eqref{eq:ellip_frame} above: if we know \emph{a priori} that the waves from a given source will always be elliptically polarized, then it makes sense to anchor our wave frame to some feature of the source orientation that will ensure alignment with the principal directions of the polarization ellipse (i.e., $\theta=0$).
-%This is the case for nonprecessing compact binary coalescences (CBCs).
 
 For a nonprecessing compact binary, as we saw in Sec.~\ref{sec:harmonics}, it is natural to orient our coordinates so as to respect the planar symmetry of the source.
 With that standard choice, we find that the linear polarizations take the simple form of \eq{nonprecessing}, which matches the expression for an elliptical mode with $\theta=0$ as in \eq{ellip_frame}.
@@ -976,7 +918,6 @@ Measurements obtained with different parametrizations can be related via a Jacob
 We may also want to switch parametrizations for technical reasons.
 Although conceptually insightful, the manifestly-elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ of \eq{hcomp_ellip} contains multiple degeneracies that make it less than ideal for sampling purposes.
 For instance, the angles $\theta$ and $\phi$ become totally degenerate when $\epsilon = \pm 1$.
-% another degeneracy appears as $\theta \to \theta + \pi$ and $\epsilon \to - \epsilon$.
 To circumvent this, we may switch to a more suitable parametrization in the sampling process, and then translate the result back into $\{A, \epsilon, \theta, \phi\}$ for interpretation.
 In that case, we can still specify a prior in terms of the elliptical quantities by again making use of a Jacobian.
 
@@ -1102,10 +1043,8 @@ This was the case, e.g., for one of the ringdown analyses in \cite{LIGOScientifi
 
 The absence of angles in \eq{jac_Aeps_Arl} indicates that a uniform distribution in $\phi_{R/L}$ is also uniform in terms of $\theta$ and $\phi$.
 However, this feature can be obfuscated by the fact that the relation between the two sets of angles is not strictly bijective due to their $2\pi$-periodicities (see footnote \ref{foot:angles}).
-%Applying the transformation as written in \eq{Aellip_to_Cphi}, the boundaries of the domain in $\{\theta, \phi\}$ space will exhibit
 When applied as written, \eq{Aellip_to_Cphi} transforms a uniform distribution over $-\pi/2 < \phi_{R/L} < \pi/2$ into a uniform distribution over a $\pi/4$-rotated square domain in the $\{\theta, \phi\}$-space, as implied by the discussion in Sec.~\ref{sec:ellip:mono:morph} and illustrated in Fig.~\ref{fig:jac_Aeps_Arl_angles}; the corresponding marginals appear to favor $\theta=0$ and $\phi = 0$ (gray in Fig.~\ref{fig:jac_Aeps_Arl_angles}).
 The uniformity over the full range of angles can again be made manifest by applying the more generic transformation of footnote \ref{foot:angles} (blue in Fig.~\ref{fig:jac_Aeps_Arl_angles}), at the expense of restoring the double-covering of the waveform space described in Sec.~\ref{sec:ellip:mono:morph}.
-
 
 We can also relate the circular amplitudes to the alternative parametrization of \eq{hcomp_ellip_chi}.
 The straightforward relation is given by the transformations
@@ -1125,7 +1064,6 @@ A_L = \frac{1}{\sqrt{2}} \hat{A} \left(\cos\chi - \sin \chi\right)
 while the remaining angles are related as in Eqs.~\eqref{eq:Cphi_to_Aellip} and \eqref{eq:Aellip_to_Cphi}.
 Accordingly, the Jacobian that takes us from the circular parametrization to one flat in $\{\hat{A},\chi\}$ can be shown to be $J \propto \hat{A}^{-1}$.
 Thus, as expected from the composition of Eqs.~\eqref{eq:jac_Aeps_Achi} and \eqref{eq:jac_Aeps_Arl}, a prior uniform in $A_{R/L}$ will also favor large intensity amplitudes with probability $\propto \hat{A}$, when restricted to the appropriate range; it will also be uniform in $\chi$.
-
 
 \subsection{Linear components}
 \label{sec:jac:Apc}
@@ -1204,8 +1142,6 @@ This is because this coordinate transformation encodes the frame rotation that w
 The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, as in the example of Fig.~\ref{fig:jac_example}.
 The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
 The difference between the blue and gray distributions for $\theta$ and $\phi$ is explained in the same way as in Fig.~\ref{fig:jac_Aeps_Arl_angles}.
-% an artifact of the chosen angle ranges: it would not have appeared had we instead worked with $\bar{\theta} \equiv 2\theta$ and $\bar{\phi} \equiv 2\phi$, both in the range $[0,2\pi]$.
-%The marginal histograms are normalized by bin count.
 The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi}.
 }
 \label{fig:jac_Aphi}
@@ -1472,17 +1408,6 @@ In the last section, we briefly touched on the generalization to metric theories
 \begin{acknowledgments}
 I would like to thank Will Farr, Katerina Chatziioannou and Leo Stein for insighful discussions, as well as Jose Mar\'ia Ezquiaga and Jolien Creighton for comments on the draft.
 The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
-% NASA
-% M.I.\ is supported by NASA through the NASA Hubble Fellowship
-% grant No.\ HST-HF2-51410.001-A awarded by the Space Telescope
-% Science Institute, which is operated by the Association of Universities
-% for Research in Astronomy, Inc., for NASA, under contract NAS5-26555.
-% % LIGO
-% M.I.\ is a member of the LIGO Laboratory.
-% LIGO was constructed by the California Institute of Technology and
-% Massachusetts Institute of Technology with funding from the National
-% Science Foundation and operates under cooperative agreement PHY-0757058.
-% DCC
 This paper carries LIGO document number \dcc{}.
 \end{acknowledgments}
 
@@ -1504,12 +1429,6 @@ The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect
 \end{figure}
 
 The component spin vectors, $\vec{S}_{1/2}$, are prescribed at an arbitrary reference time (e.g., the moment when the signal reaches 20 Hz at the detector) in a Cartesian frame with $z$-axis along the orbital angular momentum, $\vec{L}$, with $x$-axis along the line pointing from the lighter object ($m_2$) to the heavier object ($m_1$), and with $y$-axis completing the right-handed triad; this $L$-based coordinate frame is shown in blue Fig.~\ref{fig:spins}.
-
-% \begin{figure}
-% \includegraphics[width=0.8\columnwidth]{diagram_spins_2.pdf}
-% \caption{As in Fig.~\ref{fig:spins} but showing the reference orbital phase, $\phi_{\rm orb}$. This is the angle in the orbital plane (blue) defined following the right-hand rule around $\vec{L}$, between the line of nodes ($\ascnode$) and the location of the heaviest object ($m_1$) at the reference time. The line of nodes lies along the intersection between the plane of the sky (black, unfilled circle) and the orbital plane, as in Figs.~\ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview}.}
-% \label{fig:spins_2}
-% \end{figure}
 
 In the above frame, the spin components are specified relative to the orbital plane.
 For a precessing system, the orientation of the binary itself is set with respect to the observer through the angle $\theta_{JN}$ between the direction of propagation $\hat{k}$ and the total angular momentum of the binary, $\vec{J} \equiv \vec{L} + \vec{S}_1 + \vec{S}_2$ (Fig.~\ref{fig:spins} in black); this angle is similar to $\iota$ except for being defined relative to $\vec{J}$ instead of $\vec{L}$ (the two angles are the same for nonprecessing systems).
