@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    861467,      17142]
-NotebookOptionsPosition[    834473,      16702]
-NotebookOutlinePosition[    834989,      16721]
-CellTagsIndexPosition[    834946,      16718]
+NotebookDataLength[    862789,      17173]
+NotebookOptionsPosition[    835562,      16729]
+NotebookOutlinePosition[    836078,      16748]
+CellTagsIndexPosition[    836035,      16745]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -16697,6 +16697,33 @@ pwSghH/9cKebixmZuvH40wL4HRZTtGNw8T8osini
  CellLabel->
   "Out[273]=",ExpressionUUID->"710dd2ff-9c58-438f-a7cd-274e64637fa6"]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["License", "Subsection",
+ CellChangeTimes->{{3.868974922931882*^9, 
+  3.868974923927994*^9}},ExpressionUUID->"1c829a4f-6e26-4da4-9cad-\
+030a644c146e"],
+
+Cell["\<\
+Copyright 2022 Maximiliano Isi <max.isi@ligo.org>
+
+This program is free software; you can redistribute it and/or modify it under \
+the terms of the GNU General Public License as published by the Free Software \
+Foundation; either version 2 of the License, or (at your option) any later \
+version.
+This program is distributed in the hope that it will be useful, but WITHOUT \
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS \
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more \
+details.
+You should have received a copy of the GNU General Public License along with \
+this program; if not, write to the Free Software Foundation, Inc., 51 \
+Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\
+\>", "Text",
+ CellChangeTimes->{{3.868974926885695*^9, 
+  3.868974936293528*^9}},ExpressionUUID->"d3cae82d-4503-4316-8fb6-\
+c47eaae6b113"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -16705,7 +16732,7 @@ WindowMargins->{{61, Automatic}, {Automatic, 0}},
 TaggingRules->{
  "WelcomeScreenSettings" -> {"FEStarting" -> False}, "TryRealOnly" -> False},
 Magnification:>1.25 Inherited,
-FrontEndVersion->"12.3 for Mac OS X ARM (64-bit) (July 9, 2021)",
+FrontEndVersion->"12.3 for Mac OS X x86 (64-bit) (May 11, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"beaae916-0ba4-4830-828e-bfa7acb8154b"
 ]
@@ -16736,7 +16763,7 @@ Cell[17746, 508, 183, 3, 56, "Subsubsection",ExpressionUUID->"6b2f504f-ea22-493e
 Cell[17932, 513, 216, 4, 44, "Text",ExpressionUUID->"1edbf752-296b-4b6b-a31c-3eb4ff6a7c1c"],
 Cell[18151, 519, 1370, 32, 90, "Input",ExpressionUUID->"b97233fd-74de-421c-92fa-1f519cabd4f3"],
 Cell[19524, 553, 386, 8, 44, "Text",ExpressionUUID->"56709b06-7799-438e-a3ff-773174142d58"],
-Cell[19913, 563, 1728, 47, 301, "Input",ExpressionUUID->"933af69f-0131-4d62-9542-667414cab4b3"],
+Cell[19913, 563, 1728, 47, 247, "Input",ExpressionUUID->"933af69f-0131-4d62-9542-667414cab4b3"],
 Cell[21644, 612, 197, 3, 44, "Text",ExpressionUUID->"906eec7f-46e9-465b-84c8-63f1380bf3c2"],
 Cell[CellGroupData[{
 Cell[21866, 619, 668, 18, 64, "Input",ExpressionUUID->"bae824fb-d449-4158-b515-7203880eb4b8"],
@@ -16758,7 +16785,7 @@ Cell[30609, 880, 3268, 99, 214, "Output",ExpressionUUID->"4fc4dc2e-359c-464b-8b7
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[33914, 984, 257, 4, 37, "Input",ExpressionUUID->"95e75b6c-8ede-4286-a4f2-09abba80ac74"],
-Cell[34174, 990, 4335, 118, 339, "Output",ExpressionUUID->"2bd443da-1061-4c9b-a4a1-6dc5e237859b"]
+Cell[34174, 990, 4335, 118, 294, "Output",ExpressionUUID->"2bd443da-1061-4c9b-a4a1-6dc5e237859b"]
 }, Open  ]],
 Cell[38524, 1111, 214, 4, 44, "Text",ExpressionUUID->"778f9a10-bc4b-4144-8fc0-dfa646920360"],
 Cell[CellGroupData[{
@@ -17142,6 +17169,10 @@ Cell[CellGroupData[{
 Cell[823496, 16488, 640, 18, 66, "Input",ExpressionUUID->"e869dc9e-ac3e-47ad-b18c-751d7dbb1cd0"],
 Cell[824139, 16508, 10294, 189, 303, "Output",ExpressionUUID->"710dd2ff-9c58-438f-a7cd-274e64637fa6"]
 }, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[834482, 16703, 155, 3, 67, "Subsection",ExpressionUUID->"1c829a4f-6e26-4da4-9cad-030a644c146e"],
+Cell[834640, 16708, 894, 17, 332, "Text",ExpressionUUID->"d3cae82d-4503-4316-8fb6-c47eaae6b113"]
 }, Open  ]]
 }, Open  ]]
 }
