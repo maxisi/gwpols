@@ -16,6 +16,8 @@ GW polarizations are usually represented in the **linear polarization basis** of
 
 In these figures, the GW propagates in the _z_ direction, in or out of the screen, deforming the original ring (dotted circle) into ellipsoidal patterns shown at half-period intervals (solid and dashed).
 
+Any GW can be expressed as a superposition of these two polarization states, and can be specified through time-dependent strain functions $$h_+$$ and $$h_\times$$. These functions determine the signal observed at any given detector; for any given source, they are determined by Einstein's equations and relevant initial conditions.
+
 <figure>
 <img src="./assets/images/pol_lin_p.gif" alt="Plus polarization"/>
 <figcaption>Monochromatic plus polarized wave as a function of time.</figcaption>
