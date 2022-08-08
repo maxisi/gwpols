@@ -1,4 +1,4 @@
-name: polpars
+name: gwpols
 channels:
   - conda-forge
   - defaults
