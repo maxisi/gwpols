@@ -18,7 +18,9 @@ In these figures, the GW propagates in the _z_ direction, in or out of the scree
 
 <figure>
 <img src="./assets/images/pol_lin_p.gif" alt="Plus polarization"/>
-<figcaption>Monochromatic plus ($$+$$) polarized wave as a function of time. _Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $$+$$ (top) and $$\times$$ states; in this case, there is no $$\times$$ contribution. _Center right:_ polarization state represented in the $$h_+$$ vs $$h_\times$$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. __Left__: decomposition into the cosine and sine quadratures defined by $$x_{+/\times} \equiv A_{+/\times} \cos \phi_{+/\times} \cos \omega t$$ and $$y_{+/\times} \equiv A_{+/\times} \sin \phi_{+/\times} \sin \omega t$$.</figcaption>
+<figcaption>
+  **Monochromatic plus ($+$) polarized wave as a function of time.** _Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $+$ (top) and $\times$ states; in this case, there is no $\times$ contribution. _Center right:_ polarization state represented in the $h_+$ vs $h_\times$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. _Left_: decomposition into the cosine and sine quadratures defined by $x_{+/\times} \equiv A_{+/\times} \cos \phi_{+/\times} \cos \omega t$ and $y_{+/\times} \equiv A_{+/\times} \sin \phi_{+/\times} \sin \omega t$.
+  </figcaption>
 </figure>
 
 ## The circular basis
