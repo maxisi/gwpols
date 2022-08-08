@@ -16,7 +16,10 @@ GW polarizations are usually represented in the **linear polarization basis** of
 
 In these figures, the GW propagates in the _z_ direction, in or out of the screen, deforming the original ring (dotted circle) into ellipsoidal patterns shown at half-period intervals (solid and dashed).
 
-Any GW can be expressed as a superposition of these two polarization states, and can be specified through time-dependent strain functions $$h_+$$ and $$h_\times$$. These functions determine the signal observed at any given detector; for any given source, they are determined by Einstein's equations and relevant initial conditions.
+<figure>
+<img src="./assets/images/pol_lin_p.gif" alt="Plus polarization"/>
+<figcaption>Monochromatic plus ($$+$$) polarized wave as a function of time. _Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $$+$$ (top) and $$\times$$ states; in this case, there is no $$\times$$ contribution. _Center right:_ polarization state represented in the $$h_+$$ vs $$h_\times$$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. __Left__: decomposition into the cosine and sine quadratures defined by $$x_{+/\times} \equiv A_{+/\times} \cos \phi_{+/\times} \cos \omega t$$ and $$y_{+/\times} \equiv A_{+/\times} \sin \phi_{+/\times} \sin \omega t$$.</figcaption>
+</figure>
 
 ## The circular basis
 
