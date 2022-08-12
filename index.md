@@ -67,6 +67,8 @@ A left-handed wave looks the same as above, but with the sense of rotation rever
 <figcaption>Monochromatic <i>left-handed</i> wave as a function of time.</figcaption>
 </figure>
 
+Any monochromatic GW can be decomposed into right and left handed modes.
+
 ## The elliptical basis
 
 Most generally, any fully-polarized GW can be written as a superposition of circularly-polarized modes, which add up to an elliptically polarized state.
@@ -74,9 +76,5 @@ Most generally, any fully-polarized GW can be written as a superposition of circ
 <figure>
 <img src="./assets/images/pol_ellip.gif" alt="Elliptical polarization"/>
 <figcaption>Monochromatic <i>elliptical</i> (i.e., fully polarized) wave as a function of time.</figcaption>
-</figure>
-<figure>
-<img src="./assets/images/pol_circ_l.gif" alt="Left-handed circular polarization"/>
-<figcaption>Monochromatic <i>left-handed</i> wave as a function of time.</figcaption>
 </figure>
 
