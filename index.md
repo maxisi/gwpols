@@ -16,7 +16,12 @@ GW polarizations are usually represented in the **linear polarization basis** of
 
 In these figures, the GW propagates in the _z_ direction, in or out of the screen, deforming the original ring (dotted circle) into ellipsoidal patterns shown at half-period intervals (solid and dashed).
 
-Any GW can be expressed as a superposition of these two polarization states, and can be specified through time-dependent strain functions $$h_+$$ and $$h_\times$$. These functions determine the signal observed at any given detector; for any given source, they are determined by Einstein's equations and relevant initial conditions.
+Any GW can be expressed as a superposition of these two polarization states, and can be specified through time-dependent strain functions $$h_+$$ and $$h_\times$$. These functions determine the signal observed at any given detector; for any specific source, they are determined by Einstein's equations and relevant initial conditions.
+
+We can visualize how any GW can be decomposed into $$+$$ and $$\times$$ contributions by explicitly splitting the two polarizations and illustrating their physical effects separately.
+More abstractly, we can also represent the GW polarization state at any instant through a vector in a Cartesian space defined by the $$\left(h_+, h_\times\right)$$ amplitudes.
+If the wave is monochromatic (i.e., it has a definite frequency $$\omega$$), we can further represent the individual phases of each polarization component through so-called _linear quadratures_, $$x_{+/\times} \equiv A_{+/\times} \cos \phi_{+/\times} \cos \omega t$$ and $$y_{+/\times} \equiv A_{+/\times} \sin \phi_{+/\times} \sin \omega t$$.
+An example of all these representations is shown in the figure below for the simple case of a fully $$+$$-polarized wave.
 
 <figure>
 <img src="./assets/images/pol_lin_p.gif" alt="Plus polarization"/>
