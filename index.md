@@ -25,14 +25,14 @@ An example of all these representations is shown in the figure below for the sim
 
 <figure>
 <img src="./assets/images/pol_lin_p.gif" alt="Plus polarization"/>
-<figcaption>Monochromatic _plus_ polarized wave as a function of time.</figcaption>
+<figcaption>Monochromatic <i>plus</i> polarized wave as a function of time.</figcaption>
 </figure>
 
 _Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $$+$$ (top) and $$\times$$ states; in this case, there is no $$\times$$ contribution. _Center right:_ polarization state represented in the $$h_+$$ vs $$h_\times$$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. _Left_: decomposition into the cosine and sine quadratures for $$+$$ (top) and $$\times$$ (bottom). 
 
 <figure>
 <img src="./assets/images/pol_lin_c.gif" alt="Cross polarization"/>
-<figcaption>Monochromatic _cross_ polarized wave as a function of time.</figcaption>
+<figcaption>Monochromatic <i>cross</i> polarized wave as a function of time.</figcaption>
 </figure>
 
 This last animation is analogous to the previous one, except for a fully $$\times$$-polarized GW (i.e., $$h_+ = 0$$ at all times).
@@ -53,9 +53,17 @@ Like we did for the linear polarizations above, the effect of a circular R-polar
 
 <figure>
 <img src="./assets/images/pol_circ_r.gif" alt="Right-handed circular polarization"/>
-<figcaption>Monochromatic right-handed wave as a function of time.</figcaption>
+<figcaption>Monochromatic <i>right-handed</i> wave as a function of time.</figcaption>
 </figure>
 
 We see that contributions from both $$+$$ and $$\times$$ components are required to produced a circularly polarized state, and the two linear components must be exactly $$\pi/2$$ radians in phase apart in order to add up to a circle.
 
 Just as the circular polarization states define a circle in the $$\left(h_+, h_\times\right)$$ plane, they also cause test particles to oscillate in a circle around their equilibrium positions (see small circle shown on the left-most panel of the above figure).
+
+A left-handed wave looks the same as above, but with the sense of rotation reversed.
+
+<figure>
+<img src="./assets/images/pol_circ_l.gif" alt="Left-handed circular polarization"/>
+<figcaption>Monochromatic <i>left-handed</i> wave as a function of time.</figcaption>
+</figure>
+
