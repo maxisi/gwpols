@@ -33,3 +33,17 @@ _Left:_ overall effect on a freely-falling ring of particles. _Center left:_ dec
 ## The circular basis
 
 For monochromatic GWs, just as in the case of electromagnetic waves, we can also define a **circular polarization basis**, composed of right and left handed modes.
+These are defined such that they result in a polarization phasor that rotates around a circle in the $$\left(h_+, h_\times\right)$$ plane; if the rotation is counterclockwise (clockwise), we say the state is right-handed (left-handed).
+In terms of the linear polarization amplitudes, the corresponding right (R) and left (L) handed polarization amplitudes, $$h_{R/L}$$, are given by
+
+$$
+h_{R/L} = \frac{1}{\sqrt{2}} \left( h_+ \mp h_\times \right)
+$$
+
+with the minus (plus) sign for R (L).
+
+<figure>
+<img src="./assets/images/pol_circ_r.gif" alt="Plus polarization"/>
+<figcaption>Monochromatic right-handed wave as a function of time.</figcaption>
+</figure>
+
