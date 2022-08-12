@@ -40,7 +40,8 @@ This last animation is analogous to the previous one, except for a fully $$\time
 ## The circular basis
 
 For monochromatic GWs, just as in the case of electromagnetic waves, we can also define a **circular polarization basis**, composed of right and left handed modes.
-These are defined such that they result in a polarization phasor that rotates around a circle in the $$\left(h_+, h_\times\right)$$ plane; if the rotation is counterclockwise (clockwise), we say the state is right-handed (left-handed).
+These are defined such that they result in a polarization phasor that rotates around a circle in the $$\left(h_+, h_\times\right)$$ plane: if the rotation is _counterclockwise_ (_clockwise_), we say the state is _right_-handed (_left_-handed).
+
 In terms of the linear polarization amplitudes, the corresponding right (R) and left (L) handed polarization amplitudes, $$h_{R/L}$$, are given by
 
 $$
@@ -48,9 +49,13 @@ h_{R/L} = \frac{1}{\sqrt{2}} \left( h_+ \mp h_\times \right)
 $$
 
 with the minus (plus) sign for R (L).
+Like we did for the linear polarizations above, the effect of a circular R-polarized GW is illustrated in the animation below.
 
 <figure>
 <img src="./assets/images/pol_circ_r.gif" alt="Right-handed circular polarization"/>
 <figcaption>Monochromatic right-handed wave as a function of time.</figcaption>
 </figure>
 
+We see that contributions from both $$+$$ and $$\times$$ components are required to produced a circularly polarized state, and the two linear components must be exactly $$\pi/2$$ radians in phase apart in order to add up to a circle.
+
+Just as the circular polarization states define a circle in the $$\left(h_+, h_\times\right)$$ plane, they also cause test particles to oscillate in a circle around their equilibrium positions (see small circle shown on the left-most panel of the above figure).
