@@ -25,10 +25,17 @@ An example of all these representations is shown in the figure below for the sim
 
 <figure>
 <img src="./assets/images/pol_lin_p.gif" alt="Plus polarization"/>
-<figcaption>Monochromatic plus polarized wave as a function of time.</figcaption>
+<figcaption>Monochromatic _plus_ polarized wave as a function of time.</figcaption>
 </figure>
 
-_Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $$+$$ (top) and $$\times$$ states; in this case, there is no $$\times$$ contribution. _Center right:_ polarization state represented in the $$h_+$$ vs $$h_\times$$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. _Left_: decomposition into the cosine and sine quadratures defined by $$x_{+/\times} \equiv A_{+/\times} \cos \phi_{+/\times} \cos \omega t$$ and $$y_{+/\times} \equiv A_{+/\times} \sin \phi_{+/\times} \sin \omega t$$.
+_Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $$+$$ (top) and $$\times$$ states; in this case, there is no $$\times$$ contribution. _Center right:_ polarization state represented in the $$h_+$$ vs $$h_\times$$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. _Left_: decomposition into the cosine and sine quadratures for $$+$$ (top) and $$\times$$ (bottom). 
+
+<figure>
+<img src="./assets/images/pol_lin_c.gif" alt="Cross polarization"/>
+<figcaption>Monochromatic _cross_ polarized wave as a function of time.</figcaption>
+</figure>
+
+This last animation is analogous to the previous one, except for a fully $$\times$$-polarized GW (i.e., $$h_+ = 0$$ at all times).
 
 ## The circular basis
 
@@ -43,7 +50,7 @@ $$
 with the minus (plus) sign for R (L).
 
 <figure>
-<img src="./assets/images/pol_circ_r.gif" alt="Plus polarization"/>
+<img src="./assets/images/pol_circ_r.gif" alt="Right-handed circular polarization"/>
 <figcaption>Monochromatic right-handed wave as a function of time.</figcaption>
 </figure>
 
