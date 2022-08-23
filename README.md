@@ -6,6 +6,8 @@ Code and additional material related to the paper on _Parametrizing gravitationa
 
 Python code used to produce most of the figures in the paper can be found in the `notebooks/` directory; the remaining plots were produced using [TikZ](https://en.wikipedia.org/wiki/PGF/TikZ) based on the Tex files in `fig/`. Additionally, many of the calculations presented in the paper are carried out explicitly in the `etc/jacobians.nb` Mathematica notebook.
 
+:point_right: Check out a short web summary of polarization basics [here](https://maxisi.github.io/gwpols/) (with animations!)
+
 If you find this useful, please cite:
 
 ```
