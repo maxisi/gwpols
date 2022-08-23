@@ -8,7 +8,7 @@ Python code used to produce most of the figures in the paper can be found in the
 
 :point_right: Check out a short web summary of polarization basics [here](https://maxisi.github.io/gwpols/) (with animations!)
 
-If you find this useful, please cite:
+If you find any of this useful, please cite:
 
 ```
 @article{Isi:2022mbx,
