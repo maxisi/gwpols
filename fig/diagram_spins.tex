@@ -76,7 +76,7 @@
     \tdplotsetrotatedthetaplanecoords{0}
 
     \tdplotsetrotatedcoords{\phivec}{\thetaJLvec}{-90}
-    \draw[thick,tdplot_rotated_coords,->, NavyBlue, opacity=1] (0,0,0)
+    \draw[very thick,tdplot_rotated_coords,->, NavyBlue, opacity=1] (0,0,0)
         -- (0,0,\wfl) node[anchor=south east]{$\hat{L}$};
 
     \tdplotsetcoord{L}{\wfl}{\thetaJLvec}{\phivec}
@@ -87,9 +87,9 @@
     \draw[thin,tdplot_rotated_coords, gray, opacity=0.2] (\wfl,0,0)
         -- (-\wfl,0,0) node[anchor=north west]{};
     \tdplotdrawarc[NavyBlue,thick,tdplot_rotated_coords]{(0,0,0)}{\orbitl}{0}{-180}{shift={(1.5,0.5)},anchor=east,text height=-50pt}{$\phi_{\rm orb}$}
-    \tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
-    \tdplotdrawarc[thick,tdplot_rotated_coords,|-,dashed,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,dashed,NavyBlue]{(0,0,0)}{\orbitl}{0}{85}{}{}
+    \tdplotdrawarc[thick,tdplot_rotated_coords,->,dotted,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
+    \tdplotdrawarc[thick,tdplot_rotated_coords,|-,dotted,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,dotted,NavyBlue]{(0,0,0)}{\orbitl}{0}{85}{}{}
     %\tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,NavyBlue]{(0,0,0)}{\orbitl}{-180}{-270}{}{}
 
     \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=NavyBlue}{}
@@ -100,8 +100,8 @@
 
     \draw[thick,->] (0,0,0) -- (0,0,\rvec) node[anchor=south]{$\hat{J}$};
 
-    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\orbphase)},{\psil*sin(\orbphase)},0) {node[anchor=east]{$\hat{x}_L$}};
-    \draw[thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\orbphase+90)},{\psil*sin(\orbphase+90)},0) {node[anchor=north]{$\hat{y}_L$}};
+    \draw[very thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\orbphase)},{\psil*sin(\orbphase)},0) {node[anchor=east]{$\hat{x}_L$}};
+    \draw[very thick,tdplot_rotated_coords,->,dashed,color=NavyBlue] (0,0,0) -- ({\psil*cos(\orbphase+90)},{\psil*sin(\orbphase+90)},0) {node[anchor=north]{$\hat{y}_L$}};
     \draw[thin,tdplot_rotated_coords,-,dashed, color=NavyBlue] (0,0,0) -- ({\orbitl*cos(\orbphase)},{\orbitl*sin(\orbphase)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=south east]{$m_1$}};
 
     \draw[thin,tdplot_rotated_coords,-] (0,0,0) -- ({\orbitl*cos(\orbphase+180)},{\orbitl*sin(\orbphase+180)},0) {node[shape=circle,fill=black, scale=0.7]{} node[anchor=north west]{$m_2$}};

@@ -153,6 +153,7 @@ We discuss a variety of common parametrizations for fully-polarized modes, and c
 This allows us to examine the suitability of each parametrization for different applications, including unmodeled or semimodeled signal reconstructions.
 We point out that analyses parametrized directly in terms of the plus and cross mode amplitudes will tend to implicitly favor high signal power, and to prefer linearly-polarized waves along a predefined direction; this makes them suboptimal for targeting face-on or face-off sources, which will tend to be circularly polarized.
 We discuss alternative parametrizations, with applications extending to continuous waves, ringdown studies, and unmodeled analyses like \textsc{BayesWave}.
+Code and additional material are made available in \url{https://github.com/maxisi/gwpols}.
 \end{abstract}
 
 \maketitle
@@ -193,6 +194,7 @@ Having established the importance of elliptical (fully polarized) modes, Sec.~\r
 Next, Sec.~\ref{sec:angles} carefully examines the different notions of ``polarization angle'' that arise for elliptical and nonelliptical signals, elucidating both their conceptual independence and their frequent interchangeability in practical applications.
 Taking advantage of the mathematical formalism introduced in the preceding sections, Sec.~\ref{sec:jacobians} provides a census of different parametrizations of elliptical states, derives the Jacobians connecting them, and discusses their implications for parameter estimation.
 Finally, Sec.~\ref{sec:nongr} briefly covers generalizations of these ideas to beyond-GR polarization states, and Sec.~\ref{sec:conclusion} concludes.
+Code behind the figures and additional material are made available in an accompanying release \cite{release}.
 
 
 \section{Polarization primer}
@@ -278,6 +280,7 @@ The existence of this symmetry reveals a redundancy in the description that we c
 \emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time; the plus polarization is $\pi/2$ radians ahead of the cross polarization.
 \emph{Bottom:} representation of the polarization state as a phasor vector in the $+$ and $\times$ space; the phasor rotates counterclockwise in a circle.
 Reversing the direction of time by reading this diagram right-to-left gives the effect of a left-handed circularly polarized wave.
+(See Ref.~\cite{release} for accompanying animations.)
 }
 \label{fig:pol_diagram_circ}
 \end{figure*}
@@ -417,6 +420,7 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 \caption{An elliptically polarized GW as a function of time (left to right) over a period, described by Eq.~\eqref{eq:hcomp_ellip} with $\epsilon=1/2$, $\theta=\pi/2$, $\phi=0$ and arbitrary amplitude. \emph{Top:} as the wave propagates out of the page, it deforms a freely falling ring of particles (colored dots) into an ellipsoidal pattern, which in this case rotates counterclockwise with time, albeit nonrigidly; each individual particle is pushed in an ellipse with the same ellipticity as the wave itself, and oriented at an angle $\theta + \varphi$ from the $x$-axis, where $\varphi$ is the polar coordinate locating the particle around the ring.
 \emph{Middle:} amplitudes of the plus (solid) and cross (dashed) linear polarizations making up the wave as a function of time.
 \emph{Bottom:} representation of the polarization state as a phasor in the $+$ and $\times$ space; the phasor rotates counterclockwise as in Fig.~\ref{fig:ellipse}.
+(See Ref.~\cite{release} for accompanying animations.)
 }
 \label{fig:pol_diagram_ellip}
 \end{figure*}
@@ -652,7 +656,7 @@ The fact that $\theta = 0$ is a consequence of our special choice of coordinate 
 \end{figure}
 
 The above results, Eqs.~(\ref{eq:spherical_modes}--\ref{eq:ellip_cosi}), hold only for sources with equatorial-reflection symmetry.
-The GWs for more generic, precessing, sources will not generally be given by the superposition of fully polarized modes with constant ellipticity.
+The GWs for more generic, precessing, sources will not generally be given by the superposition of fully polarized modes with constant ellipticity \cite{Buonanno:2002fy,Schmidt:2010it,Schmidt:2012rh,Ochsner:2012dj,Boyle:2011gg,Blanchet:2013haa,Lousto:2018dgd}.
 However, some of such signals may be decomposed into elliptical modes with a slowly-evolving ellipticity; that is the case, for example, for the early stages of precessing compact binary inspirals, whose signal can be well approximated by \eq{nonprecessing} with a slowly varying inclination.
 
 In some cases, nonplanar sources can also give rise to superpositions of fully polarized modes.
@@ -1208,7 +1212,7 @@ A_L^2 = \frac{1}{2}\left[\left(\yp + \xc\right)^2 + \left(\xp - \yc\right)^2\rig
 \end{equation}
 where last two lines are the same as in \eq{Aphi_to_Cphi}.
 The inverse transformation is, as one might expect from Fig.~\ref{fig:diagram_apac},
-\begin{equation} \label{eq:Axy_to_Cphi}
+\begin{equation} \label{eq:Axy_to_Arl}
 \begin{cases}
 \xp = \frac{1}{\sqrt{2}} \left( \xr + \xl \right)\\
 % \yp = \frac{1}{\sqrt{2}} \left( \yr + \yl \right)\\
@@ -1220,9 +1224,9 @@ The inverse transformation is, as one might expect from Fig.~\ref{fig:diagram_ap
 \end{equation}
 for circular-polarization quadratures defined as $\xrl \equiv A_{R/L}\cos\phi_{R/L}$ and $\yrl \equiv A_{R/L} \sin \phi_{R/L}$.
 
-From \eq{Cphi_to_Aellip}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters $\{A,\epsilon,\theta,\phi\}$.
+From Eqs.~\eqref{eq:Cphi_to_Aellip} and \eqref{eq:Axy_to_Arl}, we can then derive a relation between $\{\xpc, \ypc\}$ and the canonical parameters $\{A,\epsilon,\theta,\phi\}$.
 The inverse transformation, from  $\{A,\epsilon,\theta,\phi\}$ into $\{\xpc, \ypc\}$ is easier to express succinctly and is given by
-\begin{equation} \label{eq:Axy_to_Cphi}
+\begin{equation} \label{eq:Axy_to_Aeps}
 \begin{cases}
 \xp = A \left(\cos\theta \cos\phi + \epsilon \sin\theta \sin\phi\right)\\
 \yp = A \left(\cos\theta \sin\phi - \epsilon \sin\theta \cos\phi\right)\\
@@ -1409,7 +1413,7 @@ In the last section, we briefly touched on the generalization to metric theories
 
 \begin{acknowledgments}
 I would like to thank Will Farr, Katerina Chatziioannou and Leo Stein for insighful discussions, as well as Jose Mar\'ia Ezquiaga and Jolien Creighton for comments on the draft.
-The Flatiron Institute is a division of the Simons Foundation, supported through the generosity of Marilyn and Jim Simons.
+The Flatiron Institute is a division of the Simons Foundation.
 This paper carries LIGO document number \dcc{}.
 \end{acknowledgments}
 
