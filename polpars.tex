@@ -700,14 +700,14 @@ h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\p
 This contravariant transformation gives the polarization amplitudes that would be measured by an observer in the rotated (primed) frame, as a function of the amplitudes in the original frame.
 The $2\Delta\psi$ dependence in \eq{htransf} reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
 
-The basis polarization tensors themselves transform inversely to the amplitudes, covariant with the rotation.
-Under clockwise rotations of the wave frame, therefore, the antenna patterns of \eq{h} transform through an expression complementary to \eq{htransf},
+%The basis polarization tensors themselves transform inversely to the amplitudes, covariant with the rotation.
+Under clockwise rotations of the wave frame the antenna patterns of \eq{h} transform through an expression complementary to \eq{htransf},
 \begin{subequations} \label{eq:Ftransf}
 \beq
-F_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi + F_\times \sin 2\Delta\psi \, ,
+F_+ \rightarrow F_+' = F_+ \cos 2\Delta \psi - F_\times \sin 2\Delta\psi \, ,
 \eeq
 \beq
-F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi - F_+ \sin 2\Delta\psi \, ,
+F_\times \rightarrow F_\times' = F_\times \cos 2\Delta \psi + F_+ \sin 2\Delta\psi \, ,
 \eeq
 \end{subequations}
 ensuring that the observable $h(t)$ in \eq{h} is independent of the arbitrary angle $\psi$.
@@ -775,14 +775,14 @@ However, the two angles $\theta$ and $\psi$ are conceptually distinct; in partic
 
 As for any GW, the detector output for an elliptically polarized wave will be given by \eq{h}.
 In this case, however, \eq{Ftransf} implies that $\psi$ and $\theta$ are degenerate, as detailed in Appendix A of \cite{Isi:2017equ}.
-Concretely, for a fixed sky location (i.e., propagation direction), rotating the waveframe \emph{clockwise} around $\hat{z}$ results in a change from $\psi \to \psi' = \psi + \Delta\psi$ in the antenna patterns, which can be absorbed by a change in $\theta$.
+Concretely, for a fixed sky location (i.e., propagation direction), rotating the waveframe \emph{counterclockwise} around $\hat{z}$ results in a change from $\psi \to \psi' = \psi - \Delta\psi$ in the antenna patterns, which can be absorbed by a change in $\theta$.
 This is because the expression for the strain at a given detector,
 \beq
-h = F_+(\psi + \Delta \psi)\, h_+ + F_\times(\psi + \Delta \psi)\, h_\times \, ,
+h = F_+(\psi - \Delta \psi)\, h_+ + F_\times(\psi - \Delta \psi)\, h_\times \, ,
 \eeq
 can be expanded by means of \eq{Ftransf} to read
 \begin{align}
-h = &\left[ F_+(\psi) \cos 2\Delta\psi + F_\times(\psi) \sin 2\Delta\psi \right] h_+\, + \\
+h = &\left[ F_+(\psi) \cos 2\Delta\psi + F_\times(\psi) \sin 2\Delta\psi \right] h_+\, + \nonumber \\
  &\left[F_\times(\psi) \cos 2\Delta\psi - F_+(\psi)\sin 2\Delta\psi\right] h_\times \, .
 \end{align}
 Plugging in the expressions for an elliptical wave in \eq{ellip_gen} and taking advantage of trigonometric identities, this can be rearranged into
