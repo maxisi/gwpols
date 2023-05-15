@@ -46,7 +46,7 @@ These are defined such that they result in a polarization phasor that rotates ar
 In terms of the linear polarization amplitudes, the corresponding right (R) and left (L) handed polarization amplitudes, $$h_{R/L}$$, are given by
 
 $$
-h_{R/L} = \frac{1}{\sqrt{2}} \left( h_+ \mp h_\times \right)
+h_{R/L} = \frac{1}{\sqrt{2}} \left( h_+ \mp i h_\times \right)
 $$
 
 with the minus (plus) sign for R (L).
