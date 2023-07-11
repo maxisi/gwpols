@@ -739,7 +739,7 @@ meaning that a rotation around $\hat{z}$ is equivalent to a simple change in the
 As such, a change in $\psi$ can be absorbed by a redefinition of the Fourier phases in \eq{hcomp_fd_rl}, multiplying the integral through by $\exp(-i2\Delta\psi)$.
 
 \begin{figure}
-\includegraphics[width=0.9\columnwidth]{diagram_waveframe.pdf}
+\includegraphics[width=\columnwidth]{diagram_waveframe.pdf}
 \caption{Standard construction of the polarization waveframe used in LIGO-Virgo data analysis \cite{LALSuite:wave,Anderson:T010110}. Earth sits at the origin of the equatorial coordinate system defined by the celestial north ($N$) and the vernal equinox ($\vernal$). The sky location of a source ($\star$) is encoded in its right ascension ($\alpha$) and declination ($\delta$), so that the wave propagation direction is $\hat{k}=\hat{z}=-(\cos\delta \cos\alpha, \cos\delta\sin\alpha, \sin\delta)$. The canonical polarization frame is defined by $\hat{x}'=(\sin\alpha, -\cos\alpha,0)$ as being the intersection between the plane of the sky (blue circle) and the celestial equator (gray circle), and $\hat{y}'=(-\sin\delta \cos\alpha, -\sin\delta\sin\alpha, \cos\delta)$ the projection of $N$ onto the plane of the sky, completing the right-handed basis with $\hat{z}$.
 In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x}' + \sin\psi\,\hat{y}'$ and $\hat{y}=-\sin\psi\,\hat{x}' + \cos\psi\,\hat{y}'$. (Dashed trace indicates elements below the equator.)}
 \label{fig:diagram_waveframe}
@@ -964,7 +964,7 @@ We assume the amplitude could potentially subsume any (slow) time dependence end
 \label{sec:jac:Achi}
 
 \begin{figure}
-\includegraphics[width=0.8\columnwidth]{jac_Aeps_Achi}
+\includegraphics[width=0.9\columnwidth]{jac_Aeps_Achi}
 \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\hat{A},\chi\}$ over the ranges $0 < \hat{A} \leq \hat{A}_{\max}$ and $-\pi/4 \leq \chi \leq \pi/4$.
 Since $\hat{A} = A \sqrt{1+\epsilon^2}$ and $\max(\epsilon)= 1$, we should make sure to bound $A \leq  A_{\max} \equiv \hat{A}_{\max} /\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example}.
 With that constraint (blue), the $A,\epsilon$ distribution is inversely proportional to the Jacobian in \eq{jac_Aeps_Achi}: a uniform prior on $\hat{A}$ and $\chi$ is uniform in $A$ but slightly favors linear polarizations ($\epsilon = 0$) over circular ones ($\epsilon = \pm 1$), with probability density $\propto 1/J_0$ (dashed curves). 
@@ -1027,7 +1027,7 @@ These expressions are particularly simple: amplitude parameters $\{ A_R, A_L\}$ 
 This is a consequence of the fact that the circular polarizations are defined to be invariant under rotations around the direction of propagation, up to an overall phase as shown in \eq{htransf_circ}.
 
 \begin{figure}
-\includegraphics[width=0.8\columnwidth]{jac_Aeps_Arl}
+\includegraphics[width=0.9\columnwidth]{jac_Aeps_Arl}
 \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{A_R,A_L\}$ over the ranges $0 < A_{R/L} \leq A_{R/L,\max}$.
 Since $A = (A_R + A_L)/\sqrt{2}$, we must constrain $A \leq A_{\max} \equiv A_{R/L,\max}/\sqrt{2}$ (dotted line), as in the example of Fig.~\ref{fig:jac_example};
 failing to do so would result in a triangular distribution for $A$, i.e., upward sloping for $A < A_{\max}$ and downward sloping for $A > A_{\max}$ (top panel), and a nonuniform distribution on $\epsilon$ (right panel).
@@ -1045,7 +1045,7 @@ with a proportionality constant of $1/\sqrt{2}$, which is ignored in most applic
 Therefore, a prior uniform in $A_R$ and $A_L$ results in a triangular prior in the overall amplitude of the mode defined by $A$ (Fig.~\ref{fig:jac_Aeps_Arl}).
 
 \begin{figure}
-\includegraphics[width=0.8\columnwidth]{jac_Aeps_Arl_angles}
+\includegraphics[width=0.9\columnwidth]{jac_Aeps_Arl_angles}
 \caption{Distribution imposed on $\{\theta,\phi\}$ by applying a flat prior on $\{\phi_R,\phi_L\}$ over $-\pi/2 < \phi_{R/L} \leq \pi/2$, through the simple transformation of \eq{Aellip_to_Cphi} (gray) or the more generic version in footnote \ref{foot:angles} (blue).
 The latter spans the full domain by populating the corners outside the diagonals defined by $|\phi| = \pi \pm \theta$ (dotted lines), restoring uniformity in the marginals (blue dashed) at the expense of double covering the waveform space.
 In practice, the samples from the blue distribution can be obtained by randomly adding $\pm \pi$ to both $\theta$ and $\phi$ for  half of the samples drawn from the gray distribution.
@@ -1275,10 +1275,10 @@ The same result could be obtained by applying an intrinsically isotropic prior i
 \label{sec:jac:cosi}
 
 There are several applications for which it is desirable to make a connection between the ellipticity of a signal and the corresponding inclination angle of a source via \eq{ellip_cosi}.
-This is because even unmodeled analyses, like \textsc{BayesWave}, often target sources that are dominated by the quadrupolar harmonic of the radiation ($\ell=|m|=2$), and that can be presumed to respect the planar symmetry that gave rise to that equation (see Sec.~\ref{sec:harmonics}).
+This is because even unmodeled \added{signal} analyses, like \textsc{BayesWave}, often target sources that are dominated by the quadrupolar harmonic of the radiation ($\ell=|m|=2$), and that can be presumed to respect the planar symmetry that gave rise to that equation (see Sec.~\ref{sec:harmonics}).
 
 In that case, a physically meaningful prior for the shape of the polarization ellipse is usually one that is uniform in $\cos\iota$, corresponding to an isotropic prior on the source orientation.
-Such a prior is necessarily nonuniform in $\epsilon$, as can be inferred from the relation between the two quantities, illustrated in Fig.~\ref{fig:ellip_cosi}: uniform draws in $\cos\iota$ will necessarily favor circular polarizations over linear ones, since the $\epsilon$-versus-$\cos\iota$ curve flattens at the edges as $\cos\iota\to\pm 1$ and $\epsilon \to \pm 1$.
+Such a prior is necessarily nonuniform in $\epsilon$, as can be inferred from the relation between the two quantities, illustrated in Fig.~\ref{fig:ellip_cosi}: uniform draws in $\cos\iota$ will necessarily favor circular polarizations over linear ones, since the $\epsilon$-vs-$\cos\iota$ curve flattens at the edges as $\cos\iota\to\pm 1$ and $\epsilon \to \pm 1$.
 Conversely, a prior uniform in $\epsilon$ will necessarily disfavor face on ($\cos\iota=+1$) or face off ($\cos\iota=-1$) sources.
 
 Indeed, the Jacobian $J_4 \equiv \left|\partial\epsilon/\partial \cos\iota\right|$, transforming from $\cos\iota$ to $\epsilon$, is
@@ -1442,7 +1442,7 @@ Even though these coordinates are not directly relevant to the description of GW
 \begin{figure}
 \includegraphics[width=\columnwidth]{diagram_spins.pdf}
 \caption{Coordinate frames used to specify the component spin vectors for a precessing \ac{CBC}. The Cartesian components of each individual spin vector $\vec{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ at a reference time (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes ($\ascnode$).
-The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame, $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$ (black). For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint gray circle), which is orthogonal to $\hat{k}$.
+The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame (black), $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$. For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint green circle), which is orthogonal to $\hat{k}$.
 Dashed traces mark elements below the $\{\hat{x}_J, \hat{y}_J\}$ plane.}
 \label{fig:spins}
 \end{figure}
