@@ -30,7 +30,7 @@
 \pgfmathsetmacro{\phiNvec}{80}
 
 \newcommand*\lateraleye{%
-\scalebox{0.15}{
+\scalebox{0.25}{
 \tikzset{every picture/.style={line width=0.75pt,-}} 
 \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
 \draw  [-,line width=1.5]  (300,100.33) .. controls (326,122) and (352,135) .. (378,139.33) .. controls (352,143.67) and (326,156.67) .. (300,178.33) ;
@@ -54,17 +54,17 @@
     \draw[dotted, color=black] (P) -- (J);
     \draw[-,color=black,dotted] (O) -- (P) node[]{};
     \draw[-stealth,color=white,opacity=0] (O) -- (P) node[black,opacity=1,fill=white,rotate=50]{$\lateraleye$};
-    \draw[thick,->,color=black] (O) -- (Pp) node[anchor=west]{$\hat{k}$};
+    \draw[thick,->,color=OliveGreen] (O) -- (Pp) node[anchor=west]{$\hat{k}$};
 
     \tdplotsetthetaplanecoords{\phiNvec}
-		\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
+		\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.45}{0}%
 		        {\thetaJNvec}{anchor=south west}{$\theta_{JN}$}
 
     \tdplotsetrotatedcoords{\phiNvec}{\thetaJNvec}{-90}
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=gray,opacity=0.5]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=gray}{}
-    \tdplotdrawarc[thin,tdplot_rotated_coords,color=gray,opacity=0.5]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=gray}{}
+    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=OliveGreen,opacity=1]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=gray}{}
+    \tdplotdrawarc[thin,tdplot_rotated_coords,color=OliveGreen,opacity=1]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=gray}{}
 
-    \draw[tdplot_rotated_coords,color=gray, opacity=0.5,dashed] (0,0,0) -- ({\rvec*cos(\longascnode)},{\rvec*sin(\longascnode)},0) {node[anchor=north east]{$\ascnode$}};
+    \draw[tdplot_rotated_coords,color=OliveGreen, opacity=1,dashed] (0,0,0) -- ({\rvec*cos(\longascnode)},{\rvec*sin(\longascnode)},0) {node[anchor=north east]{$\ascnode$}};
 
     
 %% Hiding theta_JL since it's not ever computed
@@ -80,11 +80,11 @@
         -- (0,0,\wfl) node[anchor=south east]{$\hat{L}$};
 
     \tdplotsetcoord{L}{\wfl}{\thetaJLvec}{\phivec}
-    \draw[thick,dotted, color=NavyBlue] (O) -- (Lxy);
-    \draw[thick,dotted, color=NavyBlue] (L) -- (Lxy);
+    \draw[thick,dotted, color=black] (O) -- (Lxy);
+    \draw[thick,dotted, color=black] (L) -- (Lxy);
     \tdplotdrawarc{(O)}{0.2}{\phiNvec-90}{\phivec}{anchor=north east}{$\phi_{JL}$}
     
-    \draw[thin,tdplot_rotated_coords, gray, opacity=0.2] (\wfl,0,0)
+    \draw[tdplot_rotated_coords, gray, opacity=0.2] (\wfl,0,0)
         -- (-\wfl,0,0) node[anchor=north west]{};
     \tdplotdrawarc[NavyBlue,thick,tdplot_rotated_coords]{(0,0,0)}{\orbitl}{0}{-180}{shift={(1.5,0.5)},anchor=east,text height=-50pt}{$\phi_{\rm orb}$}
     \tdplotdrawarc[thick,tdplot_rotated_coords,->,dotted,NavyBlue]{(0,0,0)}{\orbitl}{\longascnode+58}{\orbphase - 5}{}{}
@@ -92,7 +92,7 @@
     \tdplotdrawarc[thin,tdplot_rotated_coords,dotted,NavyBlue]{(0,0,0)}{\orbitl}{0}{85}{}{}
     %\tdplotdrawarc[thick,tdplot_rotated_coords,->,dashed,NavyBlue]{(0,0,0)}{\orbitl}{-180}{-270}{}{}
 
-    \tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=NavyBlue}{}
+    \tdplotdrawarc[dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{180}{anchor=east,color=NavyBlue}{}
     \tdplotdrawarc[thin,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\rvec}{0}{-180}{anchor=east,color=NavyBlue}{}
 
     %\tdplotdrawarc[thin,dashed,tdplot_rotated_coords,color=NavyBlue]{(0,0,0)}{\orbitl}{0}{180}{anchor=east,color=NavyBlue}{}

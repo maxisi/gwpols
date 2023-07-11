@@ -56,6 +56,16 @@
 %\usepackage{lmodern}
 \usepackage{wasysym}
 \usepackage[nolist,nohyperlinks]{acronym}
+\usepackage{changes}
+
+% % hack to mark footnote as deleted
+% % https://tex.stackexchange.com/questions/451179/changes-package-how-to-delete-a-footnote
+% \makeatletter
+% \newcommand\deletedfootnote[1]{%
+%     \ifthenelse{\boolean{Changes@optiondraft}}
+%     {\footnote{\deleted{#1}}}
+%     {}}
+% \makeatother
 
 \newcommand{\ts}{\textsuperscript}
 
@@ -74,37 +84,37 @@
 %\raggedbottom
 \interfootnotelinepenalty=3000
 
-%% Enable/disable comments
-\newtoggle{commentsoff}
-\togglefalse{commentsoff}
-%\toggletrue{commentsoff}
+% %% Enable/disable comments
+% \newtoggle{commentsoff}
+% \togglefalse{commentsoff}
+% %\toggletrue{commentsoff}
 
-% Check for command-line option to turn comments off
-% https://tex.stackexchange.com/questions/1492/passing-parameters-to-a-document
-\ifdefined\nocomments
-    \toggletrue{commentsoff}
-\fi
+% % Check for command-line option to turn comments off
+% % https://tex.stackexchange.com/questions/1492/passing-parameters-to-a-document
+% \ifdefined\nocomments
+%     \toggletrue{commentsoff}
+% \fi
 
-\iftoggle{commentsoff}{
-  \newcommand*{\mi}[1]{}
-  \newcommand*{\comment}[1]{}
-  \newcommand*{\suggest}[3]{#2}
-  \newcommand*{\todo}[1]{}
-  \newcommand*{\warn}[1]{}
-  \newcommand*{\red}[1]{#1}
-  \newcommand*{\blue}[1]{#1}
-  \newcommand{\cn}{}
-  \newcommand*{\commentmark}[1]{}
-}{
-  \newcommand*{\mi}[1]{{\color{magenta} [{\bf MAX}: #1]}}
-  \newcommand*{\suggest}[3]{\textcolor{Purple}{\textbf{#3} \sout{#1} #2}}
-  \newcommand*{\comment}[1]{{\color{blue} [{\bf NOTE}: #1]}}
-  \newcommand*{\warn}[1]{{\color{red} [{\bf WARNING}: #1]}}
-  \newcommand*{\todo}[1]{{\color{red} [{\bf TODO}: #1]}}
-  \newcommand*{\red}[1]{{\color{purple} #1}}
-  \newcommand*{\blue}[1]{{\color{blue} #1}}
-  \newcommand{\cn}{\blue{\bf [cn]}}
-}
+% \iftoggle{commentsoff}{
+%   \newcommand*{\mi}[1]{}
+%   % \newcommand*{\comment}[1]{}
+%   \newcommand*{\suggest}[3]{#2}
+%   \newcommand*{\todo}[1]{}
+%   \newcommand*{\warn}[1]{}
+%   \newcommand*{\red}[1]{#1}
+%   \newcommand*{\blue}[1]{#1}
+%   \newcommand{\cn}{}
+%   \newcommand*{\commentmark}[1]{}
+% }{
+%   \newcommand*{\mi}[1]{{\color{magenta} [{\bf MAX}: #1]}}
+%   \newcommand*{\suggest}[3]{\textcolor{Purple}{\textbf{#3} \sout{#1} #2}}
+%   \newcommand*{\comment}[1]{{\color{blue} [{\bf NOTE}: #1]}}
+%   \newcommand*{\warn}[1]{{\color{red} [{\bf WARNING}: #1]}}
+%   \newcommand*{\todo}[1]{{\color{red} [{\bf TODO}: #1]}}
+%   \newcommand*{\red}[1]{{\color{purple} #1}}
+%   \newcommand*{\blue}[1]{{\color{blue} #1}}
+%   \newcommand{\cn}{\blue{\bf [cn]}}
+% }
 
 \graphicspath{{./fig/}}
 
@@ -253,12 +263,12 @@ After fixing the frame orientation, any plane GW may be expressed in terms of th
 h_{ij}(t,\vec{x}) &= \frac{1}{2\pi}\int_{-\infty}^{+\infty} \tilde{h}_{ij}(\omega, \hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \\
 &= \frac{1}{2\pi} \sum_{p=+,\times} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \nonumber
 \end{align}
-where the sum is over linear polarization states ($+,\times$) defined in some wave frame attached to the propagation direction $\hat{k}$,%
-\footnote{More broadly, the strain at any point in spacetime may be expressed with full generality as a superposition of these planewaves
+where the sum is over linear polarization states ($+,\times$) defined in some wave frame attached to the propagation direction $\hat{k}$, and we obtained the second line using the fact that the $e^{+/\times}_{ij}$ are real valued.
+\added[comment={FN}]{More broadly, the strain at any point in spacetime may be expressed with full generality as a superposition of these planewaves
 % $h_{ij}(t,\vec{x}) = \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})
 % \exp\left[{i\omega \left(\hat{k}\cdot\vec{x}/c-t\right)}\right] \infd \omega \infd \hat{k}$
 by integrating over all directions of propagation (e.g., \cite{Romano:2016dpx,Isi:2018miq}).}
-and we obtained the second line using the fact that the $e^{+/\times}_{ij}$ are real valued.
+
 Equation \eqref{eq:planewave} implicitly defines the complex-valued Fourier polarization functions $\tilde{h}_p(\omega)$ to correspond to the time-domain polarizations at the spatial origin, $h_p(t) \equiv h_p(t, \vec{x}=0)$, by
 \beq \label{eq:ft}
 \tilde{h}_p(\omega) \equiv \int_{-\infty}^{+\infty} h_p(t)\, e^{i\omega t} \infd t \, ,
@@ -381,10 +391,12 @@ The shape of the ellipse can also be parametrized in terms of the angle $\chi \e
 \label{sec:ellip:mono:morph}
 
 Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor space (Fig.~\ref{fig:ellipse}).
-We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,%
-\footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
+We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,
+%\footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
 isolating a single Fourier mode of frequency $\omega_0 >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
-The result of the Fourier integral for $H(t) \equiv h_+ - i h_\times$ is then (relabeling $\omega_0 \to \omega$ after integration)
+\added[comment=FN]{This choice of prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
+
+For such a signal, the result of the Fourier integral of $H(t) \equiv h_+ - i h_\times$ is then (relabeling $\omega_0 \to \omega$ after integration)
 \begin{align} \label{eq:ellip_circ}
 H(t) =\frac{1}{\sqrt{2}} \left( C_R\, e^{-i \omega t} + C^*_L\, e^{i\omega t}\right)\, ,
 \end{align}
@@ -410,10 +422,11 @@ with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$.%
 In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented so as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
 The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as $\hat{A} \equiv \sqrt{A_R^2 + A_L^2} = A \sqrt{1 + \epsilon^2}$.
 
-Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.\footnote{We use ``elliptical'' generically to also encompass circular and linear polarizations as special cases; in this sense, ``elliptical'' and ``fully polarized'' are synonyms.}
+Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.
 As special cases, $\epsilon = +1$ ($\epsilon = -1$) encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
 an example in between, with $\epsilon=1/2$ and $\theta = \pi/2$, is illustrated in Fig.~\ref{fig:pol_diagram_ellip} (compare to Fig.~\ref{fig:pol_diagram_circ}, where $\epsilon=1$).
 Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode of this kind, with ellipticity determined by the relative magnitudes of $\tilde{h}_{R/L}(\omega)$, and ellipse orientation determined by the difference in their Fourier phases, through $\theta = (\arg \tilde{h}_L - \arg \tilde{h}_R)/2$.
+\added[comment=FN]{Since we use ``elliptical'' generically to also encompass circular and linear polarizations as special cases, ``elliptical'' and ``fully polarized'' are synonyms in this sense.}
 
 \begin{figure*}
 \includegraphics[width=0.8\textwidth]{pol_diagram_ellip}
@@ -427,7 +440,7 @@ Each Fourier component in Eq.~\eqref{eq:hcomp_fd_rl} is a fully polarized mode o
 
 \newcommand{\jonesbasis}{\vec{\mathfrak{e}}}
 
-The domain for the parameters in \eq{hcomp_ellip} is $A \geq 0$, $-1 \leq \epsilon \leq 1$, $0 \leq \theta < 2\pi$ and $0 \leq \phi < 2\pi$ (or, equivalently, $-\pi \leq \theta < \pi$ and $-\pi \leq \phi < \pi$).
+The domain for the parameters in \eq{hcomp_ellip} is $A \geq 0$ for the amplitude, $-1 \leq \epsilon \leq 1$ for the ellipticity, and $0 \leq \theta < 2\pi$ and $0 \leq \phi < 2\pi$ for the two phase angles (or, equivalently, $-\pi \leq \theta < \pi$ and $-\pi \leq \phi < \pi$).
 However, allowing $\theta$ and $\phi$ to vary freely over this range results in a double covering of the waveform space; this is because the template is invariant under the addition or subtraction of $\pi$ to both $\theta$ and $\phi$, i.e., under the transformations $\{\theta, \phi\} \to \{\theta \pm \pi, \phi \pm \pi\}$, for any combination of plus and minus signs
 The existence of this degeneracy is easy to infer from Fig.~\ref{fig:ellipse}, and can be traced back to the property discussed in footnote \ref{foot:angles} in relation to $\phi_{R/L}$.
 Within the $[-\pi, \pi]$ branch cut, the $\{\theta, \phi\}$ space can therefore be restricted to a diamond bounded by the four diagonals satisfying $|\phi| = \pi \pm \theta$.
@@ -531,10 +544,9 @@ h_\times = \mathcal{A}(t) \left[ \cos \Phi(t) \sin \theta + \epsilon \sin \Phi(t
 \end{equation}
 \end{subequations}
 enhancing Eq.~\eqref{eq:hcomp_ellip} with a (slowly) time varying amplitude $\mathcal{A}(t)$ and a (quickly) time varying phase $\Phi(t)$, which need no longer grow linearly with time.
-Following this expression, the aspect ratio and orientation of the polarization ellipse remains constant,%
-\footnote{The shape of the ellipse could also be made to vary adiabatically via $\epsilon$ and $\theta$ but that is seldomly done in real-world applications.}
-while its size may increase or decrease according to $\mathcal{A}(t)$.
+Following this expression, the aspect ratio and orientation of the polarization ellipse remains constant, while its size may increase or decrease according to $\mathcal{A}(t)$.
 The initial state of the signal is defined by the initial amplitude $A = \mathcal{A}(t=0)$ and phase $\phi = \Phi(t=0)$.
+\added[comment=FN]{The shape of the ellipse could also be made to vary adiabatically via $\epsilon$ and $\theta$ but that is seldomly done in real-world applications.}
 
 Most conceivable signals are neither monochromatic nor fully polarized.
 Nevertheless, a large variety of morphologies can be captured by a finite superposition of elliptically polarized modes, potentially with time-varying polarization parameters as above.
@@ -729,7 +741,7 @@ As such, a change in $\psi$ can be absorbed by a redefinition of the Fourier pha
 \begin{figure}
 \includegraphics[width=0.9\columnwidth]{diagram_waveframe.pdf}
 \caption{Standard construction of the polarization waveframe used in LIGO-Virgo data analysis \cite{LALSuite:wave,Anderson:T010110}. Earth sits at the origin of the equatorial coordinate system defined by the celestial north ($N$) and the vernal equinox ($\vernal$). The sky location of a source ($\star$) is encoded in its right ascension ($\alpha$) and declination ($\delta$), so that the wave propagation direction is $\hat{k}=\hat{z}=-(\cos\delta \cos\alpha, \cos\delta\sin\alpha, \sin\delta)$. The canonical polarization frame is defined by $\hat{x}'=(\sin\alpha, -\cos\alpha,0)$ as being the intersection between the plane of the sky (blue circle) and the celestial equator (gray circle), and $\hat{y}'=(-\sin\delta \cos\alpha, -\sin\delta\sin\alpha, \cos\delta)$ the projection of $N$ onto the plane of the sky, completing the right-handed basis with $\hat{z}$.
-In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x} + \sin\psi\,\hat{y}$ and $\hat{y}=-\sin\psi\,\hat{x} + \cos\psi\,\hat{y}$. (Dashed trace indicates elements below the equator.)}
+In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x}' + \sin\psi\,\hat{y}'$ and $\hat{y}=-\sin\psi\,\hat{x}' + \cos\psi\,\hat{y}'$. (Dashed trace indicates elements below the equator.)}
 \label{fig:diagram_waveframe}
 \end{figure}
 
@@ -850,12 +862,13 @@ Fixing $\psi$ to some fiducial value was the approach taken in \cite{Isi:2017equ
 \label{sec:position}
 
 \begin{figure}
-\includegraphics[width=0.9\columnwidth]{diagram_sourceframe.pdf}
-\caption{Standard construction of the source frame used in LIGO-Virgo data analysis of compact binaries \cite{LALSuite:source}. Two inspiraling objects ($m_1$ and $m_2$) define an orbital plane (gray disk) perpendicular to the orbital angular momentum direction $\hat{L}$. At a given time (say, when the observed GW signal reaches 20 Hz) observers on Earth will be oriented with an inclination $\iota$ relative to $\hat{L}$ and an azimuthal angle $\varphi$ with respect to the line from $m_2$ to $m_1$ (related to the reference orbital phase $\Phi=\pi/2-\varphi$).
+\includegraphics[width=\columnwidth]{diagram_sourceframe.pdf}
+\caption{Standard construction of the source frame used in LIGO-Virgo data analysis of compact binaries \cite{LALSuite:source}. Two inspiraling objects ($m_1$ and $m_2$) define an orbital plane (gray disk) perpendicular to the \replaced{direction of orbital angular momentum,}{orbital angular momentum direction} $\hat{L}$. At a given time (say, when the observed GW signal reaches 20 Hz) observers on Earth will be oriented with an inclination $\iota$ relative to $\hat{L}$ and an azimuthal angle $\varphi$ with respect to the line from $m_2$ to $m_1$ (related to the reference orbital phase $\Phi=\pi/2-\varphi$).
 The intersection between the orbital plane and the plane of the sky (blue circle) defines the line of nodes, with the \emph{ascending node} ($\ascnode$) the point where the orbiting objects cross the sky-plane into the side of the observer.
 The polarization vectors $\{\hat{x}',\hat{y}'\}$ and $\{\hat{x},\hat{y}\}$ of Fig.~\ref{fig:diagram_waveframe} lie in the plane of the sky, separated by an angle $\psi$ (clockwise around $\hat{z}$ from $\hat{x}$ to $\hat{x}'$).
 The preferred vectors used to predict waveforms as in Sec.~\ref{sec:harmonics}, $\{\hat{x},\hat{y}\}$, define an angle $\Omega$, the longitude of ascending nodes, separating $\ascnode$ from $\hat{x}$ (the origin of longitude).
 The LIGO-Virgo convention sets $\Omega=\pi/2$, so that $\hat{y}$ is the ascending node and $\hat{x}$ lies along the projection of $\hat{L}$ onto the plane of the sky ($\hat{L}_\perp$).
+\added{While $h_{+/\times}$ are defined relative to $\{\hat{x},\hat{y}\}$, the antenna patterns are computed using $\{\hat{x}',\hat{y}'\}$ (see Fig.~\ref{fig:diagram_skyview}).}
 }
 \label{fig:diagram_sourceframe}
 \end{figure}
@@ -1427,10 +1440,10 @@ These are required to specify the orientations of the spins of the individual ob
 Even though these coordinates are not directly relevant to the description of GW polarizations, we describe them here for completeness following the current LIGO-Virgo convention \cite{LALSuite:spins} (conventions occasionally change \cite{Pfeiffer:T1800226}).
 
 \begin{figure}
-\includegraphics[width=0.8\columnwidth]{diagram_spins.pdf}
+\includegraphics[width=\columnwidth]{diagram_spins.pdf}
 \caption{Coordinate frames used to specify the component spin vectors for a precessing \ac{CBC}. The Cartesian components of each individual spin vector $\vec{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ at a reference time (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes ($\ascnode$).
 The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame, $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$ (black). For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint gray circle), which is orthogonal to $\hat{k}$.
-(Dashed traces mark elements below the $\{\hat{x}_J, \hat{y}_J\}$ plane.)}
+Dashed traces mark elements below the $\{\hat{x}_J, \hat{y}_J\}$ plane.}
 \label{fig:spins}
 \end{figure}
 

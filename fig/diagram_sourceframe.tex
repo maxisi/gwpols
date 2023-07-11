@@ -21,7 +21,7 @@
 \pgfmathsetmacro{\discrad}{\rvec}
 
 \newcommand*\lateraleye{%
-\scalebox{0.15}{
+\scalebox{0.25}{
 \tikzset{every picture/.style={line width=0.75pt,-}} 
 \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
 \draw  [-,line width=1.5]  (300,100.33) .. controls (326,122) and (352,135) .. (378,139.33) .. controls (352,143.67) and (326,156.67) .. (300,178.33) ;
@@ -66,15 +66,15 @@
     \draw[-,thick,dotted,color=black,opacity=1,tdplot_rotated_coords] (0,0,0) -- %
         (0,-\psil,0) node[anchor=south]{$\hat{L}_\perp$};
 
-    \draw[-stealth,thick,color=NavyBlue,opacity=0.25,tdplot_rotated_coords] (0,0,0) -- %
+    \draw[-stealth,thick,color=OliveGreen,opacity=0.5,tdplot_rotated_coords] (0,0,0) -- %
         ({\psil*cos(-\longascnode + \psivec)},{\psil*sin(-\longascnode + \psivec)},0) node[anchor=south]{$\hat{x}'$};
-    \draw[-stealth,thick,color=NavyBlue,opacity=0.25,tdplot_rotated_coords] (0,0,0) -- %
-        (-{\psil*sin(-\longascnode + \psivec)},{\psil*cos(-\longascnode + \psivec)},0) node[anchor=east]{$\hat{y}'$};
-    \tdplotdrawarc[tdplot_rotated_coords,color=NavyBlue,opacity=0.25]{(0,0,0)}{0.25*\psil}{-\longascnode}%
-        {-\longascnode+\psivec}{anchor=south}{$\psi$}
+    \draw[-stealth,thick,color=OliveGreen,opacity=0.5,tdplot_rotated_coords] (0,0,0) -- %
+        (-{\psil*sin(-\longascnode + \psivec)},{\psil*cos(-\longascnode + \psivec)},0) node[anchor=south west]{$\hat{y}'$};
+    \tdplotdrawarc[tdplot_rotated_coords,color=OliveGreen,opacity=1]{(0,0,0)}{0.25*\psil}{-\longascnode}%
+        {-\longascnode+\psivec}{anchor=south, xshift=-2pt, yshift=2pt}{$\psi$}
 
     \draw[-stealth,thick,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
-        ({\psil*cos(-\longascnode)},{\psil*sin(-\longascnode)},0) node[anchor=east]{$\hat{x}$};
+        ({\psil*cos(-\longascnode)},{\psil*sin(-\longascnode)},0) node[anchor=south east]{$\hat{x}$};
     \draw[-stealth,thick, dashed,opacity=0.7,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
         (-{\psil*sin(-\longascnode)},{\psil*cos(-\longascnode)},0) node[anchor=north east]{$\hat{y}$};
 
