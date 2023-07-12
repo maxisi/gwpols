@@ -214,7 +214,7 @@ Code behind the figures and additional material are made available in an accompa
 \label{sec:linear}
 
 In GR, there exist two propagating gravitational degrees of freedom, corresponding to two independent GW polarizations (e.g., \cite{Thorne1983,Thorne:1987af,Poisson2014,BT}).
-At any given time, their local effect can be encoded in a driving matrix $h_{ij}$ representing the transverse-traceless part of the metric perturbation, also known as the \emph{gravitational-wave field}.
+At any given time, their local effect can be encoded in a strain tensor $h_{ij}$ representing the transverse-traceless part of the metric perturbation, also known as the \emph{gravitational-wave field} \cite{Thorne1983,Thorne:1987af,Poisson2014,BT}.
 In a Cartesian frame with $z$-axis along the direction of propagation, we can write this matrix as
 \beq \label{eq:hij}
 (h_{ij}) = \begin{pmatrix}
@@ -420,7 +420,10 @@ h_\times = A \left[\sin \theta \cos(\omega t - \phi) + \epsilon \cos \theta \sin
 with $\phi \equiv (\phi_L + \phi_R)/2$ and $\theta \equiv (\phi_L - \phi_R)/2$.%
 \footnote{Since $\phi_{R/L}$ are $2\pi$-periodic, the most generic relation between them and $\{\theta$, $\phi\}$ is actually $\theta = [\phi_L - \phi_R  + 2\pi (k-j)]/2 \mod 2\pi$ and $\phi = [\phi_L + \phi_R  + 2\pi (k+j)]/2 \mod 2\pi$ for any integers $k,j$. \label{foot:angles}}
 In the $\left(h_+,h_\times\right)$ plane, this defines an ellipse with semimajor axis $A$ and semiminor axis $\epsilon A$, oriented so as to subtend an angle $\theta$ between the semimajor axis and the $h_+$ axis, and with an initial location around the ellipse given by $-\phi$ (Fig.~\ref{fig:ellipse}).
-The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as $\hat{A} \equiv \sqrt{A_R^2 + A_L^2} = A \sqrt{1 + \epsilon^2}$.
+The total power in this mode is given by the square of the \emph{intensity amplitude}, which we define as 
+\begin{equation}
+  \hat{A} \equiv \sqrt{A_R^2 + A_L^2} = A \sqrt{1 + \epsilon^2}\, .
+\end{equation}
 
 Equation \eqref{eq:hcomp_ellip} encapsulates all possible morphologies of a monochromatic, fully polarized wave.
 As special cases, $\epsilon = +1$ ($\epsilon = -1$) encodes an R (L) circularly-polarized wave, while $\epsilon =0$ encodes a $+$ ($\times$) linearly-polarized wave if $\theta = 0,\pi$ ($\theta = \pm \pi/2$);
@@ -620,7 +623,7 @@ H(t) &= \sum_{\ell \geq 2} \sum_{0\leq m \leq \ell} \left[H_{\ell m}(t)\, {}_{-2
 \end{align}
 \end{subequations}
 \end{widetext}
-for some overall complex-valued amplitudes $\mathcal{C}_{\ell \pm m}$, which absorbe the angular dependence of the spherical harmonics and any potential (slow) time variation in $\mathcal{A}_{\ell m}$.
+for some overall complex-valued amplitudes $\mathcal{C}_{\ell \pm m}$, which absorb the angular dependence of the spherical harmonics and any potential (slow) time variation in $\mathcal{A}_{\ell m}$.
 In the second line above, we took advantage of the identity relating spherical harmonics for different signs of $m$, ${}_{-2} Y_{\ell -m}(\iota,\varphi) = (-1)^{\ell} {}_{-2} Y_{\ell m}^*(\pi-\iota,\varphi)$ \cite{goldberg:1967}.
 
 The summand in the last line of \eq{spherical_modes} takes the form of \eq{ellip_circ}, and its interpretation is the same for any fixed observation direction: each $(\ell$, $|m|)$ angular harmonic contributes a single, elliptically polarized mode to the waveform, composed of right- and left-handed pieces corresponding to the $m>0$ and $m<0$ modes respectively.
@@ -1317,11 +1320,11 @@ Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}
 \newcommand{\hlon}{h_{\lsym}}
 
 Metric theories beyond GR may allow for up to six independent polarizations, including the two tensor $+$ and $\times$ modes expected in GR \cite{Eardley:1973br,Eardley:1973zuo}.
-\added{The presence of additional nontensor modes is a generic feature of many extensions of GR, and their detection would represent a smoking gun for new physics \cite{Will:2014kxa}.
-Some constraints on their existence have been placed by LIGO-Virgo \cite{LIGOScientific:2017ycc,LIGOScientific:2018dkp,LIGOScientific:2019fpa,LIGOScientific:2020tif,Takeda:2020tjj,Haster:2020yrh}, and are expected to improve significantly with future observations \cite[e.g.,][]{Chatziioannou:2021mij,Cornish:2017oic}. 
+\added{The presence of additional nontensor modes is a generic feature of many extensions of GR, and their detection would represent a smoking gun for new physics \cite{Thorne:1973zz,Will:2014kxa,Chatziioannou:2012rf}.
+Some constraints on their existence have been placed by LIGO-Virgo \cite{LIGOScientific:2017ycc,LIGOScientific:2017ous,LIGOScientific:2018czr,LIGOScientific:2018dkp,LIGOScientific:2019fpa,LIGOScientific:2020tif}, and are expected to improve significantly with future observations \cite[e.g.,][]{Chatziioannou:2021mij,Cornish:2017oic}. 
 Data analysis methods targeting nontensor GWs require extending the formalism of GW polarizations beyond the plus and cross modes treated above \cite{Isi:2015cva,Isi:2017equ,Callister:2017ocg,Isi:2017fbj,Chatziioannou:2021mij,Romano:2016dpx}.}
 
-\replaced{Fortunately, the generalization to nontensor modes is straightforward}{The discussion above generalizes easily to include those additional modes}, starting with an enhanced version of the driving matrix in Eq.~\eqref{eq:hij},
+\replaced{Fortunately, the generalization to nontensor modes is straightforward}{The discussion above generalizes easily to include those additional modes}, starting with an enhanced version of the strain tensor in Eq.~\eqref{eq:hij},
 \beq \label{eq:hij_ngr}
 (h_{ij}) = \begin{pmatrix}
 \hb + h_+ & h_\times  & \hx  \\
