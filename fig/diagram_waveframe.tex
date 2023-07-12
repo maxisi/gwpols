@@ -27,7 +27,7 @@
     \tdplotsetcoord{P}{1.55*\rvec}{\thetavec}{\phivec}
     \draw[thick,dotted, color=NavyBlue] (O) -- (Pxy);
     \draw[thick,dotted, color=NavyBlue] (P) -- (Pxy);
-    \draw[-stealth,color=NavyBlue] (O) -- (P) node[fill=white, font=\Large]{$\star$};
+    \draw[-stealth,color=NavyBlue] (O) -- (P) node[fill=white, font=\LARGE]{$\star$};
     \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\alpha$}
 
     \tdplotsetthetaplanecoords{\phivec}
@@ -43,11 +43,11 @@
         -- (0,0,\wfl) node[anchor=south east]{$\hat{z}$};
     \draw[dashed,fill=gray,opacity=0.1] (\discrad,0,0) arc (0:360:\discrad);
     
-    \draw[thick,tdplot_rotated_coords,->, gray] (0,0,0)
+    \draw[thick,tdplot_rotated_coords,->, OliveGreen] (0,0,0)
         -- (\wfl,0,0) node[anchor=north east]{$\hat{x}'$};
     \draw[thin,tdplot_rotated_coords, gray] (0,0,0)
         -- (-\wfl,0,0) node[anchor=north west]{};
-    \draw[thick,tdplot_rotated_coords,->, gray] (0,0,0)
+    \draw[thick,tdplot_rotated_coords,->, OliveGreen] (0,0,0)
         -- (0,\wfl,0) node[anchor=south]{$\hat{y}'$};
     \draw[-stealth,thick,color=NavyBlue,tdplot_rotated_coords] (0,0,0) -- %
         ({\psil*cos(\psivec)},{\psil*sin(\psivec)},0) node[anchor=east]{$\hat{x}$};

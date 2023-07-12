@@ -741,7 +741,7 @@ As such, a change in $\psi$ can be absorbed by a redefinition of the Fourier pha
 \begin{figure}
 \includegraphics[width=\columnwidth]{diagram_waveframe.pdf}
 \caption{Standard construction of the polarization waveframe used in LIGO-Virgo data analysis \cite{LALSuite:wave,Anderson:T010110}. Earth sits at the origin of the equatorial coordinate system defined by the celestial north ($N$) and the vernal equinox ($\vernal$). The sky location of a source ($\star$) is encoded in its right ascension ($\alpha$) and declination ($\delta$), so that the wave propagation direction is $\hat{k}=\hat{z}=-(\cos\delta \cos\alpha, \cos\delta\sin\alpha, \sin\delta)$. The canonical polarization frame is defined by $\hat{x}'=(\sin\alpha, -\cos\alpha,0)$ as being the intersection between the plane of the sky (blue circle) and the celestial equator (gray circle), and $\hat{y}'=(-\sin\delta \cos\alpha, -\sin\delta\sin\alpha, \cos\delta)$ the projection of $N$ onto the plane of the sky, completing the right-handed basis with $\hat{z}$.
-In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x}' + \sin\psi\,\hat{y}'$ and $\hat{y}=-\sin\psi\,\hat{x}' + \cos\psi\,\hat{y}'$. (Dashed trace indicates elements below the equator.)}
+In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x}' + \sin\psi\,\hat{y}'$ and $\hat{y}=-\sin\psi\,\hat{x}' + \cos\psi\,\hat{y}'$. Dashed trace indicates elements below the equator.}
 \label{fig:diagram_waveframe}
 \end{figure}
 
@@ -756,6 +756,14 @@ Nevertheless, even though any choice of assignment for $\psi$ is formally valid,
 
 \subsection{Elliptical waves and the angle $\theta$}
 \label{sec:theta}
+
+\begin{figure}[tbp]
+  \includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
+  \caption{A counterclockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
+  The diagram illustrates two such modes (blue and orange) with ellipse orientations $\theta_{1/2}$ (not labeled) with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
+  }
+  \label{fig:diagram_ellipse_extra}
+  \end{figure}
 
 Another notion of ``polarization angle'' arises naturally in the description of elliptically polarized signals.
 The expression for an elliptical wave in \eq{ellip_gen} presumes some specific choice of $\psi$ that defines the meaning of plus vs cross by orienting $\hat{x}$, as explained in the previous section.
@@ -772,14 +780,6 @@ h_\times = \epsilon \mathcal{A}(t) \sin \Phi(t)\, ,
 \end{subequations}
 and we may simply read off the ellipticity $\epsilon$ as the ratio of the $\times$ to $+$ amplitudes.
 Crucially, an elliptical wave will generally not take the form of Eq.~\eqref{eq:ellip_frame} unless $\hat{x}$ is chosen appropriately; only circularly polarized signals ($\epsilon=\pm1$) will take  this simplified form irrespective of the wave frame orientation (again showing that these are eigenstates of the helicity operator).
-
-\begin{figure}[tbp]
-\includegraphics[width=0.65\columnwidth]{diagram_ellipse_extra.pdf}
-\caption{A counterclockwise rotation of the physical waveframe of Fig.~\ref{fig:diagram_waveframe} by an angle $\Delta\psi$ manifests as a rotation by $2\Delta\psi$ in the $(h_+,h_\times)$ polarization space, so that elliptical modes with original orientation angles $\theta_n$ are seen to have orientations $\theta_n'=\theta_n + 2\Delta\psi$ in the new (primed) frame.
-The diagram illustrates two such modes (blue and orange) with ellipse orientations $\theta_{1/2}$ (not labeled) with respect to $h_+$, and  $\theta_{1/2}'$ with respect to $h_+'$.
-}
-\label{fig:diagram_ellipse_extra}
-\end{figure}
 
 Given the above, when working with a single elliptically-polarized wave, Eq.~\eqref{eq:ellip_frame} defines a privileged orientation of the wave frame, unique up to rotations by $\pi/2$ around $\hat{z}$.
 If we adopt $\theta =0$ as a convention (or, equivalently, $\theta=\pi$), then we \emph{define} our wave frame to lie along the principal axes of the polarization ellipse and, thus, the polarization angle $\psi$ becomes synonymous with the polarization ellipse orientation by construction.
@@ -1316,8 +1316,12 @@ Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}
 \newcommand{\hb}{h_{\bsym}}
 \newcommand{\hlon}{h_{\lsym}}
 
-Metric theories beyond GR may allow for up to six independent polarizations, including the two tensor $+$ and $\times$ modes expected in GR.
-The discussion above generalizes easily to include those additional modes, starting with an enhanced version of the driving matrix in Eq.~\eqref{eq:hij},
+Metric theories beyond GR may allow for up to six independent polarizations, including the two tensor $+$ and $\times$ modes expected in GR \cite{Eardley:1973br,Eardley:1973zuo}.
+\added{The presence of additional nontensor modes is a generic feature of many extensions of GR, and their detection would represent a smoking gun for new physics \cite{Will:2014kxa}.
+Some constraints on their existence have been placed by LIGO-Virgo \cite{LIGOScientific:2017ycc,LIGOScientific:2018dkp,LIGOScientific:2019fpa,LIGOScientific:2020tif,Takeda:2020tjj,Haster:2020yrh}, and are expected to improve significantly with future observations \cite[e.g.,][]{Chatziioannou:2021mij,Cornish:2017oic}. 
+Data analysis methods targeting nontensor GWs require extending the formalism of GW polarizations beyond the plus and cross modes treated above \cite{Isi:2015cva,Isi:2017equ,Callister:2017ocg,Isi:2017fbj,Chatziioannou:2021mij,Romano:2016dpx}.}
+
+\replaced{Fortunately, the generalization to nontensor modes is straightforward}{The discussion above generalizes easily to include those additional modes}, starting with an enhanced version of the driving matrix in Eq.~\eqref{eq:hij},
 \beq \label{eq:hij_ngr}
 (h_{ij}) = \begin{pmatrix}
 \hb + h_+ & h_\times  & \hx  \\
@@ -1325,7 +1329,7 @@ h_\times  & \hb - h_+ & \hy  \\
 \hx    & \hy    & \hlon
 \end{pmatrix} ,
 \eeq
-where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) modes;%
+where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) mode.%
 \footnote{There are other possible normalizations in use in the literature, e.g., $\hlon \to \sqrt{2} \hlon$.}
 Equivalently, as above, we can write this as a weighted sum over generalized polarization tensors,
 \beq
@@ -1342,7 +1346,7 @@ with $F_p \equiv D^{ij} e^p_{ij}$ as before.
 %The functional form of all the antenna patterns can be computed in any given coordinate system using the definitions of the $e^p_{ij}$ tensors implied by \eq{hij_ngr}.
 The physical effect of the non-GR polarizations is encoded in the antenna patterns, and is illustrated in, e.g., Fig.~1 of \cite{Isi:2017equ}.
 
-The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR modes exhibit under rotations.
+The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR modes exhibit under rotations around the direction of propagation.
 Polarizations of different spin weight do not mix with each other under rotations.
 
 A rotation by $\Delta \psi$ around the line of propagation transforms the two vector amplitudes by
@@ -1389,15 +1393,16 @@ In terms of the breathing and longitudinal modes above, this is
 \beq
 h_{\rm s} \equiv \hb - 2\hlon\, ,
 \eeq
-which is the only scalar mode measurable by existing detectors.%
-\footnote{The effect of this traceless scalar mode is to simultaneously stretch (squeeze) along the $x$ and $y$ directions while squeezing (stretching) along the $z$ direction; the fully-trace scalar mode, to which current detectors are insensitive, stretch and squeeze space isotropically in all three directions.}
-Equivalently, the geometric antenna patterns for the breathing and longitudinal modes are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
+which is the only scalar mode measurable by existing detectors.
+\added[comment=FN]{The effect of this traceless scalar mode is to simultaneously stretch (squeeze) along the $x$ and $y$ directions while squeezing (stretching) along the $z$ direction; the fully-trace scalar mode, to which current detectors are insensitive, stretch and squeeze space isotropically in all three directions.}
+
+\replaced{As an equivalent phrasing of the above}{Equivalently}, the geometric antenna patterns for the breathing and longitudinal modes are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
 Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the detailed morphology of the $\hb(t)$ and $\hlon(t)$ functions.
 For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing mode---so that the sum is over only five polarizations instead of six.
 
 The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip_modes} can easily be extended to accommodate nontensor modes.
 In particular, a generalized definition of Stokes parameters was derived in \cite{Anile1974} to account for all helicities---this requires 36 Stokes parameters.
-However, the practical utility of such fully-generalized Stokes parameters is unclear, since the polarizations of different helicites do not mix into each other under rotations.
+However, the practical utility of such fully-generalized Stokes parameters is unclear, since the polarizations of different helicites do not mix into each other under rotations around the direction of propagation.
 Instead, it is possible to simply enhance the set of four tensor Stokes parameters by an additional four vector Stokes parameters (defined analogously), and two parameters for the intensity of each of the scalar modes;
 this adds up to 12 polarization parameters, instead of 36, at the expense of ignoring potential coherence across modes of different spin weight.
 
@@ -1435,17 +1440,17 @@ This paper carries LIGO document number \dcc{}.
 \section{Compact-binary spin frames}
 \label{app:spins}
 
+\begin{figure}
+  \includegraphics[width=\columnwidth]{diagram_spins.pdf}
+  \caption{Coordinate frames used to specify the component spin vectors for a precessing \ac{CBC}. The Cartesian components of each individual spin vector $\vec{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ at a reference time (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes ($\ascnode$).
+  The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame (black), $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$. For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint green circle), which is orthogonal to $\hat{k}$.
+  Dashed traces mark elements below the $\{\hat{x}_J, \hat{y}_J\}$ plane.}
+  \label{fig:spins}
+  \end{figure}
+
 Besides the polarization-related frames discussed in the main text, additional coordinates come into play when describing a precessing \ac{CBC}.
 These are required to specify the orientations of the spins of the individual objects in the binary, since these are not aligned with the orbital angular momentum for the case of a precessing system.
 Even though these coordinates are not directly relevant to the description of GW polarizations, we describe them here for completeness following the current LIGO-Virgo convention \cite{LALSuite:spins} (conventions occasionally change \cite{Pfeiffer:T1800226}).
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{diagram_spins.pdf}
-\caption{Coordinate frames used to specify the component spin vectors for a precessing \ac{CBC}. The Cartesian components of each individual spin vector $\vec{S}_{1/2}$ (not shown) are prescribed in the orbital frame given by $(\hat{x}_L, \hat{y}_L, \hat{L})$, where $\hat{x}_L$ points in the direction from $m_2$ to $m_1$ at a reference time (blue); the orientation of $\hat{x}_L$ is set by an orbital phase angle $\phi_{\rm orb}$ defined with respect to the line of nodes ($\ascnode$).
-The total angular momentum $\vec{J}$ defines an angle $\theta_{JN}$ with respect to the wavevector $\vec{k}$; in the $J$-based frame (black), $\vec{L}$ is oriented so as to define an angle $\phi_{JL}$ relative to $\hat{x}_J$, which is itself perpendicular to both $\vec{J}$ and $\vec{k}$. For comparison with Figs.~\ref{fig:diagram_waveframe}, \ref{fig:diagram_sourceframe} and \ref{fig:diagram_skyview} we show the plane of the sky (faint green circle), which is orthogonal to $\hat{k}$.
-Dashed traces mark elements below the $\{\hat{x}_J, \hat{y}_J\}$ plane.}
-\label{fig:spins}
-\end{figure}
 
 The component spin vectors, $\vec{S}_{1/2}$, are prescribed at an arbitrary reference time (e.g., the moment when the signal reaches 20 Hz at the detector) in a Cartesian frame with $z$-axis along the orbital angular momentum, $\vec{L}$, with $x$-axis along the line pointing from the lighter object ($m_2$) to the heavier object ($m_1$), and with $y$-axis completing the right-handed triad; this $L$-based coordinate frame is shown in blue Fig.~\ref{fig:spins}.
 

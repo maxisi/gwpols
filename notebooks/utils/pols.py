@@ -18,24 +18,24 @@
 #       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #       MA 02110-1301, USA.
 
-from pylab import *
+import numpy as np
 
 # linear basis tensors
-ep = array([[1, 0], [0, -1]])
-ec = array([[0, 1], [1, 0]])
+ep = np.array([[1, 0], [0, -1]])
+ec = np.array([[0, 1], [1, 0]])
 
 def hphc_ellip(wt, A=0.2, ellip=1, theta=0):
     """Returns the plus and cross polarization states corresponding to 
     a given set of polarization ellipse parameters (assuming no initial phase).
     """
-    coswt = cos(wt)
-    sinwt = sin(wt)
-    hp = coswt*cos(theta) - ellip*sinwt*sin(theta)
-    hc = coswt*sin(theta) + ellip*sinwt*cos(theta)
+    coswt = np.cos(wt)
+    sinwt = np.sin(wt)
+    hp = coswt*np.cos(theta) - ellip*sinwt*np.sin(theta)
+    hc = coswt*np.sin(theta) + ellip*sinwt*np.cos(theta)
     return A*hp, A*hc
 
 def dxdy_ellip(XY, *args, **kwargs):
     """Returns the displacement vectors produced by a given elliptical GW.
     """
     hp, hc = hphc_ellip(*args, **kwargs)
-    return dot(hp*ep + hc*ec, XY)
+    return np.dot(hp*ep + hc*ec, XY)
