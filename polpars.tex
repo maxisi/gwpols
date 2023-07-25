@@ -223,7 +223,7 @@ h_\times  & - h_+ & 0  \\
 0 & 0 & 0
 \end{pmatrix} ,
 \eeq
-where the plus ($+$) and cross ($\times$) polarization functions, $h_{+/\times}$, depend implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source, as well as on any other relevant source parameters controlling the amplitude and phase of the wave, as dictated by Einstein's equations.
+where the \replaced{instantaneous plus ($+$) and cross ($\times$) polarization amplitudes, $h_{+/\times}$, are given by some polarization functions $h_{+/\times}(t; \theta)$ depending}{plus ($+$) and cross ($\times$) polarization amplitudes, $h_{+/\times}$, depend} implicitly on the retarded time, $t - R/c$, in a way determined by the source dynamics and by the (luminosity) distance $R$ to the source, as well as on any other relevant source parameters, \added{$\theta$}, controlling the amplitude and phase of the wave, as dictated by Einstein's equations.
 
 It can be useful to rewrite \eq{hij} as $h_{ij} = h_+ e^+_{ij} + h_\times e^\times_{ij}$, in terms of the $e^{+/\times}_{ij}$ polarization basis tensors given by
 \begin{subequations} \label{eq:lin}
@@ -240,12 +240,13 @@ We will refer to plus and cross jointly as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a small, freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
 Other polarization bases can be constructed, as we will see below, but the linear polarizations are generally the most convenient for expressing measurements.
 
-In the small-antenna limit, the signal induced by a passing GW on a given detector can be written as the dyadic projection
+In the small-antenna (long-wavelength) limit, the signal induced by a passing GW on a given detector can be written as the dyadic projection
 \beq \label{eq:h}
 h(t) \equiv D^{ij} h_{ij} = F_+ h_+ + F_\times h_\times\, ,
 \eeq
 with antenna patterns $F_{+/\times} \equiv D^{ij} e^{+/\times}_{ij}$ defined in terms of a detector tensor $D_{ij}$ that encodes the geometry of the measurement.
-For a differential-arm detector like LIGO with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
+\added{In the small-antenna limit, this tensor contains all relevant information about the detector's response to GWs \cite{Forward:1978zm,bluebook,Estabrook:1985id,Finn:2008np}; it represents the zero-frequency limit of the frequency-dependent transfer function of a stationary instrument \cite{Schilling:1997id,Rakhmanov2005a,Rakhmanov:2008is,Rakhmanov:2009zz,Essick:2017wyl}.}
+For a differential-arm detector, like LIGO, with arms pointing along unit vectors $\hat{X}$ and $\hat{Y}$, this is just $D_{ij} = (\hat{X}_i \hat{X}_j - \hat{Y}_i \hat{Y}_j)/2$.%
 \footnote{These expressions are valid in the local Lorentz frame of the detector, so we can raise and lower indices with the flat metric.}
 In this limit, the antenna patterns are thus purely geometric factors that encode the relative orientations of the detector and wave frames, as defined by $\{\hat{X},\, \hat{Y},\, \hat{Z}\}$ and $\{\hat{x},\, \hat{y},\, \hat{z}\}$ respectively.
 
@@ -257,14 +258,14 @@ In this limit, the antenna patterns are thus purely geometric factors that encod
 \label{fig:rings}
 \end{figure}
 
-After fixing the frame orientation, any plane GW may be expressed in terms of the Fourier components of its polarization amplitudes as
+After fixing the frame orientation, any plane GW may be expressed in terms of the Fourier components of its polarization \replaced{functions}{amplitudes} as
 \begin{align}
 \label{eq:planewave}
 h_{ij}(t,\vec{x}) &= \frac{1}{2\pi}\int_{-\infty}^{+\infty} \tilde{h}_{ij}(\omega, \hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \\
 &= \frac{1}{2\pi} \sum_{p=+,\times} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \nonumber
 \end{align}
 where the sum is over linear polarization states ($+,\times$) defined in some wave frame attached to the propagation direction $\hat{k}$, and we obtained the second line using the fact that the $e^{+/\times}_{ij}$ are real valued.
-\added[comment={FN}]{More broadly, the strain at any point in spacetime may be expressed with full generality as a superposition of these planewaves
+\added[comment={FN}]{More broadly, the strain tensor at any point in spacetime may be expressed with full generality as a superposition of these planewaves
 % $h_{ij}(t,\vec{x}) = \int_{\mathcal{S}^2} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega, \hat{k})\, e^p_{ij}(\hat{k})
 % \exp\left[{i\omega \left(\hat{k}\cdot\vec{x}/c-t\right)}\right] \infd \omega \infd \hat{k}$
 by integrating over all directions of propagation (e.g., \cite{Romano:2016dpx,Isi:2018miq}).}
@@ -275,7 +276,7 @@ Equation \eqref{eq:planewave} implicitly defines the complex-valued Fourier pola
 \eeq
 establishing our convention for the Fourier transform.
 
-Since $h_{ij}$ is real valued, the Fourier strain must  satisfy the complex-conjugate symmetry $\tilde{h}_{ij}(-\omega, \hat{k}) = \tilde{h}_{ij}^*(\omega,\hat{k})$, where the asterisk indicates complex conjugation.
+Since $h_{ij}$ is real valued, the Fourier strain \added{tensor} must  satisfy the complex-conjugate symmetry $\tilde{h}_{ij}(-\omega, \hat{k}) = \tilde{h}_{ij}^*(\omega,\hat{k})$, where the asterisk indicates complex conjugation.
 For the linear polarizations, this directly reduces to
 \beq \label{eq:sym_linear}
 \tilde{h}_{+/\times}(\omega) = \tilde{h}_{+/\times}^*(-\omega)\, ,
@@ -297,7 +298,7 @@ Reversing the direction of time by reading this diagram right-to-left gives the 
 
 \subsection{Circular basis}
 
-First, instead of the linear plus and cross polarizations above, we could equivalently work with the associated \emph{circular} right-handed (R) and left-handed (L) modes.
+First, instead of the linear plus and cross polarizations above, we could equivalently work with the associated \emph{circular} right-handed (R) and left-handed (L) \replaced{polarizations}{modes}.
 These are defined in the Fourier domain by the complex-valued basis tensors
 \beq \label{eq:circ}
 e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right) ,
@@ -305,21 +306,7 @@ e^{R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^+_{ij} \pm i e^\times_{ij} \right
 with the plus (minus) sign corresponding to R (L).
 These tensors are also orthogonal and normalized similarly to $e^{+/\times}_{ij}$ such that $(e^{p'ij})^* e^p_{ij} = 2 \delta^{pp'}$ for $p,p'$ in $\{R,L\}$.
 
-To understand the physical significance of the circular polarizations,
-consider a purely R-polarized monochromatic mode $h^R_{ij}$ with frequency $\omega > 0$, unit amplitude and zero phase offset; at the spatial origin ($\vec{x}=0$), the time-domain strain from such a mode will be given by
-\begin{align} \label{eq:circ_example}
-h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
-%&= \frac{1}{\sqrt{2}} \Re \left[\left(e^+_{ij} + i e^\times_{ij}\right) \exp(-i\omega t) \right] \nonumber\\
-&= \frac{1}{\sqrt{2}} \left( e^+_{ij} \cos \omega t + e^\times_{ij} \sin \omega t \right) ,
-\end{align}
-using the definition from Eq.~\eqref{eq:circ}, \added{with the $\Re$ operator taking the real part to ensure a real-valued metric perturbation}.
-In the 2D Cartesian space defined by the linear polarization amplitudes, i.e. $\left(h_+, h_\times\right)$, this defines a circle, around which the \emph{phasor} encoding the state of the wave rotates counterclockwise (for $\omega > 0$).
-This means that, at any given time, the wave will have a unit total amplitude (i.e., $h^2_+ + h^2_\times=1$) and the cross polarization will \emph{lag behind} the plus polarization by $\pi/2$ radians in phase.
-%
-Consequently, a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that is seen to rotate counter-clockwise when looking towards the source (Fig.~\ref{fig:pol_diagram_circ}), i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
-The opposite will be true for purely L-polarized waves, which will result in a clockwise-rotating ellipse.
-%\footnote{If we let $\omega < 0$ then the roles of R and L would flip, indicating these states are invariant under parity-time transformations.}
-This assignment of the ``right'' and ``left'' labels is known as the ``source based'' handedness convention.
+\deleted[comment=$\downarrow$]{To understand the physical significance of the circular polarizations\dots}
 
 The orthogonality and completeness of the tensors in Eq.~\eqref{eq:circ} mean that we can rewrite Eq.~\eqref{eq:planewave} in terms of the circular polarizations without loss of generality as the sum
 \beq \label{eq:planewave_circ}
@@ -337,8 +324,23 @@ Based on this, the complex-conjugate condition of Eq.~\eqref{eq:sym_linear} impl
 \tilde{h}_R(\omega) = \tilde{h}_L^*(-\omega) \, ,
 \eeq
 which again manifests the redundancy in Eq.~\eqref{eq:planewave_circ}, as in Eq.~\eqref{eq:planewave}.
-It also reveals that R and L switch roles for $\omega \to - \omega$, as we anticipated below Eq.~\eqref{eq:circ_example}, indicating that these states are invariant under parity-time reversals.
+It also reveals that R and L switch roles for $\omega \to - \omega$, \deleted{as we anticipated below Eq.~\eqref{eq:circ_example},} indicating that these states are invariant under parity-time reversals.
 
+\added[comment=$\uparrow$]{To understand the physical significance of the circular polarizations,}
+consider a purely R-polarized monochromatic mode $h^R_{ij}$ with frequency $\omega > 0$, unit amplitude and zero phase offset; at the spatial origin ($\vec{x}=0$), the time-domain strain \added{tensor} corresponding to such a mode will be given by
+\begin{align} \label{eq:circ_example}
+h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
+%&= \frac{1}{\sqrt{2}} \Re \left[\left(e^+_{ij} + i e^\times_{ij}\right) \exp(-i\omega t) \right] \nonumber\\
+&= \frac{1}{\sqrt{2}} \left( e^+_{ij} \cos \omega t + e^\times_{ij} \sin \omega t \right) ,
+\end{align}
+using the definition from Eq.~\eqref{eq:circ}, \added{with the $\Re$ operator taking the real part to ensure a real-valued metric perturbation}.
+In the 2D Cartesian space defined by the linear polarization amplitudes, i.e. $\left(h_+, h_\times\right)$, this defines a circle, around which the \emph{phasor} encoding the state of the wave rotates counterclockwise (for $\omega > 0$).
+This means that, at any given time, the wave will have a unit total amplitude (i.e., $h^2_+ + h^2_\times=1$) and the cross polarization will \emph{lag behind} the plus polarization by $\pi/2$ radians in phase.
+%
+Consequently, a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that is seen to rotate counter-clockwise when looking towards the source (Fig.~\ref{fig:pol_diagram_circ}), i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
+The opposite will be true for purely L-polarized waves, which will result in a clockwise-rotating ellipse.
+%\footnote{If we let $\omega < 0$ then the roles of R and L would flip, indicating these states are invariant under parity-time transformations.}
+This assignment of the ``right'' and ``left'' labels is known as the ``source based'' handedness convention.
 
 \subsection{Elliptical basis}
 \label{sec:ellip}
@@ -501,10 +503,9 @@ Thus, the generic signal in \eq{jones} can be equally conveyed by
 with $C_{R/L} = (C_+ \mp i C_\times)/\sqrt{2}$ the same complex amplitudes as in \eq{ellip_circ}---although note that here $C_L$ appears without conjugation.
 We will briefly make use of Jones vectors to facilitate coordinate transformations below.
 
-
 Considering the parametrization in \eq{hcomp_ellip_chi}, we have two angles that fully define the shape of the polarization ellipse, $\chi$ and $\theta$.
 If we interpret $-\pi/2 \leq 2\chi \leq \pi/2$ and $0 \leq 2\theta \leq 2\pi$ respectively as latitude and longitude coordinates, then the space of all unique polarization states can be arranged into a sphere such that linear polarization states of different orientations live on the equator ($\chi = 0$), and circular states live on the poles ($2\chi = \pm \pi/2$) \cite{poincare,goldstein}.
-Any two antipodal states in this so-called \emph{Poincar\'e sphere} can function as a polarization basis.
+Any two antipodal states in this so-called \emph{Poincar\'e sphere} can function as a \replaced{basis for polarization states}{polarization basis}.
 In this language, reexpressing Eq.~\eqref{eq:planewave} as Eq.~\eqref{eq:planewave_circ} amounted to effecting a Poincar\'{e} rotation of our basis vectors.
 The polarization ellipse (Fig.~\ref{fig:ellipse}) can be recovered from the Poincar\'e sphere by a stereographic projection.
 
@@ -754,7 +755,7 @@ To do this, we express the components of $e^{+/\times}_{ij}$ and $D_{ij}$ in a c
 Knowing how the $\{\hat{x}', \hat{y}'\}$ vectors are expressed in such coordinates, we can construct $h_{ij}'$ by noting that $\hat{x} = \cos\psi\, \hat{x}' + \sin\psi\, \hat{y}'$ and $\hat{y}= - \sin\psi\, \hat{x}' + \cos\psi\, \hat{y}'$.
 It is then straightforward to write the signal at any given detector in terms of the polarization amplitudes $h_{+/\times}$ computed in the original frame.
 
-The definition of the angle $\psi$ (as in Fig.~\ref{fig:diagram_waveframe}) is not intrinsically related to any feature of the signal: it simply chooses an absolute reference direction that defines an arbitrary frame in which to prescribe the $h_+$ and $h_\times$ polarization functions in \eq{hij}, or equivalently, the frame in which to measure the phases of the circularly polarized Fourier components.
+The definition of the angle $\psi$ (as in Fig.~\ref{fig:diagram_waveframe}) is not intrinsically related to any feature of the signal: it simply chooses an absolute reference direction that defines an arbitrary frame in which to prescribe the \replaced{$h_+(t)$ and $h_\times(t)$}{$h_+$ and $h_\times$} polarization functions in \eq{hij}, or equivalently, the frame in which to measure the phases of the circularly polarized Fourier components.
 Nevertheless, even though any choice of assignment for $\psi$ is formally valid, specific signal morphologies may make some choices more convenient than others.
 
 \subsection{Elliptical waves and the angle $\theta$}
@@ -1319,12 +1320,12 @@ Unfortunately, this was the parametrization used in \cite{Chatziioannou:2021mij}
 \newcommand{\hb}{h_{\bsym}}
 \newcommand{\hlon}{h_{\lsym}}
 
-Metric theories beyond GR may allow for up to six independent polarizations, including the two tensor $+$ and $\times$ modes expected in GR \cite{Eardley:1973br,Eardley:1973zuo}.
-\added{The presence of additional nontensor modes is a generic feature of many extensions of GR, and their detection would represent a smoking gun for new physics \cite{Thorne:1973zz,Will:2014kxa,Chatziioannou:2012rf}.
+Metric theories beyond GR may allow for up to six independent polarizations, including the two tensor $+$ and $\times$ \replaced{polarizations}{modes} expected in GR \cite{Eardley:1973br,Eardley:1973zuo}.
+\added{The presence of additional nontensor polarizations is a generic feature of many extensions of GR, and their detection would represent a smoking gun for new physics \cite{Thorne:1973zz,Will:2014kxa,Chatziioannou:2012rf}.
 Some constraints on their existence have been placed by LIGO-Virgo \cite{LIGOScientific:2017ycc,LIGOScientific:2017ous,LIGOScientific:2018czr,LIGOScientific:2018dkp,LIGOScientific:2019fpa,LIGOScientific:2020tif}, and are expected to improve significantly with future observations \cite[e.g.,][]{Chatziioannou:2021mij,Cornish:2017oic}. 
-Data analysis methods targeting nontensor GWs require extending the formalism of GW polarizations beyond the plus and cross modes treated above \cite{Isi:2015cva,Isi:2017equ,Callister:2017ocg,Isi:2017fbj,Chatziioannou:2021mij,Romano:2016dpx}.}
+Data analysis methods targeting nontensor GWs require extending the formalism of GW polarizations beyond the plus and cross polarizations treated above \cite{Isi:2015cva,Isi:2017equ,Callister:2017ocg,Isi:2017fbj,Chatziioannou:2021mij,Romano:2016dpx}.}
 
-\replaced{Fortunately, the generalization to nontensor modes is straightforward}{The discussion above generalizes easily to include those additional modes}, starting with an enhanced version of the strain tensor in Eq.~\eqref{eq:hij},
+\replaced{Fortunately, the generalization to nontensor polarizations is straightforward}{The discussion above generalizes easily to include those additional modes}, starting with an enhanced version of the strain tensor in Eq.~\eqref{eq:hij},
 \beq \label{eq:hij_ngr}
 (h_{ij}) = \begin{pmatrix}
 \hb + h_+ & h_\times  & \hx  \\
@@ -1332,7 +1333,7 @@ h_\times  & \hb - h_+ & \hy  \\
 \hx    & \hy    & \hlon
 \end{pmatrix} ,
 \eeq
-where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ modes (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) mode.%
+where, in addition to plus and cross, also appear the vector-$x$ (\xsym) and vector-$y$ \replaced{polarizations}{modes} (\ysym), as well as the scalar breathing (\bsym) and longitudinal (\lsym) \replaced{polarization}{mode}.%
 \footnote{There are other possible normalizations in use in the literature, e.g., $\hlon \to \sqrt{2} \hlon$.}
 Equivalently, as above, we can write this as a weighted sum over generalized polarization tensors,
 \beq
@@ -1349,7 +1350,7 @@ with $F_p \equiv D^{ij} e^p_{ij}$ as before.
 %The functional form of all the antenna patterns can be computed in any given coordinate system using the definitions of the $e^p_{ij}$ tensors implied by \eq{hij_ngr}.
 The physical effect of the non-GR polarizations is encoded in the antenna patterns, and is illustrated in, e.g., Fig.~1 of \cite{Isi:2017equ}.
 
-The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR modes exhibit under rotations around the direction of propagation.
+The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR \replaced{polarizatoins}{modes} exhibit under rotations around the direction of propagation.
 Polarizations of different spin weight do not mix with each other under rotations.
 
 A rotation by $\Delta \psi$ around the line of propagation transforms the two vector amplitudes by
@@ -1362,13 +1363,13 @@ A rotation by $\Delta \psi$ around the line of propagation transforms the two ve
 \eeq
 \end{subequations}
 reflecting the fact that these are the components of a spin weight $|s|=1$ field (hence ``vector'').
-Accordingly, any transformation in which the polarization angle entered as $2\psi$ for the tensor modes will look the same for vector modes but with the angle entering simply as $\psi$.
-In particular, the two vector modes allow for the definition of right and left handed combinations in full analogy with \eq{circ}, 
+Accordingly, any transformation in which the polarization angle entered as $2\psi$ for the tensor \replaced{polarizations}{modes} will look the same for vector \replaced{polarizations}{modes} but with the angle entering simply as $\psi$.
+In particular, the two vector \replaced{polarizations}{modes} allow for the definition of right and left handed combinations in full analogy with \eq{circ}, 
 \beq \label{eq:circ_vec}
 e^{v,R/L}_{ij} \equiv \frac{1}{\sqrt{2}} \left(e^\xsym_{ij} \pm i e^\ysym_{ij} \right) ,
 \eeq
 except that they correspond to eigenstates of the helicity operator with eigenvalues $\pm 1$, instead of $\pm 2$.
-These circular vector modes transform, in analogy with \eq{htransf_circ}, by
+These circular vector \replaced{polarizations}{modes} transform, in analogy with \eq{htransf_circ}, by
 \begin{subequations} \label{eq:htransf_circ_vec}
 \begin{align}
 h_{v,R} &\rightarrow h_{v,R}' = h_{v,R} \exp(- i  \Delta \psi) \, ,\\
@@ -1379,7 +1380,7 @@ Just like we can define circular vector modes, we can also construct ellipticall
 These take on the same fundamental role for vector GWs as detailed in Sec.~\ref{sec:ellip_modes} for their tensor counterparts; in this case, the mathematical formalism for polarization states is identical to that of electromagnetic waves, which also correspond to a field of spin weight $\left|s\right|=1$.
 
 
-On the other hand, the two scalar modes are invariant under rotations around $z$,
+On the other hand, the two scalar \replaced{polarizations}{modes} are invariant under rotations around $z$,
 \begin{subequations} \label{eq:htransf_s}
 \beq
 \hb \rightarrow \hb' = \hb\, ,
@@ -1389,32 +1390,32 @@ On the other hand, the two scalar modes are invariant under rotations around $z$
 \eeq
 \end{subequations}
 revealing that these behave as spin-weight $s=0$ fields (hence ``scalar'').
-Since these modes are already invariant under rotations, there is no meaningful notion of a circular (or elliptical) scalar polarization.
+Since these \replaced{polarizations}{modes} are already invariant under rotations, there is no meaningful notion of a circular (or elliptical) scalar polarization.
 %
 Furthermore, in the small-antenna limit, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
-In terms of the breathing and longitudinal modes above, this is
+In terms of the breathing and longitudinal \replaced{polarizations}{modes} above, this is
 \beq
 h_{\rm s} \equiv \hb - 2\hlon\, ,
 \eeq
-which is the only scalar mode measurable by existing detectors.
-\added[comment=FN]{The effect of this traceless scalar mode is to simultaneously stretch (squeeze) along the $x$ and $y$ directions while squeezing (stretching) along the $z$ direction; the fully-trace scalar mode, to which current detectors are insensitive, stretch and squeeze space isotropically in all three directions.}
+which is the only scalar \replaced{polarization}{mode} measurable by existing detectors.
+\added[comment=FN]{The effect of this traceless scalar polarizations is to simultaneously stretch (squeeze) along the $x$ and $y$ directions while squeezing (stretching) along the $z$ direction; the fully-trace scalar mode, to which current detectors are insensitive, stretch and squeeze space isotropically in all three directions.}
 
-\replaced{As an equivalent phrasing of the above}{Equivalently}, the geometric antenna patterns for the breathing and longitudinal modes are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
+\replaced{As an equivalent phrasing of the above}{Equivalently}, the geometric antenna patterns for the breathing and longitudinal \replaced{polarizations}{modes} are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
 Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the detailed morphology of the $\hb(t)$ and $\hlon(t)$ functions.
-For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing mode---so that the sum is over only five polarizations instead of six.
+For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing \replaced{polarization}{mode}---so that the sum is over only five polarizations instead of six.
 
-The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip_modes} can easily be extended to accommodate nontensor modes.
+The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip_modes} can easily be extended to accommodate nontensor \replaced{polarizations}{modes}.
 In particular, a generalized definition of Stokes parameters was derived in \cite{Anile1974} to account for all helicities---this requires 36 Stokes parameters.
 However, the practical utility of such fully-generalized Stokes parameters is unclear, since the polarizations of different helicites do not mix into each other under rotations around the direction of propagation.
-Instead, it is possible to simply enhance the set of four tensor Stokes parameters by an additional four vector Stokes parameters (defined analogously), and two parameters for the intensity of each of the scalar modes;
-this adds up to 12 polarization parameters, instead of 36, at the expense of ignoring potential coherence across modes of different spin weight.
+Instead, it is possible to simply enhance the set of four tensor Stokes parameters by an additional four vector Stokes parameters (defined analogously), and two parameters for the intensity of each of the scalar \replaced{polarizations}{modes};
+this adds up to 12 polarization parameters, instead of 36, at the expense of ignoring potential coherence across \replaced{polarizations}{modes} of different spin weight.
 
 
 \section{Conclusion}
 \label{sec:conclusion}
 
 We have reviewed in detail the mathematical treatment of GW polarizations as it pertains practical applications for GW data analysis.
-We began by showing how any GW signal can be decomposed into linear (Fig.~\ref{fig:rings}), circular (Fig.~\ref{fig:pol_diagram_circ}) or elliptical (Fig.~\ref{fig:pol_diagram_ellip}) modes, after choosing a physical polarization frame.
+We began by showing how any GW signal can be decomposed into linear (Fig.~\ref{fig:rings}), circular (Fig.~\ref{fig:pol_diagram_circ}) or elliptical (Fig.~\ref{fig:pol_diagram_ellip}) \replaced{polarizations}{modes}, after choosing a physical polarization frame.
 Arguing for the conceptual importance of elliptical (i.e., fully-polarized) modes, we outlined several of their key properties and reviewed a number of standard mathematical tools (Jones vectors, Poincar\'{e} sphere, Stokes parameters) useful in their description.
 Since a large number of signal morphologies can be captured by superpositions of fully-polarized states, we emphasized their practical importance for GW data analyiss in unmodeled (or loosely modeled) applications, as well as in connection to the decompositions of the GW strain from planar sources (e.g., nonprecessing \acp{CBC}) into spin-weighted spherical harmonic.
 
@@ -1430,7 +1431,7 @@ The parametrizations in terms of the linear amplitudes or their quadratures, as 
 This preference is particularly pronounced for the parametrization in terms of the linear amplitudes, which also picks a preferred direction for the polarization ellipse, aligned with the plus and cross axes as determined by the implicit definition of the physical waveframe (choice of $\psi$).
 We also showed how to relate the ellipticity to the inclination of a planar source, and how an isotropic prior in the source inclination is highly nonuniform in terms of ellipticity, favoring circular polarizations.
 
-In the last section, we briefly touched on the generalization to metric theories of gravity with additional (nontensor) modes, for which the mathematical treatment is, for the most part, exactly analogous.
+In the last section, we briefly touched on the generalization to metric theories of gravity with additional (nontensor) \replaced{polarizations}{modes}, for which the mathematical treatment is, for the most part, exactly analogous.
 
 \begin{acknowledgments}
 I would like to thank Will Farr, Katerina Chatziioannou and Leo Stein for insighful discussions, as well as Jose Mar\'ia Ezquiaga and Jolien Creighton for comments on the draft.
