@@ -31,14 +31,18 @@ The figure below shows an example of all these representations for the simple ca
 <figcaption>Monochromatic <i>plus</i> polarized wave as a function of time.</figcaption>
 </figure>
 
-There is a lot going on in this figure. First, the _leftmost_ diagram shows the overall effect this wave on a freely-falling ring of particles, similar to the diagram above. Next to it, _center left_, we show the decomposition of this effect into the  $$+$$ (top) and $$\times$$ contributions; in this case, there is no $$\times$$ contribution because this is a pure $$+$$ wave. Next, _center right_, we have the instantaneous polarization state, as represented by a phasor in the $$h_+$$ vs $$h_\times$$: the arrow represents the amplitude of plus vs cross waves at any given instant. Finally, the _rightmost_ diagram shows the decomposition into the cosine and sine quadratures for $$+$$ (top) and $$\times$$ (bottom).
+There is a lot going on in this figure. First, the _leftmost_ diagram shows the overall effect this wave on a freely-falling ring of particles, similar to the diagram above. Next to it, _center left_, we show the decomposition of this effect into the  $$+$$ (top) and $$\times$$ contributions; in this case, there is no $$\times$$ contribution because this is a pure $$+$$ wave. Next, _center right_, we have the instantaneous polarization state, as represented by a phasor in the $$h_+$$ vs $$h_\times$$: the arrow represents the amplitude of plus vs cross waves at any given instant; in this case, we only have $$+$$ waves, so the arrow moves horizontally back and forth. Finally, the _rightmost_ diagram shows the decomposition into the cosine and sine quadratures for $$+$$ (top) and $$\times$$ (bottom), and you will notice that only the former evolves in this case.
+
+We can do the same for a pure $$\times$$ wave.
+This time setting $$h_+ = 0$$ we obtain the following.
 
 <figure>
 <img src="./assets/images/pol_lin_c.gif" alt="Cross polarization"/>
 <figcaption>Monochromatic <i>cross</i> polarized wave as a function of time.</figcaption>
 </figure>
 
-This last animation is analogous to the previous one, except for a fully $$\times$$-polarized GW (i.e., $$h_+ = 0$$ at all times).
+Now only the $$\times$$ quantities evolve, and all the $$+$$ quantities vanish.
+A general GW will be made up of a superposition of plus and cross waves.
 
 ## The circular basis
 
@@ -61,7 +65,8 @@ Like we did for the linear polarizations above, the effect of a circular R-polar
 
 We see that contributions from both $$+$$ and $$\times$$ components are required to produced a circularly polarized state, and the two linear components must be exactly $$\pi/2$$ radians in phase apart in order to add up to a circle.
 
-Just as the circular polarization states define a circle in the $$\left(h_+, h_\times\right)$$ plane, they also cause test particles to oscillate in a circle around their equilibrium positions (see small circle shown on the left-most panel of the above figure).
+Just as the circular polarization states define a circle in the $$\left(h_+, h_\times\right)$$ plane, they also cause test particles to oscillate in a circle around their equilibrium positions.
+You can see this in the small circle shown on the left-most panel of the above figure.
 
 A left-handed wave looks the same as above, but with the sense of rotation reversed.
 
@@ -70,7 +75,10 @@ A left-handed wave looks the same as above, but with the sense of rotation rever
 <figcaption>Monochromatic <i>left-handed</i> wave as a function of time.</figcaption>
 </figure>
 
+The fact that reversing time turns $$R$$ into $$L$$ and viceversa tells us that these are eigenstates of the parity operator.
+
 Any monochromatic GW can be decomposed into right and left handed modes.
+They are more convenient than the linear modes because they are invariant under rotations around the direction of propagation, so there is no ambiguity in how they are defined.
 
 ## The elliptical basis
 
