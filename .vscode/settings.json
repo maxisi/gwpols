@@ -1,4 +1,6 @@
 {
+    "latex-workshop.latex.external.build.command": "latexmk",
+    "latex-workshop.latex.external.build.args": ["-pdf", "-pdflatex", "-interaction=nonstopmode", "-synctex=1"],
     "cSpell.enableFiletypes": [
         "!python",
         "latex"

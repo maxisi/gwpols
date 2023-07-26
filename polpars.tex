@@ -234,7 +234,7 @@ e^\times_{ij} &\equiv \hat{x}_i \hat{y}_j + \hat{y}_i \hat{x}_j\, ,
 \end{subequations}
 where $\hat{x}$ and $\hat{y}$ are arbitrary orthonormal vectors that, with $\hat{z}$, form a right-handed Cartesian basis; we will call this the \emph{wave frame}.
 Since this frame is constructed to have $\hat{z}$ aligned with the wavevector $\vec{k}$ (i.e., $\hat{z} = \hat{k} \equiv \vec{k}/|k|$), the polarization tensors are implicit functions of the wave propagation direction $\hat{k}$, or, equivalently, the source sky location $\hat{n} = -\hat{k}$.
-For a given $\hat{k}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
+For a given $\hat{k}$, due to the orthonormality of $\hat{x}$ and $\hat{y}$, it is easy to check that these tensors are orthogonal such that $e^p_{ij} e^{p'ij}=2\delta^{pp'}$ for $p,p'$ in $\{+,\times\}$.
 
 We will refer to plus and cross jointly as the \emph{linear} polarization basis.
 Their physical interpretation is best illustrated by their instantaneous effect on a small, freely-falling ring of particles, as shown in Fig.~\ref{fig:rings}.
@@ -314,7 +314,7 @@ h_{ij}(t,\vec{x})
 = \frac{1}{2\pi} \sum_{p=R,L} \int_{-\infty}^{+\infty} \tilde{h}_p(\omega)\, e^p_{ij}(\hat{k})\, e^{i\omega \left(\frac{\hat{k}\cdot\vec{x}}{c}-t\right)} \infd \omega \, ,
 \eeq
 where $\tilde{h}_{R/L}$ and $e^{R/L}_{ij}$ have replaced their $+/\times$ counterparts.
-As is straightforward to show from Eq.~\eqref{eq:circ}, the circular and linear polarization Fourier amplitudes are related by
+As is straightforward to show from Eq.~\eqref{eq:circ}, the Fourier amplitudes of the circular and linear polarizations are related by
 \begin{align} \label{eq:circ_amps}
 \tilde{h}_{R/L} = \frac{1}{\sqrt{2}} \left(\tilde{h}_+ \mp i\tilde{h}_\times \right) ,
 \end{align}
@@ -326,19 +326,31 @@ Based on this, the complex-conjugate condition of Eq.~\eqref{eq:sym_linear} impl
 which again manifests the redundancy in Eq.~\eqref{eq:planewave_circ}, as in Eq.~\eqref{eq:planewave}.
 It also reveals that R and L switch roles for $\omega \to - \omega$, \deleted{as we anticipated below Eq.~\eqref{eq:circ_example},} indicating that these states are invariant under parity-time reversals.
 
-\added[comment=$\uparrow$]{To understand the physical significance of the circular polarizations,}
-consider a purely R-polarized monochromatic mode $h^R_{ij}$ with frequency $\omega > 0$, unit amplitude and zero phase offset; at the spatial origin ($\vec{x}=0$), the time-domain strain \added{tensor} corresponding to such a mode will be given by
+\added{To understand the physical significance of the circular
+polarizations,
+consider a purely R-polarized monochromatic mode $h^R_{ij}$ with positive frequency $f_0 > 0$, unit amplitude and zero phase offset at the spatial origin ($\vec{x} =0$).
+Based on the above discussion, a positive-frequency right-handed mode is the same as a negative-frequency left-handed mode; therefore, in the Fourier domain $h^R$ must take the following form:}
+\added{\begin{equation}
+  \tilde{h}^R_{ij}(f; f_0) = \frac{1}{2} \left[\delta(f - f_0) e^R_{ij} + \delta(f + f_0)\, e^L_{ij} \right]\, ,
+\end{equation}
+in terms of the linear frequencies, $f = \omega/2\pi$ and $f_0 = \omega_0/2\pi$; in the time domain, this is}
 \begin{align} \label{eq:circ_example}
-h_{ij}^R(t;\omega) &= \Re \left[ e^R_{ij}\, \exp(-i\omega t) \right] \nonumber\\
-%&= \frac{1}{\sqrt{2}} \Re \left[\left(e^+_{ij} + i e^\times_{ij}\right) \exp(-i\omega t) \right] \nonumber\\
-&= \frac{1}{\sqrt{2}} \left( e^+_{ij} \cos \omega t + e^\times_{ij} \sin \omega t \right) ,
+  h_{ij}^R(t; f_0) &= \int_{-\infty}^{+\infty} \tilde{h}^R_{ij}(f)\, e^{-i2\pi f t}\, \infd f \nonumber\\
+  % &= \frac{\pi}{2\pi} \left[e^R_{ij} e^{-i\omega_0 t} + e^L_{ij} e^{i\omega_0 t} \right] \nonumber\\
+  % &= \frac{1}{2} \left[\frac{1}{\sqrt{2}}\left(e^+_{ij} + i e^\times_{ij}\right)e^{-i\omega_0 t} + \frac{1}{\sqrt{2}}\left(e^+_{ij} - i e^\times_{ij}\right)e^{i\omega_0 t}\right] \nonumber \\
+  % &= \frac{1}{2} \left[\frac{1}{\sqrt{2}}\left(e^+_{ij} + i e^\times_{ij}\right)\left(\cos \omega_0 t - i \sin \omega_0 t\right) \right. \nonumber \\ 
+  % &\left.+ \frac{1}{\sqrt{2}}\left(e^+_{ij} - i e^\times_{ij}\right)\left(\cos \omega_0 t + i \sin \omega_0 t\right)\right]  \nonumber \\
+  % &= \frac{1}{2} \left[\sqrt{2} e^+_{ij} \cos\omega_0 t + \sqrt{2} e^\times_{ij} \sin\omega_0 t \right] \nonumber \\ 
+  &= \frac{1}{\sqrt{2}} (e^+_{ij} \cos \omega_0 t + e^\times_{ij} \sin \omega_0 t) \, ,
 \end{align}
-using the definition from Eq.~\eqref{eq:circ}, \added{with the $\Re$ operator taking the real part to ensure a real-valued metric perturbation}.
-In the 2D Cartesian space defined by the linear polarization amplitudes, i.e. $\left(h_+, h_\times\right)$, this defines a circle, around which the \emph{phasor} encoding the state of the wave rotates counterclockwise (for $\omega > 0$).
+\added{using the definition from Eq.~\eqref{eq:circ}.}
+
+\added{We can visualize the above result as follows.}
+In the 2D Cartesian space defined by the linear polarization amplitudes, $\left(h_+, h_\times\right)$, $h^R$ defines a circle, around which the \emph{phasor} encoding the state of the wave rotates counterclockwise (for $\omega_0 > 0$).
 This means that, at any given time, the wave will have a unit total amplitude (i.e., $h^2_+ + h^2_\times=1$) and the cross polarization will \emph{lag behind} the plus polarization by $\pi/2$ radians in phase.
 %
 Consequently, a purely R-polarized wave will deform a ring of freely-falling particles into an elliptical pattern that is seen to rotate counter-clockwise when looking towards the source (Fig.~\ref{fig:pol_diagram_circ}), i.e., it follows the right-hand rule relative to the direction of propagation (pointing away from the source).
-The opposite will be true for purely L-polarized waves, which will result in a clockwise-rotating ellipse.
+The opposite will be true for purely L-polarized waves \added{with $\omega_0>0$}, which will result in a clockwise-rotating ellipse.
 %\footnote{If we let $\omega < 0$ then the roles of R and L would flip, indicating these states are invariant under parity-time transformations.}
 This assignment of the ``right'' and ``left'' labels is known as the ``source based'' handedness convention.
 
@@ -396,7 +408,7 @@ Elliptical GWs define an ellipse in the $\left(h_+, h_\times\right)$ phasor spac
 We can see this explicitly for the Fourier modes in Eq.~\eqref{eq:hcomp_fd_rl} above by considering a monochromatic signal given by $\tilde{h}_{R/L}(\omega) = \pi\, \delta(\omega-\omega_0)\, C_{R/L} $,
 %\footnote{The prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
 isolating a single Fourier mode of frequency $\omega_0 >0$ and complex-valued amplitudes $\pi\, C_{R/L}$.
-\added[comment=FN]{This choice of prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \delta(\omega - \omega_0) C_{R/L}/2 = \delta(f - f_0) C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
+\added[comment=FN]{As in Eq.~\eqref{eq:circ_example}, this choice of prefactor can be motivated by noting that $\tilde{h}_{R/L}(\omega) = 2\pi \, \delta(\omega - \omega_0)\, C_{R/L}/2 = \delta(f - f_0)\, C_{R/L} / 2$ implies that $C_{R/L}/2$ are amplitude densities with respect to the frequency $f \equiv \omega/2\pi$; the additional factor of $1/2$ normalizes the signal power such that $h_+^2 + h_\times^2 = 1$ for $|C_R|=1, |C_L|=0$ or $|C_R|=0, |C_L|=1$.}
 
 For such a signal, the result of the Fourier integral of $H(t) \equiv h_+ - i h_\times$ is then (relabeling $\omega_0 \to \omega$ after integration)
 \begin{align} \label{eq:ellip_circ}
@@ -536,7 +548,8 @@ The Stokes parameters are thus especially useful when dealing with stochastic si
 We arrived at the expression for a fully-polarized, monochromatic GW in Eq.~\eqref{eq:hcomp_ellip} by way of the generic Fourier decomposition of a plane wave in Eq.~\eqref{eq:hcomp_fd_rl}, wherein elliptical modes appear naturally with a determinate frequency.
 Yet, we may also speak of fully-polarized states even if the signal is not monochromatic.
 
-The argument applies to any high-frequency coherent wave, i.e., any signal that can be written as a slow-varying amplitude modulating a fast phase.
+The argument applies to any high-frequency coherent wave, i.e., any signal that can be written as a slow-varying amplitude modulating a fast phase.%
+\footnote{In signal processing terminology, signals with such morphologies are often denoted ``chirps'' \citep[e.g.,][]{Candes:2006yv}; however, we avoid that nomenclature here to avoid confusion with compact binary chirps, to which this discussion applies but is not restricted.}
 In that case, the polarization parameters $\{A, \epsilon, \theta\}$ can be defined instantaneously using the stationary phase approximation or similar procedures.
 This way, any GW with a constant polarization state, i.e., whose polarization ellipse takes a fixed, determinate shape (but not necessarily scale), can be encapsulated by an expression of the form
 \begin{subequations} \label{eq:ellip_gen}
@@ -933,8 +946,9 @@ Varying both $\psi$ and $\theta$ simultaneously is ill-advised in that context, 
 
 In the previous sections, we have introduced different parametrizations of elliptical (i.e., fully polarized) waves, including Eqs.~\eqref{eq:ellip_circ}, \eqref{eq:hcomp_ellip} and \eqref{eq:hcomp_ellip_chi}.
 Their use varies depending on the specific application, according to convenience and convention.
-Understanding the relation between the different parametrizations becomes especially important when implementing and interpreting measurements, since the choice of parametrization often influences the prior specified in the analysis.
-Measurements obtained with different parametrizations can be related via a Jacobian.
+Understanding the relation between the different parametrizations becomes especially important when implementing and interpreting measurements, since the choice of parametrization often influences the prior \added{(implicitly or explicitly)} specified in \replaced{Bayesian analyses}{the analysis}.
+\replaced{Probability densities obtained under different parametrizations, including posteriors from a Bayesian measurement,}{Measurements obtained from different parametrizations} can be related via a Jacobian.%
+\footnote{\protect\added{Many quantities used in frequentist analyses, like the maximum likelihood estimator, are invariant under reparametrizations and thus have no need for Jacobians; however, note that this is not true of analyses that maximize a \emph{marginal} likelihood that has been averaged over nuisance parameters.}}
 
 We may also want to switch parametrizations for technical reasons.
 Although conceptually insightful, the manifestly-elliptical parameterization in terms of $\{A, \epsilon, \theta, \phi\}$ of \eq{hcomp_ellip} contains multiple degeneracies that make it less than ideal for sampling purposes.
@@ -957,7 +971,7 @@ If we parametrize our analysis in terms of some alternative set of parameters $\
 p \left( \vec{\xi} \right) = p \left( A, \epsilon, \theta, \phi \right) \left| \frac{\partial \{A, \epsilon, \theta, \phi\}}{\partial \vec{\xi}} \right| ,
 \end{equation}
 where the last factor $J \equiv | \partial (A, \epsilon, \theta, \phi)/\partial \vec{\xi} |$ is the determinant of the Jacobian matrix.
-Applying the Jacobian without any further reweighting yields a flat prior on the  $\{A, \epsilon, \theta, \phi\}$ quantities over the region covered by the original prior.
+Applying the Jacobian without any further reweighting \replaced{effects}{yields} a flat prior on the  $\{A, \epsilon, \theta, \phi\}$ quantities over the region covered by the original prior.
 As with any coordinate transformation, the integration limits must be adjusted to ensure that they correspond to the targeted region in the $\{A, \epsilon, \theta, \phi\}$ space---for example, sampling uniformly in the two Cartesian quadratures $(x, y)$, we can effect a uniform prior on the polar quantities $(0 < r=\sqrt{x^2+y^2} \leq L, \theta= \arctan y/x)$ by applying a Jacobian $\propto 1/r$ and explicitly enforcing $r \leq L$ (Fig.~\ref{fig:jac_example}).
 
 In this section, we will consider four different parametrizations of an elliptical wave, and present the Jacobians relating them to the $\{A, \epsilon, \theta, \phi\}$ parametrization.
