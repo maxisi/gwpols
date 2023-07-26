@@ -82,10 +82,23 @@ They are more convenient than the linear modes because they are invariant under 
 
 ## The elliptical basis
 
-Most generally, any fully-polarized GW can be written as a superposition of circularly-polarized modes, which add up to an elliptically polarized state.
+Most generally, any fully-polarized GW can be written as a superposition of circularly-polarized modes.
+If we add up two monochromatic R and L modes of the same frequency but with arbitrary amplitude and phase we obtain not another circular mode but a more general **elliptical mode**.
+
+Elliptical modes are a natural generalization of both linear and circular modes described above.
+Rather than defining a line or a circle in the $$(h_+,h_\times)$$ phasor space, they describe an ellipse, as their name suggests.
+We illustrate this in the animation below.
 
 <figure>
 <img src="./assets/images/pol_ellip.gif" alt="Elliptical polarization"/>
 <figcaption>Monochromatic <i>elliptical</i> (i.e., fully polarized) wave as a function of time.</figcaption>
 </figure>
+
+This animation reveals a nice set of features of elliptical modes.
+First, freely falling rings of particles are also squeezed into an ellipsoidal pattern that rotates at the frequency of the mode; as before, individual points will also follow ellipsoidal trajectories around their initial locations.
+Remarkable, these ellipses match the ellipse defined in the phasor space, so that each individual points directly reflects the polarization structure of the wave.
+
+Elliptical modes are very useful in practical applications since they provide a generic, well-motivated basis into which to decompose data from GW detectors like LIGO, Virgo and KAGRA.
+
+Many typicall sources have well defined polarization states that can be described by an elliptical template. For instance, compact binary coalescences (e.g., two inspiralling black holes or neutron stars) will radiately predominantly right-handed GWs when observed from the north pole (the direction of orbital angular momentum), left-handed GWs when observed from the south pole, linearly polarized waves when seen from the equator, and intermediate elliptical polarizations when seen from anywhere else.
 
