@@ -57,6 +57,7 @@
 \usepackage{wasysym}
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{changes}
+\usepackage{subfig}
 
 % % hack to mark footnote as deleted
 % % https://tex.stackexchange.com/questions/451179/changes-package-how-to-delete-a-footnote
@@ -1365,6 +1366,43 @@ with $F_p \equiv D^{ij} e^p_{ij}$ as before.
 %The functional form of all the antenna patterns can be computed in any given coordinate system using the definitions of the $e^p_{ij}$ tensors implied by \eq{hij_ngr}.
 The physical effect of the non-GR polarizations is encoded in the antenna patterns, and is illustrated in, e.g., Fig.~1 of \cite{Isi:2017equ}.
 
+% the following is a grid of figures
+\begin{figure}
+  \subfloat[Breathing scalar]{\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_breathing_mesh1.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_breathing_mesh2.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_breathing_mesh3.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_breathing_mesh4.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_breathing_mesh5.pdf}}\\
+%
+\subfloat[Longitudinal scalar]{\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_longitudinal_mesh1.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_longitudinal_mesh2.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_longitudinal_mesh3.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_longitudinal_mesh4.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_longitudinal_mesh5.pdf}}\\
+%
+\subfloat[Traceless scalar]{\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_traceless_mesh1.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_traceless_mesh2.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_traceless_mesh3.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_traceless_mesh4.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_traceless_mesh5.pdf}}\\
+%
+\subfloat[Full-trace scalar]
+{\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_trace_mesh1.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_trace_mesh2.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_trace_mesh3.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_trace_mesh4.pdf}
+\includegraphics[trim={2cm 2cm 2cm 2cm},width=0.19\columnwidth]{sphere_trace_mesh5.pdf}}
+%
+\caption{\protect\added{Scalar polarizations represented through their effect on a small sphere of freely-falling particles (mesh), as they propagate in the $z$-direction (arrow). Each row shows a different polarization at half-period intervals (columns), so that time evolves from left to right.
+(a) The \emph{breathing} polarization stretches and squeezes space uniformly in the $x$-$y$ plane, and does not affect the $z$ direction.
+(b) The \emph{longitudinal} polarization stretches and squeezes the $z$ direction exclusively.
+(c) The \emph{traceless} scalar polarization is the linear combination of breathing and longitudinal given in Eq.~\eqref{eq:scalar_traceless} and alters all three directions without changing the sphere's volume.
+(d) The \emph{full-trace} scalar polarization stretches and squeezes space isotropically in all three directions, thus being undetectable by instruments like LIGO and Virgo.
+The space of scalar polarizations is spanned by any two of these four eigenstates.
+}}
+\label{fig:scalar_modes}
+\end{figure}
+
 The considerations presented above regarding wave frame orientation and antenna pattern symmetries apply just as well to the generalized polarization tensor of Eq.~\eqref{eq:hij_ngr}, except for the different properties that the beyond-GR \replaced{polarizatoins}{modes} exhibit under rotations around the direction of propagation.
 Polarizations of different spin weight do not mix with each other under rotations.
 
@@ -1409,15 +1447,17 @@ Since these \replaced{polarizations}{modes} are already invariant under rotation
 %
 Furthermore, in the small-antenna limit, differential-arm GW detectors are only sensitive to the traceless linear combination of the two scalar polarizations.
 In terms of the breathing and longitudinal \replaced{polarizations}{modes} above, this is
-\beq
+\beq \label{eq:scalar_traceless}
 h_{\rm s} \equiv \hb - 2\hlon\, ,
 \eeq
 which is the only scalar \replaced{polarization}{mode} measurable by existing detectors.
-\added[comment=FN]{The effect of this traceless scalar polarizations is to simultaneously stretch (squeeze) along the $x$ and $y$ directions while squeezing (stretching) along the $z$ direction; the fully-trace scalar mode, to which current detectors are insensitive, stretch and squeeze space isotropically in all three directions.}
+\added[comment=FN]{The effect of this traceless scalar polarizations is to simultaneously stretch (squeeze) along the $x$ and $y$ directions while squeezing (stretching) along the $z$ direction;}\added{the complementary fully-trace scalar polarization, $\hb + \hlon$, stretches and squeezes space isotropically in all three directions, making it undetectable by current detectors.
+All scalar polarizations are illustrated in Fig.~\ref{fig:scalar_modes}.}
 
 \replaced{As an equivalent phrasing of the above}{Equivalently}, the geometric antenna patterns for the breathing and longitudinal \replaced{polarizations}{modes} are the same up to an overall constant (with our normalization, $F_{\bsym} = -F_{\lsym}$).
 Therefore, the two terms are degenerate in Eq.~\eqref{eq:h_ngr} and their contributions cannot be disentangled in a model-independent way, i.e., without theory- and source-specific information about the detailed morphology of the $\hb(t)$ and $\hlon(t)$ functions.
 For unmodeled analyses, it thus suffices to include only one scalar term in Eq.~\eqref{eq:h_ngr}---commonly that for the breathing \replaced{polarization}{mode}---so that the sum is over only five polarizations instead of six.
+\added{One must be mindful of the chosen parametrization when deriving empirical results and comparing them to theory (see, e.g., \cite{Isi:2018miq}.)}
 
 The rest of the mathematical formalism covered in Sec.~\ref{sec:ellip_modes} can easily be extended to accommodate nontensor \replaced{polarizations}{modes}.
 In particular, a generalized definition of Stokes parameters was derived in \cite{Anile1974} to account for all helicities---this requires 36 Stokes parameters.
