@@ -2,7 +2,9 @@
 
 # Gravitational-wave polarizations
 
-Like electromagnetic waves, gravitational waves (GWs) come in two distinct polarization states. These can be parametrized in a number of ways---we illustrate a few examples below.
+Like electromagnetic waves, gravitational waves (GWs) in general relativity (GR) come in two distinct polarization states. These can be parametrized in a number of ways---we illustrate a few examples below.
+
+This page contains a summary of the detailed treatment in my review, _Parametrizing gravitational wave polarizations_ (M. Isi, 2022) [[arXiv:2208.03372](https://arxiv.org/abs/2208.03372)], and complements it with animated versions of Figures 2 and 4.
 
 ## The linear basis
 
@@ -16,7 +18,7 @@ GW polarizations are usually represented in the **linear polarization basis** of
 
 In these diagrams, the GW propagates in the _z_ direction, in or out of the screen, deforming the original ring (dotted circle) into ellipsoidal patterns shown at half-period intervals (solid and dashed).
 
-Any GW can be expressed as a superposition of these two polarization states, and can be specified through time-dependent strain functions $$h_+$$ and $$h_\times$$. These functions determine the signal observed at any given detector; for any specific source, they are prescribed by Einstein's equations and relevant initial conditions.
+In GR, any GW can be expressed as a superposition of these two polarization states, and can be specified through time-dependent strain functions $$h_+$$ and $$h_\times$$. These functions determine the signal observed at any given detector; for any specific source, they are prescribed by Einstein's equations and relevant initial conditions.
 
 We can visualize how any GW can be decomposed into $$+$$ and $$\times$$ contributions by explicitly splitting the two polarizations and illustrating their physical effects separately, as in the first figrue above.
 More abstractly, we can also represent the GW polarization state at any instant through a vector in a Cartesian space defined by the $$\left(h_+, h_\times\right)$$ amplitudes: the magnitude of this _phasor_ encodes the overall strength of the signal, and its orientation the ratio between $$+$$ and $$\times$$.
@@ -29,7 +31,7 @@ The figure below shows an example of all these representations for the simple ca
 <figcaption>Monochromatic <i>plus</i> polarized wave as a function of time.</figcaption>
 </figure>
 
-_Left:_ overall effect on a freely-falling ring of particles. _Center left:_ decomposition of the effect into $$+$$ (top) and $$\times$$ states; in this case, there is no $$\times$$ contribution. _Center right:_ polarization state represented in the $$h_+$$ vs $$h_\times$$ phasor space, where the arrow represents the amplitude of plus vs cross waves at any given instant. _Left_: decomposition into the cosine and sine quadratures for $$+$$ (top) and $$\times$$ (bottom). 
+There is a lot going on in this figure. First, the _leftmost_ diagram shows the overall effect this wave on a freely-falling ring of particles, similar to the diagram above. Next to it, _center left_, we show the decomposition of this effect into the  $$+$$ (top) and $$\times$$ contributions; in this case, there is no $$\times$$ contribution because this is a pure $$+$$ wave. Next, _center right_, we have the instantaneous polarization state, as represented by a phasor in the $$h_+$$ vs $$h_\times$$: the arrow represents the amplitude of plus vs cross waves at any given instant. Finally, the _rightmost_ diagram shows the decomposition into the cosine and sine quadratures for $$+$$ (top) and $$\times$$ (bottom).
 
 <figure>
 <img src="./assets/images/pol_lin_c.gif" alt="Cross polarization"/>
