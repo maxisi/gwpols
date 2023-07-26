@@ -729,6 +729,13 @@ h_\times \rightarrow h_\times' = h_\times \cos 2\Delta \psi + h_+ \sin 2\Delta\p
 This contravariant transformation gives the polarization amplitudes that would be measured by an observer in the rotated (primed) frame, as a function of the amplitudes in the original frame.
 The $2\Delta\psi$ dependence in \eq{htransf} reveals the fact that $h_+$ and $h_\times$ are nothing but the two components of a tensor field with spin-weight $|s|=2$, and the two polarizations are only defined up to an arbitrary choice of $\psi$.
 
+\begin{figure}
+  \includegraphics[width=\columnwidth]{diagram_waveframe.pdf}
+  \caption{Standard construction of the polarization waveframe used in LIGO-Virgo data analysis \cite{LALSuite:wave,Anderson:T010110}. Earth sits at the origin of the equatorial coordinate system defined by the celestial north ($N$) and the vernal equinox ($\vernal$). The sky location of a source ($\star$) is encoded in its right ascension ($\alpha$) and declination ($\delta$), so that the wave propagation direction is $\hat{k}=\hat{z}=-(\cos\delta \cos\alpha, \cos\delta\sin\alpha, \sin\delta)$. The canonical polarization frame is defined by $\hat{x}'=(\sin\alpha, -\cos\alpha,0)$ as being the intersection between the plane of the sky (blue circle) and the celestial equator (gray circle), and $\hat{y}'=(-\sin\delta \cos\alpha, -\sin\delta\sin\alpha, \cos\delta)$ the projection of $N$ onto the plane of the sky, completing the right-handed basis with $\hat{z}$.
+  In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x}' + \sin\psi\,\hat{y}'$ and $\hat{y}=-\sin\psi\,\hat{x}' + \cos\psi\,\hat{y}'$. Dashed trace indicates elements below the equator.}
+  \label{fig:diagram_waveframe}
+  \end{figure}
+
 %The basis polarization tensors themselves transform inversely to the amplitudes, covariant with the rotation.
 Under clockwise rotations of the wave frame the antenna patterns of \eq{h} transform through an expression complementary to \eq{htransf},
 \begin{subequations} \label{eq:Ftransf}
@@ -754,13 +761,6 @@ h_L &\rightarrow h_L' = h_L \exp(+ i2  \Delta \psi)\, ,
 \end{subequations}
 meaning that a rotation around $\hat{z}$ is equivalent to a simple change in the overall phase of the circular polarization components.
 As such, a change in $\psi$ can be absorbed by a redefinition of the Fourier phases in \eq{hcomp_fd_rl}, multiplying the integral through by $\exp(-i2\Delta\psi)$.
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{diagram_waveframe.pdf}
-\caption{Standard construction of the polarization waveframe used in LIGO-Virgo data analysis \cite{LALSuite:wave,Anderson:T010110}. Earth sits at the origin of the equatorial coordinate system defined by the celestial north ($N$) and the vernal equinox ($\vernal$). The sky location of a source ($\star$) is encoded in its right ascension ($\alpha$) and declination ($\delta$), so that the wave propagation direction is $\hat{k}=\hat{z}=-(\cos\delta \cos\alpha, \cos\delta\sin\alpha, \sin\delta)$. The canonical polarization frame is defined by $\hat{x}'=(\sin\alpha, -\cos\alpha,0)$ as being the intersection between the plane of the sky (blue circle) and the celestial equator (gray circle), and $\hat{y}'=(-\sin\delta \cos\alpha, -\sin\delta\sin\alpha, \cos\delta)$ the projection of $N$ onto the plane of the sky, completing the right-handed basis with $\hat{z}$.
-In terms of these vectors, an arbitrary polarization frame rotated by some angle $\psi$ around $\hat{z}$ is given by $\hat{x}=\cos\psi\,\hat{x}' + \sin\psi\,\hat{y}'$ and $\hat{y}=-\sin\psi\,\hat{x}' + \cos\psi\,\hat{y}'$. Dashed trace indicates elements below the equator.}
-\label{fig:diagram_waveframe}
-\end{figure}
 
 Equations~(\ref{eq:htransf}--\ref{eq:htransf_circ}) allow us to transform predictions for the strain $h_{ij} = h_+ e^{+}_{ij} + h_{\times} e^{\times}_{ij}$ in some waveframe $\{\hat{x}, \hat{y}, \hat{z}\}$ to a different one $\{\hat{x}', \hat{y}', \hat{z}'\}$, rotated clockwise around $\hat{k}=\hat{z}=\hat{z}'$ by $\Delta \psi$ (simply labeled $\psi$, if the primed frame corresponds to the reference frame that defines $\psi=0$).
 In real-world data analysis applications, however, we simply write the unprimed basis vectors in the primed basis and evaluate \eq{h} through numerical dot products using \eq{lin}.
@@ -1171,17 +1171,6 @@ Together with Eq.~\eqref{eq:Cphi_to_Aellip}, this allows us to compute $\{A, \ep
 This transformation is clearly less straightforward than those for the circular components in the previous section, with amplitude and phase parameters mixing into each other.
 This is because this coordinate transformation encodes the frame rotation that would bring an arbitrarily-oriented elliptical wave into the simple form of Eq.~\eqref{eq:Aphi}, which is nothing but the special frame we identified in Eq.~\eqref{eq:ellip_frame}.
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
-\caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
-The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, as in the example of Fig.~\ref{fig:jac_example}.
-The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
-The difference between the blue and gray distributions for $\theta$ and $\phi$ is explained in the same way as in Fig.~\ref{fig:jac_Aeps_Arl_angles}.
-The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi}.
-}
-\label{fig:jac_Aphi}
-\end{figure}
-
 The overall Jacobian relating $\{A, \epsilon, \theta, \phi\}$ to $\{A_+, A_\times, \phi_+, \phi_\times\}$ is quite simple, however, when expressed in terms of the former set of parameters,
 \begin{subequations} \label{eq:jac_Aphi}
 \begin{align}
@@ -1200,6 +1189,18 @@ Both those features are visible in Fig.~\ref{fig:jac_Aphi}, which shows the dist
 The distribution increases proportionally with $A$ up to $A_{\max}$ and peaks strongly at $\epsilon = 0$, sharply favoring linear polarizations.
 In fact, the $\theta$ dependence of \eq{jac_Aphi} implies that pure $+$ or $\times$ polarizations ($\theta=0$ or $\theta = \pm\pi/2$, respectively) will be favored over any other orientation, i.e., pure linear polarizations aligned with the frame used to define $+$ and $\times$ in \eq{Aphi}.
 
+\begin{figure}
+  \includegraphics[width=\columnwidth]{jac_Aeps_Apc_corner}
+  \caption{Distribution imposed on $\{A,\epsilon, \theta, \phi\}$ by applying a flat prior on $\{A_+,A_\times, \phi_+, \phi_\times\}$, as defined in \eq{Aphi}, over the ranges $0 < A_{+/\times} \leq A_{\max}$ and $0 < \phi_{+/\times} < 2\pi$.
+  The blue distribution restricts parameters to the targeted range $0 < A < A_{\max}$, as in the example of Fig.~\ref{fig:jac_example}.
+  The 4D density is inversely proportional to the $J_2$ Jacobian in \eq{jac_Aphi}, which is represented by blue lines (over the marginals for $A$ and $\phi$, and in the inset for $\epsilon$ and $\theta$); in particular, the inset shows logarithmically-spaced contours of the $(\epsilon,\theta)$-dependent piece of $1/J_2$.
+  The difference between the blue and gray distributions for $\theta$ and $\phi$ is explained in the same way as in Fig.~\ref{fig:jac_Aeps_Arl_angles}.
+  The distribution represented here heavily favors linear polarizations ($\epsilon = 0$) along the $+/\times$ directions defined by \eq{Aphi}.
+  }
+  \label{fig:jac_Aphi}
+  \end{figure}
+  
+
 The sharpness of the $\epsilon$ and $\theta$ features in Fig.~\ref{fig:jac_Aphi} suggests that fully correcting for the Jacobian in \eq{jac_Aphi} will be challenging in sampling applications.
 Therefore, the parametrization of \eq{Aphi} is likely nonperformant if the goal is to obtain results under a uniform prior in $\{A,\epsilon\}$---we found this to be the case in practice in the context of \cite{Chatziioannou:2021mij}.
 The parameterization is otherwise also likely undesirable if there is no known orientation of the polarization frame to favor in writing down \eq{Aphi}, i.e., in the language of Sec.~\ref{sec:angles}, if there is no a priori preferred polarization angle $\psi$.
@@ -1211,16 +1212,6 @@ In the previous section we introduced the linear polarization quadratures $\xpc 
 In \eq{Aphi_to_Cphi} we used these quantities to conveniently express the relation between the phases of the linear components of \eq{Aphi} and those of their circular counterparts, \eq{ellip_circ}, but their usefulness extends more widely.
 Notably, the quadratures are usually more suitable for sampling applications, since working with periodic phases like $\phi_{+/\times}$ can be problematic for stochastic algorithms like Markov chain Monte Carlo (MCMC) \cite{Hogg:2017akh}.
 Together with Gaussian priors, they can also make some problems analytically integrable \cite{Hogg:2020jwh}.
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{jac_Aeps_Axy}
-\caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
-The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
-Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
-As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
-}
-\label{fig:jac_Axy}
-\end{figure}
 
 The usefulness of the linear-polarization quadratures stems from the fact that, unlike phase parameters like $\phi_{+/\times}$, they enter the waveform linearly.
 Concretely, the expression for an elliptical monochromatic mode in terms of these quantities is
@@ -1288,6 +1279,16 @@ Over the targeted region ($A < A_{\max}$) the distribution steeply favors high s
 Enforcing $A < A_{\max}$, no specific value of $\theta, \phi$ is preferred; however, a similar structure to that in Fig.~\ref{fig:jac_Aphi} would appear unless explicitly mitigated, as explained in that case.
 The constraint on the amplitude, $A < A_{\rm max}$, is crucial to guarantee isotropy in the ellipse orientation: without it, the corners of the squares defined by $-A_{\max} < \xpc,\ypc < A_{\max}$ would result in special directions of high probability, just as in the example of Fig.~\ref{fig:jac_example}.
 The same result could be obtained by applying an intrinsically isotropic prior in the $\{\xpc, \ypc\}$ space, e.g., uncorrelated Gaussians.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{jac_Aeps_Axy}
+  \caption{Distribution imposed on $\{A,\epsilon\}$ by applying a flat prior on $\{\xp, \yp, \xc, \yc\}$, as defined in \eq{xy}, over the ranges $- A_{\max} < \xpc,\ypc \leq A_{\max}$.
+  The blue distribution restricts the parameters to the targeted region, $A < A_{\max}$, as explained in the example of Fig.~\ref{fig:jac_example}.
+  Over that range, the probability density is inversely proportional to the Jacobian in \eq{jac_Aeps_Axy}: favoring large amplitudes and linear polarizations (dashed blue curves).
+  As in Fig.~\ref{fig:jac_Aphi}, the corresponding distribution over the angles $\theta$ and $\phi$ is isotropic when restricted to the appropriate range of $-\pi/2/ \leq \theta,\phi \leq \pi/2$ (not shown).
+  }
+  \label{fig:jac_Axy}
+  \end{figure}
 
 \subsection{Inclination of a planar source}
 \label{sec:jac:cosi}
