@@ -6,6 +6,10 @@ Like electromagnetic waves, gravitational waves (GWs) in general relativity (GR)
 
 This page contains a summary of the detailed treatment in my review, _Parametrizing gravitational wave polarizations_ (M. Isi, 2022) [[arXiv:2208.03372](https://arxiv.org/abs/2208.03372)], and complements it with animated versions of Figures 2 and 4.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7016057.svg)](https://doi.org/10.5281/zenodo.7016057)
+[![Latest PDF](https://img.shields.io/badge/PDF-latest-orange.svg?style=flat)](https://github.com/maxisi/gwpols/blob/main-pdf/polpars.pdf)
+[![arXiv](https://img.shields.io/badge/arXiv-2208.03372-crimson)](https://arxiv.org/abs/2208.03372)
+
 ## The linear basis
 
 GW polarizations are usually represented in the **linear polarization basis** of plus ($$+$$) and cross ($$\times$$) states, which are typically illustrated by their instantaneous effect on a freely-falling ring of particles, as shown below.
