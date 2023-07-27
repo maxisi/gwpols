@@ -11,6 +11,8 @@ Python code used to produce most of the figures in the paper can be found in the
 
 :point_right: Check out a short web summary of polarization basics [here](https://maxisi.github.io/gwpols/) (with animations!)
 
+![Elliptically-polarized GW](etc/pol_ellip.gif)
+
 If you find any of this useful, please cite the above [DOI](https://doi.org/10.5281/zenodo.7016057) for the code, and the paper:
 
 ```
