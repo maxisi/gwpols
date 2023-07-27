@@ -6,7 +6,7 @@ Like electromagnetic waves, gravitational waves (GWs) in general relativity (GR)
 
 This page contains a summary of the detailed treatment in the review, _[Parametrizing gravitational wave polarizations](https://arxiv.org/abs/2208.03372)_ (Max Isi, 2022), and complements it with animated versions of Figures 2 and 4.[^1]
 
-[^1]: This content is released under the [MIT License](https://choosealicense.com/licenses/mit/), (c) Max Isi 2023.
+[^1]: This content is released under the [CC-BY-SA-4.0](https://choosealicense.com/licenses/cc-by-sa-4.0/) license, (c) Max Isi 2023.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7016057.svg)](https://doi.org/10.5281/zenodo.7016057)
 [![Latest PDF](https://img.shields.io/badge/PDF-latest-orange.svg?style=flat)](https://github.com/maxisi/gwpols/blob/main-pdf/polpars.pdf)
