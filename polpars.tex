@@ -56,7 +56,7 @@
 %\usepackage{lmodern}
 \usepackage{wasysym}
 \usepackage[nolist,nohyperlinks]{acronym}
-\usepackage{changes}
+\usepackage[final]{changes}
 \usepackage{subfig}
 
 % % hack to mark footnote as deleted
@@ -331,10 +331,10 @@ It also reveals that R and L switch roles for $\omega \to - \omega$, \deleted{as
 polarizations,
 consider a purely R-polarized monochromatic mode $h^R_{ij}$ with positive frequency $f_0 > 0$, unit amplitude and zero phase offset at the spatial origin ($\vec{x} =0$).
 Based on the above discussion, a positive-frequency right-handed mode is the same as a negative-frequency left-handed mode; therefore, in the Fourier domain $h^R$ must take the following form:}
-\added{\begin{equation}
+\begin{equation}
   \tilde{h}^R_{ij}(f; f_0) = \frac{1}{2} \left[\delta(f - f_0) e^R_{ij} + \delta(f + f_0)\, e^L_{ij} \right]\, ,
 \end{equation}
-in terms of the linear frequencies, $f = \omega/2\pi$ and $f_0 = \omega_0/2\pi$; in the time domain, this is}
+\added{in terms of the linear frequencies, $f = \omega/2\pi$ and $f_0 = \omega_0/2\pi$; in the time domain, this is}
 \begin{align} \label{eq:circ_example}
   h_{ij}^R(t; f_0) &= \int_{-\infty}^{+\infty} \tilde{h}^R_{ij}(f)\, e^{-i2\pi f t}\, \infd f \nonumber\\
   % &= \frac{\pi}{2\pi} \left[e^R_{ij} e^{-i\omega_0 t} + e^L_{ij} e^{i\omega_0 t} \right] \nonumber\\
