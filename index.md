@@ -106,5 +106,25 @@ Remarkable, these ellipses match the ellipse defined in the phasor space, so tha
 
 Elliptical modes are very useful in practical applications since they provide a generic, well-motivated basis into which to decompose data from GW detectors like LIGO, Virgo and KAGRA.
 
-Many typicall sources have well defined polarization states that can be described by an elliptical template. For instance, compact binary coalescences (e.g., two inspiralling black holes or neutron stars) will radiately predominantly right-handed GWs when observed from the north pole (the direction of orbital angular momentum), left-handed GWs when observed from the south pole, linearly polarized waves when seen from the equator, and intermediate elliptical polarizations when seen from anywhere else.
+## The 22 mode
 
+Many typicall sources have well defined polarization states that can be described by an elliptical template; this is the case for most sources that radiate in the dominant $$\ell=|m|=2$$ angular mode of the radiation.
+
+For instance, compact binary coalescences (e.g., two inspiralling black holes or neutron stars) will radiately predominantly right-handed GWs when observed from the north pole (the direction of orbital angular momentum), left-handed GWs when observed from the south pole, linearly polarized waves when seen from the equator, and intermediate elliptical polarizations when seen from anywhere else.
+
+We demonstrate this in the animation below.
+
+<figure>
+<img src="./assets/images/sphere_movie.gif" alt="Polarizations over the sphere"/>
+<figcaption>Monochromatic radiation in the 22 modes wave as a function of time over the sphere.</figcaption>
+</figure>
+
+This animation visualizes in 3D the effect of gravitational waves from a continuous source (e.g., an asymmetric neutron star, or a compact binary at it very early moments of inspiral) emitting in the primary $\ell=|m|=2$ angular mode of radiation.
+
+The source (not shown) is placed at the center of a semi-transparent black sphere representing the sky infinitely far away from the source.
+On the sphere, there are distributed a number of rings of freely falling particles, which serve to illustrate the effect of the gravitational waves as a function of inclination and azimuthal angle around the source.
+The effect of the wave is visible in the stretching-squeezing of the rings, and in their color, which is proportional to the amount of deformation: brighter colors indicate larger deformations, while darker colors indicate the ring is not being deformed.
+(Note that the appearent shape of the rings in the animation is a function of both the GW and 3D perspective; the color is uniquely a function of the GW.)
+
+As mentioned above, points at the poles receive circularly polarized gravitational waves, points at the equator receive linearly polarized waves, and intermediate points receive waves with varying degrees of ellipticity as a function of the inclination (polar angle).
+Additionally a pattern in time emerges in the azimuthal rotation of the nuls of the GW (darker patches that move around the equator of the sphere), revealing that the azimuthal phase of the waves carry the quadrupolar imprint of the source such that and advancement in time is equivalent to an azimuthal rotation.
