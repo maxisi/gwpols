@@ -108,7 +108,7 @@ Elliptical modes are very useful in practical applications since they provide a 
 
 ## The 22 mode
 
-Many typicall sources have well defined polarization states that can be described by an elliptical template; this is the case for most sources that radiate in the dominant $$\ell=|m|=2$$ angular mode of the radiation.
+Many typicall sources have well defined polarization states that can be described by an elliptical template; this is the case for most sources that radiate in the dominant $$\ell= \pm m =2$$ angular mode of the radiation.
 
 For instance, compact binary coalescences (e.g., two inspiralling black holes or neutron stars) will radiately predominantly right-handed GWs when observed from the north pole (the direction of orbital angular momentum), left-handed GWs when observed from the south pole, linearly polarized waves when seen from the equator, and intermediate elliptical polarizations when seen from anywhere else.
 
@@ -119,7 +119,7 @@ We demonstrate this in the animation below.
 <figcaption>Monochromatic radiation in the 22 modes wave as a function of time over the sphere.</figcaption>
 </figure>
 
-This animation visualizes in 3D the effect of gravitational waves from a continuous source (e.g., an asymmetric neutron star, or a compact binary at it very early moments of inspiral) emitting in the primary $\ell=|m|=2$ angular mode of radiation.
+This animation visualizes in 3D the effect of gravitational waves from an equatorially-symmetric, continuous source (e.g., an asymmetric neutron star, or a nonprecessing compact binary at it very early moments of inspiral) emitting in the primary $$\ell=\pm m=2$$ angular mode of radiation.
 
 The source (not shown) is placed at the center of a semi-transparent black sphere representing the sky infinitely far away from the source.
 On the sphere, there are distributed a number of rings of freely falling particles, which serve to illustrate the effect of the gravitational waves as a function of inclination and azimuthal angle around the source.
